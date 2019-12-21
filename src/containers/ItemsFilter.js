@@ -11,35 +11,14 @@ const getUnique = (getItems, value) => {
 export default function ItemsFilter({ items }) {
   const context = useContext(ItemContext);
   // console.log("[ItemsFilter.js] ItemContext...", context);
-  const {
-    handleChange,
-    type,
-    capacity,
-    price,
-    minPrice,
-    maxPrice,
-    minSize,
-    maxSize,
-    breakfast,
-    pets
-  } = context;
+  const { handleChange, brand, minPrice, maxPrice } = context;
 
   // get unique types
-  let types = getUnique(items, "type");
+  let brands = getUnique(items, "brand");
   // add all
-  types = ["all", ...types];
+  brands = ["all", ...brands];
   // map to jsx
-  types = types.map((item, index) => {
-    return (
-      <option value={item} key={index}>
-        {item}
-      </option>
-    );
-  });
-
-  // get unique
-  let people = getUnique(items, "capacity");
-  people = people.map((item, index) => {
+  brands = brands.map((item, index) => {
     return (
       <option value={item} key={index}>
         {item}
@@ -51,66 +30,37 @@ export default function ItemsFilter({ items }) {
     <section className="filter-container">
       <Title title="search items" />
       <form className="filter-form">
-        {/* select type */}
+        {/* select brand */}
         <div className="form-group">
-          <label htmlFor="type">item type</label>
+          <label htmlFor="brand">item brand</label>
           <select
-            name="type"
-            id="type"
-            value={type}
+            name="brand"
+            id="brand"
+            value={brand}
             className="form-control"
             onChange={handleChange}
           >
-            {types}
+            {brands}
           </select>
         </div>
         {/* (END) select type */}
-        {/* select guests */}
-        <div className="form-group">
-          <label htmlFor="capacity">guests</label>
-          <select
-            name="capacity"
-            id="capacity"
-            value={capacity}
-            className="form-control"
-            onChange={handleChange}
-          >
-            {people}
-          </select>
-        </div>
-        {/* (END) select guests */}
-        {/* price */}
-        <div className="form-group">
-          <label htmlFor="price">price price ${price}</label>
-          <input
-            type="range"
-            name="price"
-            min={minPrice}
-            max={maxPrice}
-            id="price"
-            value={price}
-            onChange={handleChange}
-            className="form-control"
-          />
-        </div>
-        {/* (END) price */}
         {/* size */}
         <div className="form-group">
-          <label htmlFor="size">size</label>
+          <label htmlFor="price">price</label>
           <div className="size-inputs">
             <input
               type="number"
-              name="minSize"
-              id="size"
-              value={minSize}
+              name="minPrice"
+              id="price"
+              value={minPrice}
               onChange={handleChange}
               className="size-input"
             />
             <input
               type="number"
-              name="maxSize"
-              id="size"
-              value={maxSize}
+              name="maxPrice"
+              id="price"
+              value={maxPrice}
               onChange={handleChange}
               className="size-input"
             />
@@ -118,32 +68,7 @@ export default function ItemsFilter({ items }) {
         </div>
         {/* (END) size */}
         {/* extras */}
-        <div className="form-group">
-          {/* breakfast */}
-          <div className="single-extra">
-            <input
-              type="checkbox"
-              name="breakfast"
-              id="breakfast"
-              checked={breakfast}
-              onChange={handleChange}
-            />
-            <label htmlFor="breakfast">breakfast</label>
-          </div>
-          {/* (END) breakfast */}
-          {/* pets */}
-          <div className="single-extra">
-            <input
-              type="checkbox"
-              name="pets"
-              id="pets"
-              checked={pets}
-              onChange={handleChange}
-            />
-            <label htmlFor="pets">pets</label>
-          </div>
-          {/* (END) pets */}
-        </div>
+        <div className="form-group"></div>
         {/* (END) extras */}
       </form>
     </section>

@@ -3,19 +3,23 @@ import { Link } from "react-router-dom";
 import defaultImg from "../images/room-1.jpeg";
 import PropTypes from "prop-types";
 import { memo } from "react";
+const baseUrl = "../images/catalogue/";
 
 const Item = memo(({ item }) => {
-  const { name, slug, images, price } = item;
+  const { id, name, image, brand, year, price } = item;
+
+  // let imgSrc = require(`../images/catalogue/${image}`);
+
   // console.log(name);
   return (
     <article className="room">
       <div className="img-container">
-        <img src={images[0] || defaultImg} alt={name} />
+        <img src={require(baseUrl + image) || defaultImg} alt={name} />
         <div className="price-top">
           <h6>${price}</h6>
-          <p>per night</p>
+          <p>{brand}</p>
         </div>
-        <Link to={`/items/${slug}`} className="btn-primary room-link">
+        <Link to={`/items/${id}`} className="btn-primary room-link">
           features
         </Link>
       </div>
@@ -27,8 +31,9 @@ const Item = memo(({ item }) => {
 Item.propTypes = {
   item: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    id: PropTypes.number.isRequired,
+    brand: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired
   })
 };

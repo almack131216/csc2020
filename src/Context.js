@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 // import Data from "./data";
-import Client from "./Contentful";
 
 const ItemContext = React.createContext();
 //
@@ -10,32 +9,29 @@ export default class ItemProvider extends Component {
     sortedItems: [],
     featuredItems: [],
     loading: true,
-    type: "all",
-    capacity: 1,
+    brand: "all",
     price: 0,
     minPrice: 0,
-    maxPrice: 0,
-    minSize: 0,
-    maxSize: 0,
-    breakfast: false,
-    pets: false
+    maxPrice: 0
   };
 
   getData = async () => {
     try {
-      let response = await Client.getEntries({
-        content_type: "beachResortRoomExample",
-        // order: "sys.createdAt"
-        order: "-fields.price"
-      });
-      console.log("[Context.js] getData > success!");
+      const data = await fetch(
+        "http://localhost:3002/api/items/for-sale"
+      ).then(data => data.json());
 
-      let items = this.formatData(response.items);
-      console.log("[Context.js] items...", items);
-      let featuredItems = items.filter(item => item.featured === true);
+      console.log("[Context.js] getData2 > success!", data);
 
+      let items = this.formatData(data);
+      console.log("[Context.js] getData2 > items...", items);
+      let featuredItems = items.slice(0, 4);
+
+      // items = items.find(item => item.brand === 27);
+
+      let minPrice = Math.min(...items.map(item => item.price));
       let maxPrice = Math.max(...items.map(item => item.price));
-      let maxSize = Math.max(...items.map(item => item.size));
+      // let maxSize = Math.max(...items.map(item => item.size));
 
       this.setState({
         items,
@@ -43,32 +39,39 @@ export default class ItemProvider extends Component {
         sortedItems: items,
         loading: false,
         price: maxPrice,
-        maxPrice: maxPrice,
-        maxSize: maxSize
+        minPrice: minPrice,
+        maxPrice: maxPrice
       });
     } catch (error) {
-      console.log("[Context.js] getData > error...", error);
+      console.log("[Context.js] getData2 > error...", error);
     }
   };
   // getData
+
   componentDidMount() {
     this.getData();
   }
 
   formatData(Data) {
     let tempItems = Data.map(dataItem => {
-      let id = dataItem.sys.id;
-      let images = dataItem.fields.images.map(image => image.fields.file.url);
-      let item = { ...dataItem.fields, images, id };
+      let id = dataItem.id;
+      let name = dataItem.name;
+      let price = dataItem.price;
+      let brand = dataItem.brand;
+      let year = dataItem.year;
+      console.log("IMG:", dataItem.image);
+      // let image = require("./images/catalogue/jaguar-e-type-series-ii-4-2-22_10898-300x225.jpg"); //${dataItem.image}`;
+      let image = dataItem.image;
+      let item = { id, name, brand, price, year, image };
       return item;
     });
     return tempItems;
   }
 
-  getItem = slug => {
+  getItem = id => {
     let tempItems = [...this.state.items];
 
-    const item = tempItems.find(item => item.slug === slug);
+    const item = tempItems.find(item => item.id === id);
     return item;
   };
 
@@ -90,48 +93,25 @@ export default class ItemProvider extends Component {
 
   filterItems = () => {
     console.log("[Context.js] filterItems > hello");
-    let {
-      items,
-      type,
-      capacity,
-      price,
-      minSize,
-      maxSize,
-      breakfast,
-      pets
-    } = this.state;
+    let { items, brand, minPrice, maxPrice } = this.state;
 
     // all the rooms
     let tmpItems = [...items];
-    // transform values
-    capacity = parseInt(capacity);
-    // filter by type
-    if (type !== "all") {
-      tmpItems = tmpItems.filter(item => item.type === type);
-    }
-    // filter by capacity
-    if (capacity !== 1) {
-      tmpItems = tmpItems.filter(item => item.capacity >= capacity);
+    // filter by brand
+    console.log("BRAND? ", brand);
+    console.log("ITEM COUNT:  ", tmpItems);
+    if (brand !== "all") {
+      console.log("BRAND CHANGED? ", brand);
+      tmpItems = tmpItems.filter(item => item.brand == brand);
+      console.log("ITEM COUNT CHANGED:  ", tmpItems);
     }
 
     // filter by price
-    tmpItems = tmpItems.filter(item => item.price <= price);
-
-    // filter by size
+    // tmpItems = tmpItems.filter(item => item.price <= price);
+    // filter by price
     tmpItems = tmpItems.filter(
-      item => item.size >= minSize && item.size <= maxSize
+      item => item.price >= minPrice && item.price <= maxPrice
     );
-
-    // filter by breakfast
-    if (breakfast) {
-      tmpItems = tmpItems.filter(item => item.breakfast === true);
-    }
-
-    // filter by size
-    if (pets) {
-      tmpItems = tmpItems.filter(item => item.pets === true);
-    }
-
     // change state
     this.setState({
       sortedItems: tmpItems
