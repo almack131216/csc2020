@@ -1,20 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import defaultImg from "../images/room-1.jpeg";
 import PropTypes from "prop-types";
 import { memo } from "react";
-const baseUrl = "../images/catalogue/";
+import Img from "react-image";
+import loadingGif from "../images/gif/loading-arrow.gif";
 
 const Item = memo(({ item }) => {
-  const { id, name, image, brand, year, price } = item;
+  const { id, name, image, brand, price } = item;
 
-  // let imgSrc = require(`../images/catalogue/${image}`);
+  // let images = require.context("../images/catalogue", true);
 
-  // console.log(name);
+  const image2 = image; //require(`${image}`);
+  const imgUrl = `http://www.classicandsportscar.ltd.uk/images_catalogue/${image}`;
+
+  const myImg = <Img src={[image2, loadingGif]} alt={name} />;
+
+  // console.log(image);
   return (
     <article className="room">
       <div className="img-container">
-        <img src={require(baseUrl + image) || defaultImg} alt={name} />
+        {myImg}
+        {/* <img src={require(`${image}`)} /> */}
         <div className="price-top">
           <h6>${price}</h6>
           <p>{brand}</p>
@@ -33,8 +39,8 @@ Item.propTypes = {
     name: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     brand: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired
+    image: PropTypes.string,
+    price: PropTypes.number
   })
 };
 export default Item;

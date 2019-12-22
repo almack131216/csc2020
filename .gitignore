@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /src/images/catalogue
+/public/images/catalogue
 /.pnp
 .pnp.js
 

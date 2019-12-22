@@ -59,9 +59,8 @@ export default class ItemProvider extends Component {
       let price = dataItem.price;
       let brand = dataItem.brand;
       let year = dataItem.year;
-      console.log("IMG:", dataItem.image);
-      // let image = require("./images/catalogue/jaguar-e-type-series-ii-4-2-22_10898-300x225.jpg"); //${dataItem.image}`;
-      let image = dataItem.image;
+      let image = `http://localhost:8080/csc2020-img/images/${dataItem.image}`;
+      // let image = `http://www.classicandsportscar.ltd.uk/images_catalogue/${dataItem.image}`;
       let item = { id, name, brand, price, year, image };
       return item;
     });
@@ -102,7 +101,7 @@ export default class ItemProvider extends Component {
     console.log("ITEM COUNT:  ", tmpItems);
     if (brand !== "all") {
       console.log("BRAND CHANGED? ", brand);
-      tmpItems = tmpItems.filter(item => item.brand == brand);
+      tmpItems = tmpItems.filter(item => item.brand === parseInt(brand));
       console.log("ITEM COUNT CHANGED:  ", tmpItems);
     }
 
