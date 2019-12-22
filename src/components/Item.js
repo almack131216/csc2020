@@ -11,7 +11,7 @@ const Item = memo(({ item }) => {
   // let images = require.context("../images/catalogue", true);
 
   const image2 = image; //require(`${image}`);
-  const imgUrl = `http://www.classicandsportscar.ltd.uk/images_catalogue/${image}`;
+  // const imgUrl = `http://www.classicandsportscar.ltd.uk/images_catalogue/${image}`;
 
   const myImg = <Img src={[image2, loadingGif]} alt={name} />;
 
@@ -20,7 +20,6 @@ const Item = memo(({ item }) => {
     <article className="room">
       <div className="img-container">
         {myImg}
-        {/* <img src={require(`${image}`)} /> */}
         <div className="price-top">
           <h6>${price}</h6>
           <p>{brand}</p>
