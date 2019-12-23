@@ -17,12 +17,43 @@
 }
 /* globals */
 body {
-  padding-top: 66px;
+  padding-top: 100px;
   color: var(--mainBlack);
   background: var(--mainWhite);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.4;
+  width: 100%;
+  height: 100%;
 }
+
+main {
+  display: block;
+  background: #f5f5f5;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+main .splitter {
+  display: flex;
+  /* flex-direction: column; */
+  width: 100%;
+  background: pink;
+}
+
+main .content-wrap.splitter > div {
+  flex: 1;
+}
+
+main .content-wrap.splitter > div.column-left {
+  background: blue;
+  width: 33.33333333%;
+}
+
+main .content-wrap.splitter > div.content {
+  background: orange;
+  width: 66.66666666%;
+}
+
 h1 {
   font-size: 3em;
   line-height: 1;
