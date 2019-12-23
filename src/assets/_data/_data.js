@@ -3,6 +3,9 @@ const navArray = {
   tmpPath: "./assets/img/",
   brandName: "Classic & Sportscar Centre",
   strapline: "Selling classic cars worldwide for over 25 years",
+  featuredItems: {
+    count: 8
+  },
   header: {
     img: {
       src: "/assets/img/maga-cap.jpg",

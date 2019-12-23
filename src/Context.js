@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import Data from "./data";
+import Data from "./assets/_data/_data";
 
 const ItemContext = React.createContext();
 //
@@ -25,7 +25,7 @@ export default class ItemProvider extends Component {
 
       let items = this.formatData(data);
       console.log("[Context.js] getData2 > items...", items);
-      let featuredItems = items.slice(0, 4);
+      let featuredItems = items.slice(0, Data.featuredItems.count); // get first 4 items (last 4 added)
 
       // items = items.find(item => item.brand === 27);
 

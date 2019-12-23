@@ -17,18 +17,18 @@ const Item = memo(({ item }) => {
 
   // console.log(image);
   return (
-    <article className="room">
-      <div className="img-container">
+    <article className="featured-item">
+      <div className="img-containerXXX">
         {myImg}
-        <div className="price-top">
+        <div className="price-topXXX">
           <h6>${price}</h6>
           <p>{brand}</p>
         </div>
-        <Link to={`/items/${id}`} className="btn-primary room-link">
+        <Link to={`/items/${id}`} className="btn-primaryXXX room-linkXXX">
           features
         </Link>
       </div>
-      <p className="room-info">{name}</p>
+      <p className="room-infoXXX">{name}</p>
     </article>
   );
 });

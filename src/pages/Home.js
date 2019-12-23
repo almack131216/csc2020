@@ -3,7 +3,7 @@ import Hero from "../components/Hero";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import Services from "../components/Services";
-import FeaturedItems from "../components/FeaturedItems";
+import ItemsFeatured from "../components/ItemsFeatured/ItemsFeatured";
 import DemoCarousel from "../components/Carousel/Carousel";
 import NavLeft from "../components/Navigation/NavLeft";
 
@@ -16,7 +16,7 @@ export default function Home() {
           <DemoCarousel />
         </div>
       </section>
-      <FeaturedItems />
+      <ItemsFeatured />
     </React.Fragment>
   );
 }

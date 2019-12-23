@@ -8,7 +8,7 @@ import "./Carousel.css";
 class SimpleSlider extends React.Component {
   render() {
     var settings = {
-      className: "slider full-width",
+      className: "slider carousel",
       dots: true,
       fade: true,
       infinite: true,

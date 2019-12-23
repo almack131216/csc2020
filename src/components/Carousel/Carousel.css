@@ -1,18 +1,18 @@
-.slick-slider {
+.slick-slider.carousel {
   z-index: 0;
 }
 
-.slick-list {
+.slick-slider.carousel .slick-list {
   z-index: 0;
 }
 
 /* kill margin below image */
-.slick-list > .slick-track > .slick-slide > div > div {
+.slick-slider.carousel .slick-list > .slick-track > .slick-slide > div > div {
   display: block !important;
 }
 
-.slick-prev,
-.slick-next {
+.slick-slider.carousel .slick-prev,
+.slick-slider.carousel .slick-next {
   z-index: 2;
   top: 50%;
   margin: 0;
@@ -20,48 +20,48 @@
   height: 40px;
   opacity: 0.5;
 }
-.slick-prev:before,
-.slick-next:before {
+.slick-slider.carousel .slick-prev:before,
+.slick-slider.carousel .slick-next:before {
   font-size: 40px;
 }
 
-.slick-dots li button:before {
+.slick-slider.carousel .slick-dots li button:before {
   font-size: 10px;
   color: white;
 }
 
-.slick-dots li.slick-active button:before {
+.slick-slider.carousel .slick-dots li.slick-active button:before {
   color: white;
 }
 
-.slick-prev {
+.slick-slider.carousel .slick-prev {
   left: 30px;
 }
 
-.slick-next {
+.slick-slider.carousel .slick-next {
   right: 30px;
 }
 
-.slick-slide img {
+.slick-slider.carousel .slick-slide img {
   /* display: block; */
   width: 100%;
   height: auto;
 }
 
-.slick-dots {
+.slick-slider.carousel .slick-dots {
   bottom: 15px;
 }
 
-.slick-prev {
+.slick-slider.carousel .slick-prev {
   left: 15px;
 }
 
-.slick-next {
+.slick-slider.carousel .slick-next {
   right: 15px;
 }
 
-.slick-prev,
-.slick-next {
+.slick-slider.carousel .slick-prev,
+.slick-slider.carousel .slick-next {
   /* width: 40px;
   height: 40px;
   line-height: 40px;
@@ -85,7 +85,7 @@
   margin: -20px 0 0; */
 }
 
-.slick-slider:hover .slick-prev,
-.slick-slider:hover .slick-next {
+.slick-slider.carousel .slick-slider:hover .slick-prev,
+.slick-slider.carousel .slick-slider:hover .slick-next {
   opacity: 0.5;
 }
