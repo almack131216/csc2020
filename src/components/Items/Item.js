@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { memo } from "react";
 import Img from "react-image";
-import loadingGif from "../images/gif/loading-arrow.gif";
+import loadingGif from "../../images/gif/loading-arrow.gif";
+import "./Item.css";
 
 const Item = memo(({ item }) => {
   const { id, name, image, brand, price } = item;

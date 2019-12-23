@@ -1,7 +1,6 @@
 import React from "react";
 import { useContext } from "react";
 import { ItemContext } from "../Context";
-import Title from "../components/Title";
 
 // get all unique values
 const getUnique = (getItems, value) => {
@@ -27,17 +26,16 @@ export default function ItemsFilter({ items }) {
   });
 
   return (
-    <section className="filter-container">
-      <Title title="search items" />
-      <form className="filter-form">
+    <div className="filter-containerXXX">
+      <form className="filter-formXXX">
         {/* select brand */}
-        <div className="form-group">
+        <div className="form-groupXXX">
           <label htmlFor="brand">item brand</label>
           <select
             name="brand"
             id="brand"
             value={brand}
-            className="form-control"
+            className="form-controlXXX"
             onChange={handleChange}
           >
             {brands}
@@ -45,16 +43,16 @@ export default function ItemsFilter({ items }) {
         </div>
         {/* (END) select type */}
         {/* size */}
-        <div className="form-group">
+        <div className="form-groupXXX">
           <label htmlFor="price">price</label>
-          <div className="size-inputs">
+          <div className="size-inputsXXX">
             <input
               type="number"
               name="minPrice"
               id="price"
               value={minPrice}
               onChange={handleChange}
-              className="size-input"
+              className="size-inputXXX"
             />
             <input
               type="number"
@@ -62,7 +60,7 @@ export default function ItemsFilter({ items }) {
               id="price"
               value={maxPrice}
               onChange={handleChange}
-              className="size-input"
+              className="size-inputXXX"
             />
           </div>
         </div>
@@ -71,6 +69,6 @@ export default function ItemsFilter({ items }) {
         <div className="form-group"></div>
         {/* (END) extras */}
       </form>
-    </section>
+    </div>
   );
 }

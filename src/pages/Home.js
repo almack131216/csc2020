@@ -11,7 +11,9 @@ export default function Home() {
   return (
     <React.Fragment>
       <section className="content-wrap splitter">
-        <NavLeft />
+        <div className="content-left">
+          <NavLeft />
+        </div>
         <div className="content">
           <DemoCarousel />
         </div>
