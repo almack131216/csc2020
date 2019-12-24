@@ -111,13 +111,7 @@ const navArray = {
       navTop: true,
       navSide: true
     }
-  ],
-  about: {
-    id: "about",
-    title: "Hello World",
-    body:
-      'My name is Alex. I am a designer-developer with more than 10 years experience. I specialise in front end development using React, Sass CSS, HTML5. If you need <a href="#services">my&nbsp;skills</a> to boost your output then do please <a href="#contact">contact&nbsp;me</a>.'
-  }
+  ]
 };
 
 export default navArray;

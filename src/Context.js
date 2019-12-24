@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import Data from "./assets/_data/_data";
+import SiteData from "./assets/_data/_data";
 
 const ItemContext = React.createContext();
 //
 export default class ItemProvider extends Component {
   state = {
+    siteData: SiteData,
     items: [],
     sortedItems: [],
     featuredItems: [],
@@ -25,7 +26,7 @@ export default class ItemProvider extends Component {
 
       let items = this.formatData(data);
       console.log("[Context.js] getData2 > items...", items);
-      let featuredItems = items.slice(0, Data.featuredItems.count); // get first 4 items (last 4 added)
+      let featuredItems = items.slice(0, SiteData.featuredItems.count); // get first 4 items (last 4 added)
 
       // items = items.find(item => item.brand === 27);
 
@@ -52,8 +53,8 @@ export default class ItemProvider extends Component {
     this.getData();
   }
 
-  formatData(Data) {
-    let tempItems = Data.map(dataItem => {
+  formatData(getItemsData) {
+    let tempItems = getItemsData.map(dataItem => {
       let id = dataItem.id;
       let name = dataItem.name;
       let price = dataItem.price;
