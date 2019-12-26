@@ -6,6 +6,8 @@ import Loading from "../components/Loading";
 
 function ItemsContainer({ context }) {
   const { loading, sortedItems, items } = context;
+  // console.log("[ItemsContainer.js] slug...");
+
   if (loading) {
     return <Loading />;
   }

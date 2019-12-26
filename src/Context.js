@@ -24,9 +24,9 @@ export default class ItemProvider extends Component {
     const statusId = getStatusId ? getStatusId : 1;
 
     try {
-      const data = await fetch(
-        "http://localhost:3002/api/items/for-sale"
-      ).then(data => data.json());
+      const data = await fetch(CatData[categoryId].api).then(data =>
+        data.json()
+      );
 
       console.log("SANITIZE....", slugify("MG TF 1500 UK Matching Numbers"));
       console.log("[Context.js] getData > success!", data);
@@ -97,6 +97,14 @@ export default class ItemProvider extends Component {
     return item;
   };
 
+  setStatePageCategory = category => {
+    console.log(
+      "[Context.js] setStatePageCategory()... [NOT WORKING] " + category
+    );
+    this.getData(category, 2);
+    // this.setState({ categoryId: category });
+  };
+
   formatPrice = price => {
     return price
       ? "£" + price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
@@ -110,10 +118,10 @@ export default class ItemProvider extends Component {
 
   formatItemLink = getItem => {
     let { id, name, nameSanitized, status, category, brand } = getItem;
-    console.log("??? item category: ", category);
+    // console.log("??? item category: ", category);
     let itemLink = `/${nameSanitized}`;
     if (category === this.state.categoryId) {
-      console.log("NO REPEAT CALL", CatData[category].slug);
+      // console.log("NO REPEAT CALL", CatData[category].slug);
       itemLink += this.state.categorySlug;
     } else {
       itemLink += `${this.formatCategoryLink(category, status)}`;
@@ -175,6 +183,7 @@ export default class ItemProvider extends Component {
           formatPrice: this.formatPrice,
           formatItemLink: this.formatItemLink,
           formatCategoryLink: this.formatCategoryLink,
+          setStatePageCategory: this.setStatePageCategory,
           handleChange: this.handleChange
         }}
       >

@@ -1,5 +1,4 @@
 import React from "react";
-// import logo from "./logo.svg";
 import "./App.css";
 import Home from "./pages/Home";
 import Items from "./pages/Items";
@@ -15,7 +14,12 @@ function App() {
       <main>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/items" component={Items} />
+          <Route
+            exact
+            path="/classic-car-archive"
+            component={() => <Items category={22} />}
+          />
+          <Route exact path="/classic-cars-for-sale" component={Items} />
           <Route exact path="/*/*/:slug" component={Item} />
           <Route component={Error} />
         </Switch>

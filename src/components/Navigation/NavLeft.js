@@ -4,13 +4,16 @@ import "./NavLeft.css";
 
 const navLeft = props => {
   const navLinks = NavArray.navigation.map((link, index) => {
-    return <li key={index}>{link.title}</li>;
+    return (
+      <li key={index}>
+        <a href={link.slug}>{link.title}</a>
+      </li>
+    );
   });
 
   return (
-    <div className="column-left">
+    <div className="nav-left">
       <ul>{navLinks}</ul>
-      nav left
     </div>
   );
 };
