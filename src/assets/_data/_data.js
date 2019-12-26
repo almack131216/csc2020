@@ -1,6 +1,7 @@
+import CatData from "./_data-categories";
+
 const navArray = {
   date: "200101",
-  tmpPath: "./assets/img/",
   brandName: "Classic & Sportscar Centre",
   strapline: "Selling classic cars worldwide for over 25 years",
   featuredItems: {
@@ -8,8 +9,8 @@ const navArray = {
   },
   header: {
     img: {
-      src: "/assets/img/maga-cap.jpg",
-      alt: "Make Amactive Great Again!"
+      src: "/assets/images/logo-classic-and-sportscar-centre.gif",
+      alt: "Classic & Sportscar Centre"
     }
   },
   contact: {
@@ -29,64 +30,64 @@ const navArray = {
     },
     {
       id: "ClassicCarsForSale",
-      title: "Classic Cars For Sale",
-      url: "/for-sale",
+      title: CatData[2].title,
+      url: CatData[2].slug,
       navTop: true,
       navSide: true
     },
     {
       id: "ClassicCarsSold",
-      title: "Classic Cars Sold",
-      url: "/sold",
+      title: CatData[22].title,
+      url: CatData[22].slug,
       navTop: true,
       navSide: true
     },
     {
       id: "SellingAClassicCar",
       title: "Selling a Classic Car",
-      url: "/sell",
+      url: "/selling-a-classic-car",
       navTop: true,
       navSide: true
     },
     {
       id: "ClassicCarTransportation",
       title: "Classic Car Transportation",
-      url: "/transportation",
+      url: "/classic-car-transportation",
       navTop: true,
       navSide: true
     },
     {
       id: "CustomerTestimonials",
-      title: "Customer Testimonials",
-      url: "/reviews",
+      title: CatData[3].title,
+      url: CatData[3].slug,
       navTop: true,
       navSide: true
     },
     {
       id: "PressMedia",
-      title: "Press / Media",
-      url: "/press",
+      title: CatData[4].title,
+      url: CatData[4].slug,
       navTop: true,
       navSide: true
     },
     {
       id: "LatestNewsEvents",
-      title: "Latest News & Events",
-      url: "/news",
+      title: CatData[5].title,
+      url: CatData[5].slug,
       navTop: true,
       navSide: true
     },
     {
       id: "RegistrationNumbers",
       title: "Registration Numbers",
-      url: "/plates",
+      url: "/registration-numbers",
       navTop: true,
       navSide: true
     },
     {
       id: "RequestCar",
       title: "Request a Car",
-      url: "/request",
+      url: "/request-a-classic-cars",
       navTop: true,
       navSide: true
     },

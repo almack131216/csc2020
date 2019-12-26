@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import SiteData from "./assets/_data/_data";
-
+import CatData from "./assets/_data/_data-categories";
+const slugify = require("slugify");
 const ItemContext = React.createContext();
 //
 export default class ItemProvider extends Component {
   state = {
     siteData: SiteData,
     items: [],
+    categoryId: null,
+    categorySlug: null,
     sortedItems: [],
     featuredItems: [],
     loading: true,
@@ -16,16 +19,20 @@ export default class ItemProvider extends Component {
     maxPrice: 0
   };
 
-  getData = async () => {
+  getData = async (getCategoryId, getStatusId) => {
+    const categoryId = getCategoryId ? getCategoryId : 2;
+    const statusId = getStatusId ? getStatusId : 1;
+
     try {
       const data = await fetch(
         "http://localhost:3002/api/items/for-sale"
       ).then(data => data.json());
 
-      console.log("[Context.js] getData2 > success!", data);
+      console.log("SANITIZE....", slugify("MG TF 1500 UK Matching Numbers"));
+      console.log("[Context.js] getData > success!", data);
 
       let items = this.formatData(data);
-      console.log("[Context.js] getData2 > items...", items);
+      console.log("[Context.js] getData > items...", items);
       let featuredItems = items.slice(0, SiteData.featuredItems.count); // get first 4 items (last 4 added)
 
       // items = items.find(item => item.brand === 27);
@@ -36,6 +43,8 @@ export default class ItemProvider extends Component {
 
       this.setState({
         items,
+        categoryId: categoryId,
+        categorySlug: this.formatCategoryLink(categoryId, statusId),
         featuredItems,
         sortedItems: items,
         loading: false,
@@ -44,7 +53,7 @@ export default class ItemProvider extends Component {
         maxPrice: maxPrice
       });
     } catch (error) {
-      console.log("[Context.js] getData2 > error...", error);
+      console.log("[Context.js] getData > error...", error);
     }
   };
   // getData
@@ -57,22 +66,61 @@ export default class ItemProvider extends Component {
     let tempItems = getItemsData.map(dataItem => {
       let id = dataItem.id;
       let name = dataItem.name;
+      let nameSanitized = slugify(dataItem.name);
+      let status = dataItem.status;
+      let category = dataItem.category;
       let price = dataItem.price;
       let brand = dataItem.brand;
       let year = dataItem.year;
       let image = `http://localhost:8080/csc2020-img/images/${dataItem.image}`;
       // let image = `http://www.classicandsportscar.ltd.uk/images_catalogue/${dataItem.image}`;
-      let item = { id, name, brand, price, year, image };
+      let item = {
+        id,
+        status,
+        category,
+        name,
+        nameSanitized,
+        brand,
+        price,
+        year,
+        image
+      };
       return item;
     });
     return tempItems;
   }
 
-  getItem = id => {
+  getItemXXX = id => {
     let tempItems = [...this.state.items];
 
     const item = tempItems.find(item => item.id === id);
     return item;
+  };
+
+  formatPrice = price => {
+    return price
+      ? "£" + price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+      : null;
+  };
+
+  formatCategoryLink = (getCategoryId, getItemStatus) => {
+    if (getCategoryId === 2 && getItemStatus === 2) return CatData[22].slug;
+    return CatData[getCategoryId].slug;
+  };
+
+  formatItemLink = getItem => {
+    let { id, name, nameSanitized, status, category, brand } = getItem;
+    console.log("??? item category: ", category);
+    let itemLink = `/${nameSanitized}`;
+    if (category === this.state.categoryId) {
+      console.log("NO REPEAT CALL", CatData[category].slug);
+      itemLink += this.state.categorySlug;
+    } else {
+      itemLink += `${this.formatCategoryLink(category, status)}`;
+    }
+
+    itemLink += `/${id}`;
+    return itemLink;
   };
 
   handleChange = event => {
@@ -124,6 +172,9 @@ export default class ItemProvider extends Component {
         value={{
           ...this.state,
           getItem: this.getItem,
+          formatPrice: this.formatPrice,
+          formatItemLink: this.formatItemLink,
+          formatCategoryLink: this.formatCategoryLink,
           handleChange: this.handleChange
         }}
       >

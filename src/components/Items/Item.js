@@ -5,9 +5,21 @@ import { memo } from "react";
 import Img from "react-image";
 import loadingGif from "../../images/gif/loading-arrow.gif";
 import "./Item.css";
+import { useContext } from "react";
+import { ItemContext } from "../../Context";
 
 const Item = memo(({ item }) => {
-  const { id, name, image, brand, price } = item;
+  const context = useContext(ItemContext);
+  const {
+    id,
+    name,
+    nameSanitized,
+    category,
+    image,
+    brand,
+    price,
+    status
+  } = item;
 
   // let images = require.context("../images/catalogue", true);
 
@@ -22,10 +34,15 @@ const Item = memo(({ item }) => {
       <div className="img-containerXXX">
         {myImg}
         <div className="price-topXXX">
-          <h6>${price}</h6>
-          <p>{brand}</p>
+          <h6>{context.formatPrice(price)}</h6>
+          <p>
+            {status}: {brand}
+          </p>
         </div>
-        <Link to={`/items/${id}`} className="btn-primaryXXX room-linkXXX">
+        <Link
+          to={context.formatItemLink(item)}
+          className="btn-primaryXXX room-linkXXX"
+        >
           features
         </Link>
       </div>

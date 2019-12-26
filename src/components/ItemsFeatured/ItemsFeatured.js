@@ -15,8 +15,8 @@ export default class ItemsFeatured extends Component {
     console.log("[ItemsFeatured.js] items...", items);
     items = items.map(item => {
       return (
-        <div>
-          <Item key={item.id} item={item} />
+        <div key={item.id}>
+          <Item item={item} />
         </div>
       );
     });
