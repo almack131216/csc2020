@@ -89,6 +89,7 @@ export default class ItemProvider extends Component {
     console.log(
       "[Context.js] setStatePageCategory()... [NOT WORKING] " + category
     );
+
     this.getData(category, 2);
     // this.setState({ categoryName: category });
   };
