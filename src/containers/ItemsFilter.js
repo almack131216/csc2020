@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { ItemContext } from "../Context";
+import PriceFilter from "../components/Filter/Price";
 
 // get all unique values
 const getUnique = (getItems, value) => {
@@ -42,29 +43,12 @@ export default function ItemsFilter({ items }) {
           </select>
         </div>
         {/* (END) select type */}
-        {/* size */}
-        <div className="form-groupXXX">
-          <label htmlFor="price">price</label>
-          <div className="size-inputsXXX">
-            <input
-              type="number"
-              name="minPrice"
-              id="price"
-              value={minPrice}
-              onChange={handleChange}
-              className="size-inputXXX"
-            />
-            <input
-              type="number"
-              name="maxPrice"
-              id="price"
-              value={maxPrice}
-              onChange={handleChange}
-              className="size-inputXXX"
-            />
-          </div>
-        </div>
-        {/* (END) size */}
+        <PriceFilter
+          priceRange={[0, 5000, 10000, 20000, 30000, 40000, 100000]}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+          changed={handleChange}
+        />
         {/* extras */}
         <div className="form-group"></div>
         {/* (END) extras */}
