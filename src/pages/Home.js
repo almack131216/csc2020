@@ -18,7 +18,8 @@ export default function Home() {
           <DemoCarousel />
         </div>
       </section>
-      <ItemsFeatured />
+      <ItemsFeatured items="Live" />
+      <ItemsFeatured items="Archive" />
     </React.Fragment>
   );
 }

@@ -8,12 +8,24 @@ import Slider from "react-slick";
 import "./ItemsFeatured.css";
 
 export default class ItemsFeatured extends Component {
+  constructor(props) {
+    super(props);
+    console.log("[ItemsFeatured.js] props.items...", props.items);
+    this.switch = props.items;
+  }
   static contextType = ItemContext;
 
   render() {
-    let { loading, featuredItems: items } = this.context;
+    let {
+      loading,
+      featuredItems: items,
+      featuredItemsArchive: items2
+    } = this.context;
     console.log("[ItemsFeatured.js] items...", items);
-    items = items.map(item => {
+
+    let SwitchItems = this.switch === "Live" ? items : items2;
+
+    items = SwitchItems.map(item => {
       return (
         <div key={item.id}>
           <Item item={item} />

@@ -17,7 +17,7 @@ function App() {
           <Route
             exact
             path="/classic-car-archive"
-            component={() => <Items category={22} />}
+            component={() => <Items category="Archive" />}
           />
           <Route exact path="/classic-cars-for-sale" component={Items} />
           <Route exact path="/*/*/:slug" component={Item} />

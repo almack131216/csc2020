@@ -2,6 +2,7 @@ import React from "react";
 import ItemsContainer from "../containers/ItemsContainer";
 import NavLeft from "../components/Navigation/NavLeft";
 import WidgetData from "../assets/_data/_data-widgets";
+import CatData from "../assets/_data/_data-categories";
 import Widget from "../components/Widgets/Widget";
 import { useContext } from "react";
 import { ItemContext } from "../Context";
@@ -12,14 +13,14 @@ const Items = props => {
   let widgetOpeningHours = null;
   let widgetContact = null;
 
-  const categoryID = props.category ? props.category : 2;
-  context.setStatePageCategory(categoryID);
+  const categoryName = props.category ? props.category : "Live";
+  context.setStatePageCategory(categoryName);
   // this.setState({ categoryId: categoryID });
 
-  console.log("[pages>Items.js] categoryId...", categoryID);
+  console.log("[pages>Items.js] categoryId...", categoryName);
 
-  switch (categoryID) {
-    case 22:
+  switch (categoryName) {
+    case "Archive":
       widgetOpeningHours = false;
       widgetContact = false;
       break;

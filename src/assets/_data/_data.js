@@ -30,15 +30,15 @@ const navArray = {
     },
     {
       id: "ClassicCarsForSale",
-      title: CatData[2].title,
-      slug: CatData[2].slug,
+      title: CatData["Live"].title,
+      slug: CatData["Live"].slug,
       navTop: true,
       navSide: true
     },
     {
       id: "ClassicCarsSold",
-      title: CatData[22].title,
-      slug: CatData[22].slug,
+      title: CatData["Archive"].title,
+      slug: CatData["Archive"].slug,
       navTop: true,
       navSide: true
     },
@@ -58,22 +58,22 @@ const navArray = {
     },
     {
       id: "CustomerTestimonials",
-      title: CatData[3].title,
-      slug: CatData[3].slug,
+      title: CatData["Testimonials"].title,
+      slug: CatData["Testimonials"].slug,
       navTop: true,
       navSide: true
     },
     {
       id: "PressMedia",
-      title: CatData[4].title,
-      slug: CatData[4].slug,
+      title: CatData["Press"].title,
+      slug: CatData["Press"].slug,
       navTop: true,
       navSide: true
     },
     {
       id: "LatestNewsEvents",
-      title: CatData[5].title,
-      slug: CatData[5].slug,
+      title: CatData["News"].title,
+      slug: CatData["News"].slug,
       navTop: true,
       navSide: true
     },

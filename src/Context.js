@@ -8,10 +8,14 @@ export default class ItemProvider extends Component {
   state = {
     siteData: SiteData,
     items: [],
+    itemsLive: [],
+    itemsArchive: [],
+    itemsNews: [],
     categoryId: null,
     categorySlug: null,
     sortedItems: [],
     featuredItems: [],
+    featuredItemsArchive: [],
     loading: true,
     brand: "all",
     price: 0,
@@ -19,39 +23,68 @@ export default class ItemProvider extends Component {
     maxPrice: 0
   };
 
-  getData = async (getCategoryId, getStatusId) => {
-    const categoryId = getCategoryId ? getCategoryId : 2;
-    const statusId = getStatusId ? getStatusId : 1;
+  getData = async () => {
+    const categoryId = "Live";
+    const statusId = 1;
 
     try {
-      const data = await fetch(CatData[categoryId].api).then(data =>
-        data.json()
-      );
+      await fetch("http://localhost:3002/api/items/all")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          console.log(
+            "SANITIZE....",
+            slugify("MG TF 1500 UK Matching Numbers")
+          );
+          console.log("[Context.js] getData > success!", data);
 
-      console.log("SANITIZE....", slugify("MG TF 1500 UK Matching Numbers"));
-      console.log("[Context.js] getData > success!", data);
+          let items = this.formatData(data);
+          console.log("[Context.js] getData > items...", items);
 
-      let items = this.formatData(data);
-      console.log("[Context.js] getData > items...", items);
-      let featuredItems = items.slice(0, SiteData.featuredItems.count); // get first 4 items (last 4 added)
+          let itemsAllLive = items.filter(item => item.status === 1);
+          let itemsAllArchive = items.filter(item => item.status === 2);
 
-      // items = items.find(item => item.brand === 27);
+          let itemsLive = itemsAllLive.filter(item => item.category === 2);
+          let itemsArchive = itemsAllArchive.filter(
+            item => item.category === 2
+          );
+          let itemsNews = itemsAllLive.filter(item => item.category === 5);
 
-      let minPrice = Math.min(...items.map(item => item.price));
-      let maxPrice = Math.max(...items.map(item => item.price));
-      // let maxSize = Math.max(...items.map(item => item.size));
+          let featuredItems = itemsLive.slice(0, SiteData.featuredItems.count); // get first 4 items (last 4 added)
+          console.log("[Context.js] getData > featuredItems...", featuredItems);
 
-      this.setState({
-        items,
-        categoryId: categoryId,
-        categorySlug: this.formatCategoryLink(categoryId, statusId),
-        featuredItems,
-        sortedItems: items,
-        loading: false,
-        price: maxPrice,
-        minPrice: minPrice,
-        maxPrice: maxPrice
-      });
+          let featuredItemsArchive = itemsArchive.slice(
+            0,
+            SiteData.featuredItems.count
+          ); // get first 4 items (last 4 added)
+          console.log(
+            "[Context.js] getData > featuredItemsSold...",
+            itemsArchive
+          );
+
+          // items = items.find(item => item.brand === 27);
+
+          let minPrice = Math.min(...items.map(item => item.price));
+          let maxPrice = Math.max(...items.map(item => item.price));
+          // let maxSize = Math.max(...items.map(item => item.size));
+
+          this.setState({
+            items,
+            itemsLive,
+            itemsArchive,
+            itemsNews,
+            categoryId: categoryId,
+            categorySlug: this.formatCategoryLink(categoryId, statusId),
+            featuredItems,
+            featuredItemsArchive,
+            sortedItems: items,
+            loading: false,
+            price: maxPrice,
+            minPrice: minPrice,
+            maxPrice: maxPrice
+          });
+        });
     } catch (error) {
       console.log("[Context.js] getData > error...", error);
     }
@@ -101,7 +134,7 @@ export default class ItemProvider extends Component {
     console.log(
       "[Context.js] setStatePageCategory()... [NOT WORKING] " + category
     );
-    this.getData(category, 2);
+    // this.getData(category, 2);
     // this.setState({ categoryId: category });
   };
 
@@ -112,7 +145,13 @@ export default class ItemProvider extends Component {
   };
 
   formatCategoryLink = (getCategoryId, getItemStatus) => {
-    if (getCategoryId === 2 && getItemStatus === 2) return CatData[22].slug;
+    console.log(
+      "Context.js] formatCategoryLink getCategoryId...",
+      getCategoryId
+    );
+
+    if (getCategoryId === CatData["Archive"].category && getItemStatus === 2)
+      return CatData["Archive"].slug;
     return CatData[getCategoryId].slug;
   };
 
@@ -120,7 +159,7 @@ export default class ItemProvider extends Component {
     let { id, name, nameSanitized, status, category, brand } = getItem;
     // console.log("??? item category: ", category);
     let itemLink = `/${nameSanitized}`;
-    if (category === this.state.categoryId) {
+    if (category === CatData[this.state.categoryId].category) {
       // console.log("NO REPEAT CALL", CatData[category].slug);
       itemLink += this.state.categorySlug;
     } else {
