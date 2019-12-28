@@ -85,6 +85,74 @@ export default class ItemProvider extends Component {
     this.getData();
   }
 
+  setData = async (getCategoryName, getStatusId) => {
+    const categoryName = getCategoryName ? getCategoryName : "Live";
+    const statusId = getStatusId ? getStatusId : 1;
+
+    try {
+      const data = await fetch(CatData[categoryName].api).then(data =>
+        data.json()
+      );
+      const dataArchive = await fetch(
+        CatData["Archive"].apiFeatured
+      ).then(dataArchive => dataArchive.json());
+
+      console.log("SANITIZE....", slugify("MG TF 1500 UK Matching Numbers"));
+      console.log("[Context.js] getData > success!", data);
+
+      let items = this.formatData(data);
+      console.log("[Context.js] getData > items...", items);
+      let featuredItems = items.slice(0, SiteData.featuredItems.count); // get first 4 items (last 4 added)
+
+      // if (this.state.featuredItemsArchive.length < 1) {
+      //   window.alert("one time" + this.state.featuredItemsArchive.length);
+
+      let itemsFeaturedArchive = this.formatData(dataArchive);
+      console.log(
+        "[Context.js] getData > itemsFeaturedArchive...",
+        itemsFeaturedArchive
+      );
+      let featuredItemsArchive = itemsFeaturedArchive.slice(
+        0,
+        SiteData.featuredItems.count
+      );
+
+      //   this.setState({
+      //     featuredItemsArchive
+      //   });
+      // }
+
+      // items = items.find(item => item.brand === 27);
+
+      let minPrice = Math.min(...items.map(item => item.price));
+      let maxPrice = Math.max(...items.map(item => item.price));
+      // let maxSize = Math.max(...items.map(item => item.size));
+
+      this.setState({
+        items,
+        categoryName,
+        categorySlug: this.formatCategoryLink(categoryName, statusId),
+        featuredItems,
+        featuredItemsArchive,
+        sortedItems: items,
+        loading: false,
+        price: maxPrice,
+        minPrice: minPrice,
+        maxPrice: maxPrice
+      });
+    } catch (error) {
+      console.log("[Context.js] getData > error...", error);
+    }
+  };
+
+  setStatePageCategory = category => {
+    console.log(
+      "[Context.js] setStatePageCategory()... [NOT WORKING] " + category
+    );
+    this.setData(category, 2);
+    // this.setState({ categoryName: category });
+  };
+
   formatData(getItemsData) {
     let tempItems = getItemsData.map(dataItem => {
       let id = dataItem.id;
@@ -118,14 +186,6 @@ export default class ItemProvider extends Component {
 
     const item = tempItems.find(item => item.id === id);
     return item;
-  };
-
-  setStatePageCategory = category => {
-    console.log(
-      "[Context.js] setStatePageCategory()... [NOT WORKING] " + category
-    );
-    this.getData(category, 2);
-    // this.setState({ categoryName: category });
   };
 
   formatPrice = price => {

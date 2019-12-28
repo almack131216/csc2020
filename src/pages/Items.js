@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ItemsContainer from "../containers/ItemsContainer";
 import NavLeft from "../components/Navigation/NavLeft";
 import WidgetData from "../assets/_data/_data-widgets";
-import CatData from "../assets/_data/_data-categories";
 import Widget from "../components/Widgets/Widget";
 import { useContext } from "react";
 import { ItemContext } from "../Context";
@@ -14,8 +13,12 @@ const Items = props => {
   let widgetContact = null;
 
   const categoryName = props.category ? props.category : "Live";
-  context.setStatePageCategory(categoryName);
-  // this.setState({ categoryId: categoryID });
+  // context.setStatePageCategory(categoryName);
+  // this.setState({ categoryId: categoryName });
+  useEffect(() => {
+    console.log("location changed");
+    context.setStatePageCategory(categoryName);
+  }, [categoryName]);
 
   console.log("[pages>Items.js] categoryId...", categoryName);
 
@@ -40,7 +43,7 @@ const Items = props => {
           {widgetContact ? <Widget body={WidgetData.contact} /> : null}
         </div>
         <div className="content">
-          <ItemsContainer />
+          <ItemsContainer category={categoryName} />
         </div>
       </section>
     </>
