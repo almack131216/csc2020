@@ -85,6 +85,14 @@ export default class ItemProvider extends Component {
     this.getData();
   }
 
+  setStatePageCategory = category => {
+    console.log(
+      "[Context.js] setStatePageCategory()... [NOT WORKING] " + category
+    );
+    this.getData(category, 2);
+    // this.setState({ categoryName: category });
+  };
+
   formatData(getItemsData) {
     let tempItems = getItemsData.map(dataItem => {
       let id = dataItem.id;
@@ -118,14 +126,6 @@ export default class ItemProvider extends Component {
 
     const item = tempItems.find(item => item.id === id);
     return item;
-  };
-
-  setStatePageCategory = category => {
-    console.log(
-      "[Context.js] setStatePageCategory()... [NOT WORKING] " + category
-    );
-    this.getData(category, 2);
-    // this.setState({ categoryName: category });
   };
 
   formatPrice = price => {
