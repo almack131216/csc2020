@@ -1,13 +1,18 @@
-import React from "react";
-import Hero from "../components/Hero";
-import Banner from "../components/Banner";
-import { Link } from "react-router-dom";
-import Services from "../components/Services";
+import React, { useState, useEffect } from "react";
 import ItemsFeatured from "../components/ItemsFeatured/ItemsFeatured";
 import DemoCarousel from "../components/Carousel/Carousel";
 import NavLeft from "../components/Navigation/NavLeft";
+import { useContext } from "react";
+import { ItemContext } from "../Context";
 
-export default function Home() {
+const Home = props => {
+  const context = useContext(ItemContext);
+
+  useEffect(() => {
+    console.log("location changed");
+    context.getData("Home");
+  }, []);
+
   return (
     <React.Fragment>
       <section className="content-wrap splitter">
@@ -22,4 +27,6 @@ export default function Home() {
       <ItemsFeatured items="Archive" />
     </React.Fragment>
   );
-}
+};
+
+export default Home;

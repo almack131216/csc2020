@@ -3,7 +3,8 @@ const catArray = {
     category: 2,
     title: "Classic Cars For Sale",
     slug: "/classic-cars-for-sale",
-    api: "http://localhost:3002/api/items/for-sale"
+    api: "http://localhost:3002/api/items/for-sale",
+    apiFeatured: "http://localhost:3002/api/items/for-sale/featured"
   },
   Archive: {
     category: 2,
