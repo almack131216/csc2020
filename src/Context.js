@@ -18,7 +18,9 @@ export default class ItemProvider extends Component {
     brand: "all",
     price: 0,
     minPrice: 0,
-    maxPrice: 0
+    maxPrice: 0,
+    maxPriceAbs: 0,
+    priceRangeArr: []
   };
 
   getData = async getPageName => {
@@ -70,8 +72,10 @@ export default class ItemProvider extends Component {
       let items = this.formatData(data);
       // console.log("[Context.js] getData > items...", items);
 
-      let minPrice = Math.min(...items.map(item => item.price));
-      let maxPrice = Math.max(...items.map(item => item.price)); //(value / 1000).toFixed() * 1000
+      let minPrice = 0; //Math.min(...items.map(item => item.price));
+      let maxPrice = Math.max(...items.map(item => item.price));
+      const maxPriceAbs = Math.round((maxPrice / 100000).toFixed() * 100000);
+      const priceRangeArr = SiteData.priceRangeArr;
       // let maxSize = Math.max(...items.map(item => item.size));
 
       this.setState({
@@ -81,8 +85,10 @@ export default class ItemProvider extends Component {
         sortedItems: items,
         loading: false,
         price: maxPrice,
-        minPrice: minPrice,
-        maxPrice: maxPrice
+        minPrice,
+        maxPrice: maxPriceAbs,
+        maxPriceAbs,
+        priceRangeArr
       });
     } catch (error) {
       console.log("[Context.js] getDataItems > error...", error);

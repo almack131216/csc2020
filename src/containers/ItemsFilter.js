@@ -11,7 +11,15 @@ const getUnique = (getItems, value) => {
 export default function ItemsFilter({ items }) {
   const context = useContext(ItemContext);
   // console.log("[ItemsFilter.js] ItemContext...", context);
-  const { handleChange, brand, minPrice, maxPrice } = context;
+  const {
+    categoryName,
+    handleChange,
+    brand,
+    minPrice,
+    maxPrice,
+    maxPriceAbs,
+    priceRangeArr
+  } = context;
 
   // get unique types
   let brands = getUnique(items, "brand");
@@ -43,12 +51,15 @@ export default function ItemsFilter({ items }) {
           </select>
         </div>
         {/* (END) select type */}
-        <PriceFilter
-          priceRange={[0, 5000, 10000, 20000, 30000, 40000, 100000]}
-          minPrice={minPrice}
-          maxPrice={maxPrice}
-          changed={handleChange}
-        />
+        {categoryName === "Live" ? (
+          <PriceFilter
+            priceRange={priceRangeArr}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            maxPriceAbs={maxPriceAbs}
+            changed={handleChange}
+          />
+        ) : null}
         {/* extras */}
         <div className="form-group"></div>
         {/* (END) extras */}
