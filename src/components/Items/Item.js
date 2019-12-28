@@ -32,7 +32,7 @@ const Item = memo(({ item }) => {
   return (
     <article className="featured-item">
       <div className="img-containerXXX">
-        {myImg}
+        {/* {myImg} */}
         <div className="price-topXXX">
           <h6>{context.formatPrice(price)}</h6>
           <p>

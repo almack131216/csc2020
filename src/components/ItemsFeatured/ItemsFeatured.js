@@ -13,6 +13,7 @@ export default class ItemsFeatured extends Component {
     console.log("[ItemsFeatured.js] props.items...", props.items);
     this.switch = props.items;
   }
+
   static contextType = ItemContext;
 
   render() {

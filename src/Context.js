@@ -8,10 +8,7 @@ export default class ItemProvider extends Component {
   state = {
     siteData: SiteData,
     items: [],
-    itemsLive: [],
-    itemsArchive: [],
-    itemsNews: [],
-    categoryId: null,
+    categoryName: null,
     categorySlug: null,
     sortedItems: [],
     featuredItems: [],
@@ -23,68 +20,61 @@ export default class ItemProvider extends Component {
     maxPrice: 0
   };
 
-  getData = async () => {
-    const categoryId = "Live";
-    const statusId = 1;
+  getData = async (getCategoryName, getStatusId) => {
+    const categoryName = getCategoryName ? getCategoryName : "Live";
+    const statusId = getStatusId ? getStatusId : 1;
 
     try {
-      await fetch("http://localhost:3002/api/items/all")
-        .then(response => {
-          return response.json();
-        })
-        .then(data => {
-          console.log(
-            "SANITIZE....",
-            slugify("MG TF 1500 UK Matching Numbers")
-          );
-          console.log("[Context.js] getData > success!", data);
+      const data = await fetch(CatData[categoryName].api).then(data =>
+        data.json()
+      );
+      const dataArchive = await fetch(
+        CatData["Archive"].apiFeatured
+      ).then(dataArchive => dataArchive.json());
 
-          let items = this.formatData(data);
-          console.log("[Context.js] getData > items...", items);
+      console.log("SANITIZE....", slugify("MG TF 1500 UK Matching Numbers"));
+      console.log("[Context.js] getData > success!", data);
 
-          let itemsAllLive = items.filter(item => item.status === 1);
-          let itemsAllArchive = items.filter(item => item.status === 2);
+      let items = this.formatData(data);
+      console.log("[Context.js] getData > items...", items);
+      let featuredItems = items.slice(0, SiteData.featuredItems.count); // get first 4 items (last 4 added)
 
-          let itemsLive = itemsAllLive.filter(item => item.category === 2);
-          let itemsArchive = itemsAllArchive.filter(
-            item => item.category === 2
-          );
-          let itemsNews = itemsAllLive.filter(item => item.category === 5);
+      // if (this.state.featuredItemsArchive.length < 1) {
+      //   window.alert("one time" + this.state.featuredItemsArchive.length);
 
-          let featuredItems = itemsLive.slice(0, SiteData.featuredItems.count); // get first 4 items (last 4 added)
-          console.log("[Context.js] getData > featuredItems...", featuredItems);
+      let itemsFeaturedArchive = this.formatData(dataArchive);
+      console.log(
+        "[Context.js] getData > itemsFeaturedArchive...",
+        itemsFeaturedArchive
+      );
+      let featuredItemsArchive = itemsFeaturedArchive.slice(
+        0,
+        SiteData.featuredItems.count
+      );
 
-          let featuredItemsArchive = itemsArchive.slice(
-            0,
-            SiteData.featuredItems.count
-          ); // get first 4 items (last 4 added)
-          console.log(
-            "[Context.js] getData > featuredItemsSold...",
-            itemsArchive
-          );
+      //   this.setState({
+      //     featuredItemsArchive
+      //   });
+      // }
 
-          // items = items.find(item => item.brand === 27);
+      // items = items.find(item => item.brand === 27);
 
-          let minPrice = Math.min(...items.map(item => item.price));
-          let maxPrice = Math.max(...items.map(item => item.price));
-          // let maxSize = Math.max(...items.map(item => item.size));
+      let minPrice = Math.min(...items.map(item => item.price));
+      let maxPrice = Math.max(...items.map(item => item.price));
+      // let maxSize = Math.max(...items.map(item => item.size));
 
-          this.setState({
-            items,
-            itemsLive,
-            itemsArchive,
-            itemsNews,
-            categoryId: categoryId,
-            categorySlug: this.formatCategoryLink(categoryId, statusId),
-            featuredItems,
-            featuredItemsArchive,
-            sortedItems: items,
-            loading: false,
-            price: maxPrice,
-            minPrice: minPrice,
-            maxPrice: maxPrice
-          });
-        });
+      this.setState({
+        items,
+        categoryName,
+        categorySlug: this.formatCategoryLink(categoryName, statusId),
+        featuredItems,
+        featuredItemsArchive,
+        sortedItems: items,
+        loading: false,
+        price: maxPrice,
+        minPrice: minPrice,
+        maxPrice: maxPrice
+      });
     } catch (error) {
       console.log("[Context.js] getData > error...", error);
     }
@@ -99,7 +89,7 @@ export default class ItemProvider extends Component {
     let tempItems = getItemsData.map(dataItem => {
       let id = dataItem.id;
       let name = dataItem.name;
-      let nameSanitized = slugify(dataItem.name);
+      let nameSanitized = slugify(dataItem.name, { lower: true });
       let status = dataItem.status;
       let category = dataItem.category;
       let price = dataItem.price;
@@ -134,8 +124,8 @@ export default class ItemProvider extends Component {
     console.log(
       "[Context.js] setStatePageCategory()... [NOT WORKING] " + category
     );
-    // this.getData(category, 2);
-    // this.setState({ categoryId: category });
+    this.getData(category, 2);
+    // this.setState({ categoryName: category });
   };
 
   formatPrice = price => {
@@ -144,22 +134,17 @@ export default class ItemProvider extends Component {
       : null;
   };
 
-  formatCategoryLink = (getCategoryId, getItemStatus) => {
-    console.log(
-      "Context.js] formatCategoryLink getCategoryId...",
-      getCategoryId
-    );
-
-    if (getCategoryId === CatData["Archive"].category && getItemStatus === 2)
+  formatCategoryLink = (getCategoryName, getItemStatus) => {
+    if (getCategoryName === 2 && getItemStatus === 2)
       return CatData["Archive"].slug;
-    return CatData[getCategoryId].slug;
+    return CatData[getCategoryName].slug;
   };
 
   formatItemLink = getItem => {
     let { id, name, nameSanitized, status, category, brand } = getItem;
     // console.log("??? item category: ", category);
     let itemLink = `/${nameSanitized}`;
-    if (category === CatData[this.state.categoryId].category) {
+    if (category === CatData[this.state.categoryName].category) {
       // console.log("NO REPEAT CALL", CatData[category].slug);
       itemLink += this.state.categorySlug;
     } else {
