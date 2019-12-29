@@ -11,6 +11,7 @@ export default class ItemProvider extends Component {
     categoryName: null,
     categoryNameDefault: "Live",
     categorySlug: null,
+    brandArr: [],
     sortedItems: [],
     featuredItems: [],
     featuredItemsArchive: [],
@@ -78,10 +79,13 @@ export default class ItemProvider extends Component {
       const priceRangeArr = SiteData.priceRangeArr;
       // let maxSize = Math.max(...items.map(item => item.size));
 
+      const brandArr = this.setBrandArr(items);
+
       this.setState({
         items,
         categoryName,
         categorySlug: this.formatCategoryLink(categoryName, statusId),
+        brandArr,
         sortedItems: items,
         loading: false,
         price: maxPrice,
@@ -120,6 +124,29 @@ export default class ItemProvider extends Component {
     // this.setState({ categoryName: category });
   };
 
+  setBrandArr = myObj => {
+    const myArr = { list: myObj }; //put obj array into list for flatMap
+    const myUniqueList = myArr.list
+      .flatMap(obj => obj.subcategoryArr)
+      .filter(
+        (e, i, a) =>
+          a.findIndex(({ id, brand }) => id == e.id && brand == e.brand) == i
+      );
+
+    // sort alphabetically [A-Z]
+    myUniqueList.sort(function(a, b) {
+      var nameA = a.brand.toLowerCase(),
+        nameB = b.brand.toLowerCase();
+      if (nameA < nameB)
+        //sort string ascending
+        return -1;
+      if (nameA > nameB) return 1;
+      return 0; //default return value (no sorting)
+    });
+    console.log("[Context.js] myUniqueList...", myUniqueList);
+    return myUniqueList;
+  };
+
   formatData(getItemsData) {
     let tempItems = getItemsData.map(dataItem => {
       let id = dataItem.id;
@@ -127,6 +154,7 @@ export default class ItemProvider extends Component {
       let nameSanitized = slugify(dataItem.name, { lower: true });
       let status = dataItem.status;
       let category = dataItem.category;
+      let subcategoryArr = dataItem.catalogue_subcat;
       let price = dataItem.price;
       let brand = dataItem.brand;
       let year = dataItem.year;
@@ -136,6 +164,7 @@ export default class ItemProvider extends Component {
         id,
         status,
         category,
+        subcategoryArr,
         name,
         nameSanitized,
         brand,
@@ -211,7 +240,7 @@ export default class ItemProvider extends Component {
 
   filterItems = () => {
     console.log("[Context.js] filterItems > hello");
-    let { items, brand, minPrice, maxPrice } = this.state;
+    let { items, categoryName, brand, minPrice, maxPrice } = this.state;
 
     // all the rooms
     let tmpItems = [...items];
@@ -227,9 +256,12 @@ export default class ItemProvider extends Component {
     // filter by price
     // tmpItems = tmpItems.filter(item => item.price <= price);
     // filter by price
-    tmpItems = tmpItems.filter(
-      item => item.price >= minPrice && item.price <= maxPrice
-    );
+    tmpItems =
+      categoryName === "Live"
+        ? tmpItems.filter(
+            item => item.price >= minPrice && item.price <= maxPrice
+          )
+        : tmpItems;
     // change state
     this.setState({
       sortedItems: tmpItems
@@ -247,6 +279,7 @@ export default class ItemProvider extends Component {
           formatItemLink: this.formatItemLink,
           formatCategoryLink: this.formatCategoryLink,
           setStatePageCategory: this.setStatePageCategory,
+          setBrandArr: this.setBrandArr,
           handleChange: this.handleChange
         }}
       >

@@ -9,8 +9,8 @@ import { ItemContext } from "../Context";
 const Items = props => {
   const context = useContext(ItemContext);
 
-  let widgetOpeningHours = null;
-  let widgetContact = null;
+  let showWidgetOpeningHours = null;
+  let showWidgetContact = null;
 
   const categoryName = props.category ? props.category : "Live";
   // context.setStatePageCategory(categoryName);
@@ -24,12 +24,12 @@ const Items = props => {
 
   switch (categoryName) {
     case "Archive":
-      widgetOpeningHours = false;
-      widgetContact = false;
+      showWidgetOpeningHours = false;
+      showWidgetContact = false;
       break;
     default:
-      widgetOpeningHours = true;
-      widgetContact = true;
+      showWidgetOpeningHours = true;
+      showWidgetContact = true;
   }
 
   return (
@@ -37,10 +37,10 @@ const Items = props => {
       <section className="content-wrap splitter">
         <div className="content-left">
           <NavLeft />
-          {widgetOpeningHours ? (
+          {showWidgetOpeningHours ? (
             <Widget body={WidgetData.openingHours} />
           ) : null}
-          {widgetContact ? <Widget body={WidgetData.contact} /> : null}
+          {showWidgetContact ? <Widget body={WidgetData.contact} /> : null}
         </div>
         <div className="content">
           <ItemsContainer />

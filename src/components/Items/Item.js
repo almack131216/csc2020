@@ -15,6 +15,7 @@ const Item = memo(({ item }) => {
     name,
     nameSanitized,
     category,
+    subcategoryArr,
     image,
     brand,
     price,
@@ -36,7 +37,7 @@ const Item = memo(({ item }) => {
         <div className="price-topXXX">
           <h6>{context.formatPrice(price)}</h6>
           <p>
-            {status}: {brand}
+            {status}: {brand} - {subcategoryArr.brand}
           </p>
         </div>
         <Link

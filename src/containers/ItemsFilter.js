@@ -2,11 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { ItemContext } from "../Context";
 import PriceFilter from "../components/Filter/Price";
-
-// get all unique values
-const getUnique = (getItems, value) => {
-  return [...new Set(getItems.map(item => item[value]))];
-};
+import BrandFilter from "../components/Filter/Brand";
 
 export default function ItemsFilter({ items }) {
   const context = useContext(ItemContext);
@@ -15,41 +11,23 @@ export default function ItemsFilter({ items }) {
     categoryName,
     handleChange,
     brand,
+    brandArr,
     minPrice,
     maxPrice,
     maxPriceAbs,
     priceRangeArr
   } = context;
 
-  // get unique types
-  let brands = getUnique(items, "brand");
-  // add all
-  brands = ["all", ...brands];
-  // map to jsx
-  brands = brands.map((item, index) => {
-    return (
-      <option value={item} key={index}>
-        {item}
-      </option>
-    );
-  });
-
   return (
     <div className="filter-containerXXX">
       <form className="filter-formXXX">
         {/* select brand */}
-        <div className="form-groupXXX">
-          <label htmlFor="brand">item brand</label>
-          <select
-            name="brand"
-            id="brand"
-            value={brand}
-            className="form-controlXXX"
-            onChange={handleChange}
-          >
-            {brands}
-          </select>
-        </div>
+        <BrandFilter
+          brand={brand}
+          items={items}
+          brands={brandArr}
+          changed={handleChange}
+        />
         {/* (END) select type */}
         {categoryName === "Live" ? (
           <PriceFilter
