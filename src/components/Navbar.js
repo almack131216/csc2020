@@ -14,29 +14,59 @@ export default class Navbar extends Component {
   render() {
     return (
       <nav className="navbar">
-        <div className="nav-center">
-          <div className="nav-header">
-            <Link to="/">
-              <img src={logo} alt="alt" />
-            </Link>
-            <button
-              type="button"
-              className="nav-btn"
-              onClick={this.handleToggle}
-            >
-              <FaAlignRight className="nav-icon" />
-            </button>
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-12 col-sm-12 col-md-6 navbar-brand-wrap">
+              <Link className="navbar-brand" to="/">
+                <img src={logo} alt="alt" />
+              </Link>
+              <button
+                type="button"
+                className="navbar-toggler collapsed"
+                onClick={this.handleToggle}
+              >
+                <span className="fa fa-chevron-down"></span>
+                <span className="fa fa-chevron-up"></span>
+              </button>
+            </div>
+            <div className="hidden-md-down col-md-6">
+              <h1>Selling classic cars worldwide for over 25 years</h1>
+              <ul className="ul-header">
+                <li className="li-telephone">Telephone: 01944 758000</li>
+                <li className="li-contact">
+                  <a href="http://www.classicandsportscar.ltd.uk/_wp190503/contact">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+              <ul id="menu-social_menu" className="social_menu">
+                <li
+                  id="menu-item-4035"
+                  className="facebook menu-item menu-item-type-custom menu-item-object-custom menu-item-4035"
+                >
+                  <a href="https://www.facebook.com/classicandsportscarcentre/">
+                    facebook
+                  </a>
+                </li>
+                <li
+                  id="menu-item-4036"
+                  className="instagram menu-item menu-item-type-custom menu-item-object-custom menu-item-4036"
+                >
+                  <a href="https://www.instagram.com/classicandsportscar_centre/">
+                    instagram
+                  </a>
+                </li>
+                <li
+                  id="menu-item-4034"
+                  className="youtube menu-item menu-item-type-custom menu-item-object-custom menu-item-4034"
+                >
+                  <a href="https://www.youtube.com/channel/UCe47Y8zbsm1wJrb6H2LmKeA">
+                    youtube
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <ul
-            className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}
-          >
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/items">Items</Link>
-            </li>
-          </ul>
         </div>
       </nav>
     );

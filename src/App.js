@@ -1,5 +1,6 @@
 import React from "react";
-import "./App.css";
+import "./assets/css/bootstrap.min.css";
+import "./App.scss";
 import Home from "./pages/Home";
 import Items from "./pages/Items";
 import Item from "./pages/Item";
