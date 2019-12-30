@@ -1,5 +1,6 @@
 import React from "react";
 import SiteData from "../../assets/_data/_data";
+import SearchWidget from "../Widgets/Search/Search";
 
 const navLeft = props => {
   const navLinks = SiteData.navigation.map((link, index) => {
@@ -13,6 +14,7 @@ const navLeft = props => {
   return (
     <div className="nav-left-wrap">
       <ul>{navLinks}</ul>
+      <SearchWidget />
     </div>
   );
 };

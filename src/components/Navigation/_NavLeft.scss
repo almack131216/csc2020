@@ -30,17 +30,6 @@
   }
 }
 
-.widget {
-  //   &.widget_nav_menu {
-  //     padding: $offset-g1;
-  //   }
-
-  &.widget_search {
-    padding: $offset-g2;
-    padding-top: 0;
-  }
-}
-
 // body
 //   ul:not(.ul-footer)
 //   li.current-post-ancestor:not(.classic-cars-for-sale):not(.classic-cars-sold),
@@ -63,53 +52,3 @@
 //   }
 //   // display:none;
 // }
-
-.widget.widget_search {
-  text-align: right;
-
-  .screen-reader-text {
-    display: none;
-  }
-
-  input[type="text"],
-  input[type="submit"] {
-    background: $navbar_color-bg;
-    border: 1px solid $navbar_color-link;
-    color: $navbar_color-link;
-
-    &:hover {
-      color: $navbar_color-link-hover;
-      border-color: $navbar_color-link-hover;
-    }
-  }
-
-  input[type="text"] {
-    width: 100px;
-    padding-left: $offset-1;
-    border-right: 0px;
-  }
-
-  input[type="submit"] {
-    float: right;
-  }
-
-  &:hover {
-    input[type="text"],
-    input[type="submit"] {
-      @include btn-darken-bg-on-hover();
-      color: $navbar_color-link-hover;
-      border-color: $navbar_color-link-hover;
-    }
-  }
-}
-
-body.search-results {
-  .widget.widget_search {
-    input[type="text"],
-    input[type="submit"] {
-      @include btn-darken-bg-on-hover();
-      color: $navbar_color-link-hover;
-      border-color: $navbar_color-link-hover;
-    }
-  }
-}

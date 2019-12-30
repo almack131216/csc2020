@@ -1,6 +1,5 @@
 import React from "react";
 import parse from "html-react-parser";
-import "./Widgets.css";
 
 const Widget = props => {
   return (
