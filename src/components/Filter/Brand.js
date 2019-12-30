@@ -19,13 +19,13 @@ const brandFilter = props => {
   console.log("[Filters > Brand.js] brands...", brands);
 
   return (
-    <div className="form-groupXXX">
-      <label htmlFor="brand">item brand {brand}</label>
+    <div className="form-group">
+      <label htmlFor="brand">{props.label}</label>
       <select
         name="brand"
         id="brand"
         value={brand}
-        className="form-controlXXX"
+        className="form-control"
         onChange={props.changed}
       >
         {brands}

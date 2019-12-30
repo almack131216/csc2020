@@ -2,7 +2,7 @@ import React from "react";
 
 const searchWidget = () => {
   return (
-    <div className="widget widget_search">
+    <div className="search-wrap">
       <form role="search" method="get" id="searchform" className="searchform">
         <div>
           <label className="screen-reader-text" for="s">

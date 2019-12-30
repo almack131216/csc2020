@@ -1,5 +1,5 @@
 import React from "react";
-import ItemsFilter from "./ItemsFilter";
+import ItemsFilter from "./ItemsFilter/ItemsFilter";
 import ItemsList from "../components/Items/ItemsList";
 import { withItemConsumer } from "../Context";
 import Loading from "../components/Loading";

@@ -11,7 +11,7 @@ export default class Navbar extends Component {
         <div className="container">
           <div className="row">
             <div className="col-xs-12 col-sm-12 col-md-6 navbar-brand-wrap">
-              <Link className="navbar-brand" to="/">
+              <Link className="navbar-brand" to={SiteData.root}>
                 <img src={logo} alt={SiteData.brand.name} />
               </Link>
               <button

@@ -44,14 +44,17 @@
 // @import "./assets/scss/layouts/_portfolio.scss";
 
 /* COMPONENTS */
+@import "./components/Sidebar/Sidebar";
 @import "./components/Carousel/Carousel";
 @import "./components/Navbar/Navbar";
-@import "./components/Navigation/NavLeft";
-@import "./components/Widgets/Widget";
-@import "./components/Widgets/Search/Search";
+@import "./components/Sidebar/Navleft/NavLeft";
+@import "./components/Sidebar/InfoBox/InfoBox";
+@import "./components/Sidebar/Search/Search";
+@import "./containers/ItemsFilter/ItemsFilter";
 
 /* PAGES */
 @import "./pages/Homepage/Home";
+@import "./pages/Items/Items";
 
 /* ADDONS */
 @import "./assets/scss/addons/_font-awesome-overrule.scss";

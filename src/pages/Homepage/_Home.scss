@@ -2,7 +2,7 @@
 
 main {
   .content-wrap {
-    > div.content-left {
+    > div.sidebar {
       width: 25%;
     }
 
@@ -10,7 +10,7 @@ main {
       width: 75%;
     }
 
-    &.splitter {
+    &.match-heights {
       display: flex;
       /* flex-direction: column; */
       width: 100%;

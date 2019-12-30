@@ -1,6 +1,7 @@
 /* _Search.scss */
 
-.widget.widget_search {
+.search-wrap {
+  padding: $offset-g1;
   text-align: right;
 
   .screen-reader-text {

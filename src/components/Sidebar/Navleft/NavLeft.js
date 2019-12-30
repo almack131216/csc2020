@@ -1,6 +1,6 @@
 import React from "react";
-import SiteData from "../../assets/_data/_data";
-import SearchWidget from "../Widgets/Search/Search";
+import SiteData from "../../../assets/_data/_data";
+import SearchWidget from "../Search/Search";
 
 const navLeft = props => {
   const navLinks = SiteData.navigation.map((link, index) => {
