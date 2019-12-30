@@ -1,0 +1,55 @@
+/* _debug.scss */
+
+// *[class^='icon-'], *[class*='icon-'],
+// *[class^='item-']:before, *[class*='item-']:before{
+//     color: #F00 !important;
+//     background:yellow !important;
+//     font-size:40px !important;
+// }
+
+.msg_debug {
+    display:block;
+    background:pink;
+    border:2px solid black;
+    padding:5px;
+    color:black;
+    margin:5px 0 0 0;
+
+    &.step {
+        background:#f0f0f0;
+        border-color:black;
+
+        &.title {
+            background:black;
+            color:white;
+        }
+    }
+
+    &.suggest {
+        background:darkorange;
+        border-color:#f90;
+        color:black;
+    }
+
+    &.deleted {
+        background:red;
+        border-color:red;
+        color:white;
+        font-weight:bold;
+    }
+
+    &.info {
+        background:lightblue;
+        border-color:blue;
+    }
+
+    &.success {
+        background:lightgreen;
+        border-color:green;
+    }
+
+    &.error {
+        background:pink;
+        border-color:red;
+    }
+}

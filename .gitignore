@@ -4,7 +4,6 @@
 /node_modules
 /src/images
 /src/assets/images/
-/src/assets/scss/
 /public/images/catalogue
 /.pnp
 .pnp.js

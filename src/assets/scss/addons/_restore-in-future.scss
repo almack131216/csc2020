@@ -1,0 +1,182 @@
+/* _restore-in-future.scss */
+
+main .content-wrap.splitter {
+  display: flex;
+  /* flex-direction: column; */
+  width: 100%;
+}
+
+main .content-wrap.splitter > div {
+  /* flex: 1; */
+}
+
+main .content-wrap > div.content-left {
+  width: 25%;
+}
+
+main .content-wrap > div.content {
+  width: 75%;
+}
+
+.navbar-brand {
+  float: left;
+  // padding: 35px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  // height: 90px;
+}
+
+// .vc_grid-item-mini {
+//     /*padding:8px;*/
+// }
+// .vc_grid-item-mini {
+//     background:red;
+// }
+// .vc_grid-item-mini:hover {
+//     background:white;
+// }
+// .vc_gitem_row .vc_gitem-col {
+//     padding: 0px !important;
+// }
+// .vc_grid.vc_row .vc_grid-item .vc_btn,
+// .vc_grid.vc_row .vc_grid-item .vc_icon_element,
+// .vc_grid.vc_row .vc_grid-item .wpb_content_element {
+//     margin-bottom: 0px !important;
+// }
+// .vc_gitem-zone-a .vc_gitem-row-position-bottom,
+// .vc_gitem-zone-b .vc_gitem-row-position-bottom {
+//     background:blue;
+//     color:white;
+// }
+
+.navbar {
+  padding: 0;
+}
+
+.navbar > .container {
+  background: white;
+}
+
+.bg-blue-dark {
+  background: #263762;
+}
+
+.padding-right-0 {
+  padding-right: 0px;
+}
+
+/* menu */
+
+/* search */
+
+/* list item */
+
+/* item page */
+
+a.new-window {
+  .icon-link-ext {
+    margin-left: 5px;
+  }
+}
+
+/* tmp-hacks */
+
+.bg-blue {
+  background: $color_secondary;
+}
+
+.padding-right-0 {
+  padding-right: 0px;
+}
+
+/* menu */
+.padding-x-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+// ul.menu {
+//     width: 100%;
+//     margin: 0;
+//     padding: 0;
+//     list-style: none;
+//     background: #263762;
+// }
+
+// ul.menu li {
+//     width: 100%;
+//     padding: 0;
+// }
+
+// ul.menu li a {
+//     color:white;
+//     padding: 0 15px;
+//     line-height: 30px;
+//     display: block;
+//     width: 100%;
+// }
+
+// ul.menu li.current-menu-parent {
+//   background:$color_secondary;
+// }
+
+/* nav menu */
+
+/* flex-slider */
+
+/* search */
+
+/* 20-20 */
+.twentytwenty-handle {
+  background: $color_accent;
+}
+
+/* posts bg */
+body.single-post .row.bg-posts {
+  @extend .bg-white;
+}
+
+body.single-post.classic-cars-sold .row.bg-posts,
+body.single-post.classic-cars-for-sale .row.bg-posts,
+body.search-resultsXXX .row.bg-posts {
+  @extend .bg-secondary-light;
+}
+
+body.category-classic-cars-sold .row.bg-posts,
+body.category-classic-cars-for-sale .row.bg-posts,
+body.category.classic-cars-sold .row.bg-posts,
+body.category.classic-cars-for-sale .row.bg-posts {
+  @media (min-width: $bp-xs) {
+    background: $color_secondary-light;
+  }
+  @media (max-width: $bp-xs-1) {
+    background: $color_secondary-light;
+  }
+}
+
+.sharedaddy {
+  display: none;
+}
+
+.post-details-box .sharedaddy {
+  display: inline-block;
+
+  h3.sd-title {
+    display: none;
+  }
+
+  ul {
+    // @extend .ul-clean;//191230
+    // @extend .ul-inline-block;//191230
+    margin: 5px 0 0 0 !important;
+
+    li {
+      margin: 0 $offset-1 0 0 !important;
+      padding-right: 0 !important;
+
+      &:before {
+        display: none !important;
+      }
+    }
+  }
+}

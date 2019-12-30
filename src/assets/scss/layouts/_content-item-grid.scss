@@ -1,0 +1,307 @@
+/* _content-item-grid.scss */
+
+@mixin item-bg-light($bg-color: transparent) {
+  background: $bg-color;
+
+  > .card {
+    // border-color:white;
+    background: $bg-color;
+
+    .card-body {
+      background: $bg-color;
+      color: $color-accent;
+
+      h5.card-title {
+        margin-top: 0;
+
+        a {
+          color: black;
+        }
+      }
+
+      .card-text {
+        color: #666;
+
+        .fmt-price {
+          color: #999;
+
+          &.detail {
+            color: red;
+          }
+        }
+      }
+
+      .category {
+        padding-left: 0;
+      }
+    }
+    /* (END) .card-body */
+  }
+  /* (END) card */
+
+  &:not(.item-is-row) {
+    > .card {
+      .card-body {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}
+/* (END) @mixin item-bg-light() */
+
+@mixin item-bg-dark() {
+  background: transparent;
+
+  > .card {
+    background: $color_accent;
+
+    .card-body {
+      background: $color_accent;
+
+      h5.card-title {
+        a {
+          color: white;
+        }
+      }
+
+      .card-text {
+        color: #666;
+      }
+    }
+    /* (END) .card-body */
+  }
+  /* (END) card */
+}
+/* (END) @mixin item-bg-dark() */
+
+@mixin item-is-row() {
+  &:not(:first-child) {
+    // margin-top:0 !important;
+  }
+
+  @media (max-width: $bp-xs-1) {
+    .card {
+      background: $color_debug;
+      display: block;
+      float: left;
+      width: 100%;
+    }
+
+    &:last-child {
+      .card {
+        border-bottom: 0px;
+      }
+    }
+
+    &:last-child {
+      .card {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  > .card {
+    display: block;
+    float: left;
+    width: 100%;
+    flex: unset;
+
+    .card-img-top {
+      &.wp-post-image {
+        width: 33.33333333%;
+        // width:25%;
+        height: auto;
+        float: left;
+        flex: unset;
+
+        @media (min-width: $bp-xs) {
+          padding-right: $offset-g1;
+        }
+      }
+    }
+    /* (END) .card-img-top */
+
+    .card-body {
+      width: 66.66666666%;
+      // width:75%;
+      position: static;
+      padding: 0 $offset-g1 !important;
+      // padding-top:0 !important;
+      flex: unset;
+      float: left;
+
+      .category {
+        position: static;
+        padding: 0;
+      }
+    }
+    /* (END) .card-body */
+  }
+}
+/* (END) @mixin item-is-row() */
+
+@mixin item-is-grid() {
+  // margin-top:$offset-g1;
+  margin-bottom: $offset-g2;
+
+  @media (max-width: $bp-sm-1) and (min-width: $bp-xs) {
+    width: 50%;
+  }
+
+  > .card {
+    // img 4:3 forced
+    // https://www.w3schools.com/howto/howto_css_aspect_ratio.asp
+    .card-img {
+      width: 100%;
+      padding-top: 66.66666666%; /* 1:1 Aspect Ratio */
+      position: relative; /* If you want text inside of it */
+
+      > a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .card-img-top {
+      &.wp-post-image {
+        width: 100%;
+        height: auto;
+
+        @media (max-width: $bp-lg-1) {
+          height: auto;
+        }
+
+        // max-height:200px;
+      }
+    }
+    /* (END) .card-img-top */
+
+    .card-body {
+      position: relative;
+      padding: $offset-g1;
+      padding-bottom: $offset-g2;
+      height: 100%;
+
+      .card-title {
+        // margin:0;
+        a {
+          color: white;
+        }
+      }
+
+      .fmt-price {
+        color: #ccc;
+      }
+
+      .category {
+        position: absolute;
+        padding: $offset-1 $offset-g1;
+        margin: 0;
+        bottom: 0;
+        left: 0;
+
+        > a {
+          // color: $color_secondary;
+        }
+      }
+    }
+    /* (END) .card-body */
+  }
+  /* .card */
+}
+/* (END) @mixin item-is-grid() */
+
+// &.row-flex {//191230
+//     @media (min-width:$bp-xs){
+//         display: flex;
+//         -ms-flex-wrap: wrap;
+//         flex-wrap: wrap;
+
+//         .col-portfolio-item {
+//             .card {
+//                 height: 100% !important;
+//                 position: relative;
+//                 display: -ms-flexbox;
+//                 display: flex;
+//                 -ms-flex-direction: column;
+//                 flex-direction: column;
+//                 min-width: 0;
+//                 word-wrap: break-word;
+//                 background-color: $color_primary;
+//                 background-clip: border-box;
+//                 border: none;
+
+//                 .card-body {
+//                     .category {
+//                         a {
+//                             @include a-on-primary();
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+/* (END) .row-flex */
+
+.col-portfolio-item .card .card-body .post-categories {
+  /*display:none;*/
+}
+
+.col-portfolio-item {
+  > .card {
+    .card-body {
+      .card-title {
+        margin: 0;
+
+        a {
+          color: white;
+        }
+      }
+
+      .card-text {
+        margin: 0;
+      }
+
+      h4.category {
+        margin: 0;
+      }
+    }
+  }
+
+  &.item-is-grid {
+    @media (min-width: $bp-xs) {
+      @include item-is-grid();
+    }
+
+    @media (max-width: $bp-xs-1) {
+      @include item-is-row();
+      @include item-bg-light();
+      // margin-top:$offset-g1;
+      margin-bottom: $offset-g1;
+      // &:first-child {
+      //     margin-top:$offset-g1;
+      // }
+    }
+  }
+  /* (END) .item-is-grid */
+
+  &.item-is-row {
+    @include item-is-row();
+  }
+
+  &.is-white {
+    @include item-bg-light();
+  }
+
+  &.is-light {
+    @include item-bg-light(transparent);
+  }
+}

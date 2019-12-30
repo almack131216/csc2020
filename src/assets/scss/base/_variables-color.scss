@@ -1,0 +1,108 @@
+/* _variables-color.scss */
+
+/* Base colors */
+$color_accent: #263762;//dark blue
+$color_accent2: #8B000B;//red (titles and footer)
+$color_post-title:#EF1022;
+$color_accent-books: $color_accent;
+$color_accent-quotes: #C19F46;
+$color_accent-bookmarks: #000;
+$color_accent-news: #0596ED;
+$color_accent-cafes: #d32628;
+$color_accent-bookstores: #a03078;
+$color_disabled:rgb(200, 200, 200);
+
+$color_primary:$color_accent;
+$color_secondary:#A4D1F8;
+$color_secondary-light:#E5F7FE;
+$color_light:#F0F0F0;
+$color_gray:#cacdd1;
+$color_gray-dark:#a5a9b0;
+$color_gray-light:#f4f4f4;
+
+/* Font colors */
+$color_validate-good-border:#5fb624;
+$color_validate-good-bg:#d4edda;
+$color_validate-error-border:#C41A1A;
+$color_validate-error-bg:#fce8e6;
+
+$color_danger:#f00;
+
+/* social media buttons */
+$color_share:#a5a9b0;
+$color_twitter:#00aced;
+$color_facebook:#3d5b99;
+$color_youtube:#e64a41;
+$color_instagram:#8134af;
+$color_pinterest:#BD2026;
+$color_googleplus:#DC4A38;
+$color_whatsapp: #25D366;
+
+/* hyperlink */
+$color_hyperlink-text-muted:#bbb;
+$color_hyperlink-text:#007bff;//#367bb7;
+$color_hyperlink-text-hover:#007bff;
+$color_hyperlink-text-active:#fff;
+$color_hyperlink-text-current:#000;
+$color_hyperlink-bg:transparent;
+$color_hyperlink-bg-hover:transparent;
+$color_hyperlink-bg-active:$color_hyperlink-text-hover;
+
+$color_priority-text: #fff;
+$color_priority-text-hover: $color_hyperlink-text-hover;
+$color_priority-text-active: #fff;
+$color_priority-bg: $color_hyperlink-text;
+$color_priority-bg-hover: #fff;
+$color_priority-bg-active: $color_hyperlink-text-hover;
+$color_priority-border: $color_hyperlink-text;
+$color_priority-border-hover: $color_hyperlink-text-hover;
+$color_priority-border-active: $color_hyperlink-text-hover;
+
+$color_bg-body: #D2C785;//#f1f1ef;//#f8f8f8;
+$color_bg-content: #ffffff;
+$color_bg-breadcrumb: #ffffff;//#e5e5e5;
+
+$color_hdr-nav: #000;// $color_button-text;
+$color_hdr-nav-hover:$color_hdr-nav;
+$color_hdr-nav-active:$color_hdr-nav;
+
+$color_hdr-subnav:#fff;
+$color_hdr-subnav-hover:#fff;// !important
+$color_hdr-subnav-bg:#000;
+$color_hdr-subnav-bg-hover: #444;// !important
+
+$color_layout-border: #dfdfdf;
+$color_layout-border-strong: #ccc;
+$color_layout-border-strongest: #000;
+$color_layout-border-priority: $color_priority-border;
+
+$color_breadcrumb-hyperlink: #666;
+$color_breadcrumb-text: #666;
+$color_breadcrumb-border: #ddd;
+
+/* navbar colors */
+$navbar_color-bg: $color_accent;
+$navbar_color-bg-active: $color_accent;
+$navbar_color-link: $color_secondary;// white // $color_secondary;// #999;//
+$navbar_color-link-hover: white;
+$navbar_color-link-active: white;
+
+/* table */
+$table-color-border:$color_layout-border;
+$table-color-bg-th:$color_secondary-light;
+$table-color-bg-tr:white;
+$table-color-bg-tr-odd:#f9f9f9;
+$table-color-bg-tr-hover:#f3f3f3;
+
+/* navbar (header) */
+$color_navbar-header-text:#666;
+$color_navbar-header-link:#666;
+
+/* debug */
+// $color_debug: orange;
+// $color_debug2: yellow;
+// $color_debug3: pink;
+/* debug toggle */
+$color_debug: transparent;
+$color_debug2: transparent;
+$color_debug3: transparent;
