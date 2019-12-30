@@ -1,9 +1,8 @@
 import React from "react";
-import NavArray from "../../assets/_data/_data";
-import "./NavLeft.css";
+import SiteData from "../../assets/_data/_data";
 
 const navLeft = props => {
-  const navLinks = NavArray.navigation.map((link, index) => {
+  const navLinks = SiteData.navigation.map((link, index) => {
     return (
       <li key={index}>
         <a href={link.slug}>{link.title}</a>
@@ -12,7 +11,7 @@ const navLeft = props => {
   });
 
   return (
-    <div className="nav-left">
+    <div className="nav-left-wrap">
       <ul>{navLinks}</ul>
     </div>
   );

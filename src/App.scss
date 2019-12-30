@@ -13,43 +13,43 @@
 @import "./assets/scss/base/_base-colors.scss";
 
 /* MODULES - individual site components */
-@import "./assets/scss/modules/_search-widget.scss";
+// @import "./assets/scss/modules/_search-widget.scss";
 @import "./assets/scss/modules/_typography.scss";
 @import "./assets/scss/modules/_typography-resp.scss";
 @import "./assets/scss/modules/_typography-hyperlink.scss";
 @import "./assets/scss/modules/_typography-ul.scss";
 @import "./assets/scss/modules/_typography-ul-social.scss";
-@import "./assets/scss/modules/_button.scss";
-@import "./assets/scss/modules/_form.scss";
-@import "./assets/scss/modules/_img.scss";
-@import "./assets/scss/modules/_title-splitter.scss";
-@import "./assets/scss/modules/_pagination.scss";
-@import "./assets/scss/modules/_search-form.scss";
-@import "./assets/scss/modules/_breadcrumbs.scss";
-@import "./assets/scss/modules/_embed-youtube.scss";
-@import "./assets/scss/modules/_corner-ribbons.scss";
+// @import "./assets/scss/modules/_button.scss";
+// @import "./assets/scss/modules/_form.scss";
+// @import "./assets/scss/modules/_img.scss";
+// @import "./assets/scss/modules/_title-splitter.scss";
+// @import "./assets/scss/modules/_pagination.scss";
+// @import "./assets/scss/modules/_search-form.scss";
+// @import "./assets/scss/modules/_breadcrumbs.scss";
+// @import "./assets/scss/modules/_embed-youtube.scss";
+// @import "./assets/scss/modules/_corner-ribbons.scss";
 
 /* LAYOUTS - page layout styles */
 @import "./assets/scss/layouts/_offsets.scss";
-@import "./assets/scss/layouts/_layout.scss";
-@import "./assets/scss/layouts/_navbar.scss";
-@import "./assets/scss/layouts/_navbar-left.scss";
-@import "./assets/scss/layouts/_footer.scss";
-@import "./assets/scss/layouts/_register.scss";
-@import "./assets/scss/layouts/_contact-form.scss";
+// @import "./assets/scss/layouts/_layout.scss";
+// @import "./assets/scss/layouts/_footer.scss";
+// @import "./assets/scss/layouts/_register.scss";
+// @import "./assets/scss/layouts/_contact-form.scss";
 @import "./assets/scss/layouts/_responsive.scss";
-@import "./assets/scss/layouts/_homepage.scss";
-@import "./assets/scss/layouts/_content-item-grid.scss";
-@import "./assets/scss/layouts/_content-item-details.scss";
-@import "./assets/scss/layouts/_sidebar.scss";
-@import "./assets/scss/layouts/_post-photos.scss";
-@import "./assets/scss/layouts/_portfolio.scss";
+// @import "./assets/scss/layouts/_homepage.scss";
+// @import "./assets/scss/layouts/_content-item-grid.scss";
+// @import "./assets/scss/layouts/_content-item-details.scss";
+// @import "./assets/scss/layouts/_sidebar.scss";
+// @import "./assets/scss/layouts/_post-photos.scss";
+// @import "./assets/scss/layouts/_portfolio.scss";
 
-/* PLUGINS */
-// @import "./assets/scss/plugins/_metaslider-base.scss";
-// @import "./assets/scss/plugins/_metaslider-amcust.scss";
-// @import "./assets/scss/plugins/_tablepress-amcust.scss";
-// @import "./assets/scss/plugins/_contact-form-7.scss";
+/* COMPONENTS */
+@import "./components/Carousel/Carousel";
+@import "./components/Navbar/Navbar";
+@import "./components/Navigation/NavLeft";
+
+/* PAGES */
+@import "./pages/Homepage/Home";
 
 /* ADDONS */
 @import "./assets/scss/addons/_font-awesome-overrule.scss";

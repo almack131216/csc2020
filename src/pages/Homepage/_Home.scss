@@ -1,0 +1,23 @@
+/* _Home.scss */
+
+main {
+  .content-wrap {
+    > div.content-left {
+      width: 25%;
+    }
+
+    > div.content {
+      width: 75%;
+    }
+
+    &.splitter {
+      display: flex;
+      /* flex-direction: column; */
+      width: 100%;
+
+      > div {
+        /* flex: 1; */
+      }
+    }
+  }
+}

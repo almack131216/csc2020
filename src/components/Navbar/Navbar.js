@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import logo from "../assets/images/logo-classic-and-sportscar-centre.gif";
+import logo from "../../assets/images/logo-classic-and-sportscar-centre.gif";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaYoutube, FaInstagram } from "react-icons/fa";
-import SiteData from "../assets/_data/_data";
+import SiteData from "../../assets/_data/_data";
+
 export default class Navbar extends Component {
   render() {
     return (

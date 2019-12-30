@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Images from "../../assets/_data/_data-carousel";
-import "./Carousel.css";
 
 class SimpleSlider extends React.Component {
   render() {

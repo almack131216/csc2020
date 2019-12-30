@@ -1,12 +1,12 @@
 import React from "react";
 import "./assets/css/bootstrap.min.css";
 import "./App.scss";
-import Home from "./pages/Home";
+import Home from "./pages/Homepage/Home";
 import Items from "./pages/Items";
 import Item from "./pages/Item";
 import Error from "./pages/Error";
 import { Route, Switch } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (

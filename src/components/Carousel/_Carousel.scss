@@ -1,0 +1,87 @@
+/* _Carousel.scss */
+
+.slick-slider {
+  &.carousel {
+    z-index: 0;
+
+    .slick-list {
+      z-index: 0;
+
+      /* kill margin below image */
+      > .slick-track > .slick-slide > div > div {
+        display: block !important;
+      }
+
+      .slick-slide img {
+        /* display: block; */
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .slick-prev {
+      left: $offset-g2;
+    }
+
+    .slick-next {
+      right: $offset-g2;
+    }
+
+    .slick-prev,
+    .slick-next {
+      z-index: 2;
+      top: 50%;
+      margin: 0;
+      width: 40px;
+      height: 40px;
+      opacity: 0.5;
+
+      &:before {
+        font-size: 40px;
+      }
+    }
+
+    .slick-dots {
+      bottom: $offset-g1;
+
+      li button:before {
+        font-size: 10px;
+        color: white;
+      }
+
+      li.slick-active button:before {
+        color: white;
+      }
+    }
+  }
+
+  &:hover .slick-prev,
+  &:hover .slick-next {
+    opacity: 0.5;
+  }
+}
+
+.slick-slider.carousel .slick-prev,
+.slick-slider.carousel .slick-next {
+  /* width: 40px;
+  height: 40px;
+  line-height: 40px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  box-shadow: none;
+  text-align: center;
+  border: 0;
+  box-shadow: none !important;
+  display: block;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: opacity 0.25s ease-in-out;
+  transition: all 0.3s ease;
+  background: #263762;
+  font-size: 0;
+  color: transparent;
+  opacity: 0;
+  top: 50%;
+  margin: -20px 0 0; */
+}
