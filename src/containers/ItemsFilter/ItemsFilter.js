@@ -12,6 +12,7 @@ export default function ItemsFilter({ items }) {
   // console.log("[ItemsFilter.js] ItemContext...", context);
   const {
     categoryName,
+    categoryArr,
     handleChange,
     brand,
     brandArr,
@@ -22,37 +23,39 @@ export default function ItemsFilter({ items }) {
   } = context;
 
   return (
-    <div class="row row-breadcrumb filter-wrap">
-      <div class="col-xs-12 col-post-breadcrumb">
-        <div class="crumbs-wrap">
-          <ul class="ul-breadcrumb has-3-crumbs">
-            <li class="home">
-              <Link to={NavData.home.slug}>
-                <FaHome className="fa-home" />
-                <span>{NavData.home.title}</span>
-              </Link>
-            </li>
-            <li class="li-category-2">
-              <Link to={NavData.live.slug}>
-                <span>Classic Cars For Sale</span>
-              </Link>
-            </li>
-            <li class="li-jump-menu-wrap">
-              {/* select brand */}
-              <BrandFilter
-                brand={brand}
-                items={items}
-                brands={brandArr}
-                changed={handleChange}
-              />
-              {/* (END) select brand */}
-            </li>
-          </ul>
+    <div className="row row-breadcrumb">
+      <form>
+        <div className="col-xs-12 col-post-breadcrumb">
+          <div className="crumbs-wrap">
+            <ul className="ul-breadcrumb has-3-crumbs">
+              <li className="home">
+                <Link to={NavData.home.slug}>
+                  <FaHome className="fa-home" />
+                  <span>{NavData.home.title}</span>
+                </Link>
+              </li>
+              <li className="li-category-2">
+                <Link to={NavData.live.slug}>
+                  <span>
+                    {categoryArr.title} [{categoryName}]
+                  </span>
+                </Link>
+              </li>
+              <li className="li-jump-menu-wrap">
+                {/* select brand */}
+                <BrandFilter
+                  brand={brand}
+                  items={items}
+                  brands={brandArr}
+                  changed={handleChange}
+                />
+                {/* (END) select brand */}
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <div className="filter-containerXXX">
-        <form className="filter-formXXX">
+        <div className="filter-wrap">
           {categoryName === "Live" ? (
             <PriceFilter
               priceRange={priceRangeArr}
@@ -63,10 +66,8 @@ export default function ItemsFilter({ items }) {
             />
           ) : null}
           {/* extras */}
-          <div className="form-group"></div>
-          {/* (END) extras */}
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 }

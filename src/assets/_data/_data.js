@@ -1,6 +1,7 @@
 import NavArray from "./_data-navigation";
 
 const siteData = {
+  root: "/",
   date: "200101",
   brand: {
     name: "Classic & Sportscar Centre",

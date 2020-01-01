@@ -10,7 +10,7 @@ export default class ItemProvider extends Component {
     items: [],
     categoryName: null,
     categoryNameDefault: "Live",
-    categorySlug: null,
+    categoryArr: {},
     brandArr: [],
     sortedItems: [],
     featuredItems: [],
@@ -80,11 +80,12 @@ export default class ItemProvider extends Component {
       // let maxSize = Math.max(...items.map(item => item.size));
 
       const brandArr = this.setBrandArr(items);
+      const categoryArr = this.getcategoryArr(categoryName, statusId);
 
       this.setState({
         items,
         categoryName,
-        categorySlug: this.formatCategoryLink(categoryName, statusId),
+        categoryArr,
         brandArr,
         sortedItems: items,
         loading: false,
@@ -154,6 +155,7 @@ export default class ItemProvider extends Component {
       let nameSanitized = slugify(dataItem.name, { lower: true });
       let status = dataItem.status;
       let category = dataItem.category;
+      let categoryArr = this.getcategoryArr(category, dataItem.status);
       let subcategoryArr = dataItem.catalogue_subcat;
       let price = dataItem.price;
       let brand = dataItem.brand;
@@ -164,6 +166,7 @@ export default class ItemProvider extends Component {
         id,
         status,
         category,
+        categoryArr,
         subcategoryArr,
         name,
         nameSanitized,
@@ -204,6 +207,27 @@ export default class ItemProvider extends Component {
     return CatData[itemCategoryName].slug;
   };
 
+  getcategoryArr = (getCategoryName, getItemStatus) => {
+    let itemCategoryName = getCategoryName
+      ? getCategoryName
+      : this.state.categoryNameDefault;
+
+    if (itemCategoryName === 2 && getItemStatus === 1)
+      return CatData[this.state.categoryNameDefault];
+
+    if (
+      (itemCategoryName === "Archive" || itemCategoryName === 2) &&
+      getItemStatus === 2
+    )
+      return CatData["Archive"];
+
+    // console.log(
+    //   "[Context.js] getcategoryArr > getCategoryName...",
+    //   getCategoryName + ", getItemStatus: " + getItemStatus
+    // );
+    return CatData[itemCategoryName];
+  };
+
   formatItemLink = getItem => {
     let { id, name, nameSanitized, status, category } = getItem;
     // console.log("??? item category: ", category);
@@ -213,7 +237,7 @@ export default class ItemProvider extends Component {
       category === CatData[this.state.categoryName].category
     ) {
       // console.log("NO REPEAT CALL", CatData[category].slug);
-      itemLink += this.state.categorySlug;
+      itemLink += this.state.categoryArr.slug;
     } else {
       itemLink += `${this.formatCategoryLink(category, status)}`; //this.state.categoryNameDefault
     }

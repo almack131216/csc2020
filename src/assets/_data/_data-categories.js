@@ -1,60 +1,60 @@
 const catArray = {
   Live: {
-    category: 2,
+    id: 2,
     title: "Classic Cars For Sale",
     slug: "/classic-cars-for-sale",
     api: "http://localhost:3002/api/items/for-sale",
     apiFeatured: "http://localhost:3002/api/items/for-sale/featured"
   },
   Archive: {
-    category: 2,
+    id: 2,
     title: "Classic Cars Sold",
     slug: "/classic-car-archive",
     api: "http://localhost:3002/api/items/sold",
     apiFeatured: "http://localhost:3002/api/items/sold/featured"
   },
   Testimonials: {
-    category: 3,
+    id: 3,
     title: "CustomerTestimonials",
     slug: "/testimonials"
   },
   Press: {
-    category: 4,
+    id: 4,
     title: "Press / Media",
     slug: "/press"
   },
   News: {
-    category: 5,
+    id: 5,
     title: "Latest News & Events",
     slug: "/news"
   },
   Plates: {
-    category: 6,
+    id: 6,
     title: "Plates",
     slug: "/plates"
   },
   PageText: {
-    category: 7,
+    id: 7,
     title: "Page Text",
     slug: "/text"
   },
   Links: {
-    category: 8,
+    id: 8,
     title: "XXX",
     slug: "/xxx"
   },
   Carousel: {
-    category: 9,
+    id: 9,
     title: "XXX",
     slug: "/xxx"
   },
   History: {
-    category: 10,
+    id: 10,
     title: "XXX",
     slug: "/xxx"
   }
   // 1: {
-  //   category: 2,
+  //   id: 2,
   //   title: "Classic Cars For Sale",
   //   slug: "/classic-cars-for-sale",
   //   api: "http://localhost:3002/api/items/for-sale"
