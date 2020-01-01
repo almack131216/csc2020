@@ -12,7 +12,7 @@ export default function Breadcrumbs({ items }) {
   const {
     categoryName,
     categoryArr,
-    handleChange,
+    handleFilterChange,
     showFilter,
     brand,
     brandArr
@@ -51,7 +51,7 @@ export default function Breadcrumbs({ items }) {
                   brand={brand}
                   items={items}
                   brands={brandArr}
-                  changed={handleChange}
+                  changed={handleFilterChange}
                 />
                 {/* (END) select brand */}
               </li>

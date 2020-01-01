@@ -7,11 +7,11 @@ import { ItemContext } from "../../Context";
 
 const Home = props => {
   const context = useContext(ItemContext);
+  const { getData } = context;
 
   useEffect(() => {
-    console.log("location changed");
-    context.getData("Home");
-  }, []);
+    getData("Home");
+  }, [getData]);
 
   return (
     <React.Fragment>

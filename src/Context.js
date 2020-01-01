@@ -33,6 +33,8 @@ export default class ItemProvider extends Component {
     sortRangeArr: []
   };
 
+  /////////////////////////////////////////////////////////////////////////// GET data (homepage)
+  // Get data from API to show on the homepage
   getData = async getPageName => {
     if (!getPageName) return;
 
@@ -43,22 +45,26 @@ export default class ItemProvider extends Component {
       const dataArchive = await fetch(
         CatData["Archive"].apiFeatured
       ).then(dataArchive => dataArchive.json());
-      // console.log("[Context.js] getData > data", data);
-      // console.log("[Context.js] getData > dataArchive!", dataArchive);
 
       let items = this.formatData(data);
       // console.log("[Context.js] getData > items...", items);
-      let featuredItems = items.slice(0, SiteData.featuredItems.count); // get first 4 items (last 4 added)
 
+      //////////////
+      // FEATURED //
+      //////////////
+      // Featured items [Live]
+      let featuredItems = items.slice(0, SiteData.featuredItems.count); // get first # items from main array
+      // Featured items [Archive]
       let itemsArchive = this.formatData(dataArchive);
       let featuredItemsArchive = itemsArchive.slice(
         0,
         SiteData.featuredItems.count
       );
 
+      ///////////////
+      // SET STATE //
+      ///////////////
       this.setState({
-        // categoryName: this.state.categoryNameDefault,
-        // categorySlug: this.formatCategoryLink(this.state.categoryNameDefault, 1),
         featuredItems,
         featuredItemsArchive,
         loading: false
@@ -69,45 +75,65 @@ export default class ItemProvider extends Component {
   };
   // (END) getData
 
+  /////////////////////////////////////////////////////////////////////////// GET data (items)
+  // Get data from API to show on the items page(s)
+  // accept category and status parameter to determine api call
   getDataItems = async (getCategoryName, getStatusId) => {
+    const isStockPage =
+      getCategoryName === "Live" || getCategoryName === "Archive"
+        ? true
+        : false;
     const categoryName = getCategoryName; // ? getCategoryName : null;
-    const statusId = getStatusId ? getStatusId : 1;
+    const statusId = getStatusId ? getStatusId : 1; // status determines Live or Archive
 
     try {
       const data = await fetch(CatData[categoryName].api).then(data =>
         data.json()
       );
-      // console.log("[Context.js] getData > success!", data);
 
       let items = this.formatData(data);
-      // console.log("[Context.js] getData > items...", items);
+      // console.log("[Context.js] getDataItems > items...", items);
 
+      ////////////
+      // FILTER // properties based on items
+      ////////////
+      // Price (2 dropdowns)
       let minPrice = 0; //Math.min(...items.map(item => item.price));
       let maxPrice = Math.max(...items.map(item => item.price));
       const maxPriceInit = Math.round((maxPrice / 100000).toFixed() * 100000);
-      const priceRangeArr = SiteData.priceRangeArr;
-      // let maxSize = Math.max(...items.map(item => item.size));
-
+      const priceRangeArr = SiteData.priceRangeArr; // [0, 5000, 10000, ...]
+      // Year (2 numeric inputs)
       let minYear = Math.min(...items.map(item => item.year));
       let maxYear = Math.max(...items.map(item => item.year));
       const minYearInit = minYear;
       const maxYearInit = maxYear;
-
+      // Brand (dropdown)
       const brandArr = this.setBrandArr(items);
-      const categoryArr = this.getcategoryArr(categoryName, statusId);
-
+      const categoryArr = this.getCategoryArr(categoryName, statusId);
+      //////////
+      // SORT // options based on items page type
+      //////////
+      // Sort (dropdown)
       let sortRangeArr = [];
       sortRangeArr.push(SortFilterRangeData.DateDesc);
       sortRangeArr.push(SortFilterRangeData.DateAsc);
-      sortRangeArr.push(SortFilterRangeData.PriceDesc);
-      sortRangeArr.push(SortFilterRangeData.PriceAsc);
-      sortRangeArr.push(SortFilterRangeData.YearDesc);
-      sortRangeArr.push(SortFilterRangeData.YearAsc);
-      console.log("[Context.js] sortRangeArr...", sortRangeArr);
-
+      // CONDITION: Only show price option for Live pages
+      if (categoryName === "Live") {
+        sortRangeArr.push(SortFilterRangeData.PriceDesc);
+        sortRangeArr.push(SortFilterRangeData.PriceAsc);
+      }
+      // CONDITION: Only show Years option for Live/Archive pages
+      if (isStockPage) {
+        sortRangeArr.push(SortFilterRangeData.YearDesc);
+        sortRangeArr.push(SortFilterRangeData.YearAsc);
+      }
+      // console.log("[Context.js] sortRangeArr...", sortRangeArr);
       const sortByArr = sortRangeArr[0];
       const sortBy = sortByArr.name;
 
+      ///////////////
+      // SET STATE //
+      ///////////////
       this.setState({
         items,
         categoryName,
@@ -135,43 +161,25 @@ export default class ItemProvider extends Component {
   // (END) getDataItems
 
   componentDidMount() {
-    console.log(
-      "[Context.js] componentDidMount()... category = " +
-        this.state.categoryName
-    );
+    // console.log(
+    //   "[Context.js] componentDidMount()... category = " +
+    //     this.state.categoryName
+    // );
   }
 
   componentDidUpdate() {}
 
-  setFilterToggle = () => {
-    this.setState({ showFilter: this.state.showFilter ? false : true });
-  };
-
-  setStatePageCategory = category => {
-    console.log(
-      "[Context.js] setStatePageCategory()... [NOT WORKING] " +
-        category +
-        " (" +
-        this.state.categoryName +
-        ")"
-    );
-
-    category === "Home"
-      ? this.getData("Homepage")
-      : this.getDataItems(category, 2);
-    // this.setState({ categoryName: category });
-  };
-
+  /////////////////////////////////////////////////////////////////////////// SET brand array (items)
   setBrandArr = myObj => {
     const myArr = { list: myObj }; //put obj array into list for flatMap
     const myUniqueList = myArr.list
       .flatMap(obj => obj.subcategoryArr)
       .filter(
         (e, i, a) =>
-          a.findIndex(({ id, brand }) => id == e.id && brand == e.brand) == i
+          a.findIndex(({ id, brand }) => id === e.id && brand === e.brand) === i
       );
 
-    // sort alphabetically [A-Z]
+    // SORT alphabetically [A-Z]
     myUniqueList.sort(function(a, b) {
       var nameA = a.brand.toLowerCase(),
         nameB = b.brand.toLowerCase();
@@ -185,6 +193,8 @@ export default class ItemProvider extends Component {
     return myUniqueList;
   };
 
+  /////////////////////////////////////////////////////////////////////////// SORT used by filter
+  // REF: https://stackoverflow.com/questions/6913512/how-to-sort-an-array-of-objects-by-multiple-fields
   fieldSorter = fields => {
     return function(a, b) {
       return fields
@@ -204,6 +214,7 @@ export default class ItemProvider extends Component {
     };
   };
 
+  /////////////////////////////////////////////////////////////////////////// FORMAT item data
   formatData(getItemsData) {
     let tempItems = getItemsData.map(dataItem => {
       let id = dataItem.id;
@@ -211,7 +222,7 @@ export default class ItemProvider extends Component {
       let nameSanitized = slugify(dataItem.name, { lower: true });
       let status = dataItem.status;
       let category = dataItem.category;
-      let categoryArr = this.getcategoryArr(category, dataItem.status);
+      let categoryArr = this.getCategoryArr(category, dataItem.status);
       let subcategoryArr = dataItem.catalogue_subcat;
       let price = dataItem.price;
       let brand = dataItem.brand;
@@ -238,12 +249,15 @@ export default class ItemProvider extends Component {
     return tempItems;
   }
 
+  /////////////////////////////////////////////////////////////////////////// FORMAT price
   formatPrice = price => {
     return price
       ? "£" + price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
       : null;
   };
 
+  /////////////////////////////////////////////////////////////////////////// FORMAT category link
+  // get slug from CatData based on categoryName
   formatCategoryLink = (getCategoryName, getItemStatus) => {
     let itemCategoryName = getCategoryName
       ? getCategoryName
@@ -265,7 +279,9 @@ export default class ItemProvider extends Component {
     return CatData[itemCategoryName].slug;
   };
 
-  getcategoryArr = (getCategoryName, getItemStatus) => {
+  /////////////////////////////////////////////////////////////////////////// LOAD data (items)
+  // get all category data from CatData
+  getCategoryArr = (getCategoryName, getItemStatus) => {
     let itemCategoryName = getCategoryName
       ? getCategoryName
       : this.state.categoryNameDefault;
@@ -280,14 +296,16 @@ export default class ItemProvider extends Component {
       return CatData["Archive"];
 
     // console.log(
-    //   "[Context.js] getcategoryArr > getCategoryName...",
+    //   "[Context.js] getCategoryArr > getCategoryName...",
     //   getCategoryName + ", getItemStatus: " + getItemStatus
     // );
     return CatData[itemCategoryName];
   };
 
+  /////////////////////////////////////////////////////////////////////////// FORMAT item link
+  // [domain]/item-slug/category-slug/item-id
   formatItemLink = getItem => {
-    let { id, name, nameSanitized, status, category } = getItem;
+    let { id, nameSanitized, status, category } = getItem;
     // console.log("??? item category: ", category);
     let itemLink = `/${nameSanitized}`;
     if (
@@ -304,14 +322,15 @@ export default class ItemProvider extends Component {
     return itemLink;
   };
 
-  handleChange = event => {
+  /////////////////////////////////////////////////////////////////////////// LOAD data (items)
+  handleFilterChange = event => {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = event.target.name;
     // const value = event.target.value;
-    // console.log("[Context.js] handleChange > this is type..." + type);
-    console.log("[Context.js] handleChange > this is name..." + name);
-    // console.log("[Context.js] handleChange > this is value..." + value);
+    // console.log("[Context.js] handleFilterChange > this is type..." + type);
+    console.log("[Context.js] handleFilterChange > this is name..." + name);
+    // console.log("[Context.js] handleFilterChange > this is value..." + value);
     this.setState(
       {
         [name]: value
@@ -320,8 +339,14 @@ export default class ItemProvider extends Component {
     );
   };
 
+  /////////////////////////////////////////////////////////////////////////// FILTER
+  // show/hide filter row
+  setFilterToggle = () => {
+    this.setState({ showFilter: this.state.showFilter ? false : true });
+  };
+  // filter items
   filterItems = () => {
-    console.log("[Context.js] filterItems > hello");
+    // console.log("[Context.js] filterItems...");
     let {
       items,
       categoryName,
@@ -334,43 +359,32 @@ export default class ItemProvider extends Component {
       sortRangeArr
     } = this.state;
 
-    // all the rooms
-    let tmpItems = [...items];
+    // all the items
+    let sortedItems = [...items];
     // filter by brand
-    console.log("BRAND? ", brand);
-    console.log("ITEM COUNT:  ", tmpItems);
     if (brand !== "all") {
-      console.log("BRAND CHANGED? ", brand);
-      tmpItems = tmpItems.filter(item => item.brand === parseInt(brand));
-      console.log("ITEM COUNT CHANGED:  ", tmpItems);
+      // console.log("[Context.js] filterItems() > BRAND CHANGED", brand);
+      sortedItems = sortedItems.filter(item => item.brand === parseInt(brand));
     }
-
-    // filter by price
-    // tmpItems = tmpItems.filter(item => item.price <= price);
-    // filter by price
-    tmpItems =
+    // filter by price and year
+    sortedItems =
       categoryName === "Live"
-        ? tmpItems
+        ? sortedItems
             .filter(item => item.price >= minPrice && item.price <= maxPrice)
             .filter(item => item.year >= minYear && item.year <= maxYear)
-        : tmpItems;
-    // change state
+        : sortedItems;
 
-    // const sortByArr2 = ["-price", "-price"];
-
-    // const sortByArr = Object.keys(sortRangeArr).filter(
-    //   item => item.name === sortBy
-    // );
-    //https://stackoverflow.com/questions/6913512/how-to-sort-an-array-of-objects-by-multiple-fields
     const sortByArr = sortRangeArr.find(item => item.name === sortBy);
-    console.log("[Context.js] filterItems > sortByArr...", sortBy, sortByArr);
-    const tmp = [sortByArr.field, sortByArr.field2];
-    // const sortBy = sortByArr.name;
+    // console.log("[Context.js] filterItems > sortByArr...", sortBy, sortByArr);
+    const field = sortByArr.field;
+    const field2 = sortByArr.field2;
+    sortedItems.sort(this.fieldSorter([field, field2]));
 
-    tmpItems.sort(this.fieldSorter([tmp[0], tmp[1]]));
-
+    ///////////////
+    // SET STATE //
+    ///////////////
     this.setState({
-      sortedItems: tmpItems
+      sortedItems
     });
   };
 
@@ -381,14 +395,14 @@ export default class ItemProvider extends Component {
           ...this.state,
           getItem: this.getItem,
           getData: this.getData,
+          getDataItems: this.getDataItems,
           formatPrice: this.formatPrice,
           formatItemLink: this.formatItemLink,
           formatCategoryLink: this.formatCategoryLink,
-          setStatePageCategory: this.setStatePageCategory,
           setBrandArr: this.setBrandArr,
           setFilterToggle: this.setFilterToggle,
           fieldSorter: this.fieldSorter,
-          handleChange: this.handleChange
+          handleFilterChange: this.handleFilterChange
         }}
       >
         {this.props.children}

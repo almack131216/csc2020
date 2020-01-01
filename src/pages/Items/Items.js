@@ -8,19 +8,18 @@ import { ItemContext } from "../../Context";
 
 const Items = props => {
   const context = useContext(ItemContext);
+  const { getDataItems } = context;
 
   let showWidgetOpeningHours = null;
   let showWidgetContact = null;
 
   const categoryName = props.category ? props.category : "Live";
-  // context.setStatePageCategory(categoryName);
-  // this.setState({ categoryId: categoryName });
-  useEffect(() => {
-    console.log("location changed");
-    context.setStatePageCategory(categoryName);
-  }, [categoryName]);
 
-  console.log("[pages>Items.js] categoryId...", categoryName);
+  useEffect(() => {
+    getDataItems(categoryName, 2);
+  }, [getDataItems]);
+
+  console.log("[pages>Items.js] categoryName...", categoryName);
 
   switch (categoryName) {
     case "Archive":

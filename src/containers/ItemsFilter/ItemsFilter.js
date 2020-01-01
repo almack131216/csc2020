@@ -10,11 +10,8 @@ export default function ItemsFilter({ items }) {
   // console.log("[ItemsFilter.js] ItemContext...", context);
   const {
     categoryName,
-    categoryArr,
-    handleChange,
+    handleFilterChange,
     showFilter,
-    brand,
-    brandArr,
     minPrice,
     maxPrice,
     maxPriceInit,
@@ -24,7 +21,6 @@ export default function ItemsFilter({ items }) {
     maxYearInit,
     priceRangeArr,
     sortBy,
-    sortByArr,
     sortRangeArr
   } = context;
 
@@ -40,7 +36,7 @@ export default function ItemsFilter({ items }) {
                   minPrice={minPrice}
                   maxPrice={maxPrice}
                   maxPriceInit={maxPriceInit}
-                  changed={handleChange}
+                  changed={handleFilterChange}
                 />
               ) : null}
               {/* (END) price */}
@@ -52,7 +48,7 @@ export default function ItemsFilter({ items }) {
                 minYearInit={minYearInit}
                 maxYear={maxYear}
                 maxYearInit={maxYearInit}
-                changed={handleChange}
+                changed={handleFilterChange}
               />
               {/* (END) year */}
             </div>
@@ -60,7 +56,7 @@ export default function ItemsFilter({ items }) {
               <SortFilter
                 sortRangeArr={sortRangeArr}
                 sortBy={sortBy}
-                changed={handleChange}
+                changed={handleFilterChange}
               />
               {/* (END) sort */}
             </div>
