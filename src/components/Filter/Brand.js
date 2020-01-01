@@ -19,7 +19,7 @@ const brandFilter = props => {
     );
   });
 
-  console.log("[Filters > Brand.js] brands...", brands);
+  // console.log("[Filters > Brand.js] brands...", brands);
 
   return (
     <div className={className}>

@@ -19,7 +19,9 @@ const Item = memo(({ item }) => {
     image,
     brand,
     price,
-    status
+    status,
+    date,
+    year
   } = item;
 
   // let images = require.context("../images/catalogue", true);
@@ -34,8 +36,9 @@ const Item = memo(({ item }) => {
     <article className="featured-item">
       <div className="img-container">
         {myImg}
-        <div className="price-top">
-          <h6>{context.formatPrice(price)}</h6>
+        <div className="price-topXXX">
+          <h3>{context.formatPrice(price)}</h3>
+          <h4>{year}</h4>
           <p>
             {status}: {brand} - {subcategoryArr.brand}
           </p>

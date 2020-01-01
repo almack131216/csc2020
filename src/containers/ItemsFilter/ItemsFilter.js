@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { ItemContext } from "../../Context";
 import PriceFilter from "../../components/Filter/Price";
 import YearFilter from "../../components/Filter/Year";
+import SortFilter from "../../components/Filter/Sort";
 
 export default function ItemsFilter({ items }) {
   const context = useContext(ItemContext);
@@ -21,7 +22,10 @@ export default function ItemsFilter({ items }) {
     minYearInit,
     maxYear,
     maxYearInit,
-    priceRangeArr
+    priceRangeArr,
+    sortBy,
+    sortByArr,
+    sortRangeArr
   } = context;
 
   return showFilter === true ? (
@@ -51,6 +55,14 @@ export default function ItemsFilter({ items }) {
                 changed={handleChange}
               />
               {/* (END) year */}
+            </div>
+            <div className="filter-column">
+              <SortFilter
+                sortRangeArr={sortRangeArr}
+                sortBy={sortBy}
+                changed={handleChange}
+              />
+              {/* (END) sort */}
             </div>
           </div>
         </div>

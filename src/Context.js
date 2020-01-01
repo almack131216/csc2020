@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SiteData from "./assets/_data/_data";
 import CatData from "./assets/_data/_data-categories";
+import SortFilterRangeData from "./assets/_data/_data-filter-sort";
 const slugify = require("slugify");
 const ItemContext = React.createContext();
 //
@@ -8,7 +9,7 @@ export default class ItemProvider extends Component {
   state = {
     siteData: SiteData,
     items: [],
-    showFilter: false,
+    showFilter: true,
     categoryName: null,
     categoryNameDefault: "Live",
     categoryArr: {},
@@ -26,7 +27,10 @@ export default class ItemProvider extends Component {
     minYearInit: 0,
     maxYear: 0,
     maxYearInit: 0,
-    priceRangeArr: []
+    priceRangeArr: [],
+    sortBy: "DateDesc",
+    sortByArr: {},
+    sortRangeArr: []
   };
 
   getData = async getPageName => {
@@ -92,6 +96,18 @@ export default class ItemProvider extends Component {
       const brandArr = this.setBrandArr(items);
       const categoryArr = this.getcategoryArr(categoryName, statusId);
 
+      let sortRangeArr = [];
+      sortRangeArr.push(SortFilterRangeData.DateDesc);
+      sortRangeArr.push(SortFilterRangeData.DateAsc);
+      sortRangeArr.push(SortFilterRangeData.PriceDesc);
+      sortRangeArr.push(SortFilterRangeData.PriceAsc);
+      sortRangeArr.push(SortFilterRangeData.YearDesc);
+      sortRangeArr.push(SortFilterRangeData.YearAsc);
+      console.log("[Context.js] sortRangeArr...", sortRangeArr);
+
+      const sortByArr = sortRangeArr[0];
+      const sortBy = sortByArr.name;
+
       this.setState({
         items,
         categoryName,
@@ -107,7 +123,10 @@ export default class ItemProvider extends Component {
         minYearInit,
         maxYear,
         maxYearInit,
-        priceRangeArr
+        priceRangeArr,
+        sortBy,
+        sortByArr,
+        sortRangeArr
       });
     } catch (error) {
       console.log("[Context.js] getDataItems > error...", error);
@@ -162,8 +181,27 @@ export default class ItemProvider extends Component {
       if (nameA > nameB) return 1;
       return 0; //default return value (no sorting)
     });
-    console.log("[Context.js] myUniqueList...", myUniqueList);
+    // console.log("[Context.js] myUniqueList...", myUniqueList);
     return myUniqueList;
+  };
+
+  fieldSorter = fields => {
+    return function(a, b) {
+      return fields
+        .map(function(o) {
+          var dir = 1;
+          if (o[0] === "-") {
+            dir = -1;
+            o = o.substring(1);
+          }
+          if (a[o] > b[o]) return dir;
+          if (a[o] < b[o]) return -dir;
+          return 0;
+        })
+        .reduce(function firstNonZeroValue(p, n) {
+          return p ? p : n;
+        }, 0);
+    };
   };
 
   formatData(getItemsData) {
@@ -178,6 +216,7 @@ export default class ItemProvider extends Component {
       let price = dataItem.price;
       let brand = dataItem.brand;
       let year = dataItem.year;
+      let date = dataItem.createdAt;
       let image = `https://via.placeholder.com/150x110`; // `http://localhost:8080/csc2020-img/images/${dataItem.image}`;
       // let image = `http://www.classicandsportscar.ltd.uk/images_catalogue/${dataItem.image}`;
       let item = {
@@ -191,7 +230,8 @@ export default class ItemProvider extends Component {
         brand,
         price,
         year,
-        image
+        image,
+        date
       };
       return item;
     });
@@ -289,7 +329,9 @@ export default class ItemProvider extends Component {
       minPrice,
       maxPrice,
       minYear,
-      maxYear
+      maxYear,
+      sortBy,
+      sortRangeArr
     } = this.state;
 
     // all the rooms
@@ -313,6 +355,20 @@ export default class ItemProvider extends Component {
             .filter(item => item.year >= minYear && item.year <= maxYear)
         : tmpItems;
     // change state
+
+    // const sortByArr2 = ["-price", "-price"];
+
+    // const sortByArr = Object.keys(sortRangeArr).filter(
+    //   item => item.name === sortBy
+    // );
+    //https://stackoverflow.com/questions/6913512/how-to-sort-an-array-of-objects-by-multiple-fields
+    const sortByArr = sortRangeArr.find(item => item.name === sortBy);
+    console.log("[Context.js] filterItems > sortByArr...", sortBy, sortByArr);
+    const tmp = [sortByArr.field, sortByArr.field2];
+    // const sortBy = sortByArr.name;
+
+    tmpItems.sort(this.fieldSorter([tmp[0], tmp[1]]));
+
     this.setState({
       sortedItems: tmpItems
     });
@@ -331,6 +387,7 @@ export default class ItemProvider extends Component {
           setStatePageCategory: this.setStatePageCategory,
           setBrandArr: this.setBrandArr,
           setFilterToggle: this.setFilterToggle,
+          fieldSorter: this.fieldSorter,
           handleChange: this.handleChange
         }}
       >
