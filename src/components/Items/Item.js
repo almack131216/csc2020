@@ -32,9 +32,9 @@ const Item = memo(({ item }) => {
   // console.log(image);
   return (
     <article className="featured-item">
-      <div className="img-containerXXX">
+      <div className="img-container">
         {myImg}
-        <div className="price-topXXX">
+        <div className="price-top">
           <h6>{context.formatPrice(price)}</h6>
           <p>
             {status}: {brand} - {subcategoryArr.brand}
@@ -42,12 +42,12 @@ const Item = memo(({ item }) => {
         </div>
         <Link
           to={context.formatItemLink(item)}
-          className="btn-primaryXXX room-linkXXX"
+          className="btn-primary room-link"
         >
           features
         </Link>
       </div>
-      <p className="room-infoXXX">{name}</p>
+      <p className="room-info">{name}</p>
     </article>
   );
 });

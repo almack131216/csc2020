@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
 import PriceFilter from "../../components/Filter/Price";
+import YearFilter from "../../components/Filter/Year";
 
 export default function ItemsFilter({ items }) {
   const context = useContext(ItemContext);
@@ -15,16 +16,13 @@ export default function ItemsFilter({ items }) {
     brandArr,
     minPrice,
     maxPrice,
-    maxPriceAbs,
+    maxPriceInit,
+    minYear,
+    minYearInit,
+    maxYear,
+    maxYearInit,
     priceRangeArr
   } = context;
-
-  let toggleFilter = e => {
-    e.preventDefault();
-    context.setFilterToggle();
-    console.log("??? toggleFilter", showFilter);
-  };
-  console.log("!!! toggleFilter", showFilter);
 
   return showFilter === true ? (
     <div className="row row-breadcrumb row-filter">
@@ -37,11 +35,22 @@ export default function ItemsFilter({ items }) {
                   priceRange={priceRangeArr}
                   minPrice={minPrice}
                   maxPrice={maxPrice}
-                  maxPriceAbs={maxPriceAbs}
+                  maxPriceInit={maxPriceInit}
                   changed={handleChange}
                 />
               ) : null}
-              {/* extras */}
+              {/* (END) price */}
+            </div>
+            <div className="filter-column">
+              <YearFilter
+                label="Year"
+                minYear={minYear}
+                minYearInit={minYearInit}
+                maxYear={maxYear}
+                maxYearInit={maxYearInit}
+                changed={handleChange}
+              />
+              {/* (END) year */}
             </div>
           </div>
         </div>

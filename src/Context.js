@@ -21,7 +21,11 @@ export default class ItemProvider extends Component {
     price: 0,
     minPrice: 0,
     maxPrice: 0,
-    maxPriceAbs: 0,
+    maxPriceInit: 0,
+    minYear: 0,
+    minYearInit: 0,
+    maxYear: 0,
+    maxYearInit: 0,
     priceRangeArr: []
   };
 
@@ -76,9 +80,14 @@ export default class ItemProvider extends Component {
 
       let minPrice = 0; //Math.min(...items.map(item => item.price));
       let maxPrice = Math.max(...items.map(item => item.price));
-      const maxPriceAbs = Math.round((maxPrice / 100000).toFixed() * 100000);
+      const maxPriceInit = Math.round((maxPrice / 100000).toFixed() * 100000);
       const priceRangeArr = SiteData.priceRangeArr;
       // let maxSize = Math.max(...items.map(item => item.size));
+
+      let minYear = Math.min(...items.map(item => item.year));
+      let maxYear = Math.max(...items.map(item => item.year));
+      const minYearInit = minYear;
+      const maxYearInit = maxYear;
 
       const brandArr = this.setBrandArr(items);
       const categoryArr = this.getcategoryArr(categoryName, statusId);
@@ -92,8 +101,12 @@ export default class ItemProvider extends Component {
         loading: false,
         price: maxPrice,
         minPrice,
-        maxPrice: maxPriceAbs,
-        maxPriceAbs,
+        maxPrice: maxPriceInit,
+        maxPriceInit,
+        minYear,
+        minYearInit,
+        maxYear,
+        maxYearInit,
         priceRangeArr
       });
     } catch (error) {
@@ -269,7 +282,15 @@ export default class ItemProvider extends Component {
 
   filterItems = () => {
     console.log("[Context.js] filterItems > hello");
-    let { items, categoryName, brand, minPrice, maxPrice } = this.state;
+    let {
+      items,
+      categoryName,
+      brand,
+      minPrice,
+      maxPrice,
+      minYear,
+      maxYear
+    } = this.state;
 
     // all the rooms
     let tmpItems = [...items];
@@ -287,9 +308,9 @@ export default class ItemProvider extends Component {
     // filter by price
     tmpItems =
       categoryName === "Live"
-        ? tmpItems.filter(
-            item => item.price >= minPrice && item.price <= maxPrice
-          )
+        ? tmpItems
+            .filter(item => item.price >= minPrice && item.price <= maxPrice)
+            .filter(item => item.year >= minYear && item.year <= maxYear)
         : tmpItems;
     // change state
     this.setState({
