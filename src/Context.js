@@ -8,6 +8,7 @@ export default class ItemProvider extends Component {
   state = {
     siteData: SiteData,
     items: [],
+    showFilter: false,
     categoryName: null,
     categoryNameDefault: "Live",
     categoryArr: {},
@@ -109,6 +110,10 @@ export default class ItemProvider extends Component {
   }
 
   componentDidUpdate() {}
+
+  setFilterToggle = () => {
+    this.setState({ showFilter: this.state.showFilter ? false : true });
+  };
 
   setStatePageCategory = category => {
     console.log(
@@ -304,6 +309,7 @@ export default class ItemProvider extends Component {
           formatCategoryLink: this.formatCategoryLink,
           setStatePageCategory: this.setStatePageCategory,
           setBrandArr: this.setBrandArr,
+          setFilterToggle: this.setFilterToggle,
           handleChange: this.handleChange
         }}
       >

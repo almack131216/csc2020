@@ -1,4 +1,5 @@
 import React from "react";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import ItemsFilter from "./ItemsFilter/ItemsFilter";
 import ItemsList from "../components/Items/ItemsList";
 import { withItemConsumer } from "../Context";
@@ -13,6 +14,7 @@ function ItemsContainer({ context }) {
   }
   return (
     <>
+      <Breadcrumbs />
       <ItemsFilter items={items} />
       <ItemsList items={sortedItems} />
     </>

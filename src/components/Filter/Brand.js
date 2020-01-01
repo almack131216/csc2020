@@ -2,6 +2,9 @@ import React from "react";
 
 const brandFilter = props => {
   const brand = props.brand; //get active brand
+  const className = props.class ? props.class : "form-control form-control-sm";
+  const label = props.label ? props.label : "Select";
+  const labelClass = props.labelClass ? props.labelClass : "display-none";
 
   // get unique types
   let brands = props.brands;
@@ -19,8 +22,10 @@ const brandFilter = props => {
   console.log("[Filters > Brand.js] brands...", brands);
 
   return (
-    <div className="form-group">
-      <label htmlFor="brand">{props.label}</label>
+    <div className={className}>
+      <label htmlFor="brand" className={labelClass}>
+        {label}
+      </label>
       <select
         name="brand"
         id="brand"
