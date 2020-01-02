@@ -1,14 +1,18 @@
 import React from "react";
 import SiteData from "../../../assets/_data/_data";
 import SearchWidget from "../Search/Search";
+import { Link } from "react-router-dom";
 
 const navLeft = props => {
   const navLinks = SiteData.navigation.map((link, index) => {
+    var isActive = window.location.pathname === link.slug;
+    var className = isActive ? "active" : "";
+
     return (
       <li key={index}>
-        <a href={link.slug} title={link.titleHover}>
+        <Link to={link.slug} title={link.titleHover} className={className}>
           {link.title}
-        </a>
+        </Link>
       </li>
     );
   });

@@ -21,6 +21,10 @@
         width: 100%;
         text-align: right;
 
+        &.active {
+          color: $navbar_color-link-hover;
+        }
+
         &:hover {
           color: $navbar_color-link-hover;
           @include btn-darken-bg-on-hover();
