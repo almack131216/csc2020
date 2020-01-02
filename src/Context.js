@@ -191,9 +191,27 @@ export default class ItemProvider extends Component {
       if (nameA > nameB) return 1;
       return 0; //default return value (no sorting)
     });
-    // console.log("[Context.js] myUniqueList...", myUniqueList);
-    return myUniqueList;
+
+    // COUNT items in subcategory
+    let myUniqueListWithCount = this.countItemsInBrand(myUniqueList, myObj);
+    myUniqueListWithCount = [
+      { id: "all", brand: "all", itemCount: myObj.length },
+      ...myUniqueListWithCount
+    ];
+    console.log("[Context.js] myUniqueList...", myUniqueListWithCount);
+    return myUniqueListWithCount;
   };
+
+  /////////////////////////////////////////////////////////////////////////// COUNT items in each brand
+  countItemsInBrand(getBrandArr, getItemsArr) {
+    for (var i = 0; i < getBrandArr.length; i++) {
+      var tmp = getItemsArr.filter(
+        item => item.subcategoryArr.id == getBrandArr[i].id
+      ).length;
+      getBrandArr[i].itemCount = tmp;
+    }
+    return getBrandArr;
+  }
 
   /////////////////////////////////////////////////////////////////////////// SORT used by filter
   // REF: https://stackoverflow.com/questions/6913512/how-to-sort-an-array-of-objects-by-multiple-fields

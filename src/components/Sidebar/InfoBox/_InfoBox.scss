@@ -1,14 +1,10 @@
 /* _Widget.scss */
 
 .widget {
-  padding: $offset-g1;
   margin: $offset-g2;
-
-  &:not(.category-list) {
-    @include bg-gradient-x;
-    padding: $offset-g1;
-    border: 1px solid $color_layout-border;
-  }
+  padding: $offset-g1;
+  @include bg-gradient-x;
+  border: 1px solid $color_layout-border;
 
   &.opening-hours {
   }

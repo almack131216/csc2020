@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import ItemsContainer from "../../containers/ItemsContainer";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
+import BrandList from "../../components/Sidebar/BrandList/BrandList";
 import WidgetData from "../../assets/_data/_data-widgets";
 import Widget from "../../components/Sidebar/InfoBox/InfoBox";
 import { useContext } from "react";
@@ -36,6 +37,7 @@ const Items = props => {
       <section className="content-wrap row">
         <div className="sidebar hidden-md-down col-md-3 padding-x-0">
           <NavLeft />
+          <BrandList />
 
           {showWidgetOpeningHours ? (
             <Widget body={WidgetData.openingHours} />
