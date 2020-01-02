@@ -26,4 +26,11 @@ yarn-debug.log*
 yarn-error.log*
 
 # confidential
+.env
 .env.development
+.env.staging
+.env.production
+# if already committed...
+# > git rm env.local --cached
+# > git rm env.staging --cached
+# > git commit -m "Stopped tracking env.local, and env.staging"
