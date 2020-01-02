@@ -3,6 +3,7 @@ import NavArray from "./_data-navigation";
 const siteData = {
   root: "/",
   date: "200101",
+  titleDocument: process.env.REACT_APP_DOC_TITLE,
   brand: {
     name: "Classic & Sportscar Centre",
     strapline: "Selling classic cars worldwide for over 25 years"

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SiteData from "./assets/_data/_data";
 import CatData from "./assets/_data/_data-categories";
 import SortFilterRangeData from "./assets/_data/_data-filter-sort";
+import { setDocumentTitle } from "./assets/js/Helpers";
 const slugify = require("slugify");
 const ItemContext = React.createContext();
 //
@@ -110,6 +111,7 @@ export default class ItemProvider extends Component {
       // Brand (dropdown)
       const brandArr = this.setBrandArr(items);
       const categoryArr = this.getCategoryArr(categoryName, statusId);
+      setDocumentTitle(categoryArr.title);
       //////////
       // SORT // options based on items page type
       //////////
@@ -409,6 +411,7 @@ export default class ItemProvider extends Component {
           getItem: this.getItem,
           getData: this.getData,
           getDataItems: this.getDataItems,
+          getCategoryArr: this.getCategoryArr,
           formatPrice: this.formatPrice,
           formatItemLink: this.formatItemLink,
           formatCategoryLink: this.formatCategoryLink,

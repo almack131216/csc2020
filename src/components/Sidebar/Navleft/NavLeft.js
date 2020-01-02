@@ -6,7 +6,9 @@ const navLeft = props => {
   const navLinks = SiteData.navigation.map((link, index) => {
     return (
       <li key={index}>
-        <a href={link.slug}>{link.title}</a>
+        <a href={link.slug} title={link.titleHover}>
+          {link.title}
+        </a>
       </li>
     );
   });

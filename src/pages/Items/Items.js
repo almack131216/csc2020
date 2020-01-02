@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import ItemsContainer from "../../containers/ItemsContainer";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import WidgetData from "../../assets/_data/_data-widgets";
@@ -17,7 +17,7 @@ const Items = props => {
 
   useEffect(() => {
     getDataItems(categoryName, 2);
-  }, [getDataItems]);
+  }, [getDataItems, categoryName]);
 
   console.log("[pages>Items.js] categoryName...", categoryName);
 
