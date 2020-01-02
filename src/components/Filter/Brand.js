@@ -4,7 +4,11 @@ const brandFilter = props => {
   const brand = props.brand; //get active brand
   const className = props.class ? props.class : "form-control form-control-sm";
   const label = props.label ? props.label : "Select";
-  const labelClass = props.labelClass ? props.labelClass : "display-none";
+  // STYLE // get styling from filter container
+  let classParent = props.classParent;
+  let classLabel = props.classLabel;
+  let classControl = props.classControl;
+  // (END) STYLE
 
   // get unique types
   let brands = props.brands;
@@ -22,15 +26,15 @@ const brandFilter = props => {
   // console.log("[Filters > Brand.js] brands...", brands);
 
   return (
-    <div className={className}>
-      <label htmlFor="brand" className={labelClass}>
+    <div className={classParent}>
+      <label htmlFor="brand" className={classLabel}>
         {label}
       </label>
       <select
         name="brand"
         id="brand"
+        className={classControl}
         value={brand}
-        className="form-control"
         onChange={props.changed}
       >
         {brands}

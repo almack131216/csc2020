@@ -322,6 +322,19 @@ export default class ItemProvider extends Component {
     return itemLink;
   };
 
+  /////////////////////////////////////////////////////////////////////////// STYLE append class
+  // accept default class (getDefault) ... append with any additional classes (getAppend)
+  // EXAMPLE: let classControl = styleAppendClass("form-control", "form-control-sm");
+  styleAppendClass = (getDefault, getAppend) => {
+    let classArr = [];
+    classArr.push(getDefault);
+    if (getAppend) {
+      classArr.push(getAppend);
+    }
+    let allClasses = classArr.join(" ");
+    return allClasses;
+  };
+
   /////////////////////////////////////////////////////////////////////////// LOAD data (items)
   handleFilterChange = event => {
     const target = event.target;
@@ -402,7 +415,8 @@ export default class ItemProvider extends Component {
           setBrandArr: this.setBrandArr,
           setFilterToggle: this.setFilterToggle,
           fieldSorter: this.fieldSorter,
-          handleFilterChange: this.handleFilterChange
+          handleFilterChange: this.handleFilterChange,
+          styleAppendClass: this.styleAppendClass
         }}
       >
         {this.props.children}

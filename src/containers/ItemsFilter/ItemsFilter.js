@@ -21,48 +21,59 @@ export default function ItemsFilter({ items }) {
     maxYearInit,
     priceRangeArr,
     sortBy,
-    sortRangeArr
+    sortRangeArr,
+    styleAppendClass
   } = context;
 
+  // STYLE
+  let classForm = styleAppendClass("form-inline", "");
+  let classParent = styleAppendClass("form-group", "");
+  let classLabel = styleAppendClass("form-label", "");
+  let classControl = styleAppendClass("form-control", "form-control-sm");
+  // (END) STYLE
+
   return showFilter === true ? (
-    <div className="row row-breadcrumb row-filter">
-      <form>
-        <div className="col-xs-12 col-post-filter">
-          <div className="filter-wrap">
-            <div className="filter-column">
-              {categoryName === "Live" ? (
-                <PriceFilter
-                  priceRange={priceRangeArr}
-                  minPrice={minPrice}
-                  maxPrice={maxPrice}
-                  maxPriceInit={maxPriceInit}
-                  changed={handleFilterChange}
-                />
-              ) : null}
-              {/* (END) price */}
-            </div>
-            <div className="filter-column">
-              <YearFilter
-                label="Year"
-                minYear={minYear}
-                minYearInit={minYearInit}
-                maxYear={maxYear}
-                maxYearInit={maxYearInit}
-                changed={handleFilterChange}
-              />
-              {/* (END) year */}
-            </div>
-            <div className="filter-column">
-              <SortFilter
-                sortRangeArr={sortRangeArr}
-                sortBy={sortBy}
-                changed={handleFilterChange}
-              />
-              {/* (END) sort */}
-            </div>
-          </div>
-        </div>
-      </form>
+    <div className="row row-filter">
+      <div className="col-xs-12 col-post-filter">
+        <form className={classForm}>
+          {categoryName === "Live" ? (
+            <PriceFilter
+              label="Price"
+              classParent={classParent}
+              classLabel={classLabel}
+              classControl={classControl}
+              priceRange={priceRangeArr}
+              minPrice={minPrice}
+              maxPrice={maxPrice}
+              maxPriceInit={maxPriceInit}
+              changed={handleFilterChange}
+            />
+          ) : null}
+          {/* (END) price */}
+          <YearFilter
+            label="Year"
+            classParent={classParent}
+            classLabel={classLabel}
+            classControl={classControl}
+            minYear={minYear}
+            minYearInit={minYearInit}
+            maxYear={maxYear}
+            maxYearInit={maxYearInit}
+            changed={handleFilterChange}
+          />
+          {/* (END) year */}
+          <SortFilter
+            label="Order"
+            classParent={classParent}
+            classLabel={classLabel}
+            classControl={classControl}
+            sortRangeArr={sortRangeArr}
+            sortBy={sortBy}
+            changed={handleFilterChange}
+          />
+          {/* (END) sort */}
+        </form>
+      </div>
     </div>
   ) : null;
 }

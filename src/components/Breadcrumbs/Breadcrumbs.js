@@ -15,8 +15,15 @@ export default function Breadcrumbs({ items }) {
     handleFilterChange,
     showFilter,
     brand,
-    brandArr
+    brandArr,
+    styleAppendClass
   } = context;
+  // STYLE
+  let classForm = styleAppendClass("form-inline", "");
+  let classParent = styleAppendClass("form-group", "");
+  let classLabel = styleAppendClass("form-label", "display-none");
+  let classControl = styleAppendClass("form-control", "form-control-sm");
+  // (END) STYLE
 
   let toggleFilter = e => {
     e.preventDefault();
@@ -27,45 +34,49 @@ export default function Breadcrumbs({ items }) {
 
   return (
     <div className="row row-breadcrumb row-filter">
-      <form>
-        <div className="col-xs-12 col-post-breadcrumb">
-          <div className="crumbs-wrap">
-            <ul className="ul-breadcrumb has-3-crumbs">
-              <li className="home">
-                <Link to={NavData.home.slug}>
-                  <FaHome className="fa-home" />
-                  <span>{NavData.home.title}</span>
-                </Link>
-              </li>
-              <li className="li-category-2">
-                <Link to={NavData.live.slug}>
-                  <span>
-                    {categoryArr.title} [{categoryName}]
-                  </span>
-                </Link>
-              </li>
-              <li className="li-jump-menu-wrap">
+      <div className="col-xs-12 col-post-breadcrumb">
+        <div className="crumbs-wrap">
+          <ul className="ul-breadcrumb has-3-crumbs">
+            <li className="home">
+              <Link to={NavData.home.slug}>
+                <FaHome className="fa-home" />
+                <span>{NavData.home.title}</span>
+              </Link>
+            </li>
+            <li className="li-category-2">
+              <Link to={NavData.live.slug}>
+                <span>
+                  {categoryArr.title} [{categoryName}]
+                </span>
+              </Link>
+            </li>
+            <li className="li-jump-menu-wrap">
+              <form className={classForm}>
                 {/* select brand */}
                 <BrandFilter
-                  label={"Make"}
+                  label="Make"
+                  classParent={classParent}
+                  classLabel={classLabel}
+                  classControl={classControl}
                   brand={brand}
                   items={items}
                   brands={brandArr}
                   changed={handleFilterChange}
                 />
                 {/* (END) select brand */}
-              </li>
-            </ul>
-          </div>
-          <button
-            onClick={e => {
-              toggleFilter(e);
-            }}
-          >
-            filter {showFilter ? "visible" : "hidden"}
-          </button>
+              </form>
+            </li>
+          </ul>
         </div>
-      </form>
+        <a
+          className="btn-toggle-filter"
+          onClick={e => {
+            toggleFilter(e);
+          }}
+        >
+          filter {showFilter ? "visible" : "hidden"}
+        </a>
+      </div>
     </div>
   );
 }

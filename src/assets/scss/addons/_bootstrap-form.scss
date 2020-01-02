@@ -1,0 +1,20 @@
+/* _bootstrap-form.scss */
+/*
+REF: https://github.com/telerik/kendo-angular/issues/698
+*/
+$input-height-sm: 28px;
+$input-padding-y-sm: 5px;
+$input-padding-x-sm: 10px;
+
+.form-control-sm,
+.form-control-sm {
+  padding: $input-padding-y-sm $input-padding-x-sm;
+}
+
+.form-control-sm .k-input {
+  height: $input-height-sm;
+}
+
+.form-control-sm {
+  height: calc(#{$input-height-sm} + 2px);
+}

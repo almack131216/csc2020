@@ -2,23 +2,23 @@
 @import "./assets/css/normalize.css";
 
 /* BASE - base styles, variables, mixins etc */
-@import "./assets/scss/base/_variables.scss";
-@import "./assets/scss/base/_variables-color.scss";
-@import "./assets/scss/base/_variables-button.scss";
-@import "./assets/scss/base/_mixins.scss";
-@import "./assets/scss/base/_mixins-buttons.scss";
-@import "./assets/scss/base/_mixins-forms.scss";
-@import "./assets/scss/base/_base.scss";
-@import "./assets/scss/base/_body-shadow.scss";
-@import "./assets/scss/base/_base-colors.scss";
+@import "./assets/scss/base/_variables";
+@import "./assets/scss/base/_variables-color";
+@import "./assets/scss/base/_variables-button";
+@import "./assets/scss/base/_mixins";
+@import "./assets/scss/base/_mixins-buttons";
+@import "./assets/scss/base/_mixins-forms";
+@import "./assets/scss/base/_base";
+@import "./assets/scss/base/_body-shadow";
+@import "./assets/scss/base/_base-colors";
 
 /* MODULES - individual site components */
 // @import "./assets/scss/modules/_search-widget.scss";
-@import "./assets/scss/modules/_typography.scss";
-@import "./assets/scss/modules/_typography-resp.scss";
-@import "./assets/scss/modules/_typography-hyperlink.scss";
-@import "./assets/scss/modules/_typography-ul.scss";
-@import "./assets/scss/modules/_typography-ul-social.scss";
+@import "./assets/scss/modules/_typography";
+@import "./assets/scss/modules/_typography-resp";
+@import "./assets/scss/modules/_typography-hyperlink";
+@import "./assets/scss/modules/_typography-ul";
+@import "./assets/scss/modules/_typography-ul-social";
 // @import "./assets/scss/modules/_button.scss";
 // @import "./assets/scss/modules/_form.scss";
 // @import "./assets/scss/modules/_img.scss";
@@ -30,12 +30,12 @@
 // @import "./assets/scss/modules/_corner-ribbons.scss";
 
 /* LAYOUTS - page layout styles */
-@import "./assets/scss/layouts/_offsets.scss";
+@import "./assets/scss/layouts/_offsets";
 // @import "./assets/scss/layouts/_layout.scss";
 // @import "./assets/scss/layouts/_footer.scss";
 // @import "./assets/scss/layouts/_register.scss";
 // @import "./assets/scss/layouts/_contact-form.scss";
-@import "./assets/scss/layouts/_responsive.scss";
+@import "./assets/scss/layouts/_responsive";
 // @import "./assets/scss/layouts/_homepage.scss";
 // @import "./assets/scss/layouts/_content-item-grid.scss";
 // @import "./assets/scss/layouts/_content-item-details.scss";
@@ -60,7 +60,8 @@
 @import "./pages/Items/Items";
 
 /* ADDONS */
-@import "./assets/scss/addons/_font-awesome-overrule.scss";
-@import "./assets/scss/addons/_bootstrap-overrule.scss";
-@import "./assets/scss/addons/_restore-in-future.scss";
-@import "./assets/scss/addons/_debug.scss";
+@import "./assets/scss/addons/_font-awesome-overrule";
+@import "./assets/scss/addons/_bootstrap-overrule";
+@import "./assets/scss/addons/bootstrap-form";
+@import "./assets/scss/addons/_restore-in-future";
+@import "./assets/scss/addons/_debug";

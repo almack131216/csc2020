@@ -1,6 +1,14 @@
 /* _Breadcrumbs.scss */
 
 .row.row-breadcrumb {
+  position: relative;
+
+  .btn-toggle-filter {
+    position: absolute;
+    top: $offset-g1;
+    right: $offset-g2;
+  }
+
   .col-post-breadcrumb {
     .crumbs-wrap {
       ul {
