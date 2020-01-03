@@ -23,7 +23,7 @@ const yearFilter = props => {
       <input
         type="number"
         name="minYear"
-        id="year"
+        id="minYear"
         value={minYear}
         min={minYearInit}
         max={maxYear}
@@ -33,7 +33,7 @@ const yearFilter = props => {
       <input
         type="number"
         name="maxYear"
-        id="year"
+        id="maxYear"
         value={maxYear}
         min={minYear}
         max={maxYearInit}

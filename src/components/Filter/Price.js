@@ -22,7 +22,7 @@ const priceFilter = props => {
       </label>
       <select
         name="minPrice"
-        id="price"
+        id="minPrice"
         className={classControl}
         onChange={props.changed}
         value={props.minPrice}
@@ -35,7 +35,7 @@ const priceFilter = props => {
       </select>
       <select
         name="maxPrice"
-        id="price"
+        id="maxPrice"
         className={classControl}
         onChange={props.changed}
         value={props.maxPrice}

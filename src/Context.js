@@ -206,7 +206,7 @@ export default class ItemProvider extends Component {
   countItemsInBrand(getBrandArr, getItemsArr) {
     for (var i = 0; i < getBrandArr.length; i++) {
       var tmp = getItemsArr.filter(
-        item => item.subcategoryArr.id == getBrandArr[i].id
+        item => item.subcategoryArr.id === getBrandArr[i].id
       ).length;
       getBrandArr[i].itemCount = tmp;
     }

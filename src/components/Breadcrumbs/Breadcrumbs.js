@@ -68,14 +68,14 @@ export default function Breadcrumbs({ items }) {
             </li>
           </ul>
         </div>
-        <a
+        <button
           className="btn-toggle-filter"
           onClick={e => {
             toggleFilter(e);
           }}
         >
           filter {showFilter ? "visible" : "hidden"}
-        </a>
+        </button>
       </div>
     </div>
   );

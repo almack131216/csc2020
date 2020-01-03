@@ -88,12 +88,6 @@
       @media (max-width: $bp-md-1) {
         padding-bottom: $offset-g1;
       }
-
-      img {
-        // border:1px solid $color_secondary;
-        // background: $color_secondary url(ajax-loader.gif) no-repeat center
-        //   center;//191230
-      }
     }
 
     &.can-zoom:not(:hover) {
@@ -320,10 +314,6 @@
         margin-top: $offset-1;
         margin-bottom: $offset-1;
         border-color: $color_layout-border;
-      }
-
-      ul.ul-fa {
-        // @extend .ul-inline-block;//191230
       }
 
       .sfsi_widget {

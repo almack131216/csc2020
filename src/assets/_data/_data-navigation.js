@@ -89,14 +89,14 @@ const navArray = {
   restoration: {
     title: "Automotive Body & Paint",
     titleHover: "Link to Malton Coachworks",
-    titleDocument: "",
+    titleDocument: "Restoration Services",
     slug: "/restoration",
     navTop: true,
     navSide: true
   },
   filmTvHire: {
     title: "Film & TV Hire",
-    titleHover: "Link to Film &amp; TV Hire page",
+    titleHover: "Link to Film & TV Hire page",
     titleDocument: "Film & TV Hire",
     slug: "/film-tv-hire",
     navTop: true,

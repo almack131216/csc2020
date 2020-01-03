@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import ItemsFeatured from "../../components/ItemsFeatured/ItemsFeatured";
 import DemoCarousel from "../../components/Carousel/Carousel";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
