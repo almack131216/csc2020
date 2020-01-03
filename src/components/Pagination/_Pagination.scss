@@ -11,14 +11,13 @@
       margin: 0;
       padding: 0;
 
-      &.li-prev button,
-      &.li-next button,
+      &.li-prev-next button,
       &.li-num button {
         @include btn-disc("pagination-num");
         background-color: transparent;
       }
 
-      &.li-num button.active {
+      &.li-num.active button {
         @include btn-disc("pagination-active");
       }
     }

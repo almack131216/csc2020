@@ -3,46 +3,68 @@ import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
   const pageNumbers = [];
-  const isOnFirstPage = currentPage === 1 ? true : false;
-  const isOnLastPage = currentPage === pageNumbers.length ? true : false;
+  const minPagesForPrevNext = 3;
 
-  const btnPrev = (
-    <li className="li-prev">
-      <button onClick={() => paginate(currentPage - 1)}>
-        <FaChevronLeft />
-      </button>
-    </li>
-  );
+  ///////
+  // <li> Generate Tag to avoid duplication of markup
+  const generateLiTag = ({ num, isPrev, isNext, isActive }) => {
+    console.log("XXXXXXXXXXXX:", isPrev);
+    let liClass = isPrev || isNext ? "li-prev-next" : "li-num";
+    if (isActive === true) {
+      liClass += " active";
+    }
 
-  const btnNext = (
-    <li className="li-next">
-      <button onClick={() => paginate(currentPage + 1)}>
-        <FaChevronRight />
-      </button>
-    </li>
-  );
+    let liTag = (
+      <li className={liClass}>
+        <button onClick={() => paginate(num)}>
+          {isPrev ? <FaChevronLeft /> : null}
+          {isNext ? <FaChevronRight /> : null}
+          {!isPrev && !isNext ? num : null}
+        </button>
+      </li>
+    );
 
+    return liTag;
+  };
+
+  //////
+  // GET page numbers
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
   }
 
+  //////////////
+  // PREV / NEXT buttons
+  const showBtnPrev =
+    currentPage > 1 && pageNumbers.length >= minPagesForPrevNext ? true : false;
+  const showBtnNext =
+    currentPage < pageNumbers.length &&
+    pageNumbers.length >= minPagesForPrevNext
+      ? true
+      : false;
+
+  const btnPrev = showBtnPrev
+    ? generateLiTag({ num: currentPage - 1, isPrev: true })
+    : null;
+  const btnNext = showBtnNext
+    ? generateLiTag({ num: currentPage + 1, isNext: true })
+    : null;
+
+  /////////
+  // RETURN pagination
   return (
     <nav className="pagination-wrap">
       <ul className="ul-pagination">
-        {!isOnFirstPage ? btnPrev : null}
+        {btnPrev}
 
-        {pageNumbers.map(number => (
-          <li key={number} className="li-num">
-            <button
-              onClick={() => paginate(number)}
-              className={number == currentPage ? "active" : ""}
-            >
-              {number}
-            </button>
-          </li>
-        ))}
+        {pageNumbers.map(number =>
+          generateLiTag({
+            num: number,
+            isActive: number === currentPage ? true : false
+          })
+        )}
 
-        {!isOnLastPage ? btnNext : null}
+        {btnNext}
       </ul>
     </nav>
   );
