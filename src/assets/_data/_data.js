@@ -33,6 +33,7 @@ const siteData = {
     NavArray.archive,
     NavArray.selling,
     NavArray.transportation,
+    NavArray.testimonials,
     NavArray.press,
     NavArray.news,
     NavArray.plates,
@@ -40,7 +41,22 @@ const siteData = {
     NavArray.restoration,
     NavArray.filmTvHire,
     NavArray.contact
-  ]
+  ],
+  navigationFooter: {
+    columnA: [
+      NavArray.live,
+      NavArray.archive,
+      NavArray.selling,
+      NavArray.transportation
+    ],
+    columnB: [
+      NavArray.restoration,
+      NavArray.testimonials,
+      NavArray.press,
+      NavArray.news
+    ],
+    columnC: [NavArray.contact, NavArray.contactMap]
+  }
 };
 
 export default siteData;

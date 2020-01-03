@@ -14,7 +14,7 @@ const navArray = {
     titleHover: CatData["Live"].titleHover,
     titleDocument: CatData["Live"].titleDocument,
     slug: CatData["Live"].slug,
-    navTop: true,
+    navTop: false,
     navSide: true
   },
   archive: {
@@ -22,7 +22,7 @@ const navArray = {
     titleHover: CatData["Archive"].titleHover,
     titleDocument: CatData["Archive"].titleDocument,
     slug: CatData["Archive"].slug,
-    navTop: true,
+    navTop: false,
     navSide: true
   },
   selling: {
@@ -32,7 +32,7 @@ const navArray = {
     titleHover: "Link to seller page, we can help you sell your classic car",
     titleDocument: "Selling Your Classic Car",
     slug: "/selling-a-classic-car",
-    navTop: true,
+    navTop: false,
     navSide: true
   },
   transportation: {
@@ -41,7 +41,7 @@ const navArray = {
       "Link to transport services page - we can help transport your classic car",
     titleDocument: "Car Transport Services",
     slug: "/classic-car-transportation",
-    navTop: true,
+    navTop: false,
     navSide: true
   },
   testimonials: {
@@ -49,7 +49,7 @@ const navArray = {
     titleHover: CatData["Testimonials"].titleHover,
     titleDocument: CatData["Testimonials"].titleDocument,
     slug: CatData["Testimonials"].slug,
-    navTop: true,
+    navTop: false,
     navSide: true
   },
   press: {
@@ -57,7 +57,7 @@ const navArray = {
     titleHover: CatData["Press"].titleHover,
     titleDocument: CatData["Press"].titleDocument,
     slug: CatData["Press"].slug,
-    navTop: true,
+    navTop: false,
     navSide: true
   },
   news: {
@@ -65,7 +65,7 @@ const navArray = {
     titleHover: CatData["News"].titleHover,
     titleDocument: CatData["News"].titleDocument,
     slug: CatData["News"].slug,
-    navTop: true,
+    navTop: false,
     navSide: true
   },
   plates: {
@@ -74,7 +74,7 @@ const navArray = {
     titleHover: "Link to see private plates we have in stock",
     titleDocument: "Retained Registration Numbers",
     slug: "/registration-numbers",
-    navTop: true,
+    navTop: false,
     navSide: true
   },
   request: {
@@ -83,7 +83,7 @@ const navArray = {
       "Link to register your specific requirements and we will help you find one",
     titleDocument: "Request a Car",
     slug: "/request-a-classic-car",
-    navTop: true,
+    navTop: false,
     navSide: true
   },
   restoration: {
@@ -91,7 +91,7 @@ const navArray = {
     titleHover: "Link to Malton Coachworks",
     titleDocument: "Restoration Services",
     slug: "/restoration",
-    navTop: true,
+    navTop: false,
     navSide: true
   },
   filmTvHire: {
@@ -99,7 +99,7 @@ const navArray = {
     titleHover: "Link to Film & TV Hire page",
     titleDocument: "Film & TV Hire",
     slug: "/film-tv-hire",
-    navTop: true,
+    navTop: false,
     navSide: true
   },
   contact: {
@@ -109,6 +109,15 @@ const navArray = {
       "Contact Classic and Sportscar Centre, Malton, North Yorkshire, UK",
     slug: "/contact",
     navTop: true,
+    navSide: true
+  },
+  contactMap: {
+    title: "Find us on Google Map",
+    titleHover: "Link to Google Maps in a new window",
+    titleDocument: "",
+    url: "https://goo.gl/maps/VeDEpYUZjzB2",
+    target: "_blank",
+    navTop: false,
     navSide: true
   }
 };

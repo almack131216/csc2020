@@ -7,6 +7,7 @@ import Item from "./pages/Item";
 import Error from "./pages/Error";
 import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 import { setDocumentTitle } from "./assets/js/Helpers";
 
 class App extends Component {
@@ -42,6 +43,7 @@ class App extends Component {
             <Route component={Error} />
           </Switch>
         </main>
+        <Footer />
       </div>
     );
   }
