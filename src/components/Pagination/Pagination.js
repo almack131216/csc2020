@@ -9,13 +9,15 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
   // <li> Generate Tag to avoid duplication of markup
   const generateLiTag = ({ num, isPrev, isNext, isActive }) => {
     console.log("XXXXXXXXXXXX:", isPrev);
+
+    let liKey = isPrev || isNext ? "li-prev-next" : num;
     let liClass = isPrev || isNext ? "li-prev-next" : "li-num";
     if (isActive === true) {
       liClass += " active";
     }
 
     let liTag = (
-      <li className={liClass}>
+      <li key={liKey} className={liClass}>
         <button onClick={() => paginate(num)}>
           {isPrev ? <FaChevronLeft /> : null}
           {isNext ? <FaChevronRight /> : null}
