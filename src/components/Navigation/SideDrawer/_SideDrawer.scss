@@ -1,0 +1,41 @@
+/* SideDrawer.scss */
+
+$SideDrawerWidth: 270px;
+
+.side-drawer {
+  height: 100%;
+  background: white;
+  box-shadow: 1px 0 7px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $SideDrawerWidth;
+  z-index: 101;
+  transform: translateX(calc(0px - (#{$SideDrawerWidth} + 10px)));
+  transition: transform 0.3s ease-out;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  ul {
+    height: 100%;
+    list-style: none;
+    display: block;
+    margin: $offset-g1;
+    padding: 0;
+
+    li {
+      margin: 0;
+      padding: 0;
+
+      a {
+        text-decoration: none;
+        text-align: left;
+        display: block;
+        padding: 0 $offset-g1;
+        font-weight: bold;
+      }
+    }
+  }
+}

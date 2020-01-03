@@ -67,7 +67,8 @@
     }
   }
 
-  .navbar-toggler {
+  // [=] in navbar
+  .toggle-button {
     display: none;
   }
 
@@ -76,104 +77,27 @@
       position: relative;
     }
 
-    .navbar-toggler {
-      display: block;
-      width: $offset-4;
-      height: $offset-4;
-      background: white;
+    // [=] in navbar
+    .toggle-button {
       position: absolute;
-      z-index: 1;
-      top: 50%;
-      right: $offset-g2;
-      margin-top: -20px;
-      padding: $offset-1;
-      border: 1px solid $color_gray;
-      outline: 0;
-      @include border-radius(20px);
-
-      .fa {
-        color: $color-accent;
+      top: $offset-g1;
+      left: $offset-g1;
+      @media (min-width: $bp-xs) and (max-width: $bp-tablet-1) {
+        top: 5px;
       }
-
-      &.collapsed {
-        .fa.fa-chevron-up {
-          display: none;
-        }
-      }
-
-      &:not(.collapsed) {
-        .fa.fa-chevron-down {
-          display: none;
-        }
-      }
-
-      @media (max-width: $bp-tablet-1) {
-        right: $offset-g1;
-      }
-    }
-    /* (END) .navbar-toggler */
-
-    ul.navbar-nav {
-      margin: $offset-g1 0 0 0;
-      padding: 0;
-      list-style: none;
-      background: $navbar_color-bg;
       display: block;
-      width: 100%;
-      float: left;
-
-      li {
-        width: 50%;
-        float: left;
-        background: $navbar_color-bg;
-
-        @media (max-width: $bp-xxs-1) {
-          width: 100%;
-        }
-
-        a {
-          display: block;
-          @include trim-string();
-          padding: $offset-1 $offset-g1;
-          text-align: left;
-          color: $navbar_color-link;
-
-          @media (min-width: $bp-xxs) and (max-width: $bp-xs-1) {
-            padding: $offset-1;
-            font-size: 13px;
-          }
-
-          // @media (max-width:$bp-xxs-1) {
-          //     padding:5px $offset-1;
-          //     font-size: 13px;
-          // }
-
-          &:hover {
-            color: $navbar_color-link-hover;
-            @include btn-darken-bg-on-hover();
-          }
-        }
-      }
-      /* (END) li */
+      flex-direction: unset;
+      justify-content: unset;
+      width: $offset-g4;
+      height: $offset-g4;
     }
-    /* (END) ul.navbar-nav */
-  }
-}
-
-body ul.navbar-nav li.current-menu-item,
-body.classic-cars-for-sale ul.navbar-nav li.classic-cars-for-sale,
-body.classic-cars-sold ul.navbar-nav li.classic-cars-sold {
-  background: $navbar_color-bg-active;
-
-  a {
-    color: $navbar_color-link-active;
+    /* (END) .toggle-button */
   }
 }
 
 .navbar-brand-wrap {
   padding: 0;
   background: $color_debug;
-  // text-align:center;
 
   @media (max-width: $bp-lg-1) {
     text-align: center;
@@ -229,16 +153,6 @@ body.classic-cars-sold ul.navbar-nav li.classic-cars-sold {
   }
 }
 
-body.home {
-  ul.menu li.menu-item-home {
-    @media (max-width: $bp-lg-1) {
-      display: none;
-    }
-  }
-}
-
-@media (min-width: $bp-md) {
-  #bs-amactive-navbar-collapse {
-    display: none !important;
-  }
+.navbar-contact-wrap {
+  text-align: left;
 }

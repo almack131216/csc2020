@@ -6,9 +6,12 @@ import Items from "./pages/Items/Items";
 import Item from "./pages/Item";
 import Error from "./pages/Error";
 import { Route, Switch } from "react-router-dom";
+import Backdrop from "./components/Navigation/Backdrop/Backdrop";
+import SideDrawer from "./components/Navigation/SideDrawer/SideDrawer";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import { setDocumentTitle } from "./assets/js/Helpers";
+import SiteData from "./assets/_data/_data";
 
 class App extends Component {
   constructor(props) {
@@ -17,18 +20,54 @@ class App extends Component {
     // const { setDocumentTitle } = this.state;
     setDocumentTitle(process.env.REACT_APP_DOC_TITLE);
     console.log("[App.js] constructor");
+
+    this.state = {
+      data: SiteData,
+      sideDrawerOpen: false
+    };
   }
 
   componentDidMount() {
     console.log("[App.js] componentDidMount");
   }
 
+  drawerToggleClickHandler = () => {
+    this.setState(prevState => {
+      return { sideDrawerOpen: !prevState.sideDrawerOpen };
+    });
+  };
+
+  backdropClickHandler = () => {
+    this.setState({ sideDrawerOpen: false });
+  };
+
+  closeSideDrawerHandler = () => {
+    // console.log("[App.tsx] closeSideDrawerHandler");
+    this.backdropClickHandler();
+  };
+
   render() {
     // console.log("[App.js] render... ");
+    console.log("[App.js] render... ");
+
+    let backdrop;
+
+    if (this.state.sideDrawerOpen) {
+      backdrop = <Backdrop click={this.backdropClickHandler} />;
+    }
 
     return (
       <div className="App">
-        <Navbar />
+        <Navbar
+          drawerClickHandler={this.drawerToggleClickHandler}
+          sideDrawerOpen={this.state.sideDrawerOpen}
+        />
+        <SideDrawer
+          show={this.state.sideDrawerOpen}
+          navigation={this.state.data.navigation}
+          clicked={this.closeSideDrawerHandler}
+        />
+        {backdrop}
         <main>
           <Switch>
             <Route exact path="/" component={Home} />

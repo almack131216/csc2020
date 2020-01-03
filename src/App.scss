@@ -55,6 +55,10 @@
 @import "./components/Breadcrumbs/Breadcrumbs";
 @import "./components/Pagination/Pagination";
 @import "./components/SocialBtns/SocialBtns";
+/* NAVLEFT OFFSCREEN */
+@import "./components/Navigation/Backdrop/Backdrop";
+@import "./components/Navigation/SideDrawer/SideDrawer";
+@import "./components/Navigation/SideDrawer/DrawerToggleButton";
 
 /* CONTAINERS */
 @import "./containers/ItemsFilter/ItemsFilter";
