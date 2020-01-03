@@ -18,7 +18,7 @@
 @import "./assets/scss/modules/_typography-resp";
 @import "./assets/scss/modules/_typography-hyperlink";
 @import "./assets/scss/modules/_typography-ul";
-@import "./assets/scss/modules/_typography-ul-social";
+// @import "./assets/scss/modules/_typography-ul-social";
 // @import "./assets/scss/modules/_button.scss";
 // @import "./assets/scss/modules/_form.scss";
 // @import "./assets/scss/modules/_img.scss";
@@ -54,6 +54,7 @@
 @import "./components/Sidebar/Search/Search";
 @import "./components/Breadcrumbs/Breadcrumbs";
 @import "./components/Pagination/Pagination";
+@import "./components/SocialBtns/SocialBtns";
 
 /* CONTAINERS */
 @import "./containers/ItemsFilter/ItemsFilter";

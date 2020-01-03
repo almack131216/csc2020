@@ -65,27 +65,6 @@
         }
       }
     }
-    ul.social_menu {
-      // border-left:1px solid #666;
-      display: block;
-      float: left;
-
-      li {
-        margin: 0;
-
-        &:last-child:after {
-          content: "";
-          display: none;
-        }
-
-        a {
-          &:before {
-            color: $color_navbar-header-link;
-          }
-        }
-      }
-    }
-    /* (END) ul */
   }
 
   .navbar-toggler {
@@ -262,37 +241,4 @@ body.home {
   #bs-amactive-navbar-collapse {
     display: none !important;
   }
-}
-
-.navbar-collapse {
-  // padding-top:$offset-g1;
-
-  // ul.navbar-nav {
-  //     background:$navbar_color-bg;
-
-  //     li {
-  //         a {
-  //             background:$color_debug;
-  //             display:block;
-  //             @include trim-string();
-  //             padding:$offset-1 $offset-g1;
-  //         }
-  //     }
-  // }
-
-  // @media (min-width:$bp-xs) and (max-width:$bp-md-1) {
-  //     .navbar-nav {
-  //         float: left;
-  //         width: 100%;
-  //         display: block;
-  //         // background:$navbar_color-bg;
-
-  //         li {
-  //             // @include trim-string();
-  //             float:left;
-  //             width:50%;
-  //             display:block;
-  //         }
-  //     }
-  // }
 }

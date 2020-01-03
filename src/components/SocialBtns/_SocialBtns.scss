@@ -1,0 +1,69 @@
+/* _SocialBtns.scss */
+
+//REF: https://codepen.io/Deadlymuffin/pen/hGiqo/
+ul.social_menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+
+  &.on-dark-bg {
+    li a {
+      color: white !important;
+    }
+  }
+
+  li {
+    float: left;
+    display: block;
+    width: $offset-g2;
+    height: $offset-g2;
+
+    a {
+      @include btn-animation();
+      color: #000;
+      text-decoration: none;
+      width: 100%;
+      height: 100%;
+      display: block;
+      text-align: center;
+      font-size: 16px;
+
+      svg {
+        height: 100%;
+      }
+
+      &:hover {
+        svg {
+          color: white !important;
+        }
+      }
+    }
+
+    &.facebook a {
+      color: $color_facebook; //#3d5b99;
+      &:hover {
+        background: $color_facebook; //#3d5b99;
+      }
+    }
+    &.twitter a {
+      color: $color_twitter; //#00aced;
+      &:hover {
+        background: $color_twitter; //#00aced;
+      }
+    }
+    &.instagram a {
+      color: $color_instagram; //#00aced;
+      &:hover {
+        background: $color_instagram; //#00aced;
+      }
+    }
+    &.youtube a {
+      color: $color_youtube; //#e64a41;
+      &:hover {
+        background: $color_youtube; //#e64a41;
+      }
+    }
+  }
+}
+/* (END) ul */
