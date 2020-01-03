@@ -54,12 +54,12 @@ export default class ItemProvider extends Component {
       // FEATURED //
       //////////////
       // Featured items [Live]
-      let featuredItems = items.slice(0, SiteData.featuredItems.count); // get first # items from main array
+      let featuredItems = items.slice(0, SiteData.featuredItems.itemCount); // get first # items from main array
       // Featured items [Archive]
       let itemsArchive = this.formatData(dataArchive);
       let featuredItemsArchive = itemsArchive.slice(
         0,
-        SiteData.featuredItems.count
+        SiteData.featuredItems.itemCount
       );
 
       ///////////////

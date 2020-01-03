@@ -1,7 +1,7 @@
 import React from "react";
 import Item from "./Item";
 
-export default function ItemsList({ items }) {
+const ItemsList = ({ items }) => {
   if (items.length === 0) {
     return (
       <section className="items">
@@ -16,4 +16,6 @@ export default function ItemsList({ items }) {
       })}
     </section>
   );
-}
+};
+
+export default ItemsList;

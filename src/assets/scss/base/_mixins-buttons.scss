@@ -1,288 +1,257 @@
 /* _mixins-buttons.scss */
 
+@mixin btn-disc($style) {
+  width: $offset-4;
+  height: $offset-4;
+  line-height: $offset-4;
+  @include border-radius($offset-2);
+  box-shadow: none;
+  text-align: center;
+  border: 0;
 
-@mixin btn-disc( $style ){
-    width:$offset-4;
-    height:$offset-4;
-    line-height:$offset-4;
-    @include border-radius($offset-2);
-    box-shadow: none;    
-    text-align: center;
-    border: 0;
-    
-    box-shadow: none!important;
-    display: block;    
-    cursor: pointer;    
-    
-    -webkit-transition: all .3s ease;
-    -moz-transition: opacity .25s ease-in-out;
-    transition: all .3s ease;
+  box-shadow: none !important;
+  display: block;
+  cursor: pointer;
 
-    @if $style == 'flex-direction-nav' {
-        background: $color-accent;
-        font-size: 0;
-        color: transparent;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: opacity 0.25s ease-in-out;
+  transition: all 0.3s ease;
 
-        &:after {
-            @include content-fa();
-            margin: 12px 0 0 12px;
-            float:left;
-            color:white;
-        }
+  @if $style == "flex-direction-nav" {
+    background: $color-accent;
+    font-size: 0;
+    color: transparent;
 
-        &.flex-prev:after {
-            margin-left:11px;// optical tweak needed
-            content:"\f053";
-        }
-        &.flex-next:after {
-            content:"\f054";
-        }
-    } @else if $style == 'pagination-num'{
-        // background:orange;
-        @include a-on-secondary();
-    } @else if $style == 'pagination-active'{
-        background: $color-accent;
-        color:white;
-        font-weight:bold;
+    &:after {
+      @include content-fa();
+      margin: 12px 0 0 12px;
+      float: left;
+      color: white;
     }
 
-    @if $style == 'pagination-icon' {
-        display:inline-block;
-        font-size: 0;
-        color: transparent;
-        line-height:50px;       
-
-        a:after {
-            @include content-fa();
-            margin: 12px 0 0 11px;
-            float:left;
-            color:$color-accent;
-        }
-
-        &.li-first a:after {
-            // margin-left:11px;// optical tweak needed
-            content:"\f048";
-        }
-        &.li-prev a:after {
-            // margin-left:11px;// optical tweak needed
-            content:"\f053";
-        }
-        &.li-next a:after {
-            margin-left:13px;// optical tweak needed
-            content:"\f054";
-        }
-        &.li-last a:after {
-            margin-left:13px;// optical tweak needed
-            content:"\f051";
-        }
+    &.flex-prev:after {
+      margin-left: 11px; // optical tweak needed
+      content: "\f053";
     }
-    
+    &.flex-next:after {
+      content: "\f054";
+    }
+  } @else if $style == "pagination-num" {
+    // background:orange;
+    @include a-on-secondary();
+  } @else if $style == "pagination-active" {
+    background: $color-accent;
+    color: white;
+    font-weight: bold;
+  }
+
+  @if $style == "pagination-icon" {
+    display: inline-block;
+    font-size: 0;
+    color: transparent;
+    line-height: 50px;
+  }
 }
 
-@mixin btn-darken-bg-on-hover(){
-    background:rgba(0,0,0,0.2);
+@mixin btn-darken-bg-on-hover() {
+  background: rgba(0, 0, 0, 0.2);
 }
 
-@mixin btn-animation( $speed: .5s ){
-    -o-transition:$speed;
-    -ms-transition:$speed;
-    -moz-transition:$speed;
-    -webkit-transition:$speed;
-    transition:$speed;
+@mixin btn-animation($speed: 0.5s) {
+  -o-transition: $speed;
+  -ms-transition: $speed;
+  -moz-transition: $speed;
+  -webkit-transition: $speed;
+  transition: $speed;
 }
 
 @mixin content-fa() {
-    content:"\f00c";
-    font:normal normal normal 16px/1 FontAwesome;
-    font-stretch:100%;
-    display:inline-block;
-    width:16px;
-    height:16px;
+  content: "\f00c";
+  font: normal normal normal 16px/1 FontAwesome;
+  font-stretch: 100%;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
 }
 
 @mixin btn-base-shared() {
-    font-size:$font-size_button;
-    line-height:$font-size_button;
-    padding: $offset-1 $offset-g1 !important;	
-	text-transform:uppercase;
-    text-decoration:none !important;    	
-    font-weight:bold;
+  font-size: $font-size_button;
+  line-height: $font-size_button;
+  padding: $offset-1 $offset-g1 !important;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  font-weight: bold;
 
-    color:$color_button-text;
-    background:$color_button-bg;
+  color: $color_button-text;
+  background: $color_button-bg;
 
-    display:inline-block;
-    cursor: pointer;
-    height:auto;
-    // outline:none;	    
-    
-    text-shadow: none;
-    text-align: center;   
-    box-sizing: border-box;
-    @include box-shadow(false);
+  display: inline-block;
+  cursor: pointer;
+  height: auto;
+  // outline:none;
 
-    &:hover {
-		color:$color_button-text-hover;
-        background:$color_button-bg-hover;
+  text-shadow: none;
+  text-align: center;
+  box-sizing: border-box;
+  @include box-shadow(false);
 
-        &:active {
-            color:$color_button-text-active;
-            background:$color_button-bg-active;
-        } 
-	}
+  &:hover {
+    color: $color_button-text-hover;
+    background: $color_button-bg-hover;
+
+    &:active {
+      color: $color_button-text-active;
+      background: $color_button-bg-active;
+    }
+  }
 }
 
 @mixin btn-base-bordeshared() {
-	border-width: 2px;
-    border-style: solid;
-    border-color: $color_button-border;
-    width: auto;
-    min-width: auto;
+  border-width: 2px;
+  border-style: solid;
+  border-color: $color_button-border;
+  width: auto;
+  min-width: auto;
 
-    &:hover {
-        border-color:$color_button-border-hover;
+  &:hover {
+    border-color: $color_button-border-hover;
 
-        &:active {
-            border-color:$color_button-border-active;
-        }
-	}
-
-    &.priority:not(:hover):not(:active) {
-        @include btn-color-priority();
+    &:active {
+      border-color: $color_button-border-active;
     }
-    
+  }
+
+  &.priority:not(:hover):not(:active) {
+    @include btn-color-priority();
+  }
 }
 
 @mixin select-base() {
-    @include btn-base-shared();
-    @include border-radius(0px);
-    @include btn-base-bordeshared();
+  @include btn-base-shared();
+  @include border-radius(0px);
+  @include btn-base-bordeshared();
 }
 
 @mixin select-base-priority() {
-    @include select-base();
-    @include btn-color-priority();
-    color:$color_priority-text;
-    background:$color_priority-bg;    
-    border-color:$color_priority-border; 
-
+  @include select-base();
+  @include btn-color-priority();
+  color: $color_priority-text;
+  background: $color_priority-bg;
+  border-color: $color_priority-border;
 }
 
-@mixin btn-base() {  
-	@include btn-base-shared();
-    @include border-radius($offset-2);
+@mixin btn-base() {
+  @include btn-base-shared();
+  @include border-radius($offset-2);
 
-    > span {
-        font-size:inherit;
-        line-height:inherit;	
-        text-transform:inherit;        
-        color:inherit;
-        font-weight:inherit;
-        text-decoration:none !important;
-    }   
+  > span {
+    font-size: inherit;
+    line-height: inherit;
+    text-transform: inherit;
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: none !important;
+  }
 
-    &:hover {
+  &:hover {
+    > i,
+    > span,
+    &:before {
+      color: $color_button-text-hover;
+    }
 
-        > i,
-        > span,
-        &:before {
-            color:$color_button-text-hover;
-        }
-
-        &:active {
-            > i,
-            > span,
-            &:before {
-                color:$color_button-text-active;
-            }
-        } 
-	}       
+    &:active {
+      > i,
+      > span,
+      &:before {
+        color: $color_button-text-active;
+      }
+    }
+  }
 }
 /* [END] g_btn-base() */
 
 @mixin btn-base-border() {
-	@include btn-base();
-    @include btn-base-bordeshared();    
+  @include btn-base();
+  @include btn-base-bordeshared();
 }
 /* [END] btn-base-border() */
 
-@mixin btn-base-pagination( $state: false ) {
-	@include btn-base-border();
-    padding: 0px !important;
-    width: 40px;
-    height: 40px;
-    line-height: 36px;
-    //line-height: calc(40px - 4px);//remove border width top & bottom
-    font-size: $base-font-size;
-    @include border-radius(100%);
+@mixin btn-base-pagination($state: false) {
+  @include btn-base-border();
+  padding: 0px !important;
+  width: 40px;
+  height: 40px;
+  line-height: 36px;
+  //line-height: calc(40px - 4px);//remove border width top & bottom
+  font-size: $base-font-size;
+  @include border-radius(100%);
 
-    @if $state == current {
-        color:black;
-    } @else if $state == hover {
+  @if $state == current {
+    color: black;
+  } @else if $state == hover {
+  }
 
-    }
-
-    &.priority:not(:hover):not(:active) {
-        @include btn-color-priority();
-    }
-    
+  &.priority:not(:hover):not(:active) {
+    @include btn-color-priority();
+  }
 }
 /* [END] btn-base-border() */
 
 @mixin btn-sm() {
-    font-size:10px;
-    @media (max-width:$bp-xs){
-        font-size:12px;
-    }
-    font-weight:normal;
-    padding:5px 10px !important;
+  font-size: 10px;
+  @media (max-width: $bp-xs) {
+    font-size: 12px;
+  }
+  font-weight: normal;
+  padding: 5px 10px !important;
 }
 
 @mixin btn-md() {
-    border-width: 3px;
-    font-size:$font-size_button-md;
-    line-height:$font-size_button-md;
-    padding: $offset-g1 $offset-2 !important;
-    @include border-radius(25px);
+  border-width: 3px;
+  font-size: $font-size_button-md;
+  line-height: $font-size_button-md;
+  padding: $offset-g1 $offset-2 !important;
+  @include border-radius(25px);
 }
 
 @mixin btn-lg() {
-    border-width: 3px;
-    font-size:$font-size_button-lg;
-    line-height:$font-size_button-lg;
-    padding: $offset-g1 $offset-g2 !important;
-    @include border-radius(30px);
+  border-width: 3px;
+  font-size: $font-size_button-lg;
+  line-height: $font-size_button-lg;
+  padding: $offset-g1 $offset-g2 !important;
+  @include border-radius(30px);
 }
 
 @mixin btn-color-priority() {
-    color:$color_priority-text;
-    background:$color_priority-bg;    
-    border-color:$color_priority-border;    
+  color: $color_priority-text;
+  background: $color_priority-bg;
+  border-color: $color_priority-border;
 
-    > span,
-    > i {
-        color:$color_priority-text;
-    }
+  > span,
+  > i {
+    color: $color_priority-text;
+  }
 }
 
 @mixin btn-color-delete() {
-    color:$color_danger;   
+  color: $color_danger;
 
-    > span,
-    > i {
-        color:$color_danger;
-    }
+  > span,
+  > i {
+    color: $color_danger;
+  }
 }
 
 @mixin underline-none() {
-    text-decoration:none !important;
+  text-decoration: none !important;
 
-    > i.fa,
-    > i[class^="icon-"] {
-        text-decoration:none !important;
+  > i.fa,
+  > i[class^="icon-"] {
+    text-decoration: none !important;
 
-        &:before {
-            text-decoration:none !important;
-        }
+    &:before {
+      text-decoration: none !important;
     }
+  }
 }

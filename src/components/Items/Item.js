@@ -35,14 +35,22 @@ const Item = memo(({ item }) => {
   return (
     <article className="featured-item">
       <div className="img-container">
-        {myImg}
+        {/* {myImg}
         <div className="price-topXXX">
           <h3>{context.formatPrice(price)}</h3>
           <h4>{year}</h4>
-          <p>
-            {status}: {brand} - {subcategoryArr.brand}
-          </p>
-        </div>
+          <ul>
+            <li>id: {id}</li>
+            <li>status: {status}</li>
+            <li>nameSanitized: {nameSanitized}</li>
+            <li>category: {category}</li>
+            <li>
+              brand: {brand} - {subcategoryArr.brand}
+            </li>
+            <li>date: {date}</li>
+            <li>: {date}</li>
+          </ul>
+        </div> */}
         <Link
           to={context.formatItemLink(item)}
           className="btn-primary room-link"

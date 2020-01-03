@@ -10,7 +10,10 @@ const siteData = {
   },
   priceRangeArr: [0, 5000, 10000, 20000, 30000, 40000, 100000],
   featuredItems: {
-    count: 8
+    itemCount: 7
+  },
+  pagination: {
+    postsPerPage: 9
   },
   contact: {
     slug: NavArray.contact.slug,
