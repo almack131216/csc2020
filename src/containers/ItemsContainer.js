@@ -16,6 +16,7 @@ function ItemsContainer({ context }) {
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = sortedItems.slice(indexOfFirstPost, indexOfLastPost);
+  const showPagination = sortedItems.length > postsPerPage ? true : false;
 
   // CHANGE page
   const paginate = pageNumber => setCurrentPage(pageNumber);
@@ -28,12 +29,14 @@ function ItemsContainer({ context }) {
       <Breadcrumbs />
       <ItemsFilter items={items} />
       <ItemsList items={currentPosts} />
-      <Pagination
-        postsPerPage={postsPerPage}
-        totalPosts={sortedItems.length}
-        paginate={paginate}
-        currentPage={currentPage}
-      />
+      {showPagination === true ? (
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPosts={sortedItems.length}
+          paginate={paginate}
+          currentPage={currentPage}
+        />
+      ) : null}
     </>
   );
 }
