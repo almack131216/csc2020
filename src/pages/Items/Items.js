@@ -9,18 +9,24 @@ import { ItemContext } from "../../Context";
 
 const Items = props => {
   const context = useContext(ItemContext);
-  const { getDataItems } = context;
+  const { getDataItems, brand } = context;
 
   let showWidgetOpeningHours = null;
   let showWidgetContact = null;
 
   const categoryName = props.category ? props.category : "Live";
 
-  useEffect(() => {
-    getDataItems(categoryName, 2);
-  }, [getDataItems, categoryName]);
+  let getSlug = window.location.pathname;
+  let getBrandFromSlug = getSlug
+    .substr(0, getSlug.indexOf("_"))
+    .replace("/", "");
 
-  console.log("[pages>Items.js] categoryName...", categoryName);
+  useEffect(() => {
+    console.log("[pages>Items.js] useEffect()...", getBrandFromSlug);
+    getDataItems(categoryName, getBrandFromSlug);
+  }, [getDataItems, categoryName, getBrandFromSlug]);
+
+  console.log("[pages>Items.js] categoryName...", categoryName, brand);
 
   switch (categoryName) {
     case "Archive":
@@ -35,7 +41,7 @@ const Items = props => {
   return (
     <div className="container">
       <section className="content-wrap row">
-        <div className="sidebar hidden-md-down col-md-3 padding-x-0">
+        <div className="sidebarXXX hidden-md-down col-md-3 padding-x-0">
           <NavLeft />
           <BrandList />
 
@@ -44,7 +50,7 @@ const Items = props => {
           ) : null}
           {showWidgetContact ? <Widget body={WidgetData.contact} /> : null}
         </div>
-        <div className="content col-sm-12 col-md-9 col-posts-parent">
+        <div className="contentXXX col-sm-12 col-md-9 col-posts-parent">
           <ItemsContainer />
         </div>
       </section>

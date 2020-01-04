@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function BrandList() {
   const context = useContext(ItemContext);
-  const { brand, brandArr, categoryArr } = context;
+  const { brandArr, categoryArr, categoryName, formatBrandLink } = context
   // SET title
   let brandCount = brandArr[0] ? brandArr[0].itemCount : 0;
   const title = `${brandCount} ${categoryArr.title}`;
@@ -16,7 +16,9 @@ export default function BrandList() {
   brands = brands.map((item, index) => {
     return (
       <li value={item.id} key={index}>
-        {item.brand} ({item.itemCount})
+        <Link to={formatBrandLink(categoryName, item.slug)}>
+          {item.brand} ({item.itemCount})
+        </Link>
       </li>
     );
   });

@@ -8,9 +8,11 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
   ///////
   // <li> Generate Tag to avoid duplication of markup
   const generateLiTag = ({ num, isPrev, isNext, isActive }) => {
-    console.log("XXXXXXXXXXXX:", isPrev);
+    console.log("[Pagination.js] generateLiTag()...", isPrev);
 
-    let liKey = isPrev || isNext ? "li-prev-next" : num;
+    let liKey = num;
+    if (isPrev) liKey = "li-prev";
+    if (isNext) liKey = "li-next";
     let liClass = isPrev || isNext ? "li-prev-next" : "li-num";
     if (isActive === true) {
       liClass += " active";

@@ -73,12 +73,26 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route
               exact
+              path="/classic-cars-for-sale"
+              component={() => <Items category="Live" />}
+            />
+            <Route
+              exact
               path="/classic-car-archive"
               component={() => <Items category="Archive" />}
             />
-            <Route exact path="/classic-cars-for-sale" component={Items} />
-            {/* <Route exact path="/ford-in-our-showroom" component={Items} /> */}
-            <Route exact path="/*/*/:slug" component={Item} />
+            <Route
+              exact
+              path="/:brand_for-sale"
+              component={() => <Items category="Live" />}
+            />
+            <Route
+              exact
+              path="/:brand_sold"
+              component={() => <Items category="Archive" />}
+            />
+            <Route exact path="/*/for-sale/:slug" component={Item} />
+            <Route exact path="/*/sold/:slug" component={Item} />
             <Route component={Error} />
           </Switch>
         </main>

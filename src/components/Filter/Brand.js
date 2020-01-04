@@ -29,7 +29,7 @@ const brandFilter = props => {
         name="brand"
         id="brand"
         className={classControl}
-        value={brand}
+        value={brand ? brand : ""}
         onChange={props.changed}
       >
         {brands}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import ItemsFilter from "./ItemsFilter/ItemsFilter";
 import ItemsList from "../components/Items/ItemsList";
@@ -15,7 +15,10 @@ function ItemsContainer({ context }) {
   // GET current posts
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = sortedItems.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts =
+    sortedItems.length > postsPerPage
+      ? sortedItems.slice(indexOfFirstPost, indexOfLastPost)
+      : sortedItems;
   const showPagination = sortedItems.length > postsPerPage ? true : false;
 
   // CHANGE page

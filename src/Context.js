@@ -79,20 +79,39 @@ export default class ItemProvider extends Component {
   /////////////////////////////////////////////////////////////////////////// GET data (items)
   // Get data from API to show on the items page(s)
   // accept category and status parameter to determine api call
-  getDataItems = async (getCategoryName, getStatusId) => {
-    const isStockPage =
-      getCategoryName === "Live" || getCategoryName === "Archive"
-        ? true
-        : false;
-    const categoryName = getCategoryName; // ? getCategoryName : null;
-    const statusId = getStatusId ? getStatusId : 1; // status determines Live or Archive
+  getDataItems = async (getCategoryName, getBrandSlug) => {
+    console.log(
+      "[Context.js] getDataItems()...",
+      getCategoryName,
+      getBrandSlug
+    );
 
     try {
-      const data = await fetch(CatData[categoryName].api).then(data =>
+      const data = await fetch(CatData[getCategoryName].api).then(data =>
         data.json()
       );
 
-      let items = this.formatData(data);
+      const categoryName = getCategoryName; // ? getCategoryName : null;
+      const isStockPage =
+        categoryName === "Live" || categoryName === "Archive" ? true : false;
+
+      const statusId = categoryName === "Archive" ? 2 : 1;
+      const brandSlug = getBrandSlug ? getBrandSlug : null; // status determines Live or Archive
+
+      let allItems = this.formatData(data);
+      let items = allItems;
+      let sortedItems = [];
+
+      let brand = null;
+      if (brandSlug) {
+        brand = allItems.find(x => x.subcategoryArr.slug === brandSlug).brand;
+        console.log("[Context.js] brandSlug received...", brand);
+        sortedItems = allItems.filter(
+          item => item.subcategoryArr.slug === brandSlug
+        );
+      } else {
+        sortedItems = allItems;
+      }
       // console.log("[Context.js] getDataItems > items...", items);
 
       ////////////
@@ -140,8 +159,9 @@ export default class ItemProvider extends Component {
         items,
         categoryName,
         categoryArr,
+        brand,
         brandArr,
-        sortedItems: items,
+        sortedItems,
         loading: false,
         price: maxPrice,
         minPrice,
@@ -169,12 +189,18 @@ export default class ItemProvider extends Component {
     // );
   }
 
-  componentDidUpdate() {}
+  componentDidUpdate() {
+    console.log(
+      "[Context.js] componentDidUpdate...",
+      this.state.categoryName,
+      this.state.brand
+    );
+  }
 
   /////////////////////////////////////////////////////////////////////////// SET brand array (items)
   setBrandArr = myObj => {
     const myArr = { list: myObj }; //put obj array into list for flatMap
-    const myUniqueList = myArr.list
+    const myUniqueBrandList = myArr.list
       .flatMap(obj => obj.subcategoryArr)
       .filter(
         (e, i, a) =>
@@ -182,7 +208,7 @@ export default class ItemProvider extends Component {
       );
 
     // SORT alphabetically [A-Z]
-    myUniqueList.sort(function(a, b) {
+    myUniqueBrandList.sort(function(a, b) {
       var nameA = a.brand.toLowerCase(),
         nameB = b.brand.toLowerCase();
       if (nameA < nameB)
@@ -193,13 +219,19 @@ export default class ItemProvider extends Component {
     });
 
     // COUNT items in subcategory
-    let myUniqueListWithCount = this.countItemsInBrand(myUniqueList, myObj);
-    myUniqueListWithCount = [
+    let myUniqueBrandListWithCount = this.countItemsInBrand(
+      myUniqueBrandList,
+      myObj
+    );
+    myUniqueBrandListWithCount = [
       { id: "all", brand: "all", itemCount: myObj.length },
-      ...myUniqueListWithCount
+      ...myUniqueBrandListWithCount
     ];
-    console.log("[Context.js] myUniqueList...", myUniqueListWithCount);
-    return myUniqueListWithCount;
+    console.log(
+      "[Context.js] myUniqueBrandList...",
+      myUniqueBrandListWithCount
+    );
+    return myUniqueBrandListWithCount;
   };
 
   /////////////////////////////////////////////////////////////////////////// COUNT items in each brand
@@ -239,7 +271,7 @@ export default class ItemProvider extends Component {
     let tempItems = getItemsData.map(dataItem => {
       let id = dataItem.id;
       let name = dataItem.name;
-      let nameSanitized = slugify(dataItem.name, { lower: true });
+      let nameSanitized = "/" + dataItem.slug; //slugify(dataItem.name, { lower: true });
       let status = dataItem.status;
       let category = dataItem.category;
       let categoryArr = this.getCategoryArr(category, dataItem.status);
@@ -299,6 +331,20 @@ export default class ItemProvider extends Component {
     return CatData[itemCategoryName].slug;
   };
 
+  /////////////////////////////////////////////////////////////////////////// FORMAT brand link
+  // get slug from CatData based on categoryName
+  formatBrandLink = (getCategoryName, getBrandSlug) => {
+    let apprendUrl = getCategoryName === "Archive" ? "_sold" : "_for-sale";
+    let slug = getBrandSlug + apprendUrl;
+    console.log(
+      "[Context.js] formatBrandLink > slug...",
+      slug,
+      getCategoryName,
+      getBrandSlug
+    );
+    return slug;
+  };
+
   /////////////////////////////////////////////////////////////////////////// LOAD data (items)
   // get all category data from CatData
   getCategoryArr = (getCategoryName, getItemStatus) => {
@@ -355,7 +401,7 @@ export default class ItemProvider extends Component {
     return allClasses;
   };
 
-  /////////////////////////////////////////////////////////////////////////// LOAD data (items)
+  /////////////////////////////////////////////////////////////////////////// FILTER items
   handleFilterChange = event => {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
@@ -437,7 +483,8 @@ export default class ItemProvider extends Component {
           setFilterToggle: this.setFilterToggle,
           fieldSorter: this.fieldSorter,
           handleFilterChange: this.handleFilterChange,
-          styleAppendClass: this.styleAppendClass
+          styleAppendClass: this.styleAppendClass,
+          formatBrandLink: this.formatBrandLink
         }}
       >
         {this.props.children}
