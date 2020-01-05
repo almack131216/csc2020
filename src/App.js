@@ -91,8 +91,12 @@ class App extends Component {
               path="/:brand_sold"
               component={() => <Items category="Archive" />}
             />
-            <Route exact path="/*/for-sale/:slug" component={Item} />
-            <Route exact path="/*/sold/:slug" component={Item} />
+            <Route
+              exact
+              path="/*/classic-cars-for-sale/:slug"
+              component={Item}
+            />
+            <Route exact path="/*/classic-car-archive/:slug" component={Item} />
             <Route component={Error} />
           </Switch>
         </main>

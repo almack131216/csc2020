@@ -26,7 +26,11 @@ const Items = props => {
     getDataItems(categoryName, getBrandFromSlug);
   }, [getDataItems, categoryName, getBrandFromSlug]);
 
-  console.log("[pages>Items.js] categoryName...", categoryName, brand);
+  console.log(
+    "[pages>Items.js] categoryName = ",
+    categoryName,
+    " | brand = " + brand
+  );
 
   switch (categoryName) {
     case "Archive":
@@ -40,8 +44,8 @@ const Items = props => {
 
   return (
     <div className="container">
-      <section className="content-wrap row">
-        <div className="sidebarXXX hidden-md-down col-md-3 padding-x-0">
+      <section className="row">
+        <div className="sidebar hidden-md-down col-md-3 padding-x-0">
           <NavLeft categoryName={categoryName} />
           <BrandList />
 
@@ -50,7 +54,7 @@ const Items = props => {
           ) : null}
           {showWidgetContact ? <Widget body={WidgetData.contact} /> : null}
         </div>
-        <div className="contentXXX col-sm-12 col-md-9 col-posts-parent">
+        <div className="content col-sm-12 col-md-9 col-posts-parent">
           <ItemsContainer />
         </div>
       </section>

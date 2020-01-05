@@ -1,0 +1,111 @@
+/* _Item.scss */
+
+$card-color-bg: white;
+$card-color-txt: #999;
+$card-color-txt-price-detail: #f90;
+$card-color-txt-price-sold: #f00;
+
+$card-color-accent-bg: $color_accent;
+$card-color-accent-link-title: white;
+$card-color-accent-txt: #ccc;
+$card-color-accent-link-category: $color_secondary;
+
+$card-lg-height: 300px;
+
+article.card {
+  position: relative;
+  height: $card-lg-height;
+
+  .card-img {
+    display: block;
+    background-color: $card-color-txt;
+    float: left;
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+
+    a {
+      display: block;
+      float: left;
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .card-txt {
+    display: block;
+    float: left;
+    width: 100%;
+    height: 40%;
+
+    .title {
+      margin: $offset-g1 0 5px 0;
+    }
+
+    .price {
+      color: $card-color-txt;
+      &.detail {
+        color: $card-color-txt-price-detail;
+      }
+      &.sold {
+        color: $card-color-txt-price-sold;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    }
+
+    .year {
+      color: $card-color-txt;
+      position: absolute;
+      margin: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    .category {
+      position: absolute;
+      //   padding: 10px 15px;
+      margin: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
+
+.card-blue article.card {
+  background: $card-color-accent-bg;
+
+  .card-img {
+  }
+
+  .card-txt {
+    padding-left: $offset-g1;
+    padding-right: $offset-g1;
+
+    .title a {
+      color: $card-color-accent-link-title;
+    }
+
+    .price:not(.sold):not(.detail) {
+      color: $card-color-accent-txt;
+    }
+
+    .year {
+      color: $card-color-accent-txt;
+      right: $offset-g1;
+      bottom: $offset-g1;
+    }
+
+    .category {
+      left: $offset-g1;
+      bottom: $offset-g1;
+      a {
+        color: $card-color-accent-link-category;
+      }
+    }
+  }
+}

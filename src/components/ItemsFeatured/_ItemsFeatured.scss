@@ -1,0 +1,18 @@
+.featured-items-wrap {
+  padding: $offset-g1;
+  .slick-slide {
+    box-sizing: border-box;
+    padding: $offset-g1;
+  }
+}
+
+.slick-slider.carousel-featured {
+  @extend .slick-slider-base;
+}
+
+.slick-slider.carousel-featured {
+  .slick-prev,
+  .slick-next {
+    top: 115px;
+  }
+}

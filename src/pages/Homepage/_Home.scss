@@ -1,12 +1,12 @@
 /* _Home.scss */
 
 main {
-  .content-wrap {
-    > div.sidebar {
+  .content-wrap.match-heights {
+    > .sidebar {
       width: 25%;
     }
 
-    > div.content {
+    > .content {
       width: 75%;
     }
 

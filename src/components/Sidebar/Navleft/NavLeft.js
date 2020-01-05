@@ -9,7 +9,11 @@ const navLeft = props => {
     // SET active class (basic: match url to slug)
     let isActive = window.location.pathname === link.slug;
     // SET active class (for when we are on a brand page - need to highlight parent category link)
-    if (!isActive && CatData[props.categoryName].slug === link.slug)
+    if (
+      !isActive &&
+      props.categoryName &&
+      CatData[props.categoryName].slug === link.slug
+    )
       isActive = true;
     // ASSIGN class if active
     let className = isActive ? "active" : "";

@@ -5,7 +5,6 @@ import Item from "../Items/Item";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import "./ItemsFeatured.css";
 
 export default class ItemsFeatured extends Component {
   constructor(props) {
@@ -36,14 +35,41 @@ export default class ItemsFeatured extends Component {
 
     const settings = {
       className: "slider carousel-featured",
-      dots: true,
+      dots: false,
       infinite: true,
       speed: 500,
       slidesToShow: 4,
-      slidesToScroll: 4
+      slidesToScroll: 4,
+      centerPadding: 30,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
     };
     return (
-      <section>
+      <section className="featured-items-wrap">
         {loading ? <Loading /> : <Slider {...settings}>{items}</Slider>}
       </section>
     );

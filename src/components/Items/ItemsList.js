@@ -10,10 +10,19 @@ const ItemsList = ({ items }) => {
     );
   }
   return (
-    <section className="items">
-      {items.map(item => {
-        return <Item key={item.id} item={item} />;
-      })}
+    <section className="items-wrap">
+      <div className="row">
+        {items.map(item => {
+          return (
+            <div
+              key={item.id}
+              className="col-xs-12 col-lg-4 col-md-4 col-sm-6 card-blue"
+            >
+              <Item item={item} />
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 };

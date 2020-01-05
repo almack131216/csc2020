@@ -9,6 +9,7 @@ const ItemContext = React.createContext();
 export default class ItemProvider extends Component {
   state = {
     siteData: SiteData,
+    catData: CatData,
     items: [],
     showFilter: true,
     categoryName: null,
@@ -191,9 +192,9 @@ export default class ItemProvider extends Component {
 
   componentDidUpdate() {
     console.log(
-      "[Context.js] componentDidUpdate...",
+      "[Context.js] componentDidUpdate() > categoryName = ",
       this.state.categoryName,
-      this.state.brand
+      " | brand = " + this.state.brand
     );
   }
 
@@ -271,12 +272,13 @@ export default class ItemProvider extends Component {
     let tempItems = getItemsData.map(dataItem => {
       let id = dataItem.id;
       let name = dataItem.name;
-      let nameSanitized = "/" + dataItem.slug; //slugify(dataItem.name, { lower: true });
+      let slug = dataItem.slug;
       let status = dataItem.status;
       let category = dataItem.category;
       let categoryArr = this.getCategoryArr(category, dataItem.status);
       let subcategoryArr = dataItem.catalogue_subcat;
       let price = dataItem.price;
+      let price_details = dataItem.price_details;
       let brand = dataItem.brand;
       let year = dataItem.year;
       let date = dataItem.createdAt;
@@ -289,9 +291,10 @@ export default class ItemProvider extends Component {
         categoryArr,
         subcategoryArr,
         name,
-        nameSanitized,
+        slug,
         brand,
         price,
+        price_details,
         year,
         image,
         date
@@ -336,12 +339,12 @@ export default class ItemProvider extends Component {
   formatBrandLink = (getCategoryName, getBrandSlug) => {
     let apprendUrl = getCategoryName === "Archive" ? "_sold" : "_for-sale";
     let slug = getBrandSlug + apprendUrl;
-    console.log(
-      "[Context.js] formatBrandLink > slug...",
-      slug,
-      getCategoryName,
-      getBrandSlug
-    );
+    // console.log(
+    //   "[Context.js] formatBrandLink > slug...",
+    //   slug,
+    //   getCategoryName,
+    //   getBrandSlug
+    // );
     return slug;
   };
 
@@ -371,9 +374,11 @@ export default class ItemProvider extends Component {
   /////////////////////////////////////////////////////////////////////////// FORMAT item link
   // [domain]/item-slug/category-slug/item-id
   formatItemLink = getItem => {
-    let { id, nameSanitized, status, category } = getItem;
+    let { id, name, slug, status, category } = getItem;
     // console.log("??? item category: ", category);
-    let itemLink = `/${nameSanitized}`;
+    let itemSlug = slug;
+    if (!slug) itemSlug = slugify(name, { lower: true });
+    let itemLink = `/${itemSlug}`;
     if (
       this.state.categoryName &&
       category === CatData[this.state.categoryName].category
@@ -408,7 +413,7 @@ export default class ItemProvider extends Component {
     const name = event.target.name;
     // const value = event.target.value;
     // console.log("[Context.js] handleFilterChange > this is type..." + type);
-    console.log("[Context.js] handleFilterChange > this is name..." + name);
+    console.log("[Context.js] handleFilterChange > " + name + " = " + value);
     // console.log("[Context.js] handleFilterChange > this is value..." + value);
     this.setState(
       {
@@ -425,7 +430,7 @@ export default class ItemProvider extends Component {
   };
   // filter items
   filterItems = () => {
-    // console.log("[Context.js] filterItems...");
+    console.log("[Context.js] filterItems...");
     let {
       items,
       categoryName,
@@ -441,7 +446,7 @@ export default class ItemProvider extends Component {
     // all the items
     let sortedItems = [...items];
     // filter by brand
-    if (brand !== "all") {
+    if (brand && brand !== "all") {
       // console.log("[Context.js] filterItems() > BRAND CHANGED", brand);
       sortedItems = sortedItems.filter(item => item.brand === parseInt(brand));
     }
@@ -458,6 +463,7 @@ export default class ItemProvider extends Component {
     const field = sortByArr.field;
     const field2 = sortByArr.field2;
     sortedItems.sort(this.fieldSorter([field, field2]));
+    console.log("[Context.js] filterItems > sortedItems...", sortedItems);
 
     ///////////////
     // SET STATE //
