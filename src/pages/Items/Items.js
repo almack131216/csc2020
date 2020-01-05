@@ -42,7 +42,7 @@ const Items = props => {
     <div className="container">
       <section className="content-wrap row">
         <div className="sidebarXXX hidden-md-down col-md-3 padding-x-0">
-          <NavLeft />
+          <NavLeft categoryName={categoryName} />
           <BrandList />
 
           {showWidgetOpeningHours ? (
