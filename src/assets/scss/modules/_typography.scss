@@ -1,91 +1,100 @@
 /* _typography.scss */
 
-body.amactive {
-    h1, h2, h3, h4, h5, h6 {
-        color:black;
-        // font-family: "Open Sans", Arial, Helvetica, sans-serif;
-        font-family: "Century Gothic", "Apple Gothic", sans-serif;
-        font-weight: normal;
-    }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: black;
+  // font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: "Century Gothic", "Apple Gothic", sans-serif;
+  font-weight: normal;
+}
 
-    p {
-        font-size:$base-font-size;
-        color:$base-font-color;
-        line-height:$base-font-line-height;
-    }
+p {
+  font-size: $base-font-size;
+  color: $base-font-color;
+  line-height: $base-font-line-height;
+}
 
-    h1 {
-        font-size: 48px;
-        line-height: 60px;
-        color: $color_post-title;
-    }
+h1 {
+  font-size: 48px;
+  line-height: 60px;
+  color: $color_post-title;
+}
 
-    h2 {
-        font-size: 36px;
-        line-height: 42px;
-        font-weight: 400;
-    }
+h2 {
+  font-size: 36px;
+  line-height: 42px;
+  font-weight: 400;
+}
 
-    h3, .h3 {
-        font-size: 20px;
-        line-height: 30px;
-        font-weight: 700;
-    }
+h3,
+.h3 {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 700;
+}
 
-    h4, .h4 {
-        font-size: 14px;
-        line-height: 20px;
-        font-weight: normal;
-        text-transform:uppercase;
-    }
+h4,
+.h4 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
 
-    h5, .h5 {
-        font-size: 14px;
-        line-height: 20px;
-        font-weight: bold;        
-        a {
-            color:black;
-        }
-    }
+h5,
+.h5 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+  a {
+    color: black;
+  }
+}
 
-    h6 {
-        // background: black;
-        // color: white !important;
-        padding: 0 5px;
-        // display: inline-block;
-        font-weight: bold;
-    }
+h6 {
+  // background: black;
+  // color: white !important;
+  padding: 0 5px;
+  // display: inline-block;
+  font-weight: bold;
+}
 
-    b, strong, .strong {
-        font-weight: bold;
-        color:black;
-    }
+b,
+strong,
+.strong {
+  font-weight: bold;
+  color: black;
+}
 
-    .line-through {
-        text-decoration: line-through;
-    }
+.line-through {
+  text-decoration: line-through;
+}
 
-    .text-align-center {
-        text-align:center;
-    }
+.text-align-center {
+  text-align: center;
+}
 
-    .fmt-uppercase {
-        text-transform: uppercase;
-    }
+.fmt-uppercase {
+  text-transform: uppercase;
+}
 
-    .fmt-trim-string {
-        @include trim-string();
-    }
-    .snippet:after,.snippetWrap p:after {
-        content:'...';
-    }
+.fmt-trim-string {
+  @include trim-string();
+}
+.snippet:after,
+.snippetWrap p:after {
+  content: "...";
+}
 
-    ul {
-        /* see _typography-ul.scss */
-    }
+ul {
+  /* see _typography-ul.scss */
 }
 
 .hide-text {
-    color: transparent;
-    font-size:0px !important;
+  color: transparent;
+  font-size: 0px !important;
 }

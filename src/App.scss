@@ -13,35 +13,14 @@
 @import "./assets/scss/base/_base-colors";
 
 /* MODULES - individual site components */
-// @import "./assets/scss/modules/_search-widget.scss";
 @import "./assets/scss/modules/_typography";
 @import "./assets/scss/modules/_typography-resp";
 @import "./assets/scss/modules/_typography-hyperlink";
 @import "./assets/scss/modules/_typography-ul";
-// @import "./assets/scss/modules/_typography-ul-social";
-// @import "./assets/scss/modules/_button.scss";
-// @import "./assets/scss/modules/_form.scss";
-// @import "./assets/scss/modules/_img.scss";
-// @import "./assets/scss/modules/_title-splitter.scss";
-// @import "./assets/scss/modules/_pagination.scss";
-// @import "./assets/scss/modules/_search-form.scss";
-// @import "./assets/scss/modules/_breadcrumbs.scss";
-// @import "./assets/scss/modules/_embed-youtube.scss";
-// @import "./assets/scss/modules/_corner-ribbons.scss";
 
 /* LAYOUTS - page layout styles */
 @import "./assets/scss/layouts/_offsets";
-// @import "./assets/scss/layouts/_layout.scss";
-// @import "./assets/scss/layouts/_footer.scss";
-// @import "./assets/scss/layouts/_register.scss";
-// @import "./assets/scss/layouts/_contact-form.scss";
 @import "./assets/scss/layouts/_responsive";
-// @import "./assets/scss/layouts/_homepage.scss";
-// @import "./assets/scss/layouts/_content-item-grid.scss";
-// @import "./assets/scss/layouts/_content-item-details.scss";
-// @import "./assets/scss/layouts/_sidebar.scss";
-// @import "./assets/scss/layouts/_post-photos.scss";
-// @import "./assets/scss/layouts/_portfolio.scss";
 
 /* COMPONENTS */
 @import "./components/Sidebar/Sidebar";
