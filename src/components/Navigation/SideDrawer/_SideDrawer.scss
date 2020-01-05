@@ -1,10 +1,10 @@
 /* SideDrawer.scss */
 
-$SideDrawerWidth: 270px;
+$SideDrawerWidth: 250px;
 
 .side-drawer {
+  @extend .nav-left-wrap;
   height: 100%;
-  background: white;
   box-shadow: 1px 0 7px rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -16,26 +16,5 @@ $SideDrawerWidth: 270px;
 
   &.open {
     transform: translateX(0);
-  }
-
-  ul {
-    height: 100%;
-    list-style: none;
-    display: block;
-    margin: $offset-g1;
-    padding: 0;
-
-    li {
-      margin: 0;
-      padding: 0;
-
-      a {
-        text-decoration: none;
-        text-align: left;
-        display: block;
-        padding: 0 $offset-g1;
-        font-weight: bold;
-      }
-    }
   }
 }

@@ -8,12 +8,16 @@ const sideDrawer = props => {
   }
 
   const navLinks = props.navigation.map((link, index) => {
+    var isActive = window.location.pathname === link.slug;
+    var className = isActive ? "active" : "";
+
     return link.navSide ? (
       <li key={index}>
         <Link
           onClick={props.clicked}
           to={link.slug}
-          title={"Link to " + link.title}
+          title={link.titleHover}
+          className={className}
         >
           {link.title}
         </Link>

@@ -22,7 +22,7 @@ const catArray = {
     id: 3,
     title: "Customer Testimonials",
     titleSub: "Read what our customers have to say",
-    titleHover: "ink to our customer comments page",
+    titleHover: "Link to our customer comments page",
     titleDocument:
       "Customer Testimonials | Read what our customers have to say",
     slug: "/testimonials"

@@ -7,7 +7,7 @@ const navArray = {
     titleDocument: process.env.REACT_APP_DOC_TITLE,
     slug: "/",
     navTop: false,
-    navSide: false
+    navSide: true
   },
   live: {
     title: CatData["Live"].title,
