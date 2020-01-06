@@ -10,40 +10,44 @@ $card-color-accent-link-title: white;
 $card-color-accent-txt: #ccc;
 $card-color-accent-link-category: $color_secondary;
 
-$card-lg-height: 300px;
-
-article.card {
-  position: relative;
-  height: $card-lg-height;
+.card article {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
 
   .card-img {
-    display: block;
-    background-color: $card-color-txt;
-    float: left;
     width: 100%;
-    height: 60%;
-    overflow: hidden;
+    display: flex;
+    padding: 0;
+    background-color: $card-color-txt;
 
     a {
       display: block;
-      float: left;
       width: 100%;
-      height: 100%;
+
       img {
         width: 100%;
         height: auto;
+
+        &.img-loading {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }
 
   .card-txt {
-    display: block;
-    float: left;
+    align-self: flex-end;
     width: 100%;
-    height: 40%;
+    padding: $offset-g1 0;
+    background: yellow;
+    flex-grow: 1;
 
     .title {
-      margin: $offset-g1 0 5px 0;
+      margin: 0 0 5px 0;
     }
 
     .price {
@@ -57,53 +61,53 @@ article.card {
         text-transform: uppercase;
       }
     }
+  }
 
-    .year {
-      color: $card-color-txt;
-      position: absolute;
-      margin: 0;
-      bottom: 0;
-      right: 0;
-    }
+  .card-ftr {
+    margin-top: auto;
+    background: orange;
+    padding: $offset-g1 0;
+    display: flex;
+    justify-content: space-between;
 
     .category {
-      position: absolute;
-      //   padding: 10px 15px;
-      margin: 0;
-      bottom: 0;
-      left: 0;
+      text-transform: uppercase;
+    }
+    .year {
+      color: $card-color-txt;
     }
   }
 }
 
-.card-blue article.card {
+.card.card-bg-accent {
   background: $card-color-accent-bg;
 
-  .card-img {
-  }
-
-  .card-txt {
-    padding-left: $offset-g1;
-    padding-right: $offset-g1;
-
-    .title a {
-      color: $card-color-accent-link-title;
+  article {
+    .card-img {
     }
 
-    .price:not(.sold):not(.detail) {
-      color: $card-color-accent-txt;
+    .card-txt {
+      padding-left: $offset-g1;
+      padding-right: $offset-g1;
+
+      .title a {
+        color: $card-color-accent-link-title;
+      }
+
+      .price:not(.sold):not(.detail) {
+        color: $card-color-accent-txt;
+      }
     }
 
-    .year {
-      color: $card-color-accent-txt;
-      right: $offset-g1;
-      bottom: $offset-g1;
-    }
+    .card-ftr {
+      padding-left: $offset-g1;
+      padding-right: $offset-g1;
 
-    .category {
-      left: $offset-g1;
-      bottom: $offset-g1;
-      a {
+      .year {
+        color: $card-color-accent-txt;
+      }
+
+      a.category {
         color: $card-color-accent-link-category;
       }
     }

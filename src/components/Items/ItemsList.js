@@ -11,13 +11,10 @@ const ItemsList = ({ items }) => {
   }
   return (
     <section className="items-wrap">
-      <div className="row">
+      <div className="cards">
         {items.map(item => {
           return (
-            <div
-              key={item.id}
-              className="col-xs-12 col-lg-4 col-md-4 col-sm-6 card-blue"
-            >
+            <div key={item.id} className="card card-bg-accent">
               <Item item={item} />
             </div>
           );
@@ -26,5 +23,5 @@ const ItemsList = ({ items }) => {
     </section>
   );
 };
-
+//col-xs-12 col-lg-4 col-md-4 col-sm-4 col-xs-6
 export default ItemsList;

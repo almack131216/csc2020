@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { memo } from "react";
 import Img from "react-image";
-import loadingGif from "../../images/gif/loading-arrow.gif";
+import ImageNotFound from "../../assets/images/image-not-found.jpg";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
 
@@ -25,17 +25,11 @@ const Item = memo(({ item }) => {
     year
   } = item;
 
-  // let images = require.context("../images/catalogue", true);
-
   const image2 = image; //require(`${image}`);
   // const imgUrl = `http://www.classicandsportscar.ltd.uk/images_catalogue/${image}`;
 
   const myImg = (
-    <Img
-      src={[image2, loadingGif]}
-      alt={name}
-      className="css-grid__img top img-responsive"
-    />
+    <Img src={[image2, ImageNotFound]} alt={name} className="img-loading" />
   );
 
   let classPrice = ["price"];
@@ -54,7 +48,7 @@ const Item = memo(({ item }) => {
 
   // console.log(image);
   return (
-    <article className="card">
+    <article>
       <div className="card-img">
         <Link to={formatItemLink(item)}>{myImg}</Link>
       </div>
@@ -63,11 +57,14 @@ const Item = memo(({ item }) => {
           <Link to={formatItemLink(item)}>{name}</Link>
         </h5>
         <span className={classPrice.join(" ")}>{itemPrice}</span>
-        <h4 className="category">
-          <Link to={formatBrandLink(categoryName, subcategoryArr.slug)}>
-            {subcategoryArr.brand}
-          </Link>
-        </h4>
+      </div>
+      <div className="card-ftr">
+        <Link
+          className="category"
+          to={formatBrandLink(categoryName, subcategoryArr.slug)}
+        >
+          {subcategoryArr.brand}
+        </Link>
         <span className="year">{year}</span>
       </div>
     </article>
