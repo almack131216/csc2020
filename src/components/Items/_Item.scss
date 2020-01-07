@@ -16,6 +16,7 @@ $card-color-accent-link-category: $color_secondary;
   display: flex;
   flex-direction: column;
   flex: auto;
+  // border: 1px solid $color_layout-border;
 
   .card-img {
     width: 100%;
@@ -43,10 +44,11 @@ $card-color-accent-link-category: $color_secondary;
     align-self: flex-end;
     width: 100%;
     padding: $offset-g1 0;
-    background: yellow;
+    // background: yellow;
     flex-grow: 1;
 
     .title {
+      display: block;
       margin: 0 0 5px 0;
     }
 
@@ -65,7 +67,7 @@ $card-color-accent-link-category: $color_secondary;
 
   .card-ftr {
     margin-top: auto;
-    background: orange;
+    // background: orange;
     padding: $offset-g1 0;
     display: flex;
     justify-content: space-between;

@@ -27,7 +27,7 @@ export default class ItemsFeatured extends Component {
 
     items = SwitchItems.map(item => {
       return (
-        <div key={item.id}>
+        <div className="card" key={item.id}>
           <Item item={item} />
         </div>
       );

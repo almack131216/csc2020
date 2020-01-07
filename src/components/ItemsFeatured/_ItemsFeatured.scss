@@ -1,8 +1,18 @@
 .featured-items-wrap {
-  padding: $offset-g1;
+  padding: 0 $offset-g1;
+
   .slick-slide {
     box-sizing: border-box;
     padding: $offset-g1;
+
+    div {
+      .card {
+        .card-txt {
+          height: 95px; //avoid using JS to match heights. Just increase text area for all (2 lines)
+          overflow: hidden;
+        }
+      }
+    }
   }
 }
 

@@ -18,19 +18,19 @@
 
   @media (min-width: $bp-sm) {
     .card {
-      max-width: calc(33.33333333% - #{$offset-g2});
+      width: calc(33.33333333% - #{$offset-g2});
     }
   }
 
   @media (min-width: $bp-xxxs) and (max-width: $bp-sm-1) {
     .card {
-      max-width: calc(50% - #{$offset-g2});
+      width: calc(50% - #{$offset-g2});
     }
   }
 
   @media (max-width: $bp-xxxs-1) {
     .card {
-      max-width: calc(100% - #{$offset-g2});
+      width: calc(100% - #{$offset-g2});
     }
   }
 }
