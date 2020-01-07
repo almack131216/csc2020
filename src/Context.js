@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import SiteData from "./assets/_data/_data";
 import CatData from "./assets/_data/_data-categories";
 import SortFilterRangeData from "./assets/_data/_data-filter-sort";
-import { setDocumentTitle } from "./assets/js/Helpers";
+import { setDocumentTitle, getDateToday } from "./assets/js/Helpers";
 const slugify = require("slugify");
 const ItemContext = React.createContext();
 //
 export default class ItemProvider extends Component {
   state = {
+    dateToday: getDateToday(),
     siteData: SiteData,
     catData: CatData,
     items: [],

@@ -4,12 +4,14 @@ import PropTypes from "prop-types";
 import { memo } from "react";
 import Img from "react-image";
 import ImageNotFound from "../../assets/images/image-not-found.jpg";
+import Ribbon from "./Ribbon/Ribbon";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
 
 const Item = memo(({ item }) => {
   const context = useContext(ItemContext);
   const {
+    dateToday,
     categoryName,
     formatPrice,
     formatItemLink,
@@ -22,16 +24,23 @@ const Item = memo(({ item }) => {
     price,
     price_details,
     status,
-    year
+    year,
+    date
   } = item;
 
-  const image2 = image; //require(`${image}`);
-  // const imgUrl = `http://www.classicandsportscar.ltd.uk/images_catalogue/${image}`;
-
+  // IMG - shows 'image not found' graphic as fallback
   const myImg = (
-    <Img src={[image2, ImageNotFound]} alt={name} className="img-loading" />
+    <Img src={[image, ImageNotFound]} alt={name} className="img-loading" />
   );
-
+  // RIBBINS
+  let ribbonNewToday =
+    status === 1 && date === dateToday ? (
+      <Ribbon text="Today" class="green" />
+    ) : null;
+  let ribbonSold = status === 2 ? <Ribbon text="Sold" class="red" /> : null;
+  let imgClass = "card-img";
+  if (ribbonNewToday || ribbonSold) imgClass += " corner-ribbon-wrap";
+  // PRICE
   let classPrice = ["price"];
   let itemPrice = 0;
 
@@ -46,11 +55,12 @@ const Item = memo(({ item }) => {
     classPrice.push("sold");
   }
 
-  // console.log(image);
   return (
     <article>
-      <div className="card-img">
+      <div className={imgClass}>
         <Link to={formatItemLink(item)}>{myImg}</Link>
+        {ribbonNewToday}
+        {ribbonSold}
       </div>
       <div className="card-txt">
         <h5 className="title">
@@ -78,7 +88,8 @@ Item.propTypes = {
     brand: PropTypes.number.isRequired,
     image: PropTypes.string,
     price: PropTypes.number,
-    price_details: PropTypes.string
+    price_details: PropTypes.string,
+    date: PropTypes.string
   })
 };
 export default Item;

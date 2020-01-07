@@ -9,7 +9,7 @@ export function apiGetItemDetails(getItemSlug) {
   return `${process.env.REACT_APP_API_ENDPOINT}item/${getItemSlug}`;
 }
 
-export function itemDateIsToday(someDate) {
+export function getDateToday() {
   const appendLeadingZeroes = n => {
     if (n <= 9) {
       return "0" + n;
@@ -25,11 +25,5 @@ export function itemDateIsToday(someDate) {
     "-" +
     appendLeadingZeroes(today.getDate());
 
-  // const someDate = new Date(someDate);
-  // console.log("xxxxxxxxxxxxxxxx", today);
-  // console.log("YYYYYYYYYYYYYYYY", someDate);
-  // console.log("ZZZZZZZZZZZZZZZZZ", today_formatted);
-
-  if (someDate === today_formatted) return true;
-  return false;
+  return today_formatted;
 }

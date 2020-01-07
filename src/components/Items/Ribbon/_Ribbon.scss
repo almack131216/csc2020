@@ -1,0 +1,37 @@
+/* _Ribbon.scss */
+// REF: https://codepen.io/eode9/pen/twkKm
+
+.corner-ribbon-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.corner-ribbon {
+  width: 200px;
+  background: #e43;
+  position: absolute;
+  top: 25px;
+  left: -50px;
+  text-align: center;
+  line-height: 40px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+/* Custom styles */
+.corner-ribbon.top-right {
+  top: 10px;
+  right: -70px;
+  left: auto;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+/* Colors */
+.corner-ribbon.green {
+  background: #2c7;
+}
+.corner-ribbon.red {
+  background: #e43;
+}
