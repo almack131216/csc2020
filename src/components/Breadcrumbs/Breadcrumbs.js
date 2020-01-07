@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { ItemContext } from "../../Context";
 import BrandFilter from "../../components/Filter/Brand";
 import NavData from "../../assets/_data/_data-navigation";
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaCog } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Breadcrumbs({ items }) {
@@ -32,8 +32,11 @@ export default function Breadcrumbs({ items }) {
   };
   console.log("!!! toggleFilter", showFilter);
 
+  let btnToggleFilterClasses = ["btn-toggle-filter"];
+  if (showFilter) btnToggleFilterClasses.push("active");
+
   return (
-    <div className="row row-breadcrumb row-filter">
+    <div className="row row-breadcrumb">
       <div className="col-xs-12 col-post-breadcrumb">
         <div className="crumbs-wrap">
           <ul className="ul-breadcrumb has-3-crumbs">
@@ -69,12 +72,12 @@ export default function Breadcrumbs({ items }) {
           </ul>
         </div>
         <button
-          className="btn-toggle-filter"
+          className={btnToggleFilterClasses.join(" ")}
           onClick={e => {
             toggleFilter(e);
           }}
         >
-          filter {showFilter ? "visible" : "hidden"}
+          <FaCog />
         </button>
       </div>
     </div>

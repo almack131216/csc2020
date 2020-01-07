@@ -2,13 +2,13 @@ const sortFilterRangeArr = {
   DateDesc: {
     name: "DateDesc",
     label: "Date (latest)",
-    field: "-createdAt",
+    field: "-date",
     field2: ""
   },
   DateAsc: {
     name: "DateAsc",
     label: "Date (oldest)",
-    field: "createdAt",
+    field: "date",
     field2: ""
   },
   PriceDesc: {
