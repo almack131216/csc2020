@@ -1,6 +1,7 @@
 import React from "react";
 
 const priceFilter = props => {
+  const funcFormatPrice = props.funcFormatPrice;
   const priceRange = props.priceRange;
   const maxPriceRounded = props.maxPriceInit;
   const label = props.label ? props.label : "Select";
@@ -29,7 +30,7 @@ const priceFilter = props => {
       >
         {minPriceArr.map((price, index) => (
           <option key={index} value={price}>
-            {price}
+            {funcFormatPrice(price)}
           </option>
         ))}
       </select>
@@ -42,7 +43,7 @@ const priceFilter = props => {
       >
         {maxPriceArr.map((price, index) => (
           <option key={index} value={price}>
-            {price}
+            {funcFormatPrice(price)}
           </option>
         ))}
       </select>

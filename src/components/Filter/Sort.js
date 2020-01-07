@@ -25,7 +25,7 @@ const sortFilter = props => {
       >
         {sortRangeArr.map((sort, index) => (
           <option key={index} value={sort.name}>
-            {sort.name}
+            {sort.label}
           </option>
         ))}
       </select>

@@ -22,7 +22,8 @@ export default function ItemsFilter({ items }) {
     priceRangeArr,
     sortBy,
     sortRangeArr,
-    styleAppendClass
+    styleAppendClass,
+    formatPrice
   } = context;
 
   // STYLE
@@ -33,12 +34,13 @@ export default function ItemsFilter({ items }) {
   // (END) STYLE
 
   return showFilter === true ? (
-    <div className="row row-filter">
-      <div className="col-xs-12 col-post-filter">
-        <form className={classForm}>
-          {categoryName === "Live" ? (
+    <form className={classForm}>
+      <div className="row row-filter">
+        {categoryName === "Live" ? (
+          <div className="col-xs-4 col-post-filter two-control">
             <PriceFilter
               label="Price"
+              funcFormatPrice={formatPrice}
               classParent={classParent}
               classLabel={classLabel}
               classControl={classControl}
@@ -48,8 +50,11 @@ export default function ItemsFilter({ items }) {
               maxPriceInit={maxPriceInit}
               changed={handleFilterChange}
             />
-          ) : null}
-          {/* (END) price */}
+          </div>
+        ) : null}
+        {/* (END) price */}
+
+        <div className="col-xs-4 col-post-filter two-control">
           <YearFilter
             label="Year"
             classParent={classParent}
@@ -62,6 +67,8 @@ export default function ItemsFilter({ items }) {
             changed={handleFilterChange}
           />
           {/* (END) year */}
+        </div>
+        <div className="col-xs-4 col-post-filter one-control">
           <SortFilter
             label="Order"
             classParent={classParent}
@@ -72,8 +79,8 @@ export default function ItemsFilter({ items }) {
             changed={handleFilterChange}
           />
           {/* (END) sort */}
-        </form>
+        </div>
       </div>
-    </div>
+    </form>
   ) : null;
 }

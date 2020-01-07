@@ -306,6 +306,7 @@ export default class ItemProvider extends Component {
 
   /////////////////////////////////////////////////////////////////////////// FORMAT price
   formatPrice = price => {
+    if (price === 0) return "£0";
     return price
       ? "£" + price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
       : null;
