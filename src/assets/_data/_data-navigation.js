@@ -114,7 +114,7 @@ const navArray = {
     class: "contact"
   },
   contactMap: {
-    title: "Find us on Google Map",
+    title: "Google Map",
     titleHover: "Link to Google Maps in a new window",
     titleDocument: "",
     url: "https://goo.gl/maps/VeDEpYUZjzB2",

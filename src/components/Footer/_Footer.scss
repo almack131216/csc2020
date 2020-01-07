@@ -17,6 +17,12 @@ footer {
       > div {
         padding: $offset-g1;
 
+        &.text-align-right {
+          @media (max-width: $bp-tablet-1) {
+            text-align: left;
+          }
+        }
+
         > .title-with-fa-links {
           display: block;
           width: 100%;
@@ -52,6 +58,16 @@ footer {
 
       li {
         margin: 0;
+
+        &.li-inline {
+          a {
+            display: inline;
+          }
+          a:nth-child(2):before {
+            content: "|";
+            margin: 0 $offset-1;
+          }
+        }
 
         > a,
         > span {

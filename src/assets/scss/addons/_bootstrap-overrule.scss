@@ -1,7 +1,12 @@
 /* _bootstrap-overrule.scss */
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-    display: none !important;
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
 }
 
 .row-no-padding {
@@ -12,30 +17,30 @@
 }
 
 .padding-g1 {
-    padding: $offset-g1 !important;
+  padding: $offset-g1 !important;
 }
 
 .padding-g2 {
-    padding: $offset-g2 !important;
+  padding: $offset-g2 !important;
 }
 
 .padding-x-g1 {
-    padding-left: $offset-g1 !important;
-    padding-right: $offset-g1 !important;
+  padding-left: $offset-g1 !important;
+  padding-right: $offset-g1 !important;
 }
 
 .padding-x-g2 {
-    padding-left: $offset-g2 !important;
-    padding-right: $offset-g2 !important;
+  padding-left: $offset-g2 !important;
+  padding-right: $offset-g2 !important;
 }
 
 .padding-top-g2 {
-    padding-top: $offset-g2 !important;
+  padding-top: $offset-g2 !important;
 }
 
 .col-no-padding {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .padding-x-0 {
@@ -44,25 +49,36 @@
 }
 
 .row-no-margin {
-    margin-left:0 !important;
-    margin-right:0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .container {
-    background:white;
+  background: white;
 }
 
 nav .container {
-    background:transparent;
+  background: transparent;
 }
 
 .page-header {
-    padding-bottom:$offset-1;
-    margin-top:$offset-g2;
-    margin-bottom:$offset-g2;
-    border-bottom: 1px solid $color_layout-border;
+  padding-bottom: $offset-1;
+  margin-top: $offset-g2;
+  margin-bottom: $offset-g2;
+  border-bottom: 1px solid $color_layout-border;
 
-    @media (max-width:$bp-xs-1){
-        margin-bottom:$offset-g1;
-    }
+  @media (max-width: $bp-xs-1) {
+    margin-bottom: $offset-g1;
+  }
+}
+
+.col-tablet-12 {
+  @media (max-width: $bp-tablet-1) {
+    width: 100%;
+  }
+}
+.col-xxs-12 {
+  @media (max-width: $bp-xxs-1) {
+    width: 100%;
+  }
 }
