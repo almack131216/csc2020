@@ -12,6 +12,9 @@
 
     li {
       width: 100%;
+      &.home {
+        display: none;
+      }
 
       a {
         color: $navbar_color-link;

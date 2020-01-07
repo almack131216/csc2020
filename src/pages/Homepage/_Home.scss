@@ -2,21 +2,21 @@
 
 main {
   .content-wrap.match-heights {
+    display: flex;
+    /* flex-direction: column; */
+    width: 100%;
+
     > .sidebar {
       width: 25%;
+      @media (max-width: $bp-md-1) {
+        display: none;
+      }
     }
 
     > .content {
       width: 75%;
-    }
-
-    &.match-heights {
-      display: flex;
-      /* flex-direction: column; */
-      width: 100%;
-
-      > div {
-        /* flex: 1; */
+      @media (max-width: $bp-md-1) {
+        width: 100%;
       }
     }
   }

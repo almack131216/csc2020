@@ -7,7 +7,8 @@ const navArray = {
     titleDocument: process.env.REACT_APP_DOC_TITLE,
     slug: "/",
     navTop: false,
-    navSide: true
+    navSide: true,
+    class: "home"
   },
   live: {
     title: CatData["Live"].title,
@@ -109,7 +110,8 @@ const navArray = {
       "Contact Classic and Sportscar Centre, Malton, North Yorkshire, UK",
     slug: "/contact",
     navTop: true,
-    navSide: true
+    navSide: true,
+    class: "contact"
   },
   contactMap: {
     title: "Find us on Google Map",
