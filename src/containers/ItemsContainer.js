@@ -7,7 +7,9 @@ import { withItemConsumer } from "../Context";
 import Loading from "../components/Loading";
 
 function ItemsContainer({ context }) {
-  const { siteData, loading, sortedItems, items } = context;
+  const { categoryArr, siteData, loading, sortedItems, items } = context;
+  // LAYOUT items should be displayed in grid or row?
+  const itemLayout = categoryArr.layout ? categoryArr.layout : "grid";
   // console.log("[ItemsContainer.js] ...");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(siteData.pagination.postsPerPage);
@@ -31,7 +33,7 @@ function ItemsContainer({ context }) {
     <>
       <Breadcrumbs />
       <ItemsFilter items={items} />
-      <ItemsList items={currentPosts} />
+      <ItemsList items={currentPosts} layout={itemLayout} />
       {showPagination === true ? (
         <Pagination
           postsPerPage={postsPerPage}

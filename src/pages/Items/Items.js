@@ -8,13 +8,18 @@ import { useContext } from "react";
 import { ItemContext } from "../../Context";
 
 const Items = props => {
+  // window.scrollTo(0, 0);
   const context = useContext(ItemContext);
-  const { getDataItems, brand } = context;
-
+  const { isStockPage, getDataItems, categoryArr, brand } = context;
+  // CLASS
+  let classContainer = ["container"];
+  if (props.class) classContainer.push(props.class);
+  // SIDEBAR > Widgets
   let showWidgetOpeningHours = null;
   let showWidgetContact = null;
 
   const categoryName = props.category ? props.category : "Live";
+  console.log("XXXXXXXXXXXXXXXXX categoryName: ", categoryName, categoryArr);
 
   let getSlug = window.location.pathname;
   let getBrandFromSlug = getSlug
@@ -22,6 +27,7 @@ const Items = props => {
     .replace("/", "");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     console.log("[pages>Items.js] useEffect()...", getBrandFromSlug);
     getDataItems(categoryName, getBrandFromSlug);
   }, [getDataItems, categoryName, getBrandFromSlug]);
@@ -43,11 +49,11 @@ const Items = props => {
   }
 
   return (
-    <div className="container">
+    <div className={classContainer.join(" ")}>
       <section className="row">
         <div className="sidebar hidden-md-down col-md-3 padding-x-0">
           <NavLeft categoryName={categoryName} />
-          <BrandList />
+          {isStockPage ? <BrandList /> : null}
 
           {showWidgetOpeningHours ? (
             <Widget body={WidgetData.openingHours} />

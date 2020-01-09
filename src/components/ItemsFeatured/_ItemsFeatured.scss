@@ -23,6 +23,6 @@
 .slick-slider.carousel-featured {
   .slick-prev,
   .slick-next {
-    top: 115px;
+    top: calc(40% - #{$offset-4});
   }
 }

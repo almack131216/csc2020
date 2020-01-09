@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import parse from "html-react-parser";
 import SiteData from "./assets/_data/_data";
 import CatData from "./assets/_data/_data-categories";
 import SortFilterRangeData from "./assets/_data/_data-filter-sort";
-import { setDocumentTitle, getDateToday } from "./assets/js/Helpers";
+import {
+  setDocumentTitle,
+  getDateToday,
+  getExcerpt
+} from "./assets/js/Helpers";
 const slugify = require("slugify");
 const ItemContext = React.createContext();
 //
@@ -12,7 +17,8 @@ export default class ItemProvider extends Component {
     siteData: SiteData,
     catData: CatData,
     items: [],
-    showFilter: true,
+    isStockPage: false,
+    showFilter: false,
     categoryName: null,
     categoryNameDefault: "Live",
     categoryArr: {},
@@ -52,6 +58,8 @@ export default class ItemProvider extends Component {
       let items = this.formatData(data);
       // console.log("[Context.js] getData > items...", items);
 
+      const isStockPage = true;
+
       //////////////
       // FEATURED //
       //////////////
@@ -68,6 +76,7 @@ export default class ItemProvider extends Component {
       // SET STATE //
       ///////////////
       this.setState({
+        isStockPage,
         featuredItems,
         featuredItemsArchive,
         loading: false
@@ -159,6 +168,7 @@ export default class ItemProvider extends Component {
       ///////////////
       this.setState({
         items,
+        isStockPage,
         categoryName,
         categoryArr,
         brand,
@@ -283,6 +293,7 @@ export default class ItemProvider extends Component {
       let brand = dataItem.brand;
       let year = dataItem.year;
       let date = dataItem.createdAt;
+      let excerpt = parse(getExcerpt(dataItem.excerpt));
       let image = `https://via.placeholder.com/150x110`; // `http://localhost:8080/csc2020-img/images/${dataItem.image}`;
       // let image = `http://www.classicandsportscar.ltd.uk/images_catalogue/${dataItem.image}`;
       let item = {
@@ -298,6 +309,7 @@ export default class ItemProvider extends Component {
         price_details,
         year,
         image,
+        excerpt,
         date
       };
       return item;
@@ -319,6 +331,9 @@ export default class ItemProvider extends Component {
     let itemCategoryName = getCategoryName
       ? getCategoryName
       : this.state.categoryNameDefault;
+    console.log("YYYYYYYYYYYYYYY", itemCategoryName);
+
+    if (itemCategoryName === 4) return CatData["Press"].slug;
 
     if (itemCategoryName === 2 && getItemStatus === 1)
       return CatData[this.state.categoryNameDefault].slug;
@@ -360,6 +375,8 @@ export default class ItemProvider extends Component {
     if (itemCategoryName === 2 && getItemStatus === 1)
       return CatData[this.state.categoryNameDefault];
 
+    if (itemCategoryName === 4) return CatData.Press;
+
     if (
       (itemCategoryName === "Archive" || itemCategoryName === 2) &&
       getItemStatus === 2
@@ -377,15 +394,15 @@ export default class ItemProvider extends Component {
   // [domain]/item-slug/category-slug/item-id
   formatItemLink = getItem => {
     let { id, name, slug, status, category } = getItem;
-    // console.log("??? item category: ", category);
+    console.log("??? item this.state.categoryName: ", this.state.categoryName);
     let itemSlug = slug;
     if (!slug) itemSlug = slugify(name, { lower: true });
     let itemLink = `/${itemSlug}`;
     if (
       this.state.categoryName &&
-      category === CatData[this.state.categoryName].category
+      category === CatData[this.state.categoryName].id
     ) {
-      // console.log("NO REPEAT CALL", CatData[category].slug);
+      // console.log("NO REPEAT CALL", CatData[this.state.categoryName].slug);
       itemLink += this.state.categoryArr.slug;
     } else {
       itemLink += `${this.formatCategoryLink(category, status)}`; //this.state.categoryNameDefault

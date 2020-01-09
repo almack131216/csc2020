@@ -13,7 +13,9 @@
     li {
       width: 100%;
       &.home {
-        display: none;
+        @media (max-width: $bp-lg-1) {
+          display: none;
+        }
       }
 
       a {

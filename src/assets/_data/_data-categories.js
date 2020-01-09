@@ -1,6 +1,7 @@
 const catArray = {
   Live: {
     id: 2,
+    layout: "grid accent",
     title: "Classic Cars For Sale",
     titleHover: "Link to our classic car showroom page",
     titleDocument: "Classic Cars For Sale in Malton, North Yorkshire",
@@ -10,6 +11,7 @@ const catArray = {
   },
   Archive: {
     id: 2,
+    layout: "grid accent",
     title: "Classic Cars Sold",
     titleHover: "Link to archive showing cars sold over the years",
     titleDocument:
@@ -20,6 +22,7 @@ const catArray = {
   },
   Testimonials: {
     id: 3,
+    layout: "row",
     title: "Customer Testimonials",
     titleSub: "Read what our customers have to say",
     titleHover: "Link to our customer comments page",
@@ -29,11 +32,13 @@ const catArray = {
   },
   Press: {
     id: 4,
+    layout: "row",
     title: "Press / Media",
     titleSub: "Classic and Sportscar Centre Magazine Articles",
     titleHover: "Link to press & media articles",
     titleDocument: "Press / Media",
-    slug: "/press"
+    slug: "/press",
+    api: `${process.env.REACT_APP_API_ENDPOINT}items/press`
   },
   News: {
     id: 5,

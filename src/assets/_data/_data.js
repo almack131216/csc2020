@@ -22,7 +22,7 @@ const siteData = {
     copyright: "Copyright &copy; Classic & Sportscar Centre 2020",
     address: "Corner Farm, West Knapton, Malton, North Yorkshire, UK, YO17 8JB",
     addressPrint:
-      "Corner Farm, West Knapton<br>Malton, North Yorkshire<br>UK YO17 8JB"
+      "Corner Farm, West Knapton<br>Malton, North Yorkshire, UK<br>YO17 8JB"
   },
   social: {
     facebook: "https://www.facebook.com/classicandsportscarcentre/",

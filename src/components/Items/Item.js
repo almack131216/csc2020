@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import parse from "html-react-parser";
 import PropTypes from "prop-types";
 import { memo } from "react";
 import Img from "react-image";
@@ -8,9 +9,10 @@ import Ribbon from "./Ribbon/Ribbon";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
 
-const Item = memo(({ item }) => {
+const Item = memo(({ item, layout }) => {
   const context = useContext(ItemContext);
   const {
+    isStockPage,
     dateToday,
     categoryName,
     formatPrice,
@@ -25,6 +27,7 @@ const Item = memo(({ item }) => {
     price_details,
     status,
     year,
+    excerpt,
     date
   } = item;
 
@@ -32,52 +35,74 @@ const Item = memo(({ item }) => {
   const myImg = (
     <Img src={[image, ImageNotFound]} alt={name} className="img-loading" />
   );
-  // RIBBINS
-  let ribbonNewToday =
-    status === 1 && date === dateToday ? (
-      <Ribbon text="Today" class="green" />
-    ) : null;
-  let ribbonSold = status === 2 ? <Ribbon text="Sold" class="red" /> : null;
+  // BASE vars
+  let itemClass = ["card"];
+  itemClass.push(layout);
+
   let imgClass = "card-img";
-  if (ribbonNewToday || ribbonSold) imgClass += " corner-ribbon-wrap";
-  // PRICE
+  let ribbonNewToday = null;
+  let ribbonSold = null;
   let classPrice = ["price"];
   let itemPrice = 0;
+  let itemPriceTag = null;
+  let ftrTag = null;
+  let categoryLinkTag = (
+    <Link
+      className="category"
+      to={formatBrandLink(categoryName, subcategoryArr.slug)}
+    >
+      {subcategoryArr.brand}
+    </Link>
+  );
+  let excerptTag = !isStockPage ? parse(`<p>${excerpt}</p>`) : null;
+  // RIBBONS
+  if (isStockPage) {
+    ribbonNewToday =
+      status === 1 && date === dateToday ? (
+        <Ribbon text="Today" class="green" />
+      ) : null;
+    ribbonSold = status === 2 ? <Ribbon text="Sold" class="red" /> : null;
 
-  if (price !== 0) {
-    itemPrice = formatPrice(price);
-  } else {
-    itemPrice = price_details;
-    classPrice.push("detail");
-  }
-  if (status === 2) {
-    itemPrice = "Sold";
-    classPrice.push("sold");
+    if (ribbonNewToday || ribbonSold) imgClass += " corner-ribbon-wrap";
+    // PRICE
+    if (price !== 0) {
+      itemPrice = formatPrice(price);
+    } else {
+      itemPrice = price_details;
+      classPrice.push("detail");
+    }
+    if (status === 2) {
+      itemPrice = "Sold";
+      classPrice.push("sold");
+    }
+    itemPriceTag = <span className={classPrice.join(" ")}>{itemPrice}</span>;
+    ftrTag = (
+      <div className="card-ftr">
+        {categoryLinkTag}
+        <span className="year">{year}</span>
+      </div>
+    );
   }
 
   return (
-    <article>
-      <div className={imgClass}>
-        <Link to={formatItemLink(item)}>{myImg}</Link>
-        {ribbonNewToday}
-        {ribbonSold}
-      </div>
-      <div className="card-txt">
-        <h5 className="title">
-          <Link to={formatItemLink(item)}>{name}</Link>
-        </h5>
-        <span className={classPrice.join(" ")}>{itemPrice}</span>
-      </div>
-      <div className="card-ftr">
-        <Link
-          className="category"
-          to={formatBrandLink(categoryName, subcategoryArr.slug)}
-        >
-          {subcategoryArr.brand}
-        </Link>
-        <span className="year">{year}</span>
-      </div>
-    </article>
+    <div className={itemClass.join(" ")}>
+      <article>
+        <div className={imgClass}>
+          <Link to={formatItemLink(item)}>{myImg}</Link>
+          {ribbonNewToday}
+          {ribbonSold}
+        </div>
+        <div className="card-txt">
+          <h5 className="title">
+            <Link to={formatItemLink(item)}>{name}</Link>
+          </h5>
+          {excerptTag ? categoryLinkTag : null}
+          {excerptTag}
+          {itemPriceTag}
+        </div>
+        {ftrTag}
+      </article>
+    </div>
   );
 });
 
@@ -89,6 +114,7 @@ Item.propTypes = {
     image: PropTypes.string,
     price: PropTypes.number,
     price_details: PropTypes.string,
+    excerpt: PropTypes.string,
     date: PropTypes.string
   })
 };

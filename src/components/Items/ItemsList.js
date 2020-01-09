@@ -1,7 +1,7 @@
 import React from "react";
 import Item from "./Item";
 
-const ItemsList = ({ items }) => {
+const ItemsList = ({ items, layout }) => {
   if (items.length === 0) {
     return (
       <section className="items">
@@ -9,15 +9,18 @@ const ItemsList = ({ items }) => {
       </section>
     );
   }
+  let itemsWrapClass = ["items-wrap"];
+  if (layout === "row") {
+    itemsWrapClass.push("rows");
+  } else {
+    itemsWrapClass.push("cards");
+  }
+
   return (
-    <section className="items-wrap">
+    <section className={itemsWrapClass.join(" ")}>
       <div className="cards">
-        {items.map(item => {
-          return (
-            <div key={item.id} className="card card-bg-accent">
-              <Item item={item} />
-            </div>
-          );
+        {items.map((item, index) => {
+          return <Item key={index} item={item} layout={layout} />;
         })}
       </div>
     </section>

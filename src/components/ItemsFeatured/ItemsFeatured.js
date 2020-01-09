@@ -9,7 +9,10 @@ import Slider from "react-slick";
 export default class ItemsFeatured extends Component {
   constructor(props) {
     super(props);
-    console.log("[ItemsFeatured.js] props.items...", props.items);
+    console.log(
+      "[ItemsFeatured.js] constructor() > props.items...",
+      props.items
+    );
     this.switch = props.items;
   }
 
@@ -26,11 +29,7 @@ export default class ItemsFeatured extends Component {
     let SwitchItems = this.switch === "Live" ? items : items2;
 
     items = SwitchItems.map(item => {
-      return (
-        <div className="card" key={item.id}>
-          <Item item={item} />
-        </div>
-      );
+      return <Item key={item.id} item={item} />;
     });
 
     const settings = {

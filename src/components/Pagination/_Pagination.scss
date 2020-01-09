@@ -1,7 +1,7 @@
 /* _Pagination.scss */
 
 .pagination-wrap {
-  margin: 0 auto;
+  margin: 0 auto $offset-g2 0;
 
   ul.ul-pagination {
     text-align: center;

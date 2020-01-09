@@ -10,6 +10,7 @@ export default function Breadcrumbs({ items }) {
   const context = useContext(ItemContext);
   // console.log("[Breadcrumbs.js] ItemContext...", context);
   const {
+    isStockPage,
     categoryName,
     categoryArr,
     handleFilterChange,
@@ -71,14 +72,16 @@ export default function Breadcrumbs({ items }) {
             </li>
           </ul>
         </div>
-        <button
-          className={btnToggleFilterClasses.join(" ")}
-          onClick={e => {
-            toggleFilter(e);
-          }}
-        >
-          <FaCog />
-        </button>
+        {isStockPage ? (
+          <button
+            className={btnToggleFilterClasses.join(" ")}
+            onClick={e => {
+              toggleFilter(e);
+            }}
+          >
+            <FaCog />
+          </button>
+        ) : null}
       </div>
     </div>
   );

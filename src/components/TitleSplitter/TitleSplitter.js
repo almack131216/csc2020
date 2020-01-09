@@ -12,7 +12,7 @@ const TitleSplitter = props => {
   const title = props.category.title;
   const slug = props.category.slug;
   let seeAll = props.seeAll ? props.seeAll : { ...props.category };
-  if (seeAll && !props.seeAll) seeAll.title = "See All?";
+  if (seeAll && !props.seeAll) seeAll.title = "See All";
   if (seeAll && !seeAll.slug) seeAll.slug = props.category.slug;
 
   return (

@@ -83,6 +83,11 @@ class App extends Component {
             />
             <Route
               exact
+              path="/press"
+              component={() => <Items category="Press" class="press" />}
+            />
+            <Route
+              exact
               path="/:brand_for-sale"
               component={() => <Items category="Live" />}
             />
@@ -97,6 +102,8 @@ class App extends Component {
               component={Item}
             />
             <Route exact path="/*/classic-car-archive/:slug" component={Item} />
+            <Route exact path="/*/press/:slug" component={Item} />
+
             <Route component={Error} />
           </Switch>
         </main>

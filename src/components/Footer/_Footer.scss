@@ -45,7 +45,7 @@ footer {
     }
     /* (END) .row */
 
-    ul {
+    ul:not(.social_menu) {
       list-style: none;
       margin: 0;
       padding: 0;

@@ -1,6 +1,9 @@
 /* _Item.scss */
 
-$card-color-bg: white;
+// a.wide[href]:hover img {
+//   transform: scale(1.07);
+// }
+
 $card-color-txt: #999;
 $card-color-txt-price-detail: #f90;
 $card-color-txt-price-sold: #f00;
@@ -20,6 +23,17 @@ $card-color-accent-link-category: $color_secondary;
 
   .card-img {
     width: 100%;
+    min-height: 40%;
+    // @media (min-height: $bp-lg) {
+    //   min-height: 185px;
+    // }
+    // @media (min-height: $bp-sm) and (max-height: $bp-lg-1) {
+    //   min-height: 148px;
+    // }
+    // @media (min-height: $bp-tablet) and (max-height: $bp-sm-1) {
+    //   min-height: 190px;
+    // }
+
     display: flex;
     padding: 0;
     background-color: $card-color-txt;
@@ -65,6 +79,9 @@ $card-color-accent-link-category: $color_secondary;
     }
   }
 
+  .category {
+    text-transform: uppercase;
+  }
   .card-ftr {
     margin-top: auto;
     // background: orange;
@@ -72,16 +89,13 @@ $card-color-accent-link-category: $color_secondary;
     display: flex;
     justify-content: space-between;
 
-    .category {
-      text-transform: uppercase;
-    }
     .year {
       color: $card-color-txt;
     }
   }
 }
 
-.card.card-bg-accent {
+.card.grid.accent {
   background: $card-color-accent-bg;
 
   article {
@@ -101,6 +115,10 @@ $card-color-accent-link-category: $color_secondary;
       }
     }
 
+    a.category {
+      color: $card-color-accent-link-category;
+    }
+
     .card-ftr {
       padding-left: $offset-g1;
       padding-right: $offset-g1;
@@ -108,10 +126,30 @@ $card-color-accent-link-category: $color_secondary;
       .year {
         color: $card-color-accent-txt;
       }
-
-      a.category {
-        color: $card-color-accent-link-category;
-      }
     }
+  }
+}
+
+.card.row article {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex: auto;
+  // border: 1px solid $color_layout-border;
+
+  .card-img {
+    width: 40%;
+    min-height: auto;
+  }
+
+  .card-txt {
+    width: 60%;
+    align-self: flex-start;
+    padding: $offset-g1;
+  }
+
+  .card-ftr {
+    display: none;
   }
 }
