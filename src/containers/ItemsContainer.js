@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import ItemsFilter from "./ItemsFilter/ItemsFilter";
+import TitleText from "../components/TitleText/TitleText";
 import ItemsList from "../components/Items/ItemsList";
 import Pagination from "../components/Pagination/Pagination";
 import { withItemConsumer } from "../Context";
@@ -13,7 +14,11 @@ function ItemsContainer({ context }) {
   // console.log("[ItemsContainer.js] ...");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(siteData.pagination.postsPerPage);
-
+  // TITLES
+  let titles = null;
+  if (categoryArr.id === 4) {
+    titles = <TitleText categoryArr={categoryArr} />;
+  }
   // GET current posts
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -33,6 +38,7 @@ function ItemsContainer({ context }) {
     <>
       <Breadcrumbs />
       <ItemsFilter items={items} />
+      {titles}
       <ItemsList items={currentPosts} layout={itemLayout} />
       {showPagination === true ? (
         <Pagination

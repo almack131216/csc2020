@@ -1,0 +1,14 @@
+/* _TitleText.scss */
+
+.title-text {
+  margin: $offset-g1;
+  padding: $offset-g1 0;
+  border-bottom: 1px solid $color_accent;
+  h1 {
+    margin: 0;
+  }
+}
+
+.title-text + .items-wrap {
+  padding-top: $offset-g1;
+}
