@@ -93,7 +93,8 @@ const navArray = {
     titleDocument: "Restoration Services",
     slug: "/restoration",
     navTop: false,
-    navSide: true
+    navSide: true,
+    class: "restoration"
   },
   filmTvHire: {
     title: "Film & TV Hire",

@@ -36,7 +36,7 @@ export function getExcerpt(sentence) {
   var result = sentence.replace(regex, "");
   // SPLIT into words so we can count them
   var resultArray = result.split(" ");
-  if (resultArray.length > 30) {
+  if (resultArray.length >= 30) {
     // IF more than ## words...
     resultArray = resultArray.slice(0, 20); // SHOW first ## words
     result = resultArray.join(" ") + "...";

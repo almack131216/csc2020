@@ -12,7 +12,11 @@
 
     li {
       width: 100%;
-      &.home {
+
+      &.restoration {
+        display: none;
+      }
+      &.homeXXX {
         @media (max-width: $bp-lg-1) {
           display: none;
         }

@@ -2,7 +2,7 @@
 // REF: https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
 
 .items-wrap {
-  padding: $offset-g2 0 0 0;
+  padding: $offset-g1 0;
 
   .cards {
     display: flex;
@@ -11,7 +11,7 @@
     .card {
       flex: inherit; //1 0 500px;// flex: 0 0 30%;
       box-sizing: border-box;
-      margin: 0 $offset-g1 $offset-g2 $offset-g1;
+      margin: $offset-g1;
       padding: 0;
     }
   }
@@ -36,8 +36,6 @@
 }
 
 .items-wrap.rows {
-  border: 1px solid red;
-
   .cards {
     flex-direction: column;
 

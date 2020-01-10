@@ -25,6 +25,7 @@ const Item = memo(({ item, layout }) => {
     image,
     price,
     price_details,
+    source,
     status,
     year,
     excerpt,
@@ -96,9 +97,10 @@ const Item = memo(({ item, layout }) => {
           <h5 className="title">
             <Link to={formatItemLink(item)}>{name}</Link>
           </h5>
-          {excerptTag ? categoryLinkTag : null}
+          <span className="source">Source: {source}</span>
           {excerptTag}
           {itemPriceTag}
+          {excerptTag ? categoryLinkTag : null}
         </div>
         {ftrTag}
       </article>

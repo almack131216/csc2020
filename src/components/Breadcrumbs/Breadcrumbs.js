@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { ItemContext } from "../../Context";
 import BrandFilter from "../../components/Filter/Brand";
 import NavData from "../../assets/_data/_data-navigation";
-import { FaHome, FaCog } from "react-icons/fa";
+import { FaHome, FaCog, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Breadcrumbs({ items }) {
@@ -33,6 +33,26 @@ export default function Breadcrumbs({ items }) {
   };
   console.log("!!! toggleFilter", showFilter);
 
+  const brandJumpList = isStockPage ? (
+    <li className="li-jump-menu-wrap">
+      <FaChevronRight />
+      <form className={classForm}>
+        {/* select brand */}
+        <BrandFilter
+          label="Make"
+          classParent={classParent}
+          classLabel={classLabel}
+          classControl={classControl}
+          brand={brand}
+          items={items}
+          brands={brandArr}
+          changed={handleFilterChange}
+        />
+        {/* (END) select brand */}
+      </form>
+    </li>
+  ) : null;
+
   let btnToggleFilterClasses = ["btn-toggle-filter"];
   if (showFilter) btnToggleFilterClasses.push("active");
 
@@ -48,28 +68,15 @@ export default function Breadcrumbs({ items }) {
               </Link>
             </li>
             <li className="li-category-2">
+              <FaChevronRight />
               <Link to={NavData.live.slug}>
                 <span>
-                  {categoryArr.title} [{categoryName}]
+                  {categoryArr.title}
+                  {/* [{categoryName}] */}
                 </span>
               </Link>
             </li>
-            <li className="li-jump-menu-wrap">
-              <form className={classForm}>
-                {/* select brand */}
-                <BrandFilter
-                  label="Make"
-                  classParent={classParent}
-                  classLabel={classLabel}
-                  classControl={classControl}
-                  brand={brand}
-                  items={items}
-                  brands={brandArr}
-                  changed={handleFilterChange}
-                />
-                {/* (END) select brand */}
-              </form>
-            </li>
+            {brandJumpList}
           </ul>
         </div>
         {isStockPage ? (

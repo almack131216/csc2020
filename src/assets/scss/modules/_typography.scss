@@ -25,9 +25,11 @@ h1 {
 }
 
 h2 {
-  font-size: 36px;
-  line-height: 42px;
-  font-weight: 400;
+  margin: 0 0 0.5em 0;
+  font-weight: normal;
+  font-size: 1.4em;
+  line-height: 1.3em;
+  color: $color_accent;
 }
 
 h3,

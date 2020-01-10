@@ -45,10 +45,11 @@
     .crumbs-wrap {
       ul {
         li {
+          svg {
+            height: $offset-1;
+            margin-right: 10px;
+          }
           a {
-            svg {
-              margin-right: 5px;
-            }
           }
           &.li-jump-menu-wrap {
             form {
