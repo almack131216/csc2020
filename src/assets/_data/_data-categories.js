@@ -6,8 +6,13 @@ const catArray = {
     titleHover: "Link to our classic car showroom page",
     titleDocument: "Classic Cars For Sale in Malton, North Yorkshire",
     slug: "/classic-cars-for-sale",
-    api: `${process.env.REACT_APP_API_ENDPOINT}items/for-sale`,
-    apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}items/for-sale/featured`
+    api: "./api-dummy/dummy-for-sale.json",
+    apiFeatured: "./api-dummy/dummy-for-sale.json",
+    // api: `http://localhost:8080/_batch-scripts/csc/dummy.json `,
+    // apiXXX: `${process.env.REACT_APP_API_ENDPOINT}items/for-sale`,
+    apiXXX:
+      "http://localhost:8080/_batch-scripts/csc/index.php?api=items&spec=for-sale"
+    // apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}items/for-sale/featured`
   },
   Archive: {
     id: 2,
@@ -17,8 +22,10 @@ const catArray = {
     titleDocument:
       "Classic Cars Sold by Classic and Sportscar Centre, Malton, North Yorkshire",
     slug: "/classic-car-archive",
-    api: `${process.env.REACT_APP_API_ENDPOINT}items/sold`,
-    apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}items/sold/featured`
+    api: "./api-dummy/dummy-sold.json",
+    apiFeatured: "./api-dummy/dummy-sold.json"
+    // apiXXX: `${process.env.REACT_APP_API_ENDPOINT}items/sold`,
+    // apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}items/sold/featured`
   },
   Testimonials: {
     id: 3,
@@ -38,7 +45,8 @@ const catArray = {
     titleHover: "Link to press & media articles",
     titleDocument: "Press / Media",
     slug: "/press",
-    api: `${process.env.REACT_APP_API_ENDPOINT}items/press`
+    api: "./api-dummy/dummy-press.json",
+    apiXXX: `${process.env.REACT_APP_API_ENDPOINT}items/press`
   },
   News: {
     id: 5,

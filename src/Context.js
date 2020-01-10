@@ -98,9 +98,9 @@ export default class ItemProvider extends Component {
     );
 
     try {
-      const data = await fetch(CatData[getCategoryName].api).then(data =>
-        data.json()
-      );
+      const data = await fetch(CatData[getCategoryName].api, {
+        method: "GET"
+      }).then(data => data.json());
 
       const categoryName = getCategoryName; // ? getCategoryName : null;
       const isStockPage =
@@ -189,6 +189,7 @@ export default class ItemProvider extends Component {
         sortRangeArr
       });
     } catch (error) {
+      console.log(error);
       console.log("[Context.js] getDataItems > error...", error);
     }
   };
@@ -290,6 +291,7 @@ export default class ItemProvider extends Component {
       let subcategoryArr = dataItem.catalogue_subcat;
       let price = dataItem.price;
       let price_details = dataItem.price_details;
+      let source = dataItem.source;
       let brand = dataItem.brand;
       let year = dataItem.year;
       let date = dataItem.createdAt;
@@ -307,6 +309,7 @@ export default class ItemProvider extends Component {
         brand,
         price,
         price_details,
+        source,
         year,
         image,
         excerpt,
