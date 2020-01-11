@@ -8,57 +8,54 @@ import { useContext } from "react";
 import { ItemContext } from "../../Context";
 
 const Items = props => {
-  // window.scrollTo(0, 0);
+  // console.log('[pages->Items]...')
+  //
+  // INIT context
   const context = useContext(ItemContext);
-  const { isStockPage, getDataItems, categoryArr, brand } = context;
-  // CLASS
-  let classContainer = ["container"];
-  if (props.class) classContainer.push(props.class);
-  // SIDEBAR > Widgets
-  let showWidgetOpeningHours = null;
-  let showWidgetContact = null;
-
+  const { getDataItems, categoryArr } = context;
+  // INIT category before anything
   const categoryName = props.category ? props.category : "Live";
-  console.log("XXXXXXXXXXXXXXXXX categoryName: ", categoryName, categoryArr);
-
+  // INIT appearance
+  let catSettings = categoryArr.settings;
+  let classContainer = ["container"];
+  let widgetBrandList = null;
+  let widgetOpeningHours = null;
+  let widgetContact = null;
+  // FUNCTIONS
   let getSlug = window.location.pathname;
   let getBrandFromSlug = getSlug
     .substr(0, getSlug.indexOf("_"))
     .replace("/", "");
-
+  // useEffect
   useEffect(() => {
     window.scrollTo(0, 0);
     console.log("[pages>Items.js] useEffect()...", getBrandFromSlug);
     getDataItems(categoryName, getBrandFromSlug);
   }, [getDataItems, categoryName, getBrandFromSlug]);
+  // GET appearance
+  if (catSettings) {
+    if (catSettings.classContainer)
+      classContainer.push(catSettings.classContainer);
 
-  console.log(
-    "[pages>Items.js] categoryName = ",
-    categoryName,
-    " | brand = " + brand
-  );
+    widgetBrandList = catSettings.showBrandList ? <BrandList /> : null;
 
-  switch (categoryName) {
-    case "Archive":
-      showWidgetOpeningHours = false;
-      showWidgetContact = false;
-      break;
-    default:
-      showWidgetOpeningHours = true;
-      showWidgetContact = true;
+    widgetOpeningHours = catSettings.showWidgetOpeningHours ? (
+      <Widget body={WidgetData.openingHours} />
+    ) : null;
+    widgetContact = catSettings.showWidgetContactDetails ? (
+      <Widget body={WidgetData.contact} />
+    ) : null;
   }
+  // (END) GET appearance
 
   return (
     <div className={classContainer.join(" ")}>
       <section className="row">
         <div className="sidebar hidden-md-down col-md-3 padding-x-0">
           <NavLeft categoryName={categoryName} />
-          {isStockPage ? <BrandList /> : null}
-
-          {showWidgetOpeningHours ? (
-            <Widget body={WidgetData.openingHours} />
-          ) : null}
-          {showWidgetContact ? <Widget body={WidgetData.contact} /> : null}
+          {widgetBrandList}
+          {widgetOpeningHours}
+          {widgetContact}
         </div>
         <div className="content col-sm-12 col-md-9 col-posts-parent">
           <ItemsContainer />

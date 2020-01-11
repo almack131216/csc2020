@@ -84,7 +84,7 @@ class App extends Component {
             <Route
               exact
               path="/press"
-              component={() => <Items category="Press" class="press" />}
+              component={() => <Items category="Press" />}
             />
             <Route
               exact

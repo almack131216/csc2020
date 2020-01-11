@@ -55,6 +55,8 @@ $card-color-accent-link-category: $color_secondary;
   }
 
   .card-txt {
+    display: flex;
+    flex-direction: column;
     align-self: flex-end;
     width: 100%;
     padding: $offset-g1 0;
@@ -82,15 +84,21 @@ $card-color-accent-link-category: $color_secondary;
         text-transform: uppercase;
       }
     }
+
+    .spacer {
+      // display: flex;
+      flex-grow: 1;
+    }
   }
 
   .category {
     text-transform: uppercase;
   }
-  .card-ftr {
-    margin-top: auto;
+
+  .ftr {
+    margin: $offset-g1 0 0 0;
     // background: orange;
-    padding: $offset-g1 0;
+    padding: 0;
     display: flex;
     justify-content: space-between;
 
@@ -124,10 +132,7 @@ $card-color-accent-link-category: $color_secondary;
       color: $card-color-accent-link-category;
     }
 
-    .card-ftr {
-      padding-left: $offset-g1;
-      padding-right: $offset-g1;
-
+    .ftr {
       .year {
         color: $card-color-accent-txt;
       }
@@ -152,9 +157,5 @@ $card-color-accent-link-category: $color_secondary;
     width: 70%;
     align-self: flex-start;
     padding: $offset-g1;
-  }
-
-  .card-ftr {
-    display: none;
   }
 }

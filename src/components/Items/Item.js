@@ -10,15 +10,18 @@ import { useContext } from "react";
 import { ItemContext } from "../../Context";
 
 const Item = memo(({ item, layout }) => {
+  // console.log('[Item.js] ...')
+  // INIT context
   const context = useContext(ItemContext);
   const {
-    isStockPage,
+    categoryArr,
     dateToday,
     categoryName,
     formatPrice,
     formatItemLink,
     formatBrandLink
   } = context;
+  // INIT item
   const {
     name,
     subcategoryArr,
@@ -31,22 +34,26 @@ const Item = memo(({ item, layout }) => {
     excerpt,
     date
   } = item;
-
-  // IMG - shows 'image not found' graphic as fallback
+  // INIT image
+  // <IMG> - shows 'image not found' graphic as fallback
   const myImg = (
     <Img src={[image, ImageNotFound]} alt={name} className="img-loading" />
   );
-  // BASE vars
+  // INIT appearance.item
+  let itemSettings = categoryArr.settings.item;
   let itemClass = ["card"];
-  itemClass.push(layout);
-
   let imgClass = "card-img";
+  let excerptTag = null;
   let ribbonNewToday = null;
   let ribbonSold = null;
   let classPrice = ["price"];
   let itemPrice = 0;
   let itemPriceTag = null;
+  let itemYearTag = null;
   let ftrTag = null;
+
+  itemClass.push(layout);
+
   let categoryLinkTag = (
     <Link
       className="category"
@@ -55,32 +62,50 @@ const Item = memo(({ item, layout }) => {
       {subcategoryArr.brand}
     </Link>
   );
-  let excerptTag = !isStockPage ? parse(`<p>${excerpt}</p>`) : null;
-  // RIBBONS
-  if (isStockPage) {
+
+  // PRESS
+  let sourceTag =
+    categoryName === "Press" && source ? (
+      <span className="source">Source: {source}</span>
+    ) : null;
+  // GET appearance
+  if (itemSettings) {
+    excerptTag = itemSettings.showExcerpt ? parse(`<p>${excerpt}</p>`) : null;
+
     ribbonNewToday =
-      status === 1 && date === dateToday ? (
+      itemSettings.showRibbons && status === 1 && date === dateToday ? (
         <Ribbon text="Today" class="green" />
       ) : null;
-    ribbonSold = status === 2 ? <Ribbon text="Sold" class="red" /> : null;
+    ribbonSold =
+      itemSettings.showRibbons && status === 2 ? (
+        <Ribbon text="Sold" class="red" />
+      ) : null;
 
     if (ribbonNewToday || ribbonSold) imgClass += " corner-ribbon-wrap";
     // PRICE
-    if (price !== 0) {
-      itemPrice = formatPrice(price);
-    } else {
-      itemPrice = price_details;
-      classPrice.push("detail");
+    if (itemSettings.showPrice) {
+      if (price !== 0) {
+        itemPrice = formatPrice(price);
+      } else {
+        itemPrice = price_details;
+        classPrice.push("detail");
+      }
+      if (status === 2) {
+        itemPrice = "Sold";
+        classPrice.push("sold");
+      }
+      itemPriceTag = <span className={classPrice.join(" ")}>{itemPrice}</span>;
     }
-    if (status === 2) {
-      itemPrice = "Sold";
-      classPrice.push("sold");
-    }
-    itemPriceTag = <span className={classPrice.join(" ")}>{itemPrice}</span>;
-    ftrTag = (
-      <div className="card-ftr">
-        {categoryLinkTag}
+
+    itemYearTag =
+      itemSettings.showYear && year ? (
         <span className="year">{year}</span>
+      ) : null;
+
+    ftrTag = (
+      <div className="ftr">
+        {categoryLinkTag}
+        {itemYearTag}
       </div>
     );
   }
@@ -97,12 +122,13 @@ const Item = memo(({ item, layout }) => {
           <h5 className="title">
             <Link to={formatItemLink(item)}>{name}</Link>
           </h5>
-          <span className="source">Source: {source}</span>
+          {sourceTag}
           {excerptTag}
           {itemPriceTag}
-          {excerptTag ? categoryLinkTag : null}
+          {/* {excerptTag ? categoryLinkTag : null} */}
+          <span className="spacer"></span>
+          {ftrTag}
         </div>
-        {ftrTag}
       </article>
     </div>
   );

@@ -18,7 +18,7 @@ export default class ItemProvider extends Component {
     catData: CatData,
     items: [],
     isStockPage: false,
-    showFilter: false,
+    filterIsActive: false,
     categoryName: null,
     categoryNameDefault: "Live",
     categoryArr: {},
@@ -397,7 +397,7 @@ export default class ItemProvider extends Component {
   // [domain]/item-slug/category-slug/item-id
   formatItemLink = getItem => {
     let { id, name, slug, status, category } = getItem;
-    console.log("??? item this.state.categoryName: ", this.state.categoryName);
+    // console.log("??? item this.state.categoryName: ", this.state.categoryName);
     let itemSlug = slug;
     if (!slug) itemSlug = slugify(name, { lower: true });
     let itemLink = `/${itemSlug}`;
@@ -448,7 +448,7 @@ export default class ItemProvider extends Component {
   /////////////////////////////////////////////////////////////////////////// FILTER
   // show/hide filter row
   setFilterToggle = () => {
-    this.setState({ showFilter: this.state.showFilter ? false : true });
+    this.setState({ filterIsActive: this.state.filterIsActive ? false : true });
   };
   // filter items
   filterItems = () => {

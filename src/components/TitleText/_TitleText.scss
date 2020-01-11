@@ -2,6 +2,7 @@
 
 .title-text {
   margin: $offset-g1;
+  margin-bottom: 0;
   padding: $offset-g1 0;
   border-bottom: 1px solid $color_accent;
   h1 {
@@ -10,5 +11,5 @@
 }
 
 .title-text + .items-wrap {
-  padding-top: $offset-g1;
+  // padding-top: $offset-g1;
 }

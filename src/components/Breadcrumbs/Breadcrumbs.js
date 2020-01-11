@@ -7,54 +7,69 @@ import { FaHome, FaCog, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Breadcrumbs({ items }) {
-  const context = useContext(ItemContext);
   // console.log("[Breadcrumbs.js] ItemContext...", context);
+  // INIT context
+  const context = useContext(ItemContext);
   const {
-    isStockPage,
-    categoryName,
+    filterIsActive,
     categoryArr,
     handleFilterChange,
-    showFilter,
     brand,
     brandArr,
     styleAppendClass
   } = context;
-  // STYLE
+  // INIT appearance
+  let catSettings = categoryArr.settings;
+  let btnToggleFilter = null;
+  let brandJumpList = null;
+  let btnToggleFilterClasses = ["btn-toggle-filter"];
   let classForm = styleAppendClass("form-inline", "");
   let classParent = styleAppendClass("form-group", "");
   let classLabel = styleAppendClass("form-label", "display-none");
   let classControl = styleAppendClass("form-control", "form-control-sm");
-  // (END) STYLE
-
-  let toggleFilter = e => {
+  // FUNC
+  const toggleFilter = e => {
     e.preventDefault();
     context.setFilterToggle();
-    console.log("??? toggleFilter", showFilter);
+    console.log("??? toggleFilter", catSettings.showFilter, filterIsActive);
   };
-  console.log("!!! toggleFilter", showFilter);
+  // GET appearance
+  if (catSettings) {
+    if (catSettings.showFilter) {
+      if (filterIsActive === true) btnToggleFilterClasses.push("active");
 
-  const brandJumpList = isStockPage ? (
-    <li className="li-jump-menu-wrap">
-      <FaChevronRight />
-      <form className={classForm}>
-        {/* select brand */}
-        <BrandFilter
-          label="Make"
-          classParent={classParent}
-          classLabel={classLabel}
-          classControl={classControl}
-          brand={brand}
-          items={items}
-          brands={brandArr}
-          changed={handleFilterChange}
-        />
-        {/* (END) select brand */}
-      </form>
-    </li>
-  ) : null;
+      btnToggleFilter = (
+        <button
+          className={btnToggleFilterClasses.join(" ")}
+          onClick={e => {
+            toggleFilter(e);
+          }}
+        >
+          <FaCog />
+        </button>
+      );
+    }
 
-  let btnToggleFilterClasses = ["btn-toggle-filter"];
-  if (showFilter) btnToggleFilterClasses.push("active");
+    brandJumpList = catSettings.showBrandList ? (
+      <li className="li-jump-menu-wrap">
+        <FaChevronRight />
+        <form className={classForm}>
+          {/* select brand */}
+          <BrandFilter
+            label="Make"
+            classParent={classParent}
+            classLabel={classLabel}
+            classControl={classControl}
+            brand={brand}
+            items={items}
+            brands={brandArr}
+            changed={handleFilterChange}
+          />
+          {/* (END) select brand */}
+        </form>
+      </li>
+    ) : null;
+  }
 
   return (
     <div className="row row-breadcrumb">
@@ -70,25 +85,13 @@ export default function Breadcrumbs({ items }) {
             <li className="li-category-2">
               <FaChevronRight />
               <Link to={NavData.live.slug}>
-                <span>
-                  {categoryArr.title}
-                  {/* [{categoryName}] */}
-                </span>
+                <span>{categoryArr.title}</span>
               </Link>
             </li>
             {brandJumpList}
           </ul>
         </div>
-        {isStockPage ? (
-          <button
-            className={btnToggleFilterClasses.join(" ")}
-            onClick={e => {
-              toggleFilter(e);
-            }}
-          >
-            <FaCog />
-          </button>
-        ) : null}
+        {btnToggleFilter}
       </div>
     </div>
   );
