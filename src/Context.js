@@ -17,7 +17,6 @@ export default class ItemProvider extends Component {
     siteData: SiteData,
     catData: CatData,
     items: [],
-    isStockPage: false,
     filterIsActive: false,
     categoryName: null,
     categoryNameDefault: "Live",
@@ -58,8 +57,6 @@ export default class ItemProvider extends Component {
       let items = this.formatData(data);
       // console.log("[Context.js] getData > items...", items);
 
-      const isStockPage = true;
-
       //////////////
       // FEATURED //
       //////////////
@@ -76,7 +73,6 @@ export default class ItemProvider extends Component {
       // SET STATE //
       ///////////////
       this.setState({
-        isStockPage,
         featuredItems,
         featuredItemsArchive,
         loading: false
@@ -103,8 +99,6 @@ export default class ItemProvider extends Component {
       }).then(data => data.json());
 
       const categoryName = getCategoryName; // ? getCategoryName : null;
-      const isStockPage =
-        categoryName === "Live" || categoryName === "Archive" ? true : false;
 
       const statusId = categoryName === "Archive" ? 2 : 1;
       const brandSlug = getBrandSlug ? getBrandSlug : null; // status determines Live or Archive
@@ -155,10 +149,8 @@ export default class ItemProvider extends Component {
         sortRangeArr.push(SortFilterRangeData.PriceAsc);
       }
       // CONDITION: Only show Years option for Live/Archive pages
-      if (isStockPage) {
-        sortRangeArr.push(SortFilterRangeData.YearDesc);
-        sortRangeArr.push(SortFilterRangeData.YearAsc);
-      }
+      sortRangeArr.push(SortFilterRangeData.YearDesc);
+      sortRangeArr.push(SortFilterRangeData.YearAsc);
       // console.log("[Context.js] sortRangeArr...", sortRangeArr);
       const sortByArr = sortRangeArr[0];
       const sortBy = sortByArr.name;
@@ -168,7 +160,6 @@ export default class ItemProvider extends Component {
       ///////////////
       this.setState({
         items,
-        isStockPage,
         categoryName,
         categoryArr,
         brand,
