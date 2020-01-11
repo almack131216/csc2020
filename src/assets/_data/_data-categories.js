@@ -51,7 +51,6 @@ const catArray = {
         showYear: true
       }
     }
-
     // apiXXX: `${process.env.REACT_APP_API_ENDPOINT}items/sold`,
     // apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}items/sold/featured`
   },
@@ -62,7 +61,20 @@ const catArray = {
     titleHover: "Link to our customer comments page",
     titleDocument:
       "Customer Testimonials | Read what our customers have to say",
-    slug: "/testimonials"
+    slug: "/testimonials",
+    api: "./api-dummy/dummy-testimonials.json",
+    settings: {
+      showFilter: false,
+      showBrandList: false,
+      showWidgetOpeningHours: true,
+      showWidgetContactDetails: true,
+      showTitle: true,
+      showTitleSub: true,
+      layout: "row",
+      item: {
+        showExcerpt: true
+      }
+    }
   },
   Press: {
     id: 4,
@@ -86,7 +98,6 @@ const catArray = {
         showSource: true
       }
     }
-
     // apiXXX: `${process.env.REACT_APP_API_ENDPOINT}items/press`
   },
   News: {
@@ -94,7 +105,21 @@ const catArray = {
     title: "Latest News & Events",
     titleHover: "Link to news stories, past and present",
     titleDocument: "Classic and Sportscar Centre News",
-    slug: "/news"
+    slug: "/news",
+    api: "./api-dummy/dummy-news.json",
+    settings: {
+      showFilter: false,
+      showBrandList: false,
+      showWidgetOpeningHours: true,
+      showWidgetContactDetails: true,
+      showTitle: true,
+      showTitleSub: true,
+      classContainer: "",
+      layout: "row",
+      item: {
+        showExcerpt: true
+      }
+    }
   }
 };
 
