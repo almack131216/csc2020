@@ -4,11 +4,12 @@
   .slick-slide {
     box-sizing: border-box;
     padding: $offset-g1;
+    padding-top: 0;
 
     div {
       .card {
         .card-txt {
-          height: 95px; //avoid using JS to match heights. Just increase text area for all (2 lines)
+          height: 130px; //avoid using JS to match heights. Just increase text area for all (2 lines)
           overflow: hidden;
         }
       }

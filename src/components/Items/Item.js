@@ -9,8 +9,8 @@ import Ribbon from "./Ribbon/Ribbon";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
 
-const Item = memo(({ item, layout }) => {
-  // console.log('[Item.js] ...')
+const Item = memo(({ item, itemSettingsCust }) => {
+  // console.log("[Item.js] ...", itemSettingsCust);
   // INIT context
   const context = useContext(ItemContext);
   const {
@@ -40,7 +40,6 @@ const Item = memo(({ item, layout }) => {
     <Img src={[image, ImageNotFound]} alt={name} className="img-loading" />
   );
   // INIT appearance.item
-  let itemSettings = categoryArr.settings ? categoryArr.settings.item : null;
   let itemClass = ["card"];
   let imgClass = "card-img";
   let excerptTag = null;
@@ -50,26 +49,35 @@ const Item = memo(({ item, layout }) => {
   let itemPrice = 0;
   let itemPriceTag = null;
   let itemYearTag = null;
+  let categoryLinkTag = null;
+  let sourceTag = null;
   let ftrTag = null;
-
-  itemClass.push(layout);
-
-  let categoryLinkTag = (
-    <Link
-      className="category"
-      to={formatBrandLink(categoryName, subcategoryArr.slug)}
-    >
-      {subcategoryArr.brand}
-    </Link>
-  );
-
-  // PRESS
-  let sourceTag =
-    categoryName === "Press" && source ? (
-      <span className="source">Source: {source}</span>
-    ) : null;
-  // GET appearance
+  let itemSettings = {};
+  // INIT item settings from category or custom received prop
+  if (itemSettingsCust) {
+    itemSettings = itemSettingsCust;
+  } else {
+    itemSettings = categoryArr.settings
+      ? { ...categoryArr.settings.item }
+      : null;
+  }
+  // GET settings
   if (itemSettings) {
+    itemClass.push(itemSettings.layout);
+    // PRESS
+    sourceTag =
+      categoryName === "Press" && source ? (
+        <span className="source">Source: {source}</span>
+      ) : null;
+
+    categoryLinkTag = itemSettings.showCategoryLink ? (
+      <Link
+        className="category"
+        to={formatBrandLink(categoryName, subcategoryArr.slug)}
+      >
+        {subcategoryArr.brand}
+      </Link>
+    ) : null;
     excerptTag = itemSettings.showExcerpt ? parse(`<p>${excerpt}</p>`) : null;
 
     ribbonNewToday =
@@ -102,12 +110,13 @@ const Item = memo(({ item, layout }) => {
         <span className="year">{year}</span>
       ) : null;
 
-    ftrTag = (
-      <div className="ftr">
-        {categoryLinkTag}
-        {itemYearTag}
-      </div>
-    );
+    ftrTag =
+      categoryLinkTag || itemYearTag ? (
+        <div className="ftr">
+          {categoryLinkTag}
+          {itemYearTag}
+        </div>
+      ) : null;
   }
 
   return (

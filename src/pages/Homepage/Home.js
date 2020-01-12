@@ -25,9 +25,9 @@ const Home = props => {
         </div>
       </section>
       <TitleSplitter category={catData["Live"]} />
-      <ItemsFeatured items="Live" />
+      <ItemsFeatured category="Live" />
       <TitleSplitter category={catData["Archive"]} />
-      <ItemsFeatured items="Archive" />
+      <ItemsFeatured category="Archive" />
     </React.Fragment>
   );
 };

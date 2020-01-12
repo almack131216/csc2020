@@ -20,7 +20,7 @@ const ItemsList = ({ items, layout }) => {
     <section className={itemsWrapClass.join(" ")}>
       <div className="cards">
         {items.map((item, index) => {
-          return <Item key={index} item={item} layout={layout} />;
+          return <Item key={index} item={item} />;
         })}
       </div>
     </section>

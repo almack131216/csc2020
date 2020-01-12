@@ -151,11 +151,22 @@ $card-color-accent-link-category: $color_secondary;
   .card-img {
     width: 30%;
     min-height: auto;
+    background-color: transparent;
+
+    a {
+      img {
+        height: auto;
+      }
+    }
   }
 
   .card-txt {
     width: 70%;
     align-self: flex-start;
-    padding: $offset-g1;
+    padding: 0 $offset-g1;
+
+    .ftr {
+      margin-top: 0;
+    }
   }
 }

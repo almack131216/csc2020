@@ -325,7 +325,6 @@ export default class ItemProvider extends Component {
     let itemCategoryName = getCategoryName
       ? getCategoryName
       : this.state.categoryNameDefault;
-    console.log("YYYYYYYYYYYYYYY", itemCategoryName);
 
     if (itemCategoryName === 4) return CatData["Press"].slug;
 

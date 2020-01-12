@@ -10,16 +10,17 @@ export default class ItemsFeatured extends Component {
   constructor(props) {
     super(props);
     console.log(
-      "[ItemsFeatured.js] constructor() > props.items...",
-      props.items
+      "[ItemsFeatured.js] constructor() > props.categoryName...",
+      props.category
     );
-    this.switch = props.items;
+    this.switch = props.category;
   }
 
   static contextType = ItemContext;
 
   render() {
     let {
+      catData,
       loading,
       featuredItems: items,
       featuredItemsArchive: items2
@@ -27,9 +28,15 @@ export default class ItemsFeatured extends Component {
     console.log("[ItemsFeatured.js] items...", items);
 
     let SwitchItems = this.switch === "Live" ? items : items2;
+    let itemSettingsCust = catData[this.switch]
+      ? { ...catData[this.switch].settings.item }
+      : null;
+    itemSettingsCust.layout = "grid";
 
     items = SwitchItems.map(item => {
-      return <Item key={item.id} item={item} />;
+      return (
+        <Item key={item.id} item={item} itemSettingsCust={itemSettingsCust} />
+      );
     });
 
     const settings = {

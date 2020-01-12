@@ -16,9 +16,11 @@ const catArray = {
       showTitleSub: false,
       layout: "grid accent",
       item: {
+        layout: "grid accent",
         showPrice: true,
         showRibbons: true,
-        showYear: true
+        showYear: true,
+        showCategoryLink: true
       }
     }
 
@@ -46,9 +48,11 @@ const catArray = {
       showTitleSub: false,
       layout: "grid accent",
       item: {
+        layout: "grid accent",
         showPrice: true,
         showRibbons: true,
-        showYear: true
+        showYear: true,
+        showCategoryLink: true
       }
     }
     // apiXXX: `${process.env.REACT_APP_API_ENDPOINT}items/sold`,
@@ -72,7 +76,9 @@ const catArray = {
       showTitleSub: true,
       layout: "row",
       item: {
-        showExcerpt: true
+        layout: "row",
+        showExcerpt: true,
+        showCategoryLink: false
       }
     }
   },
@@ -94,8 +100,10 @@ const catArray = {
       classContainer: "press",
       layout: "row",
       item: {
+        layout: "row",
         showExcerpt: true,
-        showSource: true
+        showSource: true,
+        showCategoryLink: false
       }
     }
     // apiXXX: `${process.env.REACT_APP_API_ENDPOINT}items/press`
@@ -117,7 +125,9 @@ const catArray = {
       classContainer: "",
       layout: "row",
       item: {
-        showExcerpt: true
+        layout: "row",
+        showExcerpt: true,
+        showCategoryLink: false
       }
     }
   }
