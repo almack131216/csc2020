@@ -39,7 +39,7 @@ const Item = memo(({ item, itemSettingsCust }) => {
   const myImg = (
     <Img src={[image, ImageNotFound]} alt={name} className="img-loading" />
   );
-  // INIT appearance.item
+  // INIT settings.item
   let itemClass = ["card"];
   let imgClass = "card-img";
   let excerptTag = null;

@@ -9,7 +9,6 @@ export default function ItemsFilter({ items }) {
   const context = useContext(ItemContext);
   // console.log("[ItemsFilter.js] ItemContext...", context);
   const {
-    categoryArr,
     categoryName,
     handleFilterChange,
     filterIsActive,

@@ -5,8 +5,10 @@ const catArray = {
     titleHover: "Link to our classic car showroom page",
     titleDocument: "Classic Cars For Sale in Malton, North Yorkshire",
     slug: "/classic-cars-for-sale",
+    slugToItem: "/for-sale",
     api: "./api-dummy/dummy-for-sale.json",
     apiFeatured: "./api-dummy/dummy-for-sale.json",
+    apiItem: "./api-dummy/dummy-item-details.json",
     settings: {
       showFilter: true,
       showBrandList: true,
@@ -20,7 +22,11 @@ const catArray = {
         showPrice: true,
         showRibbons: true,
         showYear: true,
-        showCategoryLink: true
+        showCategoryLink: true,
+        details: {
+          showWidgetOpeningHours: true,
+          showWidgetContactDetails: true
+        }
       }
     }
 

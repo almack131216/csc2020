@@ -6,7 +6,8 @@ export function setDocumentTitle(getString) {
 }
 
 export function apiGetItemDetails(getItemSlug) {
-  return `${process.env.REACT_APP_API_ENDPOINT}item/${getItemSlug}`;
+  return "../../api-dummy/dummy-item-details.json";
+  // return `${process.env.REACT_APP_API_ENDPOINT}item/${getItemSlug}`;
 }
 
 export function getDateToday() {

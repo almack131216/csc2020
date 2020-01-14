@@ -1,0 +1,61 @@
+{
+  "id": 37703,
+  "status": 1,
+  "name": "Aston Martin DB5",
+  "slug": "aston-martin-db5-1964",
+  "description": "hey",
+  "category": 2,
+  "brand": 65,
+  "year": 1964,
+  "price": 874995,
+  "price_details": "",
+  "excerpt": "This particular example was first registered on May 12th 1964 and supplied new by Aston Martin dealership Brooklands. A comprehensive file of documentation accompanies the car detailing its history back to the 1970's. With little over",
+  "createdAt": "2018-08-11",
+  "updatedAt": "2018-08-11",
+  "image": "aston-martin-db5_37703.jpg",
+  "catalogue_subcat_id": "65",
+  "catalogue_subcat_brand": "Aston Martin",
+  "catalogue_subcat_slug": "aston-martin",
+  "catalogue_subcat": {
+    "id": 65,
+    "brand": "Aston Martin",
+    "slug": "aston-martin"
+  },
+  "images": [
+    {
+      "id": 37704,
+      "name": "Aston Martin DB5",
+      "image": "aston-martin-db5_37704.jpg"
+    },
+    {
+      "id": 37705,
+      "name": "Aston Martin DB5",
+      "image": "aston-martin-db5_37705.jpg"
+    },
+    {
+      "id": 37706,
+      "name": "Aston Martin DB5",
+      "image": "aston-martin-db5_37706.jpg"
+    },
+    {
+      "id": 37707,
+      "name": "Aston Martin DB5",
+      "image": "aston-martin-db5_37707.jpg"
+    },
+    {
+      "id": 37708,
+      "name": "Aston Martin DB5",
+      "image": "aston-martin-db5_37708.jpg"
+    },
+    {
+      "id": 37709,
+      "name": "Aston Martin DB5",
+      "image": "aston-martin-db5_37709.jpg"
+    },
+    {
+      "id": 37710,
+      "name": "Aston Martin DB5",
+      "image": "aston-martin-db5_37710.jpg"
+    }
+  ]
+}

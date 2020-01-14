@@ -3,7 +3,7 @@ import "./assets/css/bootstrap.min.css";
 import "./App.scss";
 import Home from "./pages/Homepage/Home";
 import Items from "./pages/Items/Items";
-import Item from "./pages/Item";
+import ItemDetails from "./pages/ItemDetails/ItemDetails";
 import Error from "./pages/Error";
 import { Route, Switch } from "react-router-dom";
 import Backdrop from "./components/Navigation/Backdrop/Backdrop";
@@ -109,11 +109,15 @@ class App extends Component {
             <Route
               exact
               path="/*/classic-cars-for-sale/:slug"
-              component={Item}
+              component={ItemDetails}
             />
-            <Route exact path="/*/classic-car-archive/:slug" component={Item} />
-            <Route exact path="/*/press/:slug" component={Item} />
-            <Route exact path="/*/testimonials/:slug" component={Item} />
+            <Route
+              exact
+              path="/*/classic-car-archive/:slug"
+              component={ItemDetails}
+            />
+            <Route exact path="/*/press/:slug" component={ItemDetails} />
+            <Route exact path="/*/testimonials/:slug" component={ItemDetails} />
             <Route component={Error} />
           </Switch>
         </main>

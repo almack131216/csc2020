@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import parse from "html-react-parser";
+import { Link } from "react-router-dom";
 import SiteData from "./assets/_data/_data";
 import CatData from "./assets/_data/_data-categories";
 import SortFilterRangeData from "./assets/_data/_data-filter-sort";
@@ -47,6 +48,7 @@ export default class ItemProvider extends Component {
     if (!getPageName) return;
 
     try {
+      this.setState({ loading: true });
       const data = await fetch(
         CatData[this.state.categoryNameDefault].apiFeatured
       ).then(data => data.json());
@@ -94,6 +96,7 @@ export default class ItemProvider extends Component {
     );
 
     try {
+      this.setState({ loading: true });
       const data = await fetch(CatData[getCategoryName].api, {
         method: "GET"
       }).then(data => data.json());
@@ -240,7 +243,7 @@ export default class ItemProvider extends Component {
 
   /////////////////////////////////////////////////////////////////////////// COUNT items in each brand
   countItemsInBrand(getBrandArr, getItemsArr) {
-    for (var i = 0; i < getBrandArr.length; i++) {
+    for (let i = 0; i < getBrandArr.length; i++) {
       var tmp = getItemsArr.filter(
         item => item.subcategoryArr.id === getBrandArr[i].id
       ).length;
@@ -342,6 +345,16 @@ export default class ItemProvider extends Component {
     //   getCategoryName + ", getItemStatus: " + getItemStatus
     // );
     return CatData[itemCategoryName].slug;
+  };
+
+  /////////////////////////////////////////////////////////////////////////// FORMAT category link
+  // get slug from CatData based on categoryName
+  getCategoryLinkTag = getCategoryArr => {
+    return (
+      <Link to={getCategoryArr.slug} className="link-category">
+        {getCategoryArr.title}
+      </Link>
+    );
   };
 
   /////////////////////////////////////////////////////////////////////////// FORMAT brand link
@@ -497,12 +510,14 @@ export default class ItemProvider extends Component {
           formatPrice: this.formatPrice,
           formatItemLink: this.formatItemLink,
           formatCategoryLink: this.formatCategoryLink,
+          getCategoryLinkTag: this.getCategoryLinkTag,
           setBrandArr: this.setBrandArr,
           setFilterToggle: this.setFilterToggle,
           fieldSorter: this.fieldSorter,
           handleFilterChange: this.handleFilterChange,
           styleAppendClass: this.styleAppendClass,
-          formatBrandLink: this.formatBrandLink
+          formatBrandLink: this.formatBrandLink,
+          formatData: this.formatData
         }}
       >
         {this.props.children}
