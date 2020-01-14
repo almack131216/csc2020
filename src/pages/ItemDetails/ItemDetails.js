@@ -6,6 +6,8 @@ import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import WidgetData from "../../assets/_data/_data-widgets";
 import Widget from "../../components/Sidebar/InfoBox/InfoBox";
+import ImgFeatured from "../../components/ItemDetails/ImgFeatured";
+import ImgGrid from "../../components/ItemDetails/ImgGrid";
 import { ItemContext } from "../../Context";
 import parser from "html-react-parser";
 import { setDocumentTitle, apiGetItemDetails } from "../../assets/js/Helpers";
@@ -95,39 +97,10 @@ export default class ItemDetails extends Component {
     const descriptionParsed = description ? parser(description) : null;
     setDocumentTitle(`${categoryArr.title} | ${year} ${name}`);
 
-    // INIT image
-    // <IMG> - shows 'image not found' graphic as fallback
-    // const imgUrl = `https://via.placeholder.com/150x110`; //image;
-    const imgUrl = `${process.env.REACT_APP_IMG_DIR_LARGE}${image}`;
-    console.log("???? imgUrl: ", imgUrl);
-    const imgPrimary = (
-      <Img src={[imgUrl, ImageNotFound]} className="img-loading" alt={image} />
-    );
-    console.log("??????????", itemImages);
-    // const [mainImg, ...defaultImg] = itemImages;
-    const imgAttachmentsArr = [];
-    console.log("!!!!!!!!", imgAttachmentsArr);
-    for (let i = 0; i < itemImages.length; i++) {
-      imgAttachmentsArr.push(itemImages[i]);
-      console.log(
-        "IMG: ",
-        `${process.env.REACT_APP_IMG_DIR_THUMBS}${itemImages[i].image}`
-      );
-    }
+    // SET images
+    const imgFeaturedComp = <ImgFeatured imgArr={{ name, image }} />;
+    const imgGridComp = <ImgGrid imgsArr={itemImages} />;
 
-    const imgAttachments = imgAttachmentsArr.map((img, index) => {
-      return (
-        <Img
-          key={index}
-          src={[
-            `${process.env.REACT_APP_IMG_DIR_THUMBS}${img.image}`,
-            ImageNotFound
-          ]}
-          className="img-loading"
-          alt={img.name}
-        />
-      );
-    });
     // GET appearance
     if (categoryArr && categoryArr.settings) {
       const mySettings = { ...categoryArr.settings.item };
@@ -151,15 +124,10 @@ export default class ItemDetails extends Component {
             <Breadcrumbs />
             <div className="row row-post-img">
               <div className="col-xs-12 col-md-8 margin-x-0 featured col-post-img">
-                <div className="img-featured can-zoom">
-                  {imgPrimary}
-                  <button className="btn-zoom">
-                    <MdZoomOutMap />
-                  </button>
-                </div>
+                {imgFeaturedComp}
               </div>
               <div className="col-xs-12 col-md-4 col-post-img-grid">
-                <div class="img-grid">{imgAttachments}</div>
+                {imgGridComp}
               </div>
             </div>
           </div>
