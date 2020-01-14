@@ -15,6 +15,70 @@
   font-weight: bold;
 }
 
+.item-details-img > .row {
+  margin: 0;
+}
+
+.row.row-post-img {
+  padding: $offset-g2;
+  padding-top: 0;
+  // background: $color_primary;
+
+  .col-post-img {
+    padding: 0;
+    @media (min-width: $bp-md) {
+      padding-right: $offset-g1;
+    }
+    @media (max-width: $bp-md-1) {
+      padding-bottom: $offset-g1;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .img-featured {
+      &.can-zoom {
+        position: relative;
+        z-index: 0;
+
+        .btn-zoom {
+          position: absolute;
+          z-index: 1;
+          top: 0px;
+          right: 0px;
+          background: $color_primary;
+          color: white;
+          text-align: center;
+          width: 40px;
+          height: 40px;
+          line-height: 40px;
+          outline: none;
+          border: none;
+        }
+      }
+    }
+  }
+  /* (END) .col-post-img */
+
+  .col-post-img-grid {
+    padding: 0;
+
+    .img-grid {
+      display: flex;
+      flex-wrap: wrap;
+
+      > img {
+        flex: 33%;
+        flex-grow: 0;
+        height: auto;
+      }
+    }
+  }
+  /* (END) .col-post-img-grid */
+}
+
 .col-post-text {
   padding: $offset-g2 $offset-g1;
 
@@ -45,80 +109,6 @@
       padding: $offset-g2;
       background: white;
       margin: 0 0 $offset-g2 0;
-
-      &.on-photos-pageXXX {
-        width: 100%;
-        max-width: 100%;
-        // border-color:red;
-
-        div.feature-list {
-          > div {
-            display: inline-block;
-          }
-        }
-      }
-
-      &:not(.on-photos-pageXXX) {
-        @media (min-width: $bp-sm) {
-          float: right;
-          max-width: 40%;
-          width: auto;
-          margin: 0 0 $offset-g2 $offset-g2;
-        }
-        @media (max-width: $bp-sm-1) {
-          width: 100%;
-          float: left;
-          display: block;
-          max-width: 100%;
-          padding: $offset-g1;
-
-          div.feature-list {
-            width: 100%;
-            float: left;
-            display: block;
-
-            > div {
-              width: auto;
-              float: left;
-              display: block;
-              // background:yellow;
-              padding: 0 $offset-g1;
-              border-top: 0px;
-              border-left: 1px solid $table-color-border;
-
-              &:first-child {
-                padding-left: 0;
-                border-left: none;
-              }
-              &:last-child {
-                padding-right: 0;
-              }
-
-              ul.ul-fa {
-                li {
-                  line-height: 40px;
-                }
-              }
-
-              h3 {
-                line-height: 40px;
-              }
-
-              &.post-tags {
-                display: none;
-              }
-
-              &.post-share {
-                h4 {
-                  display: none;
-                }
-              }
-              /* (END) .post-share */
-            }
-          }
-          /* (END) .feature-list */
-        }
-      }
 
       div.feature-list {
         > div {

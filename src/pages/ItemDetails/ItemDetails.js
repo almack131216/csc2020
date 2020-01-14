@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import Img from "react-image";
 import ImageNotFound from "../../assets/images/image-not-found.jpg";
 import { Link } from "react-router-dom";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import WidgetData from "../../assets/_data/_data-widgets";
 import Widget from "../../components/Sidebar/InfoBox/InfoBox";
 import { ItemContext } from "../../Context";
 import parser from "html-react-parser";
 import { setDocumentTitle, apiGetItemDetails } from "../../assets/js/Helpers";
+import { MdZoomOutMap } from "react-icons/md";
 // import DummyData from "./dummy-item-details.json";
 
 export default class ItemDetails extends Component {
@@ -96,31 +98,33 @@ export default class ItemDetails extends Component {
     // INIT image
     // <IMG> - shows 'image not found' graphic as fallback
     // const imgUrl = `https://via.placeholder.com/150x110`; //image;
-    const imgUrl = `${process.env.REACT_APP_IMG_DIR}${image}`;
+    const imgUrl = `${process.env.REACT_APP_IMG_DIR_LARGE}${image}`;
     console.log("???? imgUrl: ", imgUrl);
     const imgPrimary = (
       <Img src={[imgUrl, ImageNotFound]} className="img-loading" alt={image} />
     );
     console.log("??????????", itemImages);
     // const [mainImg, ...defaultImg] = itemImages;
-    const imgAttachmentsArr = [itemImages];
+    const imgAttachmentsArr = [];
     console.log("!!!!!!!!", imgAttachmentsArr);
-    // for (let i = 0; i < itemImages.length; i++) {
-    //   imgAttachments[] = (
-    //     <Img
-    //       src={[`https://via.placeholder.com/150x110`, ImageNotFound]}
-    //       className="img-loading"
-    //       alt={itemImages[i].name}
-    //     />
-    //   );
-    // }
+    for (let i = 0; i < itemImages.length; i++) {
+      imgAttachmentsArr.push(itemImages[i]);
+      console.log(
+        "IMG: ",
+        `${process.env.REACT_APP_IMG_DIR_THUMBS}${itemImages[i].image}`
+      );
+    }
+
     const imgAttachments = imgAttachmentsArr.map((img, index) => {
       return (
         <Img
           key={index}
-          src={[img, ImageNotFound]}
+          src={[
+            `${process.env.REACT_APP_IMG_DIR_THUMBS}${img.image}`,
+            ImageNotFound
+          ]}
           className="img-loading"
-          alt={image}
+          alt={img.name}
         />
       );
     });
@@ -143,9 +147,21 @@ export default class ItemDetails extends Component {
           <div className="sidebar">
             <NavLeft categoryName="Live" />
           </div>
-          <div className="content">
-            {imgPrimary}
-            {imgAttachments}
+          <div className="content bg-secondary item-details-img">
+            <Breadcrumbs />
+            <div className="row row-post-img">
+              <div className="col-xs-12 col-md-8 margin-x-0 featured col-post-img">
+                <div className="img-featured can-zoom">
+                  {imgPrimary}
+                  <button className="btn-zoom">
+                    <MdZoomOutMap />
+                  </button>
+                </div>
+              </div>
+              <div className="col-xs-12 col-md-4 col-post-img-grid">
+                <div class="img-grid">{imgAttachments}</div>
+              </div>
+            </div>
           </div>
         </section>
         <div className="container">
