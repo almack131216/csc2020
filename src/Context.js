@@ -347,7 +347,7 @@ export default class ItemProvider extends Component {
     return CatData[itemCategoryName].slug;
   };
 
-  /////////////////////////////////////////////////////////////////////////// FORMAT category link
+  /////////////////////////////////////////////////////////////////////////// GET category link tag
   // get slug from CatData based on categoryName
   getCategoryLinkTag = getCategoryArr => {
     return (

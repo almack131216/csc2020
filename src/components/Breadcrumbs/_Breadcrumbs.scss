@@ -69,20 +69,20 @@
         // on posts page
         &.has-3-crumbs {
           @media (max-width: $bp-xs-1) {
-            li.li-category-2,
-            li.li-category-38 {
+            li.Live,
+            li.Archive {
               span {
                 display: none;
               }
             }
 
-            li.li-category-2 {
+            li.Live {
               a:before {
                 content: "For Sale";
               }
             }
 
-            li.li-category-38 {
+            li.Archive {
               a:before {
                 content: "Sold";
               }
@@ -93,8 +93,8 @@
         // on single post page
         &.has-4-crumbs {
           @media (max-width: $bp-sm-1) {
-            li.li-category-2,
-            li.li-category-38 {
+            li.Live,
+            li.Archive {
               display: none;
             }
           }

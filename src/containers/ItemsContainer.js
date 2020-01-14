@@ -54,7 +54,7 @@ function ItemsContainer({ context }) {
   }
   return (
     <>
-      <Breadcrumbs />
+      <Breadcrumbs pageType="items-list" />
       {itemsFilterComponent}
       {titlesComponent}
       <ItemsList items={currentPosts} layout={itemLayout} />

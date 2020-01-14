@@ -88,17 +88,23 @@ export default class ItemDetails extends Component {
       image,
       category,
       status,
-      description
+      description,
+      slug
     } = itemPrimary;
 
+    const itemArr = { name, title: name, image, slug };
     const categoryArr = getCategoryArr(category, status);
     const categoryLinkTag = getCategoryLinkTag(categoryArr);
     const priceString = formatPrice(price);
     const descriptionParsed = description ? parser(description) : null;
     setDocumentTitle(`${categoryArr.title} | ${year} ${name}`);
+    // SET breadcrumbs array
+    let crumbsArr = [];
+    crumbsArr.push(categoryArr);
+    crumbsArr.push(itemArr);
 
     // SET images
-    const imgFeaturedComp = <ImgFeatured imgArr={{ name, image }} />;
+    const imgFeaturedComp = <ImgFeatured imgArr={itemArr} />;
     const imgGridComp = <ImgGrid imgsArr={itemImages} />;
 
     // GET appearance
@@ -118,10 +124,10 @@ export default class ItemDetails extends Component {
       <>
         <section className="content-wrap match-heights bg-accent">
           <div className="sidebar">
-            <NavLeft categoryName="Live" />
+            <NavLeft categoryName={categoryArr.name} />
           </div>
           <div className="content bg-secondary item-details-img">
-            <Breadcrumbs />
+            <Breadcrumbs crumbsArr={crumbsArr} pageType="item-details" />
             <div className="row row-post-img">
               <div className="col-xs-12 col-md-8 margin-x-0 featured col-post-img">
                 {imgFeaturedComp}
