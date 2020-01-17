@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Img from "react-image";
-import ImageNotFound from "../../assets/images/image-not-found.jpg";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
@@ -11,26 +9,39 @@ import ImgGrid from "../../components/ItemDetails/ImgGrid";
 import { ItemContext } from "../../Context";
 import parser from "html-react-parser";
 import { setDocumentTitle, apiGetItemDetails } from "../../assets/js/Helpers";
-import { MdZoomOutMap } from "react-icons/md";
-// import DummyData from "./dummy-item-details.json";
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
 
 export default class ItemDetails extends Component {
   constructor(props) {
     super(props);
     console.log("[Item.js] this.props...", this.props);
+    // LIGHTBOX - triggered from img grid + img featured
+    // state props: photoIndex, isOpen
+    const handleForLightbox = this.handleForLightbox.bind(this);
+
     this.strItemNotFound = "Cannot find item";
     this.strLoading = "Loading...";
     this.apiUrl = apiGetItemDetails(this.props.match.params.slug);
-    // this.apiUrl = "../../api-dummy/dummy-item-details.json";
 
     this.state = {
       itemPrimary: {},
-      itemImages: {},
+      itemImages: [],
       slug: this.props.match.params.slug,
-      fetchError: ""
+      fetchError: "",
+      photoIndex: 0,
+      isOpen: false
     };
   }
 
+  // LIGHTBOX - open lightbox on selected photoIndex
+  handleForLightbox = getIndex => {
+    console.log("openLightbox()...", getIndex);
+    const photoIndex = getIndex ? getIndex : 0;
+    this.setState({ isOpen: true, photoIndex });
+  };
+
+  // API - componentDidMount
   async componentDidMount() {
     // console.log("[ItemDetails.js] componentDidMount()...");
     this.setState({ loading: true });
@@ -38,22 +49,19 @@ export default class ItemDetails extends Component {
       .then(response => response.json())
       .then(data => {
         // console.log("[ItemDetails.js] componentDidMount() data: ", data);
-        const [itemPrimary, ...itemImages] = data;
-        console.log(
-          "[ItemDetails.js] componentDidMount() itemPrimary: ",
-          itemPrimary
-        );
-        console.log(
-          "[ItemDetails.js] componentDidMount() itemImages: ",
-          itemImages
-        );
+        const [itemPrimary, ...itemImageAttachments] = data;
+        const itemImages = [itemPrimary, ...itemImageAttachments];
+        // console.log(
+        //   "[ItemDetails.js] componentDidMount() itemPrimary: ",
+        //   itemPrimary
+        // );
+        // console.log(
+        //   "[ItemDetails.js] componentDidMount() itemImages: ",
+        //   itemImages
+        // );
         this.setState({ itemPrimary, itemImages, loading: false });
       })
       .catch(() => {
-        // console.log(
-        //   "[ItemDetails.js] componentDidMount() error...",
-        //   this.strItemNotFound
-        // );
         this.setState({ fetchError: this.strItemNotFound, loading: false });
         setDocumentTitle(this.strItemNotFound);
       });
@@ -65,22 +73,39 @@ export default class ItemDetails extends Component {
   static contextType = ItemContext;
 
   render() {
+    // LIGHTBOX props
+    const handleForLightbox = this.handleForLightbox;
+    const { photoIndex, isOpen } = this.state;
+    // (END) LIGHTBOX props
     const { formatPrice, getCategoryArr, getCategoryLinkTag } = this.context;
     const { loading, fetchError, itemPrimary, itemImages } = this.state;
     // INIT settings.item
     let widgetOpeningHours = null;
     let widgetContact = null;
-
+    // ITEM NOT FOUND
     if (fetchError) {
       return `<p>${this.strItemNotFound}</p>`;
     }
+    // LOADING
     if (loading) {
       return `<p>${this.strLoading}</p>`;
     }
 
-    console.log("FIRST:", itemPrimary); // 'PARENT item'
-    console.log("images:", itemImages); // 'PARENT item attachments'
+    // console.log("FIRST:", itemPrimary); // 'PARENT item'
+    // console.log("images:", itemImages); // 'PARENT item attachments'
 
+    // LIGHTBOX images
+    // ARR - put objects into array (need for .map())
+    const images = [];
+    for (let i = 0; i < itemImages.length; i++) {
+      images.push({
+        src: `${process.env.REACT_APP_IMG_DIR_LARGE}${itemImages[i].image}`,
+        name: itemImages[i].name
+      });
+    }
+    // (END) LIGHTBOX images
+
+    // ITEM fields
     const {
       name,
       year,
@@ -104,8 +129,18 @@ export default class ItemDetails extends Component {
     crumbsArr.push(itemArr);
 
     // SET images
-    const imgFeaturedComp = <ImgFeatured imgArr={itemArr} />;
-    const imgGridComp = <ImgGrid imgsArr={itemImages} />;
+    const imgFeaturedComp = (
+      <ImgFeatured
+        imgArr={itemArr}
+        handleForLightbox={handleForLightbox.bind(this)}
+      />
+    );
+    const imgGridComp = (
+      <ImgGrid
+        imgsArr={images}
+        handleForLightbox={handleForLightbox.bind(this)}
+      />
+    );
 
     // GET appearance
     if (categoryArr && categoryArr.settings) {
@@ -146,9 +181,7 @@ export default class ItemDetails extends Component {
             </div>
             <div className="content col-sm-12 col-md-9 col-post-parent">
               <div className="col-post-text">
-                <h1>
-                  {year} {name}
-                </h1>
+                <h1>{year ? `${year} ${name}` : name}</h1>
                 <p>{categoryLinkTag}</p>
                 <p>{priceString}</p>
                 {descriptionParsed}
@@ -156,6 +189,27 @@ export default class ItemDetails extends Component {
             </div>
           </section>
         </div>
+
+        {isOpen && (
+          <Lightbox
+            mainSrc={images[photoIndex].src}
+            nextSrc={images[(photoIndex + 1) % images.length].src}
+            prevSrc={
+              images[(photoIndex + images.length - 1) % images.length].src
+            }
+            onCloseRequest={() => this.setState({ isOpen: false })}
+            onMovePrevRequest={() =>
+              this.setState({
+                photoIndex: (photoIndex + images.length - 1) % images.length
+              })
+            }
+            onMoveNextRequest={() =>
+              this.setState({
+                photoIndex: (photoIndex + 1) % images.length
+              })
+            }
+          />
+        )}
       </>
     );
   }

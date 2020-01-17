@@ -5,18 +5,21 @@ import { MdZoomOutMap } from "react-icons/md";
 
 const ImgFeatured = props => {
   console.log("[ImgFeatured] ...");
-  const name = props.imgArr.name;
-  const src = props.imgArr.image;
-  const imgUrl = `${process.env.REACT_APP_IMG_DIR_LARGE}${src}`;
+  const handleForLightbox = props.handleForLightbox;
+  const imgUrl = `${process.env.REACT_APP_IMG_DIR_LARGE}${props.imgArr.image}`;
 
   const imgPrimary = (
-    <Img src={[imgUrl, ImageNotFound]} className="img-loading" alt={name} />
+    <Img
+      src={[imgUrl, ImageNotFound]}
+      className="img-loading"
+      alt={props.imgArr.name}
+    />
   );
 
   return (
     <div className="img-featured can-zoom">
       {imgPrimary}
-      <button className="btn-zoom">
+      <button className="btn-zoom" onClick={() => handleForLightbox(0)}>
         <MdZoomOutMap />
       </button>
     </div>

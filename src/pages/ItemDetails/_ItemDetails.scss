@@ -37,44 +37,11 @@
       width: 100%;
       height: auto;
     }
-
-    .img-featured {
-      &.can-zoom {
-        position: relative;
-        z-index: 0;
-
-        .btn-zoom {
-          position: absolute;
-          z-index: 1;
-          top: 0px;
-          right: 0px;
-          background: $color_primary;
-          color: white;
-          text-align: center;
-          width: 40px;
-          height: 40px;
-          line-height: 40px;
-          outline: none;
-          border: none;
-        }
-      }
-    }
   }
   /* (END) .col-post-img */
 
   .col-post-img-grid {
     padding: 0;
-
-    .img-grid {
-      display: flex;
-      flex-wrap: wrap;
-
-      > img {
-        flex: 33%;
-        flex-grow: 0;
-        height: auto;
-      }
-    }
   }
   /* (END) .col-post-img-grid */
 }

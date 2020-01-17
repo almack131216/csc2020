@@ -37,9 +37,13 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
       return (
         <li key={index} className={item.class}>
           <FaChevronRight />
-          <Link to={item.slug}>
+          {index < crumbsArr.length - 1 ? (
+            <Link to={item.slug}>
+              <span>{item.title}</span>
+            </Link>
+          ) : (
             <span>{item.title}</span>
-          </Link>
+          )}
         </li>
       );
     });
@@ -79,7 +83,7 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   const toggleFilter = e => {
     e.preventDefault();
     context.setFilterToggle();
-    console.log("??? toggleFilter", catSettings.showFilter, filterIsActive);
+    // console.log("??? toggleFilter", catSettings.showFilter, filterIsActive);
   };
   // GET appearance
   if (showFilter) {

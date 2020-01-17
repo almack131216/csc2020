@@ -4,34 +4,23 @@ import ImageNotFound from "../../assets/images/image-not-found.jpg";
 
 const ImgGrid = props => {
   console.log("[ImgGrid] ...");
+  const handleForLightbox = props.handleForLightbox;
   const itemImages = props.imgsArr;
 
-  // ARR - put objects into array (need for .map())
-  const imgAttachmentsArr = [];
-  for (let i = 0; i < itemImages.length; i++) {
-    imgAttachmentsArr.push(itemImages[i]);
-    console.log(
-      "IMG: ",
-      `${process.env.REACT_APP_IMG_DIR_THUMBS}${itemImages[i].image}`
-    );
-  }
-
   // MAP - return images
-  const imgAttachments = imgAttachmentsArr.map((img, index) => {
+  const imgAttachments = itemImages.map((img, index) => {
     return (
-      <Img
-        key={index}
-        src={[
-          `${process.env.REACT_APP_IMG_DIR_THUMBS}${img.image}`,
-          ImageNotFound
-        ]}
-        className="img-loading"
-        alt={img.name}
-      />
+      <li key={index} className="css-grid__item">
+        <Img
+          src={[img.src, ImageNotFound]}
+          className="img-loading css-grid__img top img-responsive"
+          alt={img.name}
+          onClick={() => handleForLightbox(index)}
+        />
+      </li>
     );
   });
-
-  return <div className="img-grid">{imgAttachments}</div>;
+  return <ul className="ul-img-grid">{imgAttachments}</ul>;
 };
 
 export default ImgGrid;
