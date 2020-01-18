@@ -8,8 +8,8 @@
 
   .container {
     background: white;
-    padding-top: $offset-g1;
-    padding-bottom: $offset-g1;
+    padding-top: 0;
+    @include resp-prop-half("padding-bottom", $offset-g1);
 
     @media (max-width: $bp-lg-1) {
       text-align: center;
@@ -23,12 +23,8 @@
     h1 {
       @extend .h3;
       font-size: 18px !important;
-      margin: $offset-2 0 0 0;
+      margin: 22px 0 0 0;
       text-align: left;
-
-      // @media (max-width:$bp-lg-1){
-      //     font-size: 14px;
-      // }
     }
 
     ul.ul-header {
@@ -40,10 +36,8 @@
 
       li {
         display: inline;
-        // float:left;
         background: $color_debug2;
         line-height: $offset-g2;
-        // padding:0 $offset-1;
         color: $color_navbar-header-text;
 
         a {
@@ -53,15 +47,6 @@
         &:after {
           content: "|";
           margin: 0 $offset-1;
-        }
-        // border-right:1px solid #666;
-
-        &:first-child {
-          // padding-left:0;
-          // border-right:none;
-        }
-        &:last-child {
-          // border-right:none;
         }
       }
     }
@@ -79,19 +64,8 @@
 
     // [=] in navbar
     .toggle-button {
-      position: absolute;
-      top: $offset-g1;
-      left: $offset-g1;
-      @media (min-width: $bp-xs) and (max-width: $bp-tablet-1) {
-        top: 5px;
-      }
       display: block;
-      flex-direction: unset;
-      justify-content: unset;
-      width: $offset-g4;
-      height: $offset-g4;
     }
-    /* (END) .toggle-button */
   }
 }
 
@@ -104,6 +78,7 @@
   }
 
   .navbar-brand {
+    float: left;
     margin: 0;
     height: auto; //bs2do
     padding: 0;

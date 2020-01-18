@@ -1,10 +1,10 @@
 import React from "react";
+import { AiOutlineMenuUnfold, AiOutlineMenuFold } from "react-icons/ai";
 
 const drawerToggleButton = props => (
   <button className="toggle-button" onClick={props.click}>
-    <div className="nav-icon">
-      <div></div>
-    </div>
+    <AiOutlineMenuUnfold className="r-i show-menu" />
+    <AiOutlineMenuFold className="r-i hide-menu" />
   </button>
 );
 
