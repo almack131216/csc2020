@@ -1,115 +1,5 @@
 /* _Item.scss */
 
-// a.wide[href]:hover img {
-//   transform: scale(1.07);
-// }
-
-$card-color-txt: #999;
-$card-color-txt-price-detail: #f90;
-$card-color-txt-price-sold: #f00;
-
-$card-color-accent-bg: $color_accent;
-$card-color-accent-link-title: white;
-$card-color-accent-txt: #ccc;
-$card-color-accent-link-category: $color_secondary;
-
-@mixin item-shared-props() {
-  article {
-    .card-txt {
-      .title {
-        display: block;
-        margin: 0 0 5px 0;
-      }
-
-      .source {
-        color: $color_accent3;
-        font-weight: bold;
-      }
-
-      .price {
-        color: $card-color-txt;
-        &.detail {
-          color: $card-color-txt-price-detail;
-        }
-        &.sold {
-          color: $card-color-txt-price-sold;
-          font-weight: bold;
-          text-transform: uppercase;
-        }
-      }
-    }
-
-    .category {
-      text-transform: uppercase;
-    }
-
-    .ftr {
-      .year {
-        color: $card-color-txt;
-      }
-    }
-  }
-}
-
-@mixin item-card() {
-  @include resp-prop-half("margin", $offset-g1);
-  flex: inherit; //1 0 500px;// flex: 0 0 30%;
-  box-sizing: border-box;
-  padding: 0;
-
-  @media (min-width: $bp-sm) {
-    width: calc(33.33333333% - #{$offset-g2});
-  }
-
-  @media (min-width: $bp-tablet) and (max-width: $bp-sm-1) {
-    width: calc(50% - #{$offset-g2});
-  }
-
-  @media (max-width: $bp-tablet-1) {
-    margin: 0 0 $offset-g1 0;
-    width: 100%;
-    @include item-row();
-  }
-}
-
-@mixin item-row() {
-  @include resp-prop-half("margin-bottom", $offset-g1);
-  flex: inherit; //1 0 500px;// flex: 0 0 30%;
-  width: 100%;
-
-  article {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    flex: auto;
-    // border: 1px solid $color_layout-border;
-
-    .card-img {
-      width: 30%;
-      min-height: auto;
-      background-color: transparent;
-
-      a {
-        img {
-          width: 100%;
-          height: auto;
-        }
-      }
-    }
-
-    .card-txt {
-      width: 70%;
-      align-self: flex-start;
-      padding: 0 $offset-g1;
-
-      .ftr {
-        margin-top: 0;
-      }
-    }
-  }
-}
-
 .item.item-card {
   @include item-shared-props();
 
@@ -125,8 +15,6 @@ $card-color-accent-link-category: $color_secondary;
       width: 100%;
       min-height: 40%;
       display: flex;
-      padding: 0;
-      background-color: $card-color-txt;
 
       a {
         display: block;
