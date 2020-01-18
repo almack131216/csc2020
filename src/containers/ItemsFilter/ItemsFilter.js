@@ -37,7 +37,7 @@ export default function ItemsFilter({ items }) {
     <form className={classForm}>
       <div className="row row-filter">
         {categoryName === "Live" ? (
-          <div className="col-xs-4 col-post-filter two-control">
+          <div className="col-xs-4 col-post-filter two-control price">
             <PriceFilter
               label="Price"
               funcFormatPrice={formatPrice}
@@ -54,7 +54,7 @@ export default function ItemsFilter({ items }) {
         ) : null}
         {/* (END) price */}
 
-        <div className="col-xs-4 col-post-filter two-control">
+        <div className="col-xs-4 col-post-filter two-control year">
           <YearFilter
             label="Year"
             classParent={classParent}
@@ -68,7 +68,7 @@ export default function ItemsFilter({ items }) {
           />
           {/* (END) year */}
         </div>
-        <div className="col-xs-4 col-post-filter one-control">
+        <div className="col-xs-4 col-post-filter one-control order">
           <SortFilter
             label="Order"
             classParent={classParent}
