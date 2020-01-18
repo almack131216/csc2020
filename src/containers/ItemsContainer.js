@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import ItemsFilter from "./ItemsFilter/ItemsFilter";
 import TitleText from "../components/TitleText/TitleText";
-import ItemsList from "../components/Items/ItemsList";
+import ItemsList from "../components/Items/ItemsList/ItemsList";
 import Pagination from "../components/Pagination/Pagination";
 import { withItemConsumer } from "../Context";
 import Loading from "../components/Loading";

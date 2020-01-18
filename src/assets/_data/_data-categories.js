@@ -19,7 +19,7 @@ const catArray = {
       showTitleSub: false,
       layout: "grid accent",
       item: {
-        layout: "grid accent",
+        layout: "item-card accent",
         showPrice: true,
         showRibbons: true,
         showYear: true,
@@ -56,7 +56,7 @@ const catArray = {
       showTitleSub: false,
       layout: "grid accent",
       item: {
-        layout: "grid accent",
+        layout: "item-card accent",
         showPrice: true,
         showRibbons: true,
         showYear: true,
@@ -85,7 +85,7 @@ const catArray = {
       showTitleSub: true,
       layout: "row",
       item: {
-        layout: "row",
+        layout: "item-row",
         showExcerpt: true,
         showCategoryLink: false
       }
@@ -110,7 +110,7 @@ const catArray = {
       classContainer: "press",
       layout: "row",
       item: {
-        layout: "row",
+        layout: "item-row",
         showExcerpt: true,
         showSource: true,
         showCategoryLink: false
@@ -136,7 +136,7 @@ const catArray = {
       classContainer: "",
       layout: "row",
       item: {
-        layout: "row",
+        layout: "item-row",
         showExcerpt: true,
         showCategoryLink: false
       }

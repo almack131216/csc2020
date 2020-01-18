@@ -4,10 +4,10 @@ import parse from "html-react-parser";
 import PropTypes from "prop-types";
 import { memo } from "react";
 import Img from "react-image";
-import ImageNotFound from "../../assets/images/image-not-found.jpg";
-import Ribbon from "./Ribbon/Ribbon";
+import ImageNotFound from "../../../assets/images/image-not-found.jpg";
+import Ribbon from "../Ribbon/Ribbon";
 import { useContext } from "react";
-import { ItemContext } from "../../Context";
+import { ItemContext } from "../../../Context";
 
 const Item = memo(({ item, itemSettingsCust }) => {
   // console.log("[Item.js] ...", itemSettingsCust);
@@ -40,7 +40,7 @@ const Item = memo(({ item, itemSettingsCust }) => {
     <Img src={[image, ImageNotFound]} alt={name} className="img-loading" />
   );
   // INIT settings.item
-  let itemClass = ["card"];
+  let itemClass = ["item"];
   let imgClass = "card-img";
   let excerptTag = null;
   let ribbonNewToday = null;

@@ -1,13 +1,17 @@
 .featured-items-wrap {
-  padding: 0 $offset-g1;
+  padding: 0;
+  @include resp-prop-half("padding-left", $offset-g1);
+  @include resp-prop-half("padding-right", $offset-g1);
 
   .slick-slide {
     box-sizing: border-box;
-    padding: $offset-g1;
+    @include resp-prop-half("padding", $offset-g1);
     padding-top: 0;
 
     div {
-      .card {
+      .item-card {
+        @include item-shared-props();
+
         .card-txt {
           height: 130px; //avoid using JS to match heights. Just increase text area for all (2 lines)
           overflow: hidden;

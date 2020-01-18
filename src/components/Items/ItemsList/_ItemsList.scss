@@ -1,0 +1,39 @@
+/* _ItemsList.scss */
+// REF: https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
+
+.items-wrap {
+  padding: $offset-g1;
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    // Switch card-row
+    @media (max-width: $bp-tablet-1) {
+      flex-direction: column;
+    }
+
+    .item-card:not(.featured) {
+      //ignore homepage featured cards
+      // Switch card-row
+      @media (min-width: $bp-tablet) {
+        @include item-card();
+      }
+      @media (max-width: $bp-tablet-1) {
+        @include item-row();
+      }
+    }
+  }
+
+  &.rows {
+    @include resp-prop-half("padding", $offset-g2);
+
+    .cards {
+      flex-direction: column;
+
+      .item-row {
+        @include item-row();
+      }
+    }
+  }
+}
