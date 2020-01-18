@@ -4,7 +4,9 @@
   position: relative;
   z-index: 0;
   margin: $offset-g2 0 $offset-g1 0;
-  padding: 0 $offset-g2;
+  padding: 0;
+  @include resp-prop-half("padding-left", $offset-g2);
+  @include resp-prop-half("padding-right", $offset-g2);
   display: block;
   width: 100%;
   min-height: 20px;
@@ -69,8 +71,4 @@
       display: none;
     }
   }
-}
-
-.row > div > .title_splitter_wrap {
-  // margin:0;
 }

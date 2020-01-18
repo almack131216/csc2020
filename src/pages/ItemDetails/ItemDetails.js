@@ -164,10 +164,10 @@ export default class ItemDetails extends Component {
           <div className="content bg-secondary item-details-img">
             <Breadcrumbs crumbsArr={crumbsArr} pageType="item-details" />
             <div className="row row-post-img">
-              <div className="col-xs-12 col-md-8 margin-x-0 featured col-post-img">
+              <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
                 {imgFeaturedComp}
               </div>
-              <div className="col-xs-12 col-md-4 col-post-img-grid">
+              <div className="col-xs-12 col-sm-4 col-post-img-grid">
                 {imgGridComp}
               </div>
             </div>
@@ -179,7 +179,7 @@ export default class ItemDetails extends Component {
               {widgetOpeningHours}
               {widgetContact}
             </div>
-            <div className="content col-sm-12 col-md-9 col-post-parent">
+            <div className="content col-sm-12 col-md-9 padding-x-0">
               <div className="col-post-text">
                 <h1>{year ? `${year} ${name}` : name}</h1>
                 <p>{categoryLinkTag}</p>

@@ -6,7 +6,7 @@ ul.ul-img-grid {
 
   li {
     flex: 0 0 33%;
-    @media (min-width: $bp-tablet) and (max-width: $bp-md-1) {
+    @media (min-width: $bp-tablet) and (max-width: $bp-sm-1) {
       flex: 0 0 10%;
     }
     @media (min-width: $bp-xs) and (max-width: $bp-tablet-1) {

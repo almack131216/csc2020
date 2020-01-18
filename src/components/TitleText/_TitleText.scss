@@ -1,9 +1,9 @@
 /* _TitleText.scss */
 
 .title-text {
-  margin: $offset-g1;
+  @include resp-prop-half("margin", $offset-g2);
   margin-bottom: 0;
-  padding: $offset-g1 0;
+  padding-bottom: $offset-g1;
   border-bottom: 1px solid $color_accent;
   h1 {
     margin: 0;

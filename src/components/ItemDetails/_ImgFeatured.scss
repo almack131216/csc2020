@@ -13,11 +13,18 @@
       background: $color_primary;
       color: white;
       text-align: center;
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
+      width: $offset-4;
+      height: $offset-4;
+      line-height: $offset-2;
       outline: none;
       border: none;
+      padding: $offset-1;
+
+      > svg {
+        height: $offset-2;
+        width: $offset-2;
+        line-height: $offset-2;
+      }
     }
   }
 }

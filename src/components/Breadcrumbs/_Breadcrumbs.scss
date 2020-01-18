@@ -2,6 +2,7 @@
 
 .row.row-breadcrumb {
   position: relative;
+  margin: 0;
 
   .btn-toggle-filter {
     position: absolute;
@@ -34,7 +35,10 @@
 
   .col-post-breadcrumb {
     margin-bottom: 0;
-    padding: $offset-g1 $offset-g2;
+    @include resp-prop-half("padding-top", $offset-g1);
+    @include resp-prop-half("padding-bottom", $offset-g1);
+    @include resp-prop-half("padding-left", $offset-g2);
+    @include resp-prop-half("padding-right", $offset-g2);
     background: $color_secondary;
 
     @media (max-width: $bp-xs-1) {
@@ -47,10 +51,12 @@
         li {
           svg {
             height: $offset-1;
-            margin-right: 10px;
+            margin-right: $offset-1;
+            @media (max-width: $bp-tablet-1) {
+              margin-right: 5px;
+            }
           }
-          a {
-          }
+
           &.li-jump-menu-wrap {
             form {
               display: inline-block;

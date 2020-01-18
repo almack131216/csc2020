@@ -9,13 +9,12 @@ footer {
     color: white;
 
     > .row {
-      padding: $offset-g1;
-      @media (max-width: $bp-xs-1) {
-        padding: $offset-g1 0;
-      }
+      padding: 0;
 
       > div {
-        padding: $offset-g1;
+        padding: $offset-g2;
+        @include resp-prop-half("padding-left", $offset-g2);
+        @include resp-prop-half("padding-right", $offset-g2);
 
         &.text-align-right {
           @media (max-width: $bp-tablet-1) {
@@ -77,10 +76,6 @@ footer {
           // line-height:$offset-g2;
         }
 
-        > a:hover {
-          // @include btn-darken-bg-on-hover();
-        }
-
         > a:active {
           // background:transparent;
           color: white;
@@ -90,12 +85,6 @@ footer {
       &.social_menu {
         li {
           color: white;
-
-          a {
-            &:before {
-              // color:white;
-            }
-          }
         }
       }
     }
