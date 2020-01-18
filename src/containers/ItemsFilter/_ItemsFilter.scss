@@ -2,16 +2,32 @@
 
 .row.row-filter {
   background: $color_accent4;
-  padding: 5px $offset-g1;
+  margin: 0;
+  padding: $offset-1 $offset-g1;
+  @media (max-width: $bp-tablet-1) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
-  .col-post-filter {
+  > .col-post-filter {
+    padding-right: 5px;
+    .form-group {
+      margin-bottom: 0;
+      width: 100%;
+
+      select,
+      input {
+        // width: 100%;
+      }
+    }
+
     label {
       color: white;
       margin-right: $offset-1;
     }
 
-    input,
-    select {
+    &.order {
+      padding-right: $offset-g1;
     }
 
     &.two-control {
@@ -33,13 +49,25 @@
       }
     }
 
-    @media (min-width: $bp-xs) and (max-width: $bp-lg-1) {
+    @media (max-width: $bp-lg-1) {
       label {
         width: 100%;
       }
       &.two-control .form-control {
         display: inline-block;
         width: calc(50% - #{$offset-1});
+      }
+    }
+
+    @media (max-width: $bp-tablet-1) {
+      &.price {
+        width: 60%;
+      }
+      &.year {
+        display: none;
+      }
+      &.order {
+        width: 40%;
       }
     }
   }
