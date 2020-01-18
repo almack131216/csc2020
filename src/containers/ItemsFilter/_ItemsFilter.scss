@@ -1,5 +1,29 @@
 /* _ItemsFilter.scss */
 
+.row.row-breadcrumb {
+  position: relative;
+  margin: 0;
+
+  .btn-toggle-filter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: $color_secondary;
+    color: $color_accent;
+    border: none;
+    outline: none;
+    height: 100%;
+    line-height: 100%;
+    @include resp-prop-half("padding-left", $offset-g2);
+    @include resp-prop-half("padding-right", $offset-g2);
+
+    &.active {
+      background: $color_accent4;
+      color: white;
+    }
+  }
+}
+
 .row.row-filter {
   background: $color_accent4;
   margin: 0;
