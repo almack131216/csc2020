@@ -18,15 +18,14 @@ const TitleSplitter = props => {
   return (
     <div className="title_splitter_wrap margin-top-0">
       <div className="title">
-        <Link to={slug} className="a-title">
+        <Link to={slug}>
           <h2>{title}</h2>
         </Link>
       </div>
+      <span className="spacer-line" />
       {seeAll ? (
         <div className="see-all">
-          <Link to={seeAll.slug} className="a-all">
-            {seeAll.title}
-          </Link>
+          <Link to={seeAll.slug}>{seeAll.title}</Link>
         </div>
       ) : null}
     </div>
