@@ -7,8 +7,9 @@ const catArray = {
     titleDocument: "Classic Cars For Sale in Malton, North Yorkshire",
     slug: "/classic-cars-for-sale",
     slugToItem: "/for-sale",
-    api: "./api-dummy/dummy-for-sale.json",
-    apiFeatured: "./api-dummy/dummy-for-sale.json",
+    apiJson: "./api-dummy/dummy-for-sale.json",
+    api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Live`,
+    apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Live`,
     apiItem: "./api-dummy/dummy-item-details.json",
     settings: {
       showFilter: true,
@@ -30,12 +31,6 @@ const catArray = {
         }
       }
     }
-
-    // api: `http://localhost:8080/_batch-scripts/csc/dummy.json `,
-    // apiXXX: `${process.env.REACT_APP_API_ENDPOINT}items/for-sale`,
-    // apiXXX:
-    //   "http://localhost:8080/_batch-scripts/csc/index.php?api=items&spec=for-sale"
-    // apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}items/for-sale/featured`
   },
   Archive: {
     id: 2,
@@ -45,8 +40,8 @@ const catArray = {
     titleDocument:
       "Classic Cars Sold by Classic and Sportscar Centre, Malton, North Yorkshire",
     slug: "/classic-car-archive",
-    api: "./api-dummy/dummy-sold.json",
-    apiFeatured: "./api-dummy/dummy-sold.json",
+    api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Archive`,
+    apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Archive`,
     settings: {
       showFilter: true,
       showBrandList: true,
@@ -63,8 +58,6 @@ const catArray = {
         showCategoryLink: true
       }
     }
-    // apiXXX: `${process.env.REACT_APP_API_ENDPOINT}items/sold`,
-    // apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}items/sold/featured`
   },
   Testimonials: {
     id: 3,
@@ -75,7 +68,7 @@ const catArray = {
     titleDocument:
       "Customer Testimonials | Read what our customers have to say",
     slug: "/testimonials",
-    api: "./api-dummy/dummy-testimonials.json",
+    api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Testimonials`,
     settings: {
       showFilter: false,
       showBrandList: false,
@@ -103,7 +96,7 @@ const catArray = {
     titleHover: "Link to press & media articles",
     titleDocument: "Press / Media",
     slug: "/press",
-    api: "./api-dummy/dummy-press.json",
+    api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Press`,
     settings: {
       showFilter: false,
       showBrandList: false,
@@ -124,7 +117,6 @@ const catArray = {
         }
       }
     }
-    // apiXXX: `${process.env.REACT_APP_API_ENDPOINT}items/press`
   },
   News: {
     id: 5,
@@ -133,7 +125,7 @@ const catArray = {
     titleHover: "Link to news stories, past and present",
     titleDocument: "Classic and Sportscar Centre News",
     slug: "/news",
-    api: "./api-dummy/dummy-news.json",
+    api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=News`,
     settings: {
       showFilter: false,
       showBrandList: false,

@@ -290,8 +290,8 @@ export default class ItemProvider extends Component {
       let year = dataItem.year;
       let date = dataItem.createdAt;
       let excerpt = parse(getExcerpt(dataItem.excerpt));
-      let image = `https://via.placeholder.com/150x110`; // `http://localhost:8080/csc2020-img/images/${dataItem.image}`;
-      // let image = `http://www.classicandsportscar.ltd.uk/images_catalogue/${dataItem.image}`;
+      // let image = `https://via.placeholder.com/150x110`; // `http://localhost:8080/csc2020-img/images/${dataItem.image}`;
+      let image = `http://www.classicandsportscar.ltd.uk/images_catalogue/${dataItem.image}`;
       let item = {
         id,
         status,
@@ -350,6 +350,7 @@ export default class ItemProvider extends Component {
   /////////////////////////////////////////////////////////////////////////// GET category link tag
   // get slug from CatData based on categoryName
   getCategoryLinkTag = getCategoryArr => {
+    console.log("[Context.js] getCategoryLinkTag...", getCategoryArr);
     return (
       <Link to={getCategoryArr.slug} className="link-category">
         {getCategoryArr.title}
@@ -381,6 +382,7 @@ export default class ItemProvider extends Component {
     if (itemCategoryName === 2 && getItemStatus === 1)
       return CatData[this.state.categoryNameDefault];
 
+    if (itemCategoryName === 3) return CatData.Testimonials;
     if (itemCategoryName === 4) return CatData.Press;
 
     if (
