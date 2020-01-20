@@ -7,7 +7,7 @@ import Widget from "../../components/Sidebar/InfoBox/InfoBox";
 import ImgFeatured from "../../components/ItemDetails/ImgFeatured";
 import ImgGrid from "../../components/ItemDetails/ImgGrid";
 import { ItemContext } from "../../Context";
-import parser from "html-react-parser";
+import parse from "html-react-parser";
 import { setDocumentTitle, apiGetItemDetails } from "../../assets/js/Helpers";
 import Lightbox from "react-image-lightbox";
 import Loading from "../../components/Loading/Loading";
@@ -90,7 +90,7 @@ export default class ItemDetails extends Component {
     let widgetContact = null;
     // ITEM NOT FOUND
     if (fetchError) {
-      return parser(`<h4>${this.strItemNotFound}</h4>`);
+      return parse(`<h4>${this.strItemNotFound}</h4>`);
     }
     // LOADING
     if (loading) {
@@ -127,7 +127,9 @@ export default class ItemDetails extends Component {
     const categoryArr = getCategoryArr(category, status);
     const categoryLinkTag = getCategoryLinkTag(categoryArr);
     const priceString = formatPrice(price);
-    const descriptionParsed = description ? parser(description) : null;
+
+    const descriptionPrep = description ? description.replace(/\\/g, "") : null;
+    const descriptionParsed = descriptionPrep ? parse(descriptionPrep) : null;
     setDocumentTitle(`${categoryArr.title} | ${year} ${name}`);
     // SET breadcrumbs array
     let crumbsArr = [];
