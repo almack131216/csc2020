@@ -41,28 +41,28 @@
         }
 
         // on posts page
-        &.has-3-crumbs {
-          @media (max-width: $bp-xs-1) {
-            li.Live,
-            li.Archive {
-              span {
-                display: none;
-              }
+        // &.has-3-crumbs {
+        @media (max-width: $bp-xs-1) {
+          li.Live,
+          li.Archive {
+            .crumb-resp > span {
+              display: none;
             }
+          }
 
-            li.Live {
-              a:before {
-                content: "For Sale";
-              }
+          li.Live {
+            .crumb-resp:before {
+              content: "For Sale";
             }
+          }
 
-            li.Archive {
-              a:before {
-                content: "Sold";
-              }
+          li.Archive {
+            .crumb-resp:before {
+              content: "Sold";
             }
           }
         }
+        // }
 
         // on single post page
         &.has-4-crumbs {

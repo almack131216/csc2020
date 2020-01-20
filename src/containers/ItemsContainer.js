@@ -48,13 +48,16 @@ function ItemsContainer({ context }) {
   // CHANGE page
   const paginate = pageNumber => setCurrentPage(pageNumber);
   // (END) PAGINATION
+  // SET breadcrumbs array
+  let crumbsArr = [];
+  crumbsArr.push(categoryArr);
 
   if (loading) {
     return <Loading />;
   }
   return (
     <>
-      <Breadcrumbs pageType="items-list" />
+      <Breadcrumbs crumbsArr={crumbsArr} pageType="items-list" />
       {itemsFilterComponent}
       {titlesComponent}
       <ItemsList items={currentPosts} layout={itemLayout} />
