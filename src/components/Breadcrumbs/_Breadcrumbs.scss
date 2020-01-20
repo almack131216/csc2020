@@ -42,7 +42,7 @@
 
         // on posts page
         // &.has-3-crumbs {
-        @media (max-width: $bp-xs-1) {
+        @media (max-width: $bp-tablet-1) {
           li.Live,
           li.Archive {
             .crumb-resp > span {

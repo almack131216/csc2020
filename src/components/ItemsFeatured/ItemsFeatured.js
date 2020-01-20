@@ -11,9 +11,9 @@ export default class ItemsFeatured extends Component {
     super(props);
     console.log(
       "[ItemsFeatured.js] constructor() > props.categoryName...",
-      props.category
+      props.categoryName
     );
-    this.switch = props.category;
+    this.switch = props.categoryName;
   }
 
   static contextType = ItemContext;
@@ -54,7 +54,7 @@ export default class ItemsFeatured extends Component {
             slidesToShow: 3,
             slidesToScroll: 3,
             infinite: true,
-            dots: true
+            dots: false
           }
         },
         {

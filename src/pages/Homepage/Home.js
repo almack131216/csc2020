@@ -24,10 +24,10 @@ const Home = props => {
           <DemoCarousel />
         </div>
       </section>
-      <TitleSplitter category={catData["Live"]} />
-      <ItemsFeatured category="Live" />
-      <TitleSplitter category={catData["Archive"]} />
-      <ItemsFeatured category="Archive" />
+      <TitleSplitter categoryArr={catData["Live"]} />
+      <ItemsFeatured categoryName="Live" />
+      <TitleSplitter categoryArr={catData["Archive"]} />
+      <ItemsFeatured categoryName="Archive" />
     </React.Fragment>
   );
 };

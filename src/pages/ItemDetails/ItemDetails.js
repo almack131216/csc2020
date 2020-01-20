@@ -10,6 +10,7 @@ import { ItemContext } from "../../Context";
 import parser from "html-react-parser";
 import { setDocumentTitle, apiGetItemDetails } from "../../assets/js/Helpers";
 import Lightbox from "react-image-lightbox";
+import Loading from "../../components/Loading/Loading";
 import "react-image-lightbox/style.css";
 
 export default class ItemDetails extends Component {
@@ -21,7 +22,6 @@ export default class ItemDetails extends Component {
     const handleForLightbox = this.handleForLightbox.bind(this);
 
     this.strItemNotFound = "Cannot find item";
-    this.strLoading = "Loading...";
 
     const apiArr = {
       categoryName: this.props.categoryName,
@@ -90,11 +90,11 @@ export default class ItemDetails extends Component {
     let widgetContact = null;
     // ITEM NOT FOUND
     if (fetchError) {
-      return `<p>${this.strItemNotFound}</p>`;
+      return parser(`<h4>${this.strItemNotFound}</h4>`);
     }
     // LOADING
     if (loading) {
-      return `<p>${this.strLoading}</p>`;
+      return <Loading />;
     }
 
     // console.log("FIRST:", itemPrimary); // 'PARENT item'

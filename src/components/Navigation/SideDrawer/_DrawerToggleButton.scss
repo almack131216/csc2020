@@ -20,7 +20,7 @@
   line-height: $offset-g2;
 
   .r-i {
-    color: $color_navbar-header-link;
+    color: $color_accent; //$color_navbar-header-link
   }
 
   &:focus {

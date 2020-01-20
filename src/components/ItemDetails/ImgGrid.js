@@ -10,10 +10,10 @@ const ImgGrid = props => {
   // MAP - return images
   const imgAttachments = itemImages.map((img, index) => {
     return (
-      <li key={index} className="css-grid__item">
+      <li key={index}>
         <Img
           src={[img.src, ImageNotFound]}
-          className="img-loading css-grid__img top img-responsive"
+          className="img-loading"
           alt={img.name}
           onClick={() => handleForLightbox(index)}
         />
