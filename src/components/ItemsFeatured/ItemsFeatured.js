@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { ItemContext } from "../../Context";
-import Loading from "../Loading";
+import Loading from "../Loading/Loading";
 import Item from "../Items/Item/Item";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

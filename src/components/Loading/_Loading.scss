@@ -1,0 +1,15 @@
+/* _Loading.scss */
+
+.loading-wrap {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: $offset-g2;
+
+  h4 {
+    margin: 0 auto;
+  }
+  img {
+    margin: $offset-g1 auto;
+  }
+}

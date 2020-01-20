@@ -5,7 +5,7 @@ import TitleText from "../components/TitleText/TitleText";
 import ItemsList from "../components/Items/ItemsList/ItemsList";
 import Pagination from "../components/Pagination/Pagination";
 import { withItemConsumer } from "../Context";
-import Loading from "../components/Loading";
+import Loading from "../components/Loading/Loading";
 
 function ItemsContainer({ context }) {
   // console.log("[ItemsContainer.js] ...");
