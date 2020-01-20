@@ -22,12 +22,18 @@ export default class ItemDetails extends Component {
 
     this.strItemNotFound = "Cannot find item";
     this.strLoading = "Loading...";
-    this.apiUrl = apiGetItemDetails(this.props.match.params.slug);
+
+    const apiArr = {
+      categoryName: this.props.categoryName,
+      itemId: this.props.itemId
+    };
+    this.apiUrl = apiGetItemDetails(apiArr);
 
     this.state = {
       itemPrimary: {},
       itemImages: [],
-      slug: this.props.match.params.slug,
+      itemCategoryName: apiArr.categoryName,
+      slug: apiArr.itemId, //this.props.match.params.slug
       fetchError: "",
       photoIndex: 0,
       isOpen: false

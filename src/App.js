@@ -109,12 +109,22 @@ class App extends Component {
             <Route
               exact
               path="/*/classic-cars-for-sale/:slug"
-              component={ItemDetails}
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="Live"
+                  itemId={routerProps.match.params.slug}
+                />
+              )}
             />
             <Route
               exact
               path="/*/classic-car-archive/:slug"
-              component={ItemDetails}
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="Archive"
+                  itemId={routerProps.match.params.slug}
+                />
+              )}
             />
             <Route exact path="/*/press/:slug" component={ItemDetails} />
             <Route exact path="/*/testimonials/:slug" component={ItemDetails} />

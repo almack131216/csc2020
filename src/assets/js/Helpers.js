@@ -5,8 +5,11 @@ export function setDocumentTitle(getString) {
   document.title = getString;
 }
 
-export function apiGetItemDetails(getItemSlug) {
-  return "../../api-dummy/dummy-item-details.json";
+export function apiGetItemDetails(getApiArr) {
+  console.log("[Helpers.js] apiGetItemDetails()... ", getApiArr);
+  const apiUrl = `https://www.amactive.net/csc2020-api/index.php?api=items&spec=${getApiArr.categoryName}&debug=true&id=${getApiArr.itemId}`;
+  return apiUrl;
+  // return "../../api-dummy/dummy-item-details.json";
   // return `${process.env.REACT_APP_API_ENDPOINT}item/${getItemSlug}`;
 }
 
