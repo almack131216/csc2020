@@ -87,7 +87,11 @@ const catArray = {
       item: {
         layout: "item-row",
         showExcerpt: true,
-        showCategoryLink: false
+        showCategoryLink: false,
+        details: {
+          showWidgetOpeningHours: true,
+          showWidgetContactDetails: true
+        }
       }
     }
   },
@@ -113,7 +117,11 @@ const catArray = {
         layout: "item-row",
         showExcerpt: true,
         showSource: true,
-        showCategoryLink: false
+        showCategoryLink: false,
+        details: {
+          showWidgetOpeningHours: true,
+          showWidgetContactDetails: true
+        }
       }
     }
     // apiXXX: `${process.env.REACT_APP_API_ENDPOINT}items/press`

@@ -6,8 +6,9 @@ export function setDocumentTitle(getString) {
 }
 
 export function apiGetItemDetails(getApiArr) {
-  console.log("[Helpers.js] apiGetItemDetails()... ", getApiArr);
-  const apiUrl = `https://www.amactive.net/csc2020-api/index.php?api=items&spec=${getApiArr.categoryName}&debug=true&id=${getApiArr.itemId}`;
+  // console.log("[Helpers.js] apiGetItemDetails()... ", getApiArr);
+  const apiUrl = `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=${getApiArr.categoryName}&id=${getApiArr.itemId}`;
+  console.log("API: ", apiUrl);
   return apiUrl;
   // return "../../api-dummy/dummy-item-details.json";
   // return `${process.env.REACT_APP_API_ENDPOINT}item/${getItemSlug}`;

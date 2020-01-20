@@ -126,8 +126,26 @@ class App extends Component {
                 />
               )}
             />
-            <Route exact path="/*/press/:slug" component={ItemDetails} />
-            <Route exact path="/*/testimonials/:slug" component={ItemDetails} />
+            <Route
+              exact
+              path="/*/press/:slug"
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="Press"
+                  itemId={routerProps.match.params.slug}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/*/testimonials/:slug"
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="Testimonials"
+                  itemId={routerProps.match.params.slug}
+                />
+              )}
+            />
             <Route component={Error} />
           </Switch>
         </main>
