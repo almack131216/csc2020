@@ -1,6 +1,6 @@
 import React from "react";
 import Img from "react-image";
-import ImageNotFound from "../../assets/images/image-not-found.jpg";
+import ImageNotFound from "../../../assets/images/image-not-found.jpg";
 import { MdZoomOutMap } from "react-icons/md";
 
 const ImgFeatured = props => {

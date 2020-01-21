@@ -4,13 +4,14 @@ import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import WidgetData from "../../assets/_data/_data-widgets";
 import Widget from "../../components/Sidebar/InfoBox/InfoBox";
-import ImgFeatured from "../../components/ItemDetails/ImgFeatured";
-import ImgGrid from "../../components/ItemDetails/ImgGrid";
+import ImgFeatured from "../../components/ItemDetails/ImgFeatured/ImgFeatured";
+import ImgGrid from "../../components/ItemDetails/ImgGrid/ImgGrid";
 import { ItemContext } from "../../Context";
 import parse from "html-react-parser";
 import { setDocumentTitle, apiGetItemDetails } from "../../assets/js/Helpers";
 import Lightbox from "react-image-lightbox";
 import Loading from "../../components/Loading/Loading";
+import ItemNotFound from "../../components/ItemDetails/ItemNotFound/ItemNotFound";
 import "react-image-lightbox/style.css";
 
 export default class ItemDetails extends Component {
@@ -22,7 +23,7 @@ export default class ItemDetails extends Component {
     const handleForLightbox = this.handleForLightbox.bind(this);
 
     this.strItemNotFound = "Cannot find item";
-
+    // API - generate end point based on categoryName + itemId
     const apiArr = {
       categoryName: this.props.categoryName,
       itemId: this.props.itemId
@@ -87,7 +88,9 @@ export default class ItemDetails extends Component {
     let widgetContact = null;
     // ITEM NOT FOUND
     if (fetchError) {
-      return parse(`<h4>${this.strItemNotFound}</h4>`);
+      return (
+        <ItemNotFound text={this.strItemNotFound} itemId={this.state.slug} />
+      );
     }
     // LOADING
     if (loading) {

@@ -14,6 +14,7 @@
 @import "./assets/scss/base/base-forms";
 
 /* MODULES - individual site components */
+@import "./assets/scss/modules/btn";
 @import "./assets/scss/modules/_typography";
 @import "./assets/scss/modules/_typography-resp";
 @import "./assets/scss/modules/_typography-hyperlink";
@@ -43,8 +44,9 @@
 @import "./components/SocialBtns/SocialBtns";
 @import "./components/TitleSplitter/TitleSplitter";
 @import "./components/TitleText/TitleText";
-@import "./components/ItemDetails/ImgGrid";
-@import "./components/ItemDetails/ImgFeatured";
+@import "./components/ItemDetails/ImgGrid/ImgGrid";
+@import "./components/ItemDetails/ImgFeatured/ImgFeatured";
+@import "./components/ItemDetails/ItemNotFound/ItemNotFound";
 /* NAVLEFT OFFSCREEN */
 @import "./components/Navigation/Backdrop/Backdrop";
 @import "./components/Navigation/SideDrawer/SideDrawer";

@@ -1,0 +1,20 @@
+/* _ItemNotFound.scss */
+
+.item-not-found-wrap {
+  display: block;
+  width: 100%;
+  text-align: center;
+  @include resp-prop-half("padding", $offset-g2);
+
+  h4 {
+    margin: 0 auto;
+  }
+  .icon-wrap {
+    img,
+    svg {
+      color: $color_accent;
+      font-size: $offset-g2;
+      margin: $offset-g1 auto;
+    }
+  }
+}
