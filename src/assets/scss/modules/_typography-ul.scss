@@ -9,36 +9,8 @@ ul {
     line-height: $base-font-line-height;
   }
 
-  &.ul-breadcrumb {
-    li {
-      &.home {
-        &:before {
-          content: "" !important;
-          display: none !important;
-        }
-
-        @media (min-width: $bp-sm) {
-          .fa-home {
-            display: none;
-          }
-        }
-        @media (max-width: $bp-sm-1) {
-          span {
-            display: none;
-          }
-        }
-      }
-      /* (END) .home */
-
-      a {
-        @include a-on-secondary();
-      }
-    }
-  }
-
   &.ul-inline li,
-  &.ul-inline-block li,
-  &.ul-breadcrumb li {
+  &.ul-inline-block li {
     padding-right: $offset-1;
   }
 
@@ -46,15 +18,10 @@ ul {
     display: inline;
   }
 
-  &.ul-breadcrumb,
   &.ul-inline-block {
     li {
       display: inline-block;
     }
-  }
-
-  &.ul-breadcrumb {
-    @include trim-string();
   }
 
   &.ul-tags li {

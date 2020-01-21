@@ -16,7 +16,34 @@
 
     .crumbs-wrap {
       ul {
+        @include trim-string();
+
         li {
+          @include resp-prop-half("padding-right", $offset-1);
+          display: inline-block;
+
+          a {
+            @include a-on-secondary();
+          }
+
+          &.home {
+            .i-home {
+              margin-right: 0;
+            }
+
+            @media (min-width: $bp-sm) {
+              .i-home {
+                display: none;
+              }
+            }
+            @media (max-width: $bp-sm-1) {
+              span {
+                display: none;
+              }
+            }
+          }
+          /* (END) .home */
+
           svg {
             height: $offset-1;
             margin-right: $offset-1;

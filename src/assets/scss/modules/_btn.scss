@@ -1,7 +1,27 @@
 /* _btn.scss */
 
 .btn {
-  svg {
-    margin-right: 5px;
+  @include resp-prop-half("padding", $offset-g1);
+  outline: 0;
+  border: 0;
+
+  &.icon-md {
+    @media (min-width: $bp-tablet) {
+      svg {
+        font-size: $offset-2;
+      }
+    }
+  }
+
+  &.icon-text {
+    svg {
+      margin-right: 5px;
+    }
+  }
+
+  &.text-icon {
+    svg {
+      margin-left: 5px;
+    }
   }
 }

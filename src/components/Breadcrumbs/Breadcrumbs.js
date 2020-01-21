@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
 import BrandFilter from "../../components/Filter/Brand";
 import NavData from "../../assets/_data/_data-navigation";
-import { FaHome, FaCog, FaChevronRight } from "react-icons/fa";
+import { FaHome, FaFilter, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Breadcrumbs({ items, crumbsArr, pageType }) {
@@ -56,7 +56,7 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   let catSettings = categoryArr.settings;
   let brandJumpList = null;
   let btnToggleFilter = null;
-  let btnToggleFilterClasses = ["btn-toggle-filter"];
+  let btnToggleFilterClasses = ["btn icon-md btn-toggle-filter"];
 
   let showFilter = false;
   let showBrandList = false;
@@ -100,7 +100,7 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
           toggleFilter(e);
         }}
       >
-        <FaCog />
+        <FaFilter />
       </button>
     );
   }
@@ -127,7 +127,7 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   }
 
   // UI - better control styling of breadcrumbs - especially for responsive
-  let classCrumbsUl = ["ul-breadcrumb"];
+  let classCrumbsUl = [];
   classCrumbsUl.push(`has-${crumbCount}-crumbs`);
 
   return (
@@ -137,7 +137,7 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
           <ul className={classCrumbsUl.join(" ")}>
             <li className="home">
               <Link to={NavData.home.slug}>
-                <FaHome className="fa-home" />
+                <FaHome className="i-home" />
                 <span>{NavData.home.title}</span>
               </Link>
             </li>
