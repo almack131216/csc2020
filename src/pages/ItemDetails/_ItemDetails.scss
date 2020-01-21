@@ -1,20 +1,5 @@
 /* _ItemDetails.scss */
 
-/* _content-item-details.scss */
-
-.fmt-price {
-  color: #666;
-
-  &.detail {
-    color: red;
-  }
-}
-
-.fmt-sold {
-  color: red;
-  font-weight: bold;
-}
-
 .item-details-img > .row {
   margin: 0;
 }
@@ -59,115 +44,7 @@
     margin-bottom: $offset-g1;
   }
 
-  h3 {
-    margin-top: $offset-g1;
-    margin-bottom: $offset-g1;
-
-    .fmt-price {
-      display: block;
-      // color:#000;
-    }
-  }
-
   .post-text-body {
     line-height: $offset-g2;
-
-    .post-details-box {
-      border: 1px solid $table-color-border;
-      padding: $offset-g2;
-      background: white;
-      margin: 0 0 $offset-g2 0;
-
-      div.feature-list {
-        > div {
-          padding-top: $offset-1;
-          padding-bottom: $offset-1;
-          border-top: 1px solid $color_layout-border;
-          display: block;
-
-          &:first-child {
-            padding-top: 0;
-            border-top: none;
-          }
-          &:last-child {
-            padding-bottom: 0;
-          }
-
-          &.post-tags,
-          &.post-share {
-            h4 {
-              display: inline-block;
-              margin-right: $offset-1;
-              // border-bottom:1px solid $color_layout-border;
-            }
-
-            ul {
-              display: inline-block;
-            }
-          }
-
-          &.post-share {
-            // width:110px;
-
-            h4 {
-              float: left;
-            }
-          }
-          /* (END) .post-share */
-        }
-      }
-
-      //price
-      h3 {
-        // display:inline-block;
-        margin: 0;
-        // border-bottom:1px solid $color_layout-border;
-      }
-
-      hr {
-        margin-top: $offset-1;
-        margin-bottom: $offset-1;
-        border-color: $color_layout-border;
-      }
-
-      ul.ul-fa {
-        @extend .ul-inline-block;
-      }
-
-      .sfsi_widget {
-        display: inline-block;
-
-        > .norm_row.sfsi_wDiv {
-          width: 100px !important;
-          // background:pink;
-          position: static !important;
-
-          .sfsi_wicons {
-            padding-top: 0;
-            margin: 0 $offset-g1 0 0 !important;
-
-            &:last-child {
-              margin-right: 0 !important;
-            }
-          }
-        }
-
-        > .norm_row,
-        > .sfsi_holder {
-          height: 40px !important;
-          line-height: 40px !important;
-        }
-
-        > .sfsi_holders {
-          height: 1px !important;
-        }
-
-        // <div id="sfsi_holder" class="sfsi_holders" style="position: relative; float: left; width: 100%; z-index: -1; height: 60px;"></div>
-      }
-
-      p {
-        margin-bottom: 0;
-      }
-    }
   }
 }

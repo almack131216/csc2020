@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import WidgetData from "../../assets/_data/_data-widgets";
@@ -7,11 +6,11 @@ import Widget from "../../components/Sidebar/InfoBox/InfoBox";
 import ImgFeatured from "../../components/ItemDetails/ImgFeatured/ImgFeatured";
 import ImgGrid from "../../components/ItemDetails/ImgGrid/ImgGrid";
 import { ItemContext } from "../../Context";
-import parse from "html-react-parser";
 import { setDocumentTitle, apiGetItemDetails } from "../../assets/js/Helpers";
 import Lightbox from "react-image-lightbox";
 import Loading from "../../components/Loading/Loading";
 import ItemNotFound from "../../components/ItemDetails/ItemNotFound/ItemNotFound";
+import ItemExtras from "../../components/ItemDetails/ItemExtras/ItemExtras";
 import "react-image-lightbox/style.css";
 
 export default class ItemDetails extends Component {
@@ -20,7 +19,7 @@ export default class ItemDetails extends Component {
     console.log("[Item.js] this.props...", this.props);
     // LIGHTBOX - triggered from img grid + img featured
     // state props: photoIndex, isOpen
-    const handleForLightbox = this.handleForLightbox.bind(this);
+    // const handleForLightbox = this.handleForLightbox.bind(this);
 
     this.strItemNotFound = "Cannot find item";
     // API - generate end point based on categoryName + itemId
@@ -112,9 +111,11 @@ export default class ItemDetails extends Component {
 
     // ITEM fields
     const {
+      id,
       name,
       year,
       price,
+      price_details,
       image,
       category,
       status,
@@ -122,11 +123,22 @@ export default class ItemDetails extends Component {
       slug
     } = itemPrimary;
 
+    const priceFormatted = formatPrice(price, status);
     const itemNameFull = year ? `${year} ${name}` : name;
-    const itemArr = { name, title: name, image, slug };
+    const itemArr = {
+      id,
+      name,
+      title: name,
+      image,
+      slug,
+      price,
+      price_details,
+      priceFormatted,
+      status
+    };
     const categoryArr = getCategoryArr(category, status);
     const categoryLinkTag = getCategoryLinkTag(categoryArr);
-    const priceString = formatPrice(price);
+
     const descriptionParsed = formatDescription(description);
     setDocumentTitle(`${categoryArr.title} | ${name}`);
     // SET breadcrumbs array
@@ -188,9 +200,11 @@ export default class ItemDetails extends Component {
             <div className="content col-sm-12 col-md-9 padding-x-0">
               <div className="col-post-text">
                 <h1>{itemNameFull}</h1>
-                <p>{categoryLinkTag}</p>
-                <p>{priceString}</p>
-                {descriptionParsed}
+                <div className="post-text-body">
+                  <ItemExtras itemArr={itemArr} />
+                  {descriptionParsed}
+                  <p>{categoryLinkTag}</p>
+                </div>
               </div>
             </div>
           </section>

@@ -1,5 +1,20 @@
 /* _btn.scss */
 
+a,
+.btn {
+  &.icon-text {
+    svg {
+      margin-right: 5px;
+    }
+  }
+
+  &.text-icon {
+    svg {
+      margin-left: 5px;
+    }
+  }
+}
+
 .btn {
   @include resp-prop-half("padding", $offset-g1);
   outline: 0;
@@ -10,18 +25,6 @@
       svg {
         font-size: $offset-2;
       }
-    }
-  }
-
-  &.icon-text {
-    svg {
-      margin-right: 5px;
-    }
-  }
-
-  &.text-icon {
-    svg {
-      margin-left: 5px;
     }
   }
 }
