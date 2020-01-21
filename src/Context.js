@@ -289,7 +289,9 @@ export default class ItemProvider extends Component {
       let brand = dataItem.brand;
       let year = dataItem.year;
       let date = dataItem.createdAt;
-      let excerpt = parse(getExcerpt(dataItem.excerpt));
+      let excerpt = dataItem.excerpt
+        ? parse(getExcerpt(dataItem.excerpt))
+        : null;
       // let image = `https://via.placeholder.com/150x110`; // `http://localhost:8080/csc2020-img/images/${dataItem.image}`;
       let image = `http://www.classicandsportscar.ltd.uk/images_catalogue/${dataItem.image}`;
       let item = {
@@ -320,6 +322,14 @@ export default class ItemProvider extends Component {
     return price
       ? "£" + price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
       : null;
+  };
+
+  /////////////////////////////////////////////////////////////////////////// FORMAT description
+  formatDescription = str => {
+    if (!str) return "";
+    var strPrep = str.replace(/\\/g, "");
+    var strParsed = parse(strPrep);
+    return strParsed;
   };
 
   /////////////////////////////////////////////////////////////////////////// FORMAT category link
@@ -510,6 +520,7 @@ export default class ItemProvider extends Component {
           getDataItems: this.getDataItems,
           getCategoryArr: this.getCategoryArr,
           formatPrice: this.formatPrice,
+          formatDescription: this.formatDescription,
           formatItemLink: this.formatItemLink,
           formatCategoryLink: this.formatCategoryLink,
           getCategoryLinkTag: this.getCategoryLinkTag,

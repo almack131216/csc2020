@@ -57,14 +57,6 @@ export default class ItemDetails extends Component {
         // console.log("[ItemDetails.js] componentDidMount() data: ", data);
         const [itemPrimary, ...itemImageAttachments] = data;
         const itemImages = [itemPrimary, ...itemImageAttachments];
-        // console.log(
-        //   "[ItemDetails.js] componentDidMount() itemPrimary: ",
-        //   itemPrimary
-        // );
-        // console.log(
-        //   "[ItemDetails.js] componentDidMount() itemImages: ",
-        //   itemImages
-        // );
         this.setState({ itemPrimary, itemImages, loading: false });
       })
       .catch(() => {
@@ -83,7 +75,12 @@ export default class ItemDetails extends Component {
     const handleForLightbox = this.handleForLightbox;
     const { photoIndex, isOpen } = this.state;
     // (END) LIGHTBOX props
-    const { formatPrice, getCategoryArr, getCategoryLinkTag } = this.context;
+    const {
+      formatPrice,
+      formatDescription,
+      getCategoryArr,
+      getCategoryLinkTag
+    } = this.context;
     const { loading, fetchError, itemPrimary, itemImages } = this.state;
     // INIT settings.item
     let widgetOpeningHours = null;
@@ -96,7 +93,6 @@ export default class ItemDetails extends Component {
     if (loading) {
       return <Loading />;
     }
-
     // console.log("FIRST:", itemPrimary); // 'PARENT item'
     // console.log("images:", itemImages); // 'PARENT item attachments'
 
@@ -123,14 +119,13 @@ export default class ItemDetails extends Component {
       slug
     } = itemPrimary;
 
+    const itemNameFull = year ? `${year} ${name}` : name;
     const itemArr = { name, title: name, image, slug };
     const categoryArr = getCategoryArr(category, status);
     const categoryLinkTag = getCategoryLinkTag(categoryArr);
     const priceString = formatPrice(price);
-
-    const descriptionPrep = description ? description.replace(/\\/g, "") : null;
-    const descriptionParsed = descriptionPrep ? parse(descriptionPrep) : null;
-    setDocumentTitle(`${categoryArr.title} | ${year} ${name}`);
+    const descriptionParsed = formatDescription(description);
+    setDocumentTitle(`${categoryArr.title} | ${name}`);
     // SET breadcrumbs array
     let crumbsArr = [];
     crumbsArr.push(categoryArr);
@@ -189,7 +184,7 @@ export default class ItemDetails extends Component {
             </div>
             <div className="content col-sm-12 col-md-9 padding-x-0">
               <div className="col-post-text">
-                <h1>{year ? `${year} ${name}` : name}</h1>
+                <h1>{itemNameFull}</h1>
                 <p>{categoryLinkTag}</p>
                 <p>{priceString}</p>
                 {descriptionParsed}
