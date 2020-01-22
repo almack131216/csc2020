@@ -1,8 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaCamera, FaInfoCircle } from "react-icons/fa";
-import { useContext } from "react";
-import { ItemContext } from "../../../Context";
+// react-share | buttons
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  PinterestShareButton,
+  TwitterShareButton,
+  WhatsappShareButton
+} from "react-share";
+// react-share | icons
+import {
+  EmailIcon,
+  FacebookIcon,
+  PinterestIcon,
+  TwitterIcon,
+  WhatsappIcon
+} from "react-share";
+// (END) react-share
 
 const ItemExtras = props => {
   const {
@@ -11,23 +26,22 @@ const ItemExtras = props => {
     price,
     price_details,
     priceFormatted,
-    status
+    status,
+    itemPath,
+    imagePath
   } = props.itemArr;
 
-  const context = useContext(ItemContext);
-  const { categoryArr, formatPrice, formatItemLink, formatBrandLink } = context;
-
+  // PRICE
   let classesPrice = ["price"];
-
   let priceString = priceFormatted;
   if (status === 1 && !price && price_details) {
     classesPrice.push("detail");
     priceString = price_details;
   }
-
   if (status === 2) {
     classesPrice.push("sold");
   }
+  // (END) PRICE
 
   return (
     <div className="item-extras ">
@@ -58,6 +72,42 @@ const ItemExtras = props => {
                 <FaInfoCircle />
                 <span>Enquire</span>
               </a>
+            </li>
+          </ul>
+        </div>
+
+        <div className="post-share">
+          <h4>Share:</h4>
+          <ul className="ul-post-share">
+            <li>
+              <FacebookShareButton url={itemPath}>
+                <FacebookIcon size={30} />
+              </FacebookShareButton>
+            </li>
+            <li>
+              <TwitterShareButton url={itemPath}>
+                <TwitterIcon size={30} />
+              </TwitterShareButton>
+            </li>
+            {imagePath ? (
+              <li>
+                <PinterestShareButton
+                  url={itemPath}
+                  media="https://www.classicandsportscar.ltd.uk/images_catalogue/large/triumph-gt6-mkiii_45282.jpg"
+                >
+                  <PinterestIcon size={30} />
+                </PinterestShareButton>
+              </li>
+            ) : null}
+            <li>
+              <WhatsappShareButton url={itemPath}>
+                <WhatsappIcon size={30} />
+              </WhatsappShareButton>
+            </li>
+            <li>
+              <EmailShareButton url={itemPath}>
+                <EmailIcon size={30} />
+              </EmailShareButton>
             </li>
           </ul>
         </div>

@@ -7,7 +7,7 @@
     color: #f90;
   }
 
-  .sold {
+  &.sold {
     color: red;
     font-weight: bold;
   }
@@ -22,8 +22,13 @@
 
   @media (min-width: $bp-sm) {
     float: right;
-    max-width: 40%;
-    width: auto;
+    width: 33.33333333%;
+    @include resp-prop-half("margin-left", $offset-g2);
+  }
+
+  @media (min-width: $bp-tablet) and (max-width: $bp-sm-1) {
+    float: right;
+    width: 40%;
     @include resp-prop-half("margin-left", $offset-g2);
   }
 
@@ -46,24 +51,26 @@
         padding-bottom: 0;
       }
 
-      &.post-tags,
       &.post-share {
+        // width:110px;
         h4 {
-          display: inline-block;
-          margin-right: $offset-1;
-          // border-bottom:1px solid $color_layout-border;
+          margin: 0 0 $offset-1 0;
         }
 
         ul {
-          display: inline-block;
-        }
-      }
+          @extend .ul-inline-block;
+          line-height: 0;
 
-      &.post-share {
-        // width:110px;
-
-        h4 {
-          float: left;
+          li {
+            line-height: 0;
+            padding: 0 5px 0 0;
+            @media (min-width: $bp-tablet) and (max-width: $bp-lg-1) {
+              padding-right: 2px;
+            }
+            &:last-of-type {
+              padding-right: 0;
+            }
+          }
         }
       }
       /* (END) .post-share */
@@ -81,41 +88,6 @@
     margin-top: $offset-1;
     margin-bottom: $offset-1;
     border-color: $color_layout-border;
-  }
-
-  ul.ul-fa {
-    @extend .ul-inline-block;
-  }
-
-  .sfsi_widget {
-    display: inline-block;
-
-    > .norm_row.sfsi_wDiv {
-      width: 100px !important;
-      // background:pink;
-      position: static !important;
-
-      .sfsi_wicons {
-        padding-top: 0;
-        margin: 0 $offset-g1 0 0 !important;
-
-        &:last-child {
-          margin-right: 0 !important;
-        }
-      }
-    }
-
-    > .norm_row,
-    > .sfsi_holder {
-      height: 40px !important;
-      line-height: 40px !important;
-    }
-
-    > .sfsi_holders {
-      height: 1px !important;
-    }
-
-    // <div id="sfsi_holder" class="sfsi_holders" style="position: relative; float: left; width: 100%; z-index: -1; height: 60px;"></div>
   }
 
   p {

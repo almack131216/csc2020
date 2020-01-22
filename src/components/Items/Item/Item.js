@@ -93,7 +93,7 @@ const Item = memo(({ item, itemSettingsCust }) => {
     // PRICE
     if (itemSettings.showPrice) {
       if (price !== 0) {
-        itemPrice = formatPrice(price);
+        itemPrice = formatPrice(price, status);
       } else {
         itemPrice = price_details;
         classPrice.push("detail");

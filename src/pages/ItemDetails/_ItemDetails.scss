@@ -32,6 +32,10 @@
   /* (END) .col-post-img-grid */
 }
 
+.col-post-parent {
+  @extend .bg-secondary-light;
+}
+
 .col-post-text {
   @include resp-prop-half("padding", $offset-g2);
 

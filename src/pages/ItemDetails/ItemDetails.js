@@ -34,6 +34,7 @@ export default class ItemDetails extends Component {
       itemImages: [],
       itemCategoryName: apiArr.categoryName,
       slug: apiArr.itemId, //this.props.match.params.slug
+      path: process.env.REACT_APP_ROOT + window.location.pathname,
       fetchError: "",
       photoIndex: 0,
       isOpen: false
@@ -54,8 +55,15 @@ export default class ItemDetails extends Component {
     await fetch(this.apiUrl)
       .then(response => response.json())
       .then(data => {
-        // console.log("[ItemDetails.js] componentDidMount() data: ", data);
-        const [itemPrimary, ...itemImageAttachments] = data;
+        console.log("[ItemDetails.js] componentDidMount() data: ", data);
+        let [itemPrimary, ...itemImageAttachments] = data;
+        itemPrimary.nameFull = itemPrimary.year
+          ? `${itemPrimary.year} ${itemPrimary.name}`
+          : itemPrimary.name;
+        itemPrimary.itemPath = this.state.path;
+        itemPrimary.imagePath =
+          process.env.REACT_APP_IMG_DIR_LARGE + itemPrimary.image;
+
         const itemImages = [itemPrimary, ...itemImageAttachments];
         this.setState({ itemPrimary, itemImages, loading: false });
       })
@@ -111,55 +119,37 @@ export default class ItemDetails extends Component {
     // (END) LIGHTBOX images
 
     // ITEM fields
-    const {
-      id,
-      name,
-      year,
-      price,
-      price_details,
-      image,
-      category,
-      status,
-      description,
-      slug
-    } = itemPrimary;
-
+    let { nameFull, price, category, status, description } = itemPrimary;
+    // ITEM Price
     const priceFormatted = formatPrice(price, status);
-    const itemNameFull = year ? `${year} ${name}` : name;
-    const itemArr = {
-      id,
-      name,
-      title: name,
-      image,
-      slug,
-      price,
-      price_details,
-      priceFormatted,
-      status
-    };
+    itemPrimary.priceFormatted = priceFormatted;
+    // ITEM category
     const categoryArr = getCategoryArr(category, status);
     const categoryLinkTag = getCategoryLinkTag(categoryArr);
-
+    setDocumentTitle(`${nameFull} | ${categoryArr.title}`);
+    // ITEM description + parsed
     const descriptionParsed = formatDescription(description);
-    setDocumentTitle(`${categoryArr.title} | ${name}`);
     // SET breadcrumbs array
     let crumbsArr = [];
     crumbsArr.push(categoryArr);
-    crumbsArr.push(itemArr);
+    crumbsArr.push(itemPrimary);
 
     // SET images
+    // IMAGE Featured (primary)
     const imgFeaturedComp = (
       <ImgFeatured
-        imgArr={itemArr}
+        imgArr={itemPrimary}
         handleForLightbox={handleForLightbox.bind(this)}
       />
     );
+    // IMAGE Grid (attachments)
     const imgGridComp = (
       <ImgGrid
         imgsArr={images}
         handleForLightbox={handleForLightbox.bind(this)}
       />
     );
+    // (END) SET images
 
     // GET appearance
     if (categoryArr && categoryArr.settings) {
@@ -192,17 +182,17 @@ export default class ItemDetails extends Component {
             </div>
           </div>
         </section>
-        <div className="container">
+        <div className="container ">
           <section className="row">
             <div className="sidebar hidden-md-down col-md-3 padding-x-0">
               {widgetOpeningHours}
               {widgetContact}
             </div>
-            <div className="content col-sm-12 col-md-9 padding-x-0">
+            <div className="content col-sm-12 col-md-9 padding-x-0 col-post-parent">
               <div className="col-post-text">
-                <h1>{itemNameFull}</h1>
+                <h1>{nameFull}</h1>
                 <div className="post-text-body">
-                  <ItemExtras itemArr={itemArr} />
+                  <ItemExtras itemArr={itemPrimary} />
                   {descriptionParsed}
                   <p>{categoryLinkTag}</p>
                 </div>
@@ -211,6 +201,7 @@ export default class ItemDetails extends Component {
           </section>
         </div>
 
+        {/* Lightbox */}
         {isOpen && (
           <Lightbox
             mainSrc={images[photoIndex].src}
@@ -231,6 +222,7 @@ export default class ItemDetails extends Component {
             }
           />
         )}
+        {/* (END) Lightbox */}
       </>
     );
   }
