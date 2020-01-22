@@ -6,7 +6,8 @@ import { MdZoomOutMap } from "react-icons/md";
 const ImgFeatured = props => {
   console.log("[ImgFeatured] ...");
   const handleForLightbox = props.handleForLightbox;
-  const imgUrl = `${process.env.REACT_APP_IMG_DIR_LARGE}${props.imgArr.image}`;
+  const imgUrl = "https://via.placeholder.com/640x480";
+  // const imgUrl = `${process.env.REACT_APP_IMG_DIR_LARGE}${props.imgArr.image}`;
 
   const imgPrimary = (
     <Img

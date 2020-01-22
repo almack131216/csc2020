@@ -147,7 +147,7 @@ Item.propTypes = {
   item: PropTypes.shape({
     name: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
-    brand: PropTypes.number.isRequired,
+    brand: PropTypes.number,
     image: PropTypes.string,
     price: PropTypes.number,
     price_details: PropTypes.string,

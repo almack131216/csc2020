@@ -55,7 +55,11 @@ const catArray = {
         showPrice: true,
         showRibbons: true,
         showYear: true,
-        showCategoryLink: true
+        showCategoryLink: true,
+        details: {
+          showWidgetOpeningHours: true,
+          showWidgetContactDetails: true
+        }
       }
     }
   },
@@ -138,7 +142,11 @@ const catArray = {
       item: {
         layout: "item-row",
         showExcerpt: true,
-        showCategoryLink: false
+        showCategoryLink: false,
+        details: {
+          showWidgetOpeningHours: true,
+          showWidgetContactDetails: true
+        }
       }
     }
   }

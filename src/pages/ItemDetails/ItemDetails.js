@@ -103,7 +103,8 @@ export default class ItemDetails extends Component {
     const images = [];
     for (let i = 0; i < itemImages.length; i++) {
       images.push({
-        src: `${process.env.REACT_APP_IMG_DIR_LARGE}${itemImages[i].image}`,
+        src: "https://via.placeholder.com/640x480",
+        // src: `${process.env.REACT_APP_IMG_DIR_LARGE}${itemImages[i].image}`,
         name: itemImages[i].name
       });
     }

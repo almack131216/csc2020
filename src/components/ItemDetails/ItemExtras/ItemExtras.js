@@ -1,8 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaCamera, FaInfoCircle } from "react-icons/fa";
+import { useContext } from "react";
+import { ItemContext } from "../../../Context";
 
 const ItemExtras = props => {
-  const { price, price_details, priceFormatted, status } = props.itemArr;
+  const {
+    id,
+    name,
+    price,
+    price_details,
+    priceFormatted,
+    status
+  } = props.itemArr;
+
+  const context = useContext(ItemContext);
+  const { categoryArr, formatPrice, formatItemLink, formatBrandLink } = context;
 
   let classesPrice = ["price"];
 
@@ -26,20 +39,20 @@ const ItemExtras = props => {
         </div>
         <div>
           <ul className="ul-inline">
-            <li>
-              <a
-                href="https://classicandsportscar.ltd.uk/_wp190503/test-large-190501/?photos"
-                title="Link to Test Large Photos"
+            {/* <li>
+              <Link
+                to="/"
+                title={`Link to ${name} Photos`}
                 className="icon-text"
               >
                 <FaCamera />
                 <span>Large Photos</span>
-              </a>
-            </li>
+              </Link>
+            </li> */}
             <li>
               <a
-                href="mailto:sales@classicandsportscar.ltd.uk?subject=Enquiry for Test Large Photos (14727)"
-                title="Make enquiry about Test Large Photos"
+                href={`mailto:sales@classicandsportscar.ltd.uk?subject=Enquiry: ${name} (${id})`}
+                title={`Make enquiry about ${name}`}
                 className="icon-text"
               >
                 <FaInfoCircle />
