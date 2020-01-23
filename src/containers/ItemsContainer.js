@@ -50,6 +50,7 @@ function ItemsContainer({ context }) {
   // (END) PAGINATION
   // SET breadcrumbs array
   let crumbsArr = [];
+  categoryArr.class = categoryArr.name;
   crumbsArr.push(categoryArr);
 
   if (loading) {

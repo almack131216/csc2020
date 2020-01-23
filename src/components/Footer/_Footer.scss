@@ -12,12 +12,16 @@ footer {
       padding: 0;
 
       > div {
-        padding: $offset-g2;
+        padding-top: $offset-g2;
+        padding-bottom: $offset-g2;
         @include resp-prop-half("padding-left", $offset-g2);
         @include resp-prop-half("padding-right", $offset-g2);
 
-        &.text-align-right {
+        &.col-ftr-contact {
+          text-align: right;
+
           @media (max-width: $bp-tablet-1) {
+            padding-top: 0;
             text-align: left;
           }
         }

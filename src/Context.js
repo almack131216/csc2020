@@ -292,8 +292,8 @@ export default class ItemProvider extends Component {
       let excerpt = dataItem.excerpt
         ? parse(getExcerpt(dataItem.excerpt))
         : null;
-      let image = `https://via.placeholder.com/150x110`; // `http://localhost:8080/csc2020-img/images/${dataItem.image}`;
-      // let image = `http://www.classicandsportscar.ltd.uk/images_catalogue/${dataItem.image}`;
+      // let image = `https://via.placeholder.com/150x110`; // `http://localhost:8080/csc2020-img/images/${dataItem.image}`;
+      let image = `http://www.classicandsportscar.ltd.uk/images_catalogue/${dataItem.image}`;
       let item = {
         id,
         status,

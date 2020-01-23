@@ -6,21 +6,23 @@
   z-index: 102;
   background: transparent;
   top: $offset-2;
-  left: $offset-g1;
-  display: block;
-  @media (max-width: $bp-tablet-1) {
-    top: $offset-1;
-    left: 0;
-  }
-  @media (max-width: $bp-xs-1) {
-    top: 5px;
-  }
+  top: calc(50% - 10px);
+  @include resp-prop-half("left", $offset-g2);
   border: none;
-  padding: $offset-1 $offset-g1;
-  box-sizing: border-box;
-  cursor: pointer;
+  padding: 0;
+  display: block;
+  width: $offset-g2;
+  height: $offset-g2;
   font-size: $offset-g2;
   line-height: $offset-g2;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  @media (max-width: $bp-xxs-1) {
+    font-size: $offset-2;
+    width: $offset-2;
+    height: $offset-2;
+  }
 
   .r-i {
     color: $color_accent; //$color_navbar-header-link
@@ -50,8 +52,8 @@
 .toolbar.side-drawer-open {
   .toggle-button {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: $offset-1;
+    left: $offset-1;
     background: transparent;
 
     .r-i {

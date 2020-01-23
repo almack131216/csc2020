@@ -18,7 +18,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="col-tablet-12 col-xs-6 text-align-right">
+          <div className="col-tablet-12 col-xs-6 col-ftr-contact">
             <div className="title-with-fa-links">
               <SocialBtns social={SiteData.social} classes="on-dark-bg" />
             </div>

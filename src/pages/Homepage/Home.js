@@ -5,6 +5,7 @@ import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
+import { setDocumentTitle } from "../../assets/js/Helpers";
 
 const Home = props => {
   const context = useContext(ItemContext);
@@ -12,6 +13,7 @@ const Home = props => {
 
   useEffect(() => {
     getData("Home");
+    setDocumentTitle(``);
   }, [getData]);
 
   return (

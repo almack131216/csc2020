@@ -101,6 +101,7 @@ $card-color-accent-link-category: $color_secondary;
     .card-img {
       width: 30%;
       max-height: 200px;
+      background-color: transparent;
 
       a {
         img {
@@ -113,6 +114,9 @@ $card-color-accent-link-category: $color_secondary;
       width: 70%;
       align-self: auto;
       padding: 0 $offset-g1;
+      @media (max-width: $bp-tablet-1) {
+        padding-right: 0;
+      }
 
       .ftr {
         margin-top: 0;

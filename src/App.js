@@ -4,6 +4,8 @@ import "./App.scss";
 import Home from "./pages/Homepage/Home";
 import Items from "./pages/Items/Items";
 import ItemDetails from "./pages/ItemDetails/ItemDetails";
+import Contact from "./pages/Contact/Contact";
+import FilmTvHire from "./pages/FilmTvHire/FilmTvHire";
 import Error from "./pages/Error";
 import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
@@ -33,6 +35,13 @@ class App extends Component {
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/selling-a-classic-car" component={Home} />
+            <Route exact path="/classic-car-transportation" component={Home} />
+            <Route exact path="/registration-numbers" component={Home} />
+            <Route exact path="/request-a-classic-car" component={Home} />
+            <Route exact path="/film-tv-hire" component={FilmTvHire} />
+            <Route exact path="/contact" component={Contact} />
+
             <Route
               exact
               path="/classic-cars-for-sale"
@@ -108,6 +117,7 @@ class App extends Component {
                 />
               )}
             />
+
             <Route component={Error} />
           </Switch>
         </main>

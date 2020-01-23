@@ -26,7 +26,7 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
       {
         title: categoryArr.title,
         slug: categoryArr.slug,
-        class: categoryArr.name
+        class: categoryArr.class
       }
     ];
   }
@@ -36,7 +36,7 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
     crumbsArr.map((item, index) => {
       console.log("CRUMBS:", item.title, " | " + item.name);
       return (
-        <li key={index} className={item.name ? item.name : ""}>
+        <li key={index} className={item.class ? item.class : ""}>
           <FaChevronRight />
           {index < crumbsArr.length - 1 ? (
             <Link to={item.slug} className="crumb-resp">

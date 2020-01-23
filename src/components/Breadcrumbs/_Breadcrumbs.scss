@@ -16,7 +16,10 @@
 
     .crumbs-wrap {
       ul {
-        @include trim-string();
+        // @include trim-string();
+        overflow: hidden;
+        /* text-overflow: ellipsis; */
+        white-space: nowrap;
 
         li {
           @include resp-prop-half("padding-right", $offset-1);

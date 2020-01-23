@@ -57,7 +57,7 @@ export default class ItemDetails extends Component {
       .then(data => {
         console.log("[ItemDetails.js] componentDidMount() data: ", data);
         let [itemPrimary, ...itemImageAttachments] = data;
-        itemPrimary.nameFull = itemPrimary.year
+        itemPrimary.title = itemPrimary.year
           ? `${itemPrimary.year} ${itemPrimary.name}`
           : itemPrimary.name;
         itemPrimary.itemPath = this.state.path;
@@ -111,26 +111,27 @@ export default class ItemDetails extends Component {
     const images = [];
     for (let i = 0; i < itemImages.length; i++) {
       images.push({
-        src: "https://via.placeholder.com/640x480",
-        // src: `${process.env.REACT_APP_IMG_DIR_LARGE}${itemImages[i].image}`,
+        // src: "https://via.placeholder.com/640x480",
+        src: `${process.env.REACT_APP_IMG_DIR_LARGE}${itemImages[i].image}`,
         name: itemImages[i].name
       });
     }
     // (END) LIGHTBOX images
 
     // ITEM fields
-    let { nameFull, price, category, status, description } = itemPrimary;
+    let { title, price, category, status, description } = itemPrimary;
     // ITEM Price
     const priceFormatted = formatPrice(price, status);
     itemPrimary.priceFormatted = priceFormatted;
     // ITEM category
     const categoryArr = getCategoryArr(category, status);
     const categoryLinkTag = getCategoryLinkTag(categoryArr);
-    setDocumentTitle(`${nameFull} | ${categoryArr.title}`);
+    setDocumentTitle(`${title} | ${categoryArr.title}`);
     // ITEM description + parsed
     const descriptionParsed = formatDescription(description);
     // SET breadcrumbs array
     let crumbsArr = [];
+    categoryArr.class = categoryArr.name;
     crumbsArr.push(categoryArr);
     crumbsArr.push(itemPrimary);
 
@@ -190,7 +191,7 @@ export default class ItemDetails extends Component {
             </div>
             <div className="content col-sm-12 col-md-9 padding-x-0 col-post-parent">
               <div className="col-post-text">
-                <h1>{nameFull}</h1>
+                <h1>{title}</h1>
                 <div className="post-text-body">
                   <ItemExtras itemArr={itemPrimary} />
                   {descriptionParsed}
