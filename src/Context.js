@@ -341,6 +341,9 @@ export default class ItemProvider extends Component {
       : this.state.categoryNameDefault;
 
     if (itemCategoryName === 4) return CatData["Press"].slug;
+    if (itemCategoryName === 1) return CatData["General"].slug;
+    if (itemCategoryName === 5) return CatData["News"].slug;
+    if (itemCategoryName === 7) return CatData["Transportation"].slug;
 
     if (itemCategoryName === 2 && getItemStatus === 1)
       return CatData[this.state.categoryNameDefault].slug;
@@ -395,6 +398,9 @@ export default class ItemProvider extends Component {
 
     if (itemCategoryName === 3) return CatData.Testimonials;
     if (itemCategoryName === 4) return CatData.Press;
+    if (itemCategoryName === 1) return CatData["General"];
+    if (itemCategoryName === 5) return CatData["News"];
+    if (itemCategoryName === 7) return CatData["Transportation"];
 
     if (
       (itemCategoryName === "Archive" || itemCategoryName === 2) &&

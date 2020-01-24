@@ -4,6 +4,7 @@ import "./App.scss";
 import Home from "./pages/Homepage/Home";
 import Items from "./pages/Items/Items";
 import ItemDetails from "./pages/ItemDetails/ItemDetails";
+import ItemCarousel from "./pages/ItemCarousel/ItemCarousel";
 import Contact from "./pages/Contact/Contact";
 import FilmTvHire from "./pages/FilmTvHire/FilmTvHire";
 import Error from "./pages/Error";
@@ -36,10 +37,22 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/selling-a-classic-car" component={Home} />
-            <Route exact path="/classic-car-transportation" component={Home} />
+            <Route
+              exact
+              path="/classic-car-transportation"
+              component={routerProps => (
+                <ItemCarousel categoryName="Transportation" itemId={6513} />
+              )}
+            />
             <Route exact path="/registration-numbers" component={Home} />
             <Route exact path="/request-a-classic-car" component={Home} />
-            <Route exact path="/film-tv-hire" component={FilmTvHire} />
+            <Route
+              exact
+              path="/film-tv-hire"
+              component={routerProps => (
+                <ItemCarousel categoryName="FilmTvHire" itemId={13675} />
+              )}
+            />
             <Route exact path="/contact" component={Contact} />
 
             <Route
@@ -113,6 +126,16 @@ class App extends Component {
               component={routerProps => (
                 <ItemDetails
                   categoryName="Testimonials"
+                  itemId={routerProps.match.params.slug}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/*/news/:slug"
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="News"
                   itemId={routerProps.match.params.slug}
                 />
               )}

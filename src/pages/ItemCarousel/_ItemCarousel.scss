@@ -1,0 +1,20 @@
+/* _ItemCarousel.scss */
+
+.item-details-img.carousel {
+  .row.row-post-img {
+    @extend .bg-white;
+    padding-bottom: 0;
+
+    .col-post-img {
+      @include resp-prop-half("padding-top", $offset-g2);
+      padding-bottom: 0;
+    }
+    /* (END) .col-post-img */
+
+    .col-post-item-extras {
+      padding: 0;
+      @include resp-prop-half("padding-top", $offset-g2);
+    }
+    /* (END) .col-post-item-extras */
+  }
+}

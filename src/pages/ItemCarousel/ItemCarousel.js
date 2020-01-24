@@ -3,23 +3,17 @@ import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import WidgetData from "../../assets/_data/_data-widgets";
 import Widget from "../../components/Sidebar/InfoBox/InfoBox";
-import ImgFeatured from "../../components/ItemDetails/ImgFeatured/ImgFeatured";
-import ImgGrid from "../../components/ItemDetails/ImgGrid/ImgGrid";
+import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import { ItemContext } from "../../Context";
 import { setDocumentTitle, apiGetItemDetails } from "../../assets/js/Helpers";
-import Lightbox from "react-image-lightbox";
 import Loading from "../../components/Loading/Loading";
 import ItemNotFound from "../../components/ItemDetails/ItemNotFound/ItemNotFound";
 import ItemExtras from "../../components/ItemDetails/ItemExtras/ItemExtras";
-import "react-image-lightbox/style.css";
 
-export default class ItemDetails extends Component {
+export default class ItemCarousel extends Component {
   constructor(props) {
     super(props);
     console.log("[Item.js] this.props...", this.props);
-    // LIGHTBOX - triggered from img grid + img featured
-    // state props: photoIndex, isOpen
-    // const handleForLightbox = this.handleForLightbox.bind(this);
 
     this.strItemNotFound = "Cannot find item";
     // API - generate end point based on categoryName + itemId
@@ -35,27 +29,18 @@ export default class ItemDetails extends Component {
       itemCategoryName: apiArr.categoryName,
       slug: apiArr.itemId, //this.props.match.params.slug
       path: process.env.REACT_APP_ROOT + window.location.pathname,
-      fetchError: "",
-      photoIndex: 0,
-      isOpen: false
+      fetchError: ""
     };
   }
 
-  // LIGHTBOX - open lightbox on selected photoIndex
-  handleForLightbox = getIndex => {
-    console.log("openLightbox()...", getIndex);
-    const photoIndex = getIndex ? getIndex : 0;
-    this.setState({ isOpen: true, photoIndex });
-  };
-
   // API - componentDidMount
   async componentDidMount() {
-    // console.log("[ItemDetails.js] componentDidMount()...");
+    // console.log("[ItemCarousel.js] componentDidMount()...");
     this.setState({ loading: true });
     await fetch(this.apiUrl)
       .then(response => response.json())
       .then(data => {
-        console.log("[ItemDetails.js] componentDidMount() data: ", data);
+        console.log("[ItemCarousel.js] componentDidMount() data: ", data);
         let [itemPrimary, ...itemImageAttachments] = data;
         itemPrimary.title = itemPrimary.year
           ? `${itemPrimary.year} ${itemPrimary.name}`
@@ -79,16 +64,8 @@ export default class ItemDetails extends Component {
   static contextType = ItemContext;
 
   render() {
-    // LIGHTBOX props
-    const handleForLightbox = this.handleForLightbox;
-    const { photoIndex, isOpen } = this.state;
     // (END) LIGHTBOX props
-    const {
-      formatPrice,
-      formatDescription,
-      getCategoryArr,
-      getCategoryLinkTag
-    } = this.context;
+    const { formatDescription, getCategoryArr } = this.context;
     const { loading, fetchError, itemPrimary, itemImages } = this.state;
     // INIT settings.item
     let widgetOpeningHours = null;
@@ -119,37 +96,21 @@ export default class ItemDetails extends Component {
     // (END) LIGHTBOX images
 
     // ITEM fields
-    let { title, price, category, status, description } = itemPrimary;
-    // ITEM Price
-    const priceFormatted = formatPrice(price, status);
-    itemPrimary.priceFormatted = priceFormatted;
+    let { title, category, status, description } = itemPrimary;
     // ITEM category
+    console.log("??? category & status = ", category, status);
     const categoryArr = getCategoryArr(category, status);
-    const categoryLinkTag = getCategoryLinkTag(categoryArr);
-    setDocumentTitle(`${title} | ${categoryArr.title}`);
+    console.log("??? categoryArr = ", categoryArr);
+    setDocumentTitle(`${title}`);
     // ITEM description + parsed
     const descriptionParsed = formatDescription(description);
     // SET breadcrumbs array
     let crumbsArr = [];
-    categoryArr.class = categoryArr.name;
-    crumbsArr.push(categoryArr);
     crumbsArr.push(itemPrimary);
 
     // SET images
-    // IMAGE Featured (primary)
-    const imgFeaturedComp = (
-      <ImgFeatured
-        imgArr={itemPrimary}
-        handleForLightbox={handleForLightbox.bind(this)}
-      />
-    );
     // IMAGE Grid (attachments)
-    const imgGridComp = (
-      <ImgGrid
-        imgsArr={images}
-        handleForLightbox={handleForLightbox.bind(this)}
-      />
-    );
+    const imgCarousel = <CarouselDynamic imgsArr={images} />;
     // (END) SET images
 
     // GET appearance
@@ -169,21 +130,21 @@ export default class ItemDetails extends Component {
       <>
         <section className="content-wrap match-heights bg-accent">
           <div className="sidebar">
-            <NavLeft categoryName={categoryArr.name} />
+            <NavLeft />
           </div>
-          <div className="content bg-secondary item-details-img">
-            <Breadcrumbs crumbsArr={crumbsArr} pageType="item-details" />
+          <div className="content item-details-img carousel">
+            <Breadcrumbs crumbsArr={crumbsArr} pageType="item-carousel" />
             <div className="row row-post-img">
               <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
-                {imgFeaturedComp}
+                {imgCarousel}
               </div>
-              <div className="col-xs-12 col-sm-4 col-post-img-grid">
-                {imgGridComp}
+              <div className="col-xs-12 col-sm-4 col-post-item-extras">
+                <ItemExtras itemArr={itemPrimary} />
               </div>
             </div>
           </div>
         </section>
-        <div className="container item">
+        <div className="container">
           <section className="row">
             <div className="sidebar hidden-md-down col-md-3 padding-x-0">
               {widgetOpeningHours}
@@ -192,42 +153,11 @@ export default class ItemDetails extends Component {
             <div className="content col-sm-12 col-md-9 padding-x-0">
               <div className="col-post-text">
                 <h1>{title}</h1>
-                <div className="post-text-body">
-                  <ItemExtras
-                    showPrice={true}
-                    itemArr={itemPrimary}
-                    class="position-right"
-                  />
-                  {descriptionParsed}
-                  <p>{categoryLinkTag}</p>
-                </div>
+                <div className="post-text-body">{descriptionParsed}</div>
               </div>
             </div>
           </section>
         </div>
-
-        {/* Lightbox */}
-        {isOpen && (
-          <Lightbox
-            mainSrc={images[photoIndex].src}
-            nextSrc={images[(photoIndex + 1) % images.length].src}
-            prevSrc={
-              images[(photoIndex + images.length - 1) % images.length].src
-            }
-            onCloseRequest={() => this.setState({ isOpen: false })}
-            onMovePrevRequest={() =>
-              this.setState({
-                photoIndex: (photoIndex + images.length - 1) % images.length
-              })
-            }
-            onMoveNextRequest={() =>
-              this.setState({
-                photoIndex: (photoIndex + 1) % images.length
-              })
-            }
-          />
-        )}
-        {/* (END) Lightbox */}
       </>
     );
   }

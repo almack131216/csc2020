@@ -1,4 +1,36 @@
 const catArray = {
+  General: {
+    id: 1,
+    name: "General",
+    title: "General",
+    titleHover: "Link to our classic car showroom page",
+    titleDocument: "Classic Cars For Sale in Malton, North Yorkshire",
+    slug: "/",
+    apiJson: "./api-dummy/dummy-for-sale.json",
+    api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=General`,
+    apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=General`,
+    apiItem: "./api-dummy/dummy-item-details.json",
+    settings: {
+      showFilter: false,
+      showBrandList: false,
+      showWidgetOpeningHours: true,
+      showWidgetContactDetails: true,
+      showTitle: false,
+      showTitleSub: false,
+      layout: "grid accent",
+      item: {
+        layout: "item-card accent",
+        showPrice: true,
+        showRibbons: true,
+        showYear: true,
+        showCategoryLink: true,
+        details: {
+          showWidgetOpeningHours: true,
+          showWidgetContactDetails: true
+        }
+      }
+    }
+  },
   Live: {
     id: 2,
     name: "Live",
@@ -6,7 +38,6 @@ const catArray = {
     titleHover: "Link to our classic car showroom page",
     titleDocument: "Classic Cars For Sale in Malton, North Yorkshire",
     slug: "/classic-cars-for-sale",
-    slugToItem: "/for-sale",
     apiJson: "./api-dummy/dummy-for-sale.json",
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Live`,
     apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Live`,
@@ -143,6 +174,38 @@ const catArray = {
         layout: "item-row",
         showExcerpt: true,
         showCategoryLink: false,
+        details: {
+          showWidgetOpeningHours: true,
+          showWidgetContactDetails: true
+        }
+      }
+    }
+  },
+  Transportation: {
+    id: 7,
+    name: "Transportation",
+    title: "Car Transport Services",
+    titleHover: "Link to our classic car transport services",
+    titleDocument: "Car Transport Services",
+    slug: "/classic-car-transportation",
+    apiJson: "./api-dummy/dummy-for-sale.json",
+    api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=General`,
+    apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=General`,
+    apiItem: "./api-dummy/dummy-item-details.json",
+    settings: {
+      showFilter: false,
+      showBrandList: false,
+      showWidgetOpeningHours: true,
+      showWidgetContactDetails: true,
+      showTitle: false,
+      showTitleSub: false,
+      layout: "carousel",
+      item: {
+        layout: "item-card accent",
+        showPrice: true,
+        showRibbons: true,
+        showYear: true,
+        showCategoryLink: true,
         details: {
           showWidgetOpeningHours: true,
           showWidgetContactDetails: true

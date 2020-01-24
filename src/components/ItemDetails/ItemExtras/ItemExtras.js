@@ -28,29 +28,39 @@ const ItemExtras = props => {
     priceFormatted,
     status,
     itemPath,
-    imagePath
+    imagePath,
+    category
   } = props.itemArr;
 
+  let priceRow = null;
+  let classesWrap = ["item-extras"];
+  if (props.class) classesWrap.push(props.class);
+
   // PRICE
-  let classesPrice = ["price"];
-  let priceString = priceFormatted;
-  if (status === 1 && !price && price_details) {
-    classesPrice.push("detail");
-    priceString = price_details;
-  }
-  if (status === 2) {
-    classesPrice.push("sold");
+  if (props.showPrice) {
+    let classesPrice = ["price"];
+    let priceString = priceFormatted;
+    if (status === 1 && !price && price_details) {
+      classesPrice.push("detail");
+      priceString = price_details;
+    }
+    if (status === 2) {
+      classesPrice.push("sold");
+    }
+    priceRow = (
+      <div>
+        <h3>
+          <span className={classesPrice.join(" ")}>{priceString}</span>
+        </h3>
+      </div>
+    );
   }
   // (END) PRICE
 
   return (
-    <div className="item-extras ">
+    <div className={classesWrap.join(" ")}>
       <div className="feature-list">
-        <div>
-          <h3>
-            <span className={classesPrice.join(" ")}>{priceString}</span>
-          </h3>
-        </div>
+        {priceRow}
         <div>
           <ul className="ul-inline">
             {/* <li>
@@ -65,7 +75,9 @@ const ItemExtras = props => {
             </li> */}
             <li>
               <a
-                href={`mailto:sales@classicandsportscar.ltd.uk?subject=Enquiry: ${name} (${id})`}
+                href={`mailto:sales@classicandsportscar.ltd.uk?subject=Enquiry: ${name} ${
+                  category === 2 ? `(${id})` : ""
+                }`}
                 title={`Make enquiry about ${name}`}
                 className="icon-text"
               >
@@ -91,10 +103,7 @@ const ItemExtras = props => {
             </li>
             {imagePath ? (
               <li>
-                <PinterestShareButton
-                  url={itemPath}
-                  media="https://www.classicandsportscar.ltd.uk/images_catalogue/large/triumph-gt6-mkiii_45282.jpg"
-                >
+                <PinterestShareButton url={itemPath} media={imagePath}>
                   <PinterestIcon size={30} />
                 </PinterestShareButton>
               </li>

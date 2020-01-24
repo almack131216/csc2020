@@ -46,7 +46,12 @@ body {
 /* [END] body */
 
 main .container {
-  background: $color_secondary-light;
+  // background: $color_secondary-light;
+  background: white;
+  &.item,
+  &.items {
+    background: $color_secondary-light;
+  }
 }
 
 main .container .sidebar {

@@ -14,22 +14,25 @@
 }
 
 .item-extras {
+  width: 100%;
   border: 1px solid $table-color-border;
-  @include resp-prop-half("padding", $offset-g2);
-  background: white;
   margin: 0;
   @include resp-prop-half("margin-bottom", $offset-g2);
+  @include resp-prop-half("padding", $offset-g2);
+  background: white;
 
-  @media (min-width: $bp-sm) {
-    float: right;
-    width: 33.33333333%;
-    @include resp-prop-half("margin-left", $offset-g2);
-  }
+  &.position-right {
+    @media (min-width: $bp-sm) {
+      float: right;
+      width: 33.33333333%;
+      @include resp-prop-half("margin-left", $offset-g2);
+    }
 
-  @media (min-width: $bp-tablet) and (max-width: $bp-sm-1) {
-    float: right;
-    width: 40%;
-    @include resp-prop-half("margin-left", $offset-g2);
+    @media (min-width: $bp-tablet) and (max-width: $bp-sm-1) {
+      float: right;
+      width: 40%;
+      @include resp-prop-half("margin-left", $offset-g2);
+    }
   }
 
   div.feature-list {
@@ -94,30 +97,3 @@
     margin-bottom: 0;
   }
 }
-
-// .sharedaddy {
-//     display: none;
-//   }
-
-//   .post-details-box .sharedaddy {
-//     display: inline-block;
-
-//     h3.sd-title {
-//       display: none;
-//     }
-
-//     ul {
-//       // @extend .ul-clean;//191230
-//       // @extend .ul-inline-block;//191230
-//       margin: 5px 0 0 0 !important;
-
-//       li {
-//         margin: 0 $offset-1 0 0 !important;
-//         padding-right: 0 !important;
-
-//         &:before {
-//           display: none !important;
-//         }
-//       }
-//     }
-//   }

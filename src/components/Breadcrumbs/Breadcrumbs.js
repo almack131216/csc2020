@@ -66,6 +66,11 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
       showBrandList = false;
       break;
 
+    case "item-carousel":
+      showFilter = false;
+      showBrandList = false;
+      break;
+
     case "items-list":
       if (catSettings && catSettings.showFilter) showFilter = true;
       if (catSettings && catSettings.showBrandList) showBrandList = true;
