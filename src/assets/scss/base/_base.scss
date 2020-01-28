@@ -49,7 +49,8 @@ main .container {
   // background: $color_secondary-light;
   background: white;
   &.item,
-  &.items {
+  &.items.Live,
+  &.items.Archive {
     background: $color_secondary-light;
   }
 }

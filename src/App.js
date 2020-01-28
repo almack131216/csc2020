@@ -6,7 +6,6 @@ import Items from "./pages/Items/Items";
 import ItemDetails from "./pages/ItemDetails/ItemDetails";
 import ItemCarousel from "./pages/ItemCarousel/ItemCarousel";
 import Contact from "./pages/Contact/Contact";
-import FilmTvHire from "./pages/FilmTvHire/FilmTvHire";
 import Error from "./pages/Error";
 import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
@@ -114,7 +113,7 @@ class App extends Component {
               exact
               path="/*/press/:slug"
               component={routerProps => (
-                <ItemDetails
+                <ItemCarousel
                   categoryName="Press"
                   itemId={routerProps.match.params.slug}
                 />
@@ -124,7 +123,7 @@ class App extends Component {
               exact
               path="/*/testimonials/:slug"
               component={routerProps => (
-                <ItemDetails
+                <ItemCarousel
                   categoryName="Testimonials"
                   itemId={routerProps.match.params.slug}
                 />
@@ -134,7 +133,7 @@ class App extends Component {
               exact
               path="/*/news/:slug"
               component={routerProps => (
-                <ItemDetails
+                <ItemCarousel
                   categoryName="News"
                   itemId={routerProps.match.params.slug}
                 />

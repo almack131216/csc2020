@@ -17,7 +17,7 @@ const Items = props => {
   const categoryName = props.category ? props.category : "Live";
   // INIT appearance
   let catSettings = categoryArr.settings;
-  let classContainer = ["container items"];
+  let classContainer = ["container items", categoryName];
   let widgetBrandList = null;
   let widgetOpeningHours = null;
   let widgetContact = null;

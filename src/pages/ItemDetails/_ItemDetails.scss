@@ -5,7 +5,9 @@
 }
 
 .row.row-post-img {
-  @include resp-prop-half("padding", $offset-g2);
+  @include resp-prop-half("padding-bottom", $offset-g2);
+  @include resp-prop-half("padding-left", $offset-g2);
+  @include resp-prop-half("padding-right", $offset-g2);
   padding-top: 0;
 
   // background: $color_primary;
@@ -46,5 +48,9 @@
 
   .post-text-body {
     line-height: $offset-g2;
+
+    img {
+      max-width: 100%;
+    }
   }
 }

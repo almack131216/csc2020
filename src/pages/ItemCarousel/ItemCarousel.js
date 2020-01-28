@@ -130,7 +130,7 @@ export default class ItemCarousel extends Component {
       <>
         <section className="content-wrap match-heights bg-accent">
           <div className="sidebar">
-            <NavLeft />
+            <NavLeft categoryName={categoryArr.name} />
           </div>
           <div className="content item-details-img carousel">
             <Breadcrumbs crumbsArr={crumbsArr} pageType="item-carousel" />

@@ -112,6 +112,7 @@ const catArray = {
       showTitle: true,
       showTitleSub: true,
       layout: "row",
+      classContainer: "",
       item: {
         layout: "item-row",
         showExcerpt: true,
@@ -139,7 +140,7 @@ const catArray = {
       showWidgetContactDetails: true,
       showTitle: true,
       showTitleSub: true,
-      classContainer: "press",
+      classContainer: "",
       layout: "row",
       item: {
         layout: "item-row",
