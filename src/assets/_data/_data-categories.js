@@ -43,7 +43,7 @@ const catArray = {
     apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Live`,
     apiItem: "./api-dummy/dummy-item-details.json",
     settings: {
-      showFilter: true,
+      showFilter: false,
       showBrandList: true,
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
@@ -74,7 +74,7 @@ const catArray = {
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Archive`,
     apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Archive`,
     settings: {
-      showFilter: true,
+      showFilter: false,
       showBrandList: true,
       showWidgetOpeningHours: false,
       showWidgetContactDetails: false,

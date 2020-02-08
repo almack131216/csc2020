@@ -8,6 +8,8 @@ class SimpleSlider extends React.Component {
   render() {
     var settings = {
       className: "slider carousel",
+      autoplay: true,
+      autoplaySpeed: 3000,
       dots: true,
       fade: true,
       infinite: true,
