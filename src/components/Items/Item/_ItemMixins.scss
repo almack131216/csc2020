@@ -50,6 +50,10 @@ $card-color-accent-link-category: $color_secondary;
           text-transform: uppercase;
         }
       }
+
+      p {
+        margin-top: 0;
+      }
     }
 
     .category {
@@ -70,12 +74,19 @@ $card-color-accent-link-category: $color_secondary;
   box-sizing: border-box;
   padding: 0;
 
-  @media (min-width: $bp-sm) {
-    width: calc(33.33333333% - #{$offset-g2});
+  &:not(.big) {
+    @media (min-width: $bp-sm) {
+      width: calc(33.33333333% - #{$offset-g2});
+    }
+    @media (min-width: $bp-tablet) and (max-width: $bp-sm-1) {
+      width: calc(50% - #{$offset-g2});
+    }
   }
 
-  @media (min-width: $bp-tablet) and (max-width: $bp-sm-1) {
-    width: calc(50% - #{$offset-g2});
+  &.big {
+    @media (min-width: $bp-tablet) {
+      width: calc(50% - #{$offset-g2});
+    }
   }
 
   @media (max-width: $bp-tablet-1) {

@@ -30,7 +30,7 @@ export default class ItemsFeatured extends Component {
     let SwitchItems = this.switch === "Live" ? items : items2;
     let itemSettingsCust = catData[this.switch]
       ? { ...catData[this.switch].settings.item }
-      : null;
+      : {};
     itemSettingsCust.layout = "item-card featured";
 
     items = SwitchItems.map(item => {

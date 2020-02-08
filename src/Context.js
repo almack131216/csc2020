@@ -49,14 +49,22 @@ export default class ItemProvider extends Component {
 
     try {
       this.setState({ loading: true });
+
       const data = await fetch(
         CatData[this.state.categoryNameDefault].apiFeatured
       ).then(data => data.json());
+
       const dataArchive = await fetch(
         CatData["Archive"].apiFeatured
       ).then(dataArchive => dataArchive.json());
 
+      const dataOther = await fetch(
+        CatData["General"].apiFeatured
+      ).then(dataOther => dataOther.json());
+
       let items = this.formatData(data);
+      let itemsArchive = this.formatData(dataArchive);
+      let itemsOther = this.formatData(dataOther);
       // console.log("[Context.js] getData > items...", items);
 
       //////////////
@@ -65,11 +73,13 @@ export default class ItemProvider extends Component {
       // Featured items [Live]
       let featuredItems = items.slice(0, SiteData.featuredItems.itemCount); // get first # items from main array
       // Featured items [Archive]
-      let itemsArchive = this.formatData(dataArchive);
       let featuredItemsArchive = itemsArchive.slice(
         0,
         SiteData.featuredItems.itemCount
       );
+      let featuredItemsNews = itemsOther.slice(0, 2);
+      let featuredItemsTestimonials = itemsOther.slice(2, 4);
+      console.log("??????????", featuredItemsNews);
 
       ///////////////
       // SET STATE //
@@ -77,6 +87,8 @@ export default class ItemProvider extends Component {
       this.setState({
         featuredItems,
         featuredItemsArchive,
+        featuredItemsNews,
+        featuredItemsTestimonials,
         loading: false
       });
     } catch (error) {
@@ -344,6 +356,7 @@ export default class ItemProvider extends Component {
 
     if (itemCategoryName === 4) return CatData["Press"].slug;
     if (itemCategoryName === 1) return CatData["General"].slug;
+    if (itemCategoryName === 3) return CatData["Testimonials"].slug;
     if (itemCategoryName === 5) return CatData["News"].slug;
     if (itemCategoryName === 7) return CatData["Transportation"].slug;
 

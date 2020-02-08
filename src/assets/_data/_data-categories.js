@@ -6,30 +6,7 @@ const catArray = {
     titleHover: "Link to our classic car showroom page",
     titleDocument: "Classic Cars For Sale in Malton, North Yorkshire",
     slug: "/",
-    apiJson: "./api-dummy/dummy-for-sale.json",
-    api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=General`,
-    apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=General`,
-    apiItem: "./api-dummy/dummy-item-details.json",
-    settings: {
-      showFilter: false,
-      showBrandList: false,
-      showWidgetOpeningHours: true,
-      showWidgetContactDetails: true,
-      showTitle: false,
-      showTitleSub: false,
-      layout: "grid accent",
-      item: {
-        layout: "item-card accent",
-        showPrice: true,
-        showRibbons: true,
-        showYear: true,
-        showCategoryLink: true,
-        details: {
-          showWidgetOpeningHours: true,
-          showWidgetContactDetails: true
-        }
-      }
-    }
+    apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Homepage`
   },
   Live: {
     id: 2,
