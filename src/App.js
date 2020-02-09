@@ -40,7 +40,7 @@ class App extends Component {
               path="/classic-car-transportation"
               component={routerProps => (
                 <ItemDetails
-                  categoryName="Transportation"
+                  categoryName="PageText"
                   itemId={6513}
                   showCarousel={true}
                 />

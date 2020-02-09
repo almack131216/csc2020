@@ -159,31 +159,18 @@ const catArray = {
       }
     }
   },
-  Transportation: {
+  PageText: {
     id: 7,
-    name: "Transportation",
-    title: "Car Transport Services",
-    titleHover: "Link to our classic car transport services",
-    titleDocument: "Car Transport Services",
-    slug: "/classic-car-transportation",
-    apiJson: "./api-dummy/dummy-for-sale.json",
-    api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=General`,
-    apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=General`,
-    apiItem: "./api-dummy/dummy-item-details.json",
+    name: "PageText",
+    title: "",
+    slug: "/",
     settings: {
       showFilter: false,
       showBrandList: false,
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
-      showTitle: false,
-      showTitleSub: false,
-      layout: "carousel",
       item: {
-        layout: "item-card accent",
-        showPrice: true,
-        showRibbons: true,
-        showYear: true,
-        showCategoryLink: true,
+        showCategoryLink: false,
         details: {
           showWidgetOpeningHours: true,
           showWidgetContactDetails: true

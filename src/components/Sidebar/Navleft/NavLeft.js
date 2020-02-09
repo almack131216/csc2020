@@ -14,7 +14,8 @@ const navLeft = props => {
     if (
       !isActive &&
       props.categoryName &&
-      CatData[props.categoryName].slug === link.slug
+      CatData[props.categoryName].slug === link.slug &&
+        CatData[props.categoryName].slug !== "/"
     )
       isActive = true;
     // ASSIGN class if active

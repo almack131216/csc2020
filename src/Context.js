@@ -358,7 +358,7 @@ export default class ItemProvider extends Component {
     if (itemCategoryName === 1) return CatData["General"].slug;
     if (itemCategoryName === 3) return CatData["Testimonials"].slug;
     if (itemCategoryName === 5) return CatData["News"].slug;
-    if (itemCategoryName === 7) return CatData["Transportation"].slug;
+    if (itemCategoryName === 7) return CatData["PageText"].slug;
 
     if (itemCategoryName === 2 && getItemStatus === 1)
       return CatData[this.state.categoryNameDefault].slug;
@@ -380,11 +380,12 @@ export default class ItemProvider extends Component {
   // get slug from CatData based on categoryName
   getCategoryLinkTag = getCategoryArr => {
     console.log("[Context.js] getCategoryLinkTag...", getCategoryArr);
-    return (
+
+    return getCategoryArr.slug ? (
       <Link to={getCategoryArr.slug} className="link-category">
         {getCategoryArr.title}
       </Link>
-    );
+    ) : null;
   };
 
   /////////////////////////////////////////////////////////////////////////// FORMAT brand link
@@ -415,7 +416,7 @@ export default class ItemProvider extends Component {
     if (itemCategoryName === 4) return CatData.Press;
     if (itemCategoryName === 1) return CatData["General"];
     if (itemCategoryName === 5) return CatData["News"];
-    if (itemCategoryName === 7) return CatData["Transportation"];
+    if (itemCategoryName === 7) return CatData["PageText"];
 
     if (
       (itemCategoryName === "Archive" || itemCategoryName === 2) &&
