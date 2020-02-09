@@ -138,23 +138,35 @@ export default class ItemDetails extends Component {
     crumbsArr.push(categoryArr);
     crumbsArr.push(itemPrimary);
 
-    // SET images
-    // IMAGE Featured (primary)
-    const imgFeaturedComp = (
-      <ImgFeatured
-        imgArr={itemPrimary}
-        handleForLightbox={handleForLightbox.bind(this)}
-      />
-    );
-    // IMAGE Grid (attachments)
-    const imgGridComp = (
-      <ImgGrid
-        imgsArr={images}
-        handleForLightbox={handleForLightbox.bind(this)}
-      />
-    );
-    // IMAGE Grid (attachments)
-    const imgCarousel = <CarouselDynamic imgsArr={images} />;
+    // SET images (IMG || Carousel)
+    // change background style if
+    let imgRowClasses = ["content", "item-details-img"];
+    let txtRowClasses = ["container"];
+    // Featured / Primary
+    let imgColLeft = <Loading />;
+    // Right panel (IMAGE Grid (attachments) || share)
+    let imgColRight = <Loading />;
+    // Default or Carousel?...
+    if (!showCarousel) {
+      imgRowClasses.push("bg-secondary");
+      txtRowClasses.push("item");
+      imgColLeft = (
+        <ImgFeatured
+          imgArr={itemPrimary}
+          handleForLightbox={handleForLightbox.bind(this)}
+        />
+      );
+      imgColRight = (
+        <ImgGrid
+          imgsArr={images}
+          handleForLightbox={handleForLightbox.bind(this)}
+        />
+      );
+    } else {
+      imgRowClasses.push("carousel");
+      imgColLeft = <CarouselDynamic imgsArr={images} />;
+      imgColRight = <ItemExtras itemArr={itemPrimary} />;
+    }
     // (END) SET images
 
     // GET appearance
@@ -169,19 +181,6 @@ export default class ItemDetails extends Component {
       ) : null;
     }
     // (END) GET appearance
-
-    let imgRowClasses = ["content", "item-details-img"];
-    let imgColLeft = <Loading />;
-    let imgColRight = <Loading />;
-    if (showCarousel) {
-      imgRowClasses.push("carousel");
-      imgColLeft = imgCarousel;
-      imgColRight = <ItemExtras itemArr={itemPrimary} />;
-    } else {
-      imgRowClasses.push("bg-secondary");
-      imgColLeft = imgFeaturedComp;
-      imgColRight = imgGridComp;
-    }
 
     return (
       <>
@@ -201,7 +200,7 @@ export default class ItemDetails extends Component {
             </div>
           </div>
         </section>
-        <div className="container item">
+        <div className={txtRowClasses.join(" ")}>
           <section className="row">
             <div className="sidebar hidden-md-down col-md-3 padding-x-0">
               {widgetOpeningHours}
@@ -211,11 +210,13 @@ export default class ItemDetails extends Component {
               <div className="col-post-text">
                 <h1>{title}</h1>
                 <div className="post-text-body">
-                  <ItemExtras
-                    showPrice={true}
-                    itemArr={itemPrimary}
-                    class="position-right"
-                  />
+                  {!showCarousel ? (
+                    <ItemExtras
+                      showPrice={true}
+                      itemArr={itemPrimary}
+                      class="position-right"
+                    />
+                  ) : null}
                   {descriptionParsed}
                   <p>{categoryLinkTag}</p>
                 </div>
