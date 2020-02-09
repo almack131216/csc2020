@@ -4,7 +4,6 @@ import "./App.scss";
 import Home from "./pages/Homepage/Home";
 import Items from "./pages/Items/Items";
 import ItemDetails from "./pages/ItemDetails/ItemDetails";
-import ItemCarousel from "./pages/ItemCarousel/ItemCarousel";
 import Contact from "./pages/Contact/Contact";
 import Error from "./pages/Error";
 import { Route, Switch } from "react-router-dom";
@@ -40,7 +39,11 @@ class App extends Component {
               exact
               path="/classic-car-transportation"
               component={routerProps => (
-                <ItemCarousel categoryName="Transportation" itemId={6513} />
+                <ItemDetails
+                  categoryName="Transportation"
+                  itemId={6513}
+                  showCarousel={true}
+                />
               )}
             />
             <Route exact path="/registration-numbers" component={Home} />
@@ -49,7 +52,11 @@ class App extends Component {
               exact
               path="/film-tv-hire"
               component={routerProps => (
-                <ItemCarousel categoryName="FilmTvHire" itemId={13675} />
+                <ItemDetails
+                  categoryName="FilmTvHire"
+                  itemId={13675}
+                  showCarousel={true}
+                />
               )}
             />
             <Route exact path="/contact" component={Contact} />
@@ -113,9 +120,10 @@ class App extends Component {
               exact
               path="/*/press/:slug"
               component={routerProps => (
-                <ItemCarousel
+                <ItemDetails
                   categoryName="Press"
                   itemId={routerProps.match.params.slug}
+                  showCarousel={true}
                 />
               )}
             />
@@ -123,9 +131,10 @@ class App extends Component {
               exact
               path="/*/testimonials/:slug"
               component={routerProps => (
-                <ItemCarousel
+                <ItemDetails
                   categoryName="Testimonials"
                   itemId={routerProps.match.params.slug}
+                  showCarousel={true}
                 />
               )}
             />
@@ -133,9 +142,10 @@ class App extends Component {
               exact
               path="/*/news/:slug"
               component={routerProps => (
-                <ItemCarousel
+                <ItemDetails
                   categoryName="News"
                   itemId={routerProps.match.params.slug}
+                  showCarousel={true}
                 />
               )}
             />

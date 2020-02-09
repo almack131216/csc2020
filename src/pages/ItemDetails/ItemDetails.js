@@ -5,8 +5,10 @@ import WidgetData from "../../assets/_data/_data-widgets";
 import Widget from "../../components/Sidebar/InfoBox/InfoBox";
 import ImgFeatured from "../../components/ItemDetails/ImgFeatured/ImgFeatured";
 import ImgGrid from "../../components/ItemDetails/ImgGrid/ImgGrid";
+import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import { ItemContext } from "../../Context";
 import { setDocumentTitle, apiGetItemDetails } from "../../assets/js/Helpers";
+import Parser from "html-react-parser";
 import Lightbox from "react-image-lightbox";
 import Loading from "../../components/Loading/Loading";
 import ItemNotFound from "../../components/ItemDetails/ItemNotFound/ItemNotFound";
@@ -37,7 +39,8 @@ export default class ItemDetails extends Component {
       path: process.env.REACT_APP_ROOT + window.location.pathname,
       fetchError: "",
       photoIndex: 0,
-      isOpen: false
+      isOpen: false,
+      showCarousel: this.props.showCarousel
     };
   }
 
@@ -58,8 +61,8 @@ export default class ItemDetails extends Component {
         console.log("[ItemDetails.js] componentDidMount() data: ", data);
         let [itemPrimary, ...itemImageAttachments] = data;
         itemPrimary.title = itemPrimary.year
-          ? `${itemPrimary.year} ${itemPrimary.name}`
-          : itemPrimary.name;
+          ? `${itemPrimary.year} ${Parser(itemPrimary.name)}`
+          : Parser(itemPrimary.name);
         itemPrimary.itemPath = this.state.path;
         itemPrimary.imagePath =
           process.env.REACT_APP_IMG_DIR_LARGE + itemPrimary.image;
@@ -81,7 +84,7 @@ export default class ItemDetails extends Component {
   render() {
     // LIGHTBOX props
     const handleForLightbox = this.handleForLightbox;
-    const { photoIndex, isOpen } = this.state;
+    const { photoIndex, isOpen, showCarousel } = this.state;
     // (END) LIGHTBOX props
     const {
       formatPrice,
@@ -150,6 +153,8 @@ export default class ItemDetails extends Component {
         handleForLightbox={handleForLightbox.bind(this)}
       />
     );
+    // IMAGE Grid (attachments)
+    const imgCarousel = <CarouselDynamic imgsArr={images} />;
     // (END) SET images
 
     // GET appearance
@@ -165,20 +170,33 @@ export default class ItemDetails extends Component {
     }
     // (END) GET appearance
 
+    let imgRowClasses = ["content", "item-details-img"];
+    let imgColLeft = <Loading />;
+    let imgColRight = <Loading />;
+    if (showCarousel) {
+      imgRowClasses.push("carousel");
+      imgColLeft = imgCarousel;
+      imgColRight = <ItemExtras itemArr={itemPrimary} />;
+    } else {
+      imgRowClasses.push("bg-secondary");
+      imgColLeft = imgFeaturedComp;
+      imgColRight = imgGridComp;
+    }
+
     return (
       <>
         <section className="content-wrap match-heights bg-accent">
           <div className="sidebar">
             <NavLeft categoryName={categoryArr.name} />
           </div>
-          <div className="content bg-secondary item-details-img">
+          <div className={imgRowClasses.join(" ")}>
             <Breadcrumbs crumbsArr={crumbsArr} pageType="item-details" />
             <div className="row row-post-img">
               <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
-                {imgFeaturedComp}
+                {imgColLeft}
               </div>
               <div className="col-xs-12 col-sm-4 col-post-img-grid">
-                {imgGridComp}
+                {imgColRight}
               </div>
             </div>
           </div>

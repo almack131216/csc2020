@@ -54,3 +54,21 @@
     }
   }
 }
+
+.item-details-img.carousel {
+  .row.row-post-img {
+    @extend .bg-white;
+    padding-bottom: 0;
+    @include resp-prop-half("padding-top", $offset-g2);
+
+    .col-post-img {
+      padding-bottom: 0;
+    }
+    /* (END) .col-post-img */
+
+    .col-post-item-extras {
+      padding: 0;
+    }
+    /* (END) .col-post-item-extras */
+  }
+}
