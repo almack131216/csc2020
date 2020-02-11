@@ -112,10 +112,16 @@ export default class ItemDetails extends Component {
     // LIGHTBOX images
     // ARR - put objects into array (need for .map())
     const images = [];
+    // XXX - for testing purposes only (2do)
+    const imgDirHighRes =
+      itemPrimary.id === 38097
+        ? "https://www.classicandsportscar.ltd.uk/uploads/high-res/"
+        : process.env.REACT_APP_IMG_DIR_LARGE;
     for (let i = 0; i < itemImages.length; i++) {
       images.push({
         // src: "https://via.placeholder.com/640x480",
-        src: `${process.env.REACT_APP_IMG_DIR_LARGE}${itemImages[i].image}`,
+        thumb: `${process.env.REACT_APP_IMG_DIR_THUMBS}${itemImages[i].image}`,
+        src: `${imgDirHighRes}${itemImages[i].image}`,
         name: itemImages[i].name
       });
     }

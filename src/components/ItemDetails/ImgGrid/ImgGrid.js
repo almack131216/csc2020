@@ -12,7 +12,7 @@ const ImgGrid = props => {
     return (
       <li key={index}>
         <Img
-          src={[img.src, ImageNotFound]}
+          src={[img.thumb, ImageNotFound]}
           className="img-loading"
           alt={img.name}
           onClick={() => handleForLightbox(index)}
