@@ -14,17 +14,29 @@ const SocialBtns = props => {
   return (
     <ul className={classes.join(" ")}>
       <li className="facebook">
-        <a href={social.facebook}>
+        <a
+          href={social.facebook}
+          target="_blank"
+          title="Link to our Facebook page in a new window"
+        >
           <FaFacebook />
         </a>
       </li>
       <li className="instagram">
-        <a href={social.instagram}>
+        <a
+          href={social.instagram}
+          target="_blank"
+          title="Link to our Instagram page in a new window"
+        >
           <FaInstagram />
         </a>
       </li>
       <li className="youtube">
-        <a href={social.youtube}>
+        <a
+          href={social.youtube}
+          target="_blank"
+          title="Link to our YouTube page in a new window"
+        >
           <FaYoutube />
         </a>
       </li>
