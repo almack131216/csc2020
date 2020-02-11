@@ -35,7 +35,7 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
     crumbsArr &&
     crumbsArr.map((item, index) => {
       console.log("CRUMBS:", item.title, " | " + item.name);
-      return (
+      return item.title ? (
         <li key={index} className={item.class ? item.class : ""}>
           <FaChevronRight />
           {index < crumbsArr.length - 1 ? (
@@ -48,7 +48,7 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
             </span>
           )}
         </li>
-      );
+      ) : null;
     });
   crumbCount += crumbsArr.length;
 
