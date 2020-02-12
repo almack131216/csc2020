@@ -54,6 +54,12 @@
         padding-bottom: 0;
       }
 
+      &.post-btns {
+        a.icon-text {
+          white-space: nowrap;
+        }
+      }
+
       &.post-share {
         // width:110px;
         h4 {

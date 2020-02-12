@@ -5,6 +5,7 @@ import WidgetData from "../../assets/_data/_data-widgets";
 import Widget from "../../components/Sidebar/InfoBox/InfoBox";
 import ImgFeatured from "../../components/ItemDetails/ImgFeatured/ImgFeatured";
 import ImgGrid from "../../components/ItemDetails/ImgGrid/ImgGrid";
+import ImgList from "../../components/ItemDetails/ImgList/ImgList";
 import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import { ItemContext } from "../../Context";
 import { setDocumentTitle, apiGetItemDetails } from "../../assets/js/Helpers";
@@ -40,7 +41,8 @@ export default class ItemDetails extends Component {
       fetchError: "",
       photoIndex: 0,
       isOpen: false,
-      showCarousel: this.props.showCarousel
+      showCarousel: this.props.showCarousel,
+      showImgLargeList: false
     };
   }
 
@@ -49,6 +51,12 @@ export default class ItemDetails extends Component {
     console.log("openLightbox()...", getIndex);
     const photoIndex = getIndex ? getIndex : 0;
     this.setState({ isOpen: true, photoIndex });
+  };
+
+  // Image List
+  handleForLargeImageList = () => {
+    console.log("handleForLargeImageList()...", this.state.showImgLargeList);
+    this.setState({ showImgLargeList: !this.state.showImgLargeList });
   };
 
   // API - componentDidMount
@@ -84,6 +92,7 @@ export default class ItemDetails extends Component {
   render() {
     // LIGHTBOX props
     const handleForLightbox = this.handleForLightbox;
+    const handleForLargeImageList = this.handleForLargeImageList;
     const { photoIndex, isOpen, showCarousel } = this.state;
     // (END) LIGHTBOX props
     const {
@@ -92,7 +101,13 @@ export default class ItemDetails extends Component {
       getCategoryArr,
       getCategoryLinkTag
     } = this.context;
-    const { loading, fetchError, itemPrimary, itemImages } = this.state;
+    const {
+      loading,
+      fetchError,
+      itemPrimary,
+      itemImages,
+      showImgLargeList
+    } = this.state;
     // INIT settings.item
     let widgetOpeningHours = null;
     let widgetContact = null;
@@ -117,11 +132,13 @@ export default class ItemDetails extends Component {
       itemPrimary.id === 38097
         ? "https://www.classicandsportscar.ltd.uk/uploads/high-res/"
         : process.env.REACT_APP_IMG_DIR_LARGE;
+
     for (let i = 0; i < itemImages.length; i++) {
       images.push({
         // src: "https://via.placeholder.com/640x480",
         thumb: `${process.env.REACT_APP_IMG_DIR_THUMBS}${itemImages[i].image}`,
         src: `${imgDirHighRes}${itemImages[i].image}`,
+        filename: itemImages[i].image,
         name: itemImages[i].name
       });
     }
@@ -171,8 +188,19 @@ export default class ItemDetails extends Component {
     } else {
       imgRowClasses.push("carousel");
       imgColLeft = <CarouselDynamic imgsArr={images} />;
-      imgColRight = <ItemExtras itemArr={itemPrimary} />;
+      imgColRight = (
+        <ItemExtras
+          itemArr={itemPrimary}
+          handleForLargeImageList={handleForLargeImageList.bind(this)}
+        />
+      );
     }
+    const imgLargeList = (
+      <ImgList
+        imgsArr={images}
+        handleForLightbox={handleForLightbox.bind(this)}
+      />
+    );
     // (END) SET images
 
     // GET appearance
@@ -220,6 +248,9 @@ export default class ItemDetails extends Component {
                     <ItemExtras
                       showPrice={true}
                       itemArr={itemPrimary}
+                      handleForLargeImageList={handleForLargeImageList.bind(
+                        this
+                      )}
                       class="position-right"
                     />
                   ) : null}
@@ -229,6 +260,9 @@ export default class ItemDetails extends Component {
               </div>
             </div>
           </section>
+
+          <a name="photos" />
+          {showImgLargeList ? imgLargeList : null}
         </div>
 
         {/* Lightbox */}

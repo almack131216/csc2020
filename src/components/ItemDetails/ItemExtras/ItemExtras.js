@@ -35,6 +35,7 @@ const ItemExtras = props => {
   let priceRow = null;
   let classesWrap = ["item-extras"];
   if (props.class) classesWrap.push(props.class);
+  const handleForLargeImageList = props.handleForLargeImageList;
 
   // PRICE
   if (props.showPrice) {
@@ -48,7 +49,7 @@ const ItemExtras = props => {
       classesPrice.push("sold");
     }
     priceRow = (
-      <div>
+      <div className="post-price">
         <h3>
           <span className={classesPrice.join(" ")}>{priceString}</span>
         </h3>
@@ -61,18 +62,19 @@ const ItemExtras = props => {
     <div className={classesWrap.join(" ")}>
       <div className="feature-list">
         {priceRow}
-        <div>
+        <div className="post-btns">
           <ul className="ul-inline">
-            {/* <li>
-              <Link
-                to="/"
+            <li>
+              <a
+                onClick={() => handleForLargeImageList()}
+                href="#photos"
                 title={`Link to ${name} Photos`}
                 className="icon-text"
               >
                 <FaCamera />
                 <span>Large Photos</span>
-              </Link>
-            </li> */}
+              </a>
+            </li>
             <li>
               <a
                 href={`mailto:sales@classicandsportscar.ltd.uk?subject=Enquiry: ${name} ${
