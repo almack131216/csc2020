@@ -4,6 +4,7 @@
 ul.ul-img-list {
   display: flex;
   flex-wrap: wrap;
+  margin: $offset-g1 0;
 
   li {
     flex: 0 0 50%;
@@ -26,7 +27,6 @@ ul.ul-img-list {
         min-width: 100%;
         object-fit: cover;
         vertical-align: bottom;
-        cursor: pointer;
       }
 
       /* The overlay effect (full height and width) - lays on top of the container and over the image */
@@ -39,20 +39,45 @@ ul.ul-img-list {
         height: 100%;
         width: 100%;
         opacity: 0;
-        transition: 0.3s ease;
+        transition: 0.5s ease;
         background-color: transparent;
         background-color: rgba(38, 55, 98, 0.75);
 
         /* The icon inside the overlay is positioned in the middle vertically and horizontally */
-        svg {
-          color: white;
-          font-size: 100px;
+        .btns {
+          width: 50%;
+          min-width: 160px;
+          font-size: 60px;
           position: absolute;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
           -ms-transform: translate(-50%, -50%);
           text-align: center;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          button {
+            background: transparent;
+            outline: none;
+            border: none;
+          }
+
+          @media (max-width: $bp-tablet-1) {
+            // font-size: 30px;
+            // width: 60%;
+          }
+
+          @media (max-width: $bp-xs-1) {
+            // font-size: 30px;
+            // width: 60%;
+          }
+
+          .btn-download,
+          .btn-zoom {
+            color: white;
+          }
         }
       }
 

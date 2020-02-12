@@ -1,7 +1,7 @@
 import React from "react";
 import Img from "react-image";
 import ImageNotFound from "../../../assets/images/image-not-found.jpg";
-import { MdZoomOutMap } from "react-icons/md";
+import { MdZoomOutMap, MdFileDownload } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const ImgList = props => {
@@ -13,21 +13,26 @@ const ImgList = props => {
   const imgAttachments = itemImages.map((img, index) => {
     return (
       <li key={index}>
-        <div class="img-hover-overlay open-lightbox">
+        <div className="img-hover-overlay open-lightbox">
           <Img
             src={[img.src, ImageNotFound]}
             className="img-loading"
             alt={img.name}
           />
-          <div class="overlay">
-            <MdZoomOutMap onClick={() => handleForLightbox(index)} />
-            <a
-              href={`https://www.classicandsportscar.ltd.uk/force-download.php?file=images_catalogue/large/${img.filename}`}
-              class="disk"
-              title="Download - Save this photo"
-            >
-              Save Photo
-            </a>
+          <div className="overlay">
+            <div className="btns">
+              <a
+                href={`https://www.classicandsportscar.ltd.uk/force-download.php?file=images_catalogue/large/${img.filename}`}
+                className="btn-download"
+                title="Download this photo"
+              >
+                <MdFileDownload />
+              </a>
+              <MdZoomOutMap
+                className="btn-zoom"
+                onClick={() => handleForLightbox(index)}
+              />
+            </div>
           </div>
         </div>
       </li>

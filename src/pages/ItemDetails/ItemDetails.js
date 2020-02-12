@@ -20,9 +20,9 @@ export default class ItemDetails extends Component {
   constructor(props) {
     super(props);
     console.log("[Item.js] this.props...", this.props);
-    // LIGHTBOX - triggered from img grid + img featured
-    // state props: photoIndex, isOpen
-    // const handleForLightbox = this.handleForLightbox.bind(this);
+    // REF: https://gist.github.com/nathanlogan/941f296aee7f3fa59689666382101d9f
+    // get URL hash (minus the hash mark)
+    const hash = window.location.hash.substring(1);
 
     this.strItemNotFound = "Cannot find item";
     // API - generate end point based on categoryName + itemId
@@ -42,7 +42,7 @@ export default class ItemDetails extends Component {
       photoIndex: 0,
       isOpen: false,
       showCarousel: this.props.showCarousel,
-      showImgLargeList: false
+      showImgLargeList: hash === "photos" ? true : false
     };
   }
 
@@ -53,10 +53,10 @@ export default class ItemDetails extends Component {
     this.setState({ isOpen: true, photoIndex });
   };
 
-  // Image List
+  // Large Image List
   handleForLargeImageList = () => {
     console.log("handleForLargeImageList()...", this.state.showImgLargeList);
-    this.setState({ showImgLargeList: !this.state.showImgLargeList });
+    this.setState({ showImgLargeList: true });
   };
 
   // API - componentDidMount
