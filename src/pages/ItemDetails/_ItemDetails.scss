@@ -72,3 +72,14 @@
     /* (END) .col-post-item-extras */
   }
 }
+
+/* Lightbox */
+/* BUGFIX */
+// BUG touching the buttons on small device causes browser to show address bar
+// FIX: Move bar down 15px
+.ril-toolbar.ril__toolbar {
+  width: 160px;
+  right: 0;
+  left: auto;
+  top: $offset-g1;
+}
