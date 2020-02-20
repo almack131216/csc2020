@@ -18,6 +18,7 @@ const SocialBtns = props => {
           href={social.facebook}
           target="_blank"
           title="Link to our Facebook page in a new window"
+          rel="external noopener noreferrer"
         >
           <FaFacebook />
         </a>
@@ -27,6 +28,7 @@ const SocialBtns = props => {
           href={social.instagram}
           target="_blank"
           title="Link to our Instagram page in a new window"
+          rel="external noopener noreferrer"
         >
           <FaInstagram />
         </a>
@@ -36,6 +38,7 @@ const SocialBtns = props => {
           href={social.youtube}
           target="_blank"
           title="Link to our YouTube page in a new window"
+          rel="external noopener noreferrer"
         >
           <FaYoutube />
         </a>
