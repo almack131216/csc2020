@@ -2,6 +2,7 @@ import React from "react";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import WidgetData from "../../assets/_data/_data-widgets";
 import Widget from "../../components/Sidebar/InfoBox/InfoBox";
+import Request from "../../components/Forms/Request/Request";
 
 const Contact = props => {
   return (
@@ -13,7 +14,8 @@ const Contact = props => {
           <Widget body={WidgetData.contact} />
         </div>
         <div className="content col-sm-12 col-md-9">
-          <h1>Contact</h1>
+          <h1>Request</h1>
+          <Request />
         </div>
       </section>
     </div>
