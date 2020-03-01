@@ -107,3 +107,11 @@ hr {
 .bg-accent {
   background: $color-accent;
 }
+
+.content {
+  padding: 0;
+
+  .content-inner {
+    @include resp-prop-half("padding", $offset-g2);
+  }
+}

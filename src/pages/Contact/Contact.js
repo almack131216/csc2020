@@ -14,7 +14,6 @@ const Contact = props => {
           <Widget body={WidgetData.contact} />
         </div>
         <div className="content col-sm-12 col-md-9">
-          <h1>Request</h1>
           <Request />
         </div>
       </section>
