@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import TitleText from "../../TitleText/TitleText";
@@ -7,8 +7,9 @@ const API_PATH = "https://www.amactive.net/csc2020-api/mail/index.php";
 
 const Request = () => {
   let [mailSent, setMailSent] = useState(null);
-  let [mailFailed, setMailFiled] = useState(null);
-  const { register, handleSubmit, reset, resetForm, errors } = useForm();
+  let [mailFailed, setMailFailed] = useState(null);
+  let [mailSending, setMailSending] = useState(null);
+  const { register, handleSubmit, reset, errors } = useForm();
 
   // const onSubmit = data => {
   //   console.log(data);
@@ -26,6 +27,9 @@ const Request = () => {
       class="alert-warning"
       text="We could not receive your request. Please call us instead: 01944 758000"
     />
+  );
+  const alertSending = (
+    <Alert class="alert-info" text="Sending your request..." loading={true} />
   );
 
   const title = "Request a car";
@@ -46,6 +50,9 @@ const Request = () => {
       return;
     }
     console.log("[Request] onSubmit > send form...");
+    mailSent = setMailSent(null);
+    mailSending = setMailSending(true);
+    mailFailed = setMailFailed(null);
     axios({
       method: "POST",
       url: `${API_PATH}`,
@@ -57,16 +64,18 @@ const Request = () => {
         console.log(
           "[Request] onSubmit > send form > success: " + response.data.message
         );
+        mailSending = setMailSending(false);
         mailSent = setMailSent(true);
       } else if (response.data.status === "fail") {
         alert("Message failed to send.");
         console.log("[Request] onSubmit > send form > fail: " + response);
-        mailFailed = setMailFiled(true);
+        mailSending = setMailSending(false);
+        mailFailed = setMailFailed(true);
       }
     });
     // .catch(error => {
     //   console.log("[Request] onSubmit > send form > fail: " + error.message);
-    //   mailFailed = setMailFiled("Bad!");
+    //   mailFailed = setMailFailed("Bad!");
     // });
   };
 
@@ -77,12 +86,12 @@ const Request = () => {
         <div className="form-wrap">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
-              <div className="form-group col-md-12">
+              <div className="form-group col-xs-12">
                 <h2>Your Contact Details...</h2>
               </div>
             </div>
             <div className="row">
-              <div className="form-group col-md-6">
+              <div className="form-group col-xxs-12 col-xs-6">
                 <label htmlFor="fName" className="required">
                   First Name
                 </label>
@@ -100,7 +109,7 @@ const Request = () => {
                   className={errors.fName ? "inp-error" : ""}
                 />
               </div>
-              <div className="form-group col-md-6">
+              <div className="form-group col-xxs-12 col-xs-6">
                 <label htmlFor="lName" className="required">
                   Last Name
                 </label>
@@ -120,7 +129,7 @@ const Request = () => {
               </div>
             </div>
             <div className="row">
-              <div className="form-group col-md-6">
+              <div className="form-group col-xs-12 col-sm-6">
                 <label htmlFor="email" className="required">
                   Email Address
                 </label>
@@ -141,8 +150,8 @@ const Request = () => {
                   className={errors.email ? "inp-error" : ""}
                 />
               </div>
-              <div className="form-group col-md-3">
-                <label htmlFor="mobile">Mobile Number</label>
+              <div className="form-group col-xs-6 col-sm-3">
+                <label htmlFor="mobile">Mobile</label>
                 <input
                   type="tel"
                   placeholder="Mobile number"
@@ -150,10 +159,10 @@ const Request = () => {
                   ref={register}
                 />
               </div>
-              <div className="form-group col-md-3">
+              <div className="form-group col-xs-6 col-sm-3">
                 <label htmlFor="tel">Telephone</label>
                 <input
-                  type="text"
+                  type="tel"
                   placeholder="Telephone"
                   name="tel"
                   ref={register}
@@ -161,11 +170,11 @@ const Request = () => {
               </div>
             </div>
             <div className="row">
-              <div className="form-group col-md-6">
+              <div className="form-group col-xxs-12 col-xs-6">
                 <label htmlFor="address">Address</label>
                 <textarea name="address" ref={register} />
               </div>
-              <div className="form-group col-md-6">
+              <div className="form-group col-xxs-12 col-xs-6">
                 <label htmlFor="pCode" className="required">
                   Postcode
                 </label>
@@ -186,12 +195,12 @@ const Request = () => {
             </div>
             <hr />
             <div className="row">
-              <div className="form-group col-md-12">
-                <h2>Details of the model you're looking for...</h2>
+              <div className="form-group col-xs-12">
+                <h2>Model you're looking for...</h2>
               </div>
             </div>
             <div className="row">
-              <div className="form-group col-md-6">
+              <div className="form-group col-xxs-12 col-xs-6">
                 <label htmlFor="carMake" className="required">
                   Make
                 </label>
@@ -209,7 +218,7 @@ const Request = () => {
                   className={errors.carMake ? "inp-error" : ""}
                 />
               </div>
-              <div className="form-group col-md-6">
+              <div className="form-group col-xxs-12 col-xs-6">
                 <label htmlFor="carModel" className="required">
                   Model
                 </label>
@@ -229,7 +238,7 @@ const Request = () => {
               </div>
             </div>
             <div className="row">
-              <div className="form-group col-md-6">
+              <div className="form-group col-xs-6">
                 <label htmlFor="carYear">Year</label>
                 <input
                   type="text"
@@ -238,7 +247,7 @@ const Request = () => {
                   ref={register}
                 />
               </div>
-              <div className="form-group col-md-6">
+              <div className="form-group col-xs-6">
                 <label htmlFor="carColor">Colour</label>
                 <input
                   type="text"
@@ -249,18 +258,20 @@ const Request = () => {
               </div>
             </div>
             <div className="row">
-              <div className="form-group col-md-12">
+              <div className="form-group col-xs-12">
                 <label htmlFor="carNotes">Further Notes</label>
                 <textarea name="carNotes" ref={register} />
               </div>
             </div>
             {mailSent ? alertSent : null}
+            {mailSending ? alertSending : null}
             {mailFailed ? alertFailed : null}
-            <input type="submit" value="Send Request" />
-            <input type="reset" />
+            <input type="submit" className="btn" value="Send Request" />
+            {/* <input type="reset" className="btn pull-right" /> */}
             <input
               type="button"
-              value="reset with values"
+              value="Dummy Data"
+              className="btn pull-right"
               onClick={() => {
                 reset({
                   fName: "al",

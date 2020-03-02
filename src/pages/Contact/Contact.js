@@ -1,23 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
+import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
-import WidgetData from "../../assets/_data/_data-widgets";
-import Widget from "../../components/Sidebar/InfoBox/InfoBox";
-import Request from "../../components/Forms/Request/Request";
+import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
+import { useContext } from "react";
+import { ItemContext } from "../../Context";
+import { setDocumentTitle } from "../../assets/js/Helpers";
+import Images from "../../assets/_data/_data-contact";
 
 const Contact = props => {
+  const context = useContext(ItemContext);
+  const { getData, catData } = context;
+
+  // const carouselId = 39082; // image sequence id
+
+  // Carousel images
+  // ARR - put objects into array (need for .map())
+  const images = [];
+  for (let i = 0; i < Images.length; i++) {
+    images.push({
+      src: `${Images[i].src}`,
+      name: Images[i].alt
+    });
+  }
+  // (END) Carousel images
+
+  const imgCarousel = <CarouselDynamic imgsArr={images} />;
+
+  useEffect(() => {
+    getData("Contact");
+    setDocumentTitle(``);
+  }, [getData]);
+
   return (
-    <div className="container">
-      <section className="row">
-        <div className="sidebar hidden-md-down col-md-3 padding-x-0">
+    <React.Fragment>
+      <section className="content-wrap match-heights bg-accent">
+        <div className="sidebar">
           <NavLeft />
-          <Widget body={WidgetData.openingHours} />
-          <Widget body={WidgetData.contact} />
         </div>
-        <div className="content col-sm-12 col-md-9">
-          <Request />
+        <div className="content">
+          {/* <DemoCarousel /> */}
+          {imgCarousel}
         </div>
       </section>
-    </div>
+      <TitleSplitter categoryArr={catData["Live"]} />
+    </React.Fragment>
   );
 };
 

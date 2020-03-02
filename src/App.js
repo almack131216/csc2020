@@ -5,6 +5,7 @@ import Home from "./pages/Homepage/Home";
 import Items from "./pages/Items/Items";
 import ItemDetails from "./pages/ItemDetails/ItemDetails";
 import Contact from "./pages/Contact/Contact";
+import Request from "./pages/Request/Request";
 import Error from "./pages/Error";
 import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
@@ -34,7 +35,17 @@ class App extends Component {
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/selling-a-classic-car" component={Home} />
+            <Route
+              exact
+              path="/selling-a-classic-car"
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="PageText"
+                  itemId={8695}
+                  showCarousel={true}
+                />
+              )}
+            />
             <Route
               exact
               path="/classic-car-transportation"
@@ -47,7 +58,7 @@ class App extends Component {
               )}
             />
             <Route exact path="/registration-numbers" component={Home} />
-            <Route exact path="/request-a-classic-car" component={Home} />
+            <Route exact path="/request-a-classic-car" component={Request} />
             <Route
               exact
               path="/film-tv-hire"

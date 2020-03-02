@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import ItemsFeatured from "../../components/ItemsFeatured/ItemsFeatured";
-import DemoCarousel from "../../components/Carousel/Carousel";
+import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
 import BigGrid from "../../components/Items/BigGrid/BigGrid";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
 import { setDocumentTitle } from "../../assets/js/Helpers";
+import Images from "../../assets/_data/_data-carousel";
 
 const Home = props => {
   const context = useContext(ItemContext);
@@ -16,6 +17,19 @@ const Home = props => {
     getData,
     catData
   } = context;
+
+  // Carousel images
+  // ARR - put objects into array (need for .map())
+  const images = [];
+  for (let i = 0; i < Images.length; i++) {
+    images.push({
+      src: `${Images[i].src}`,
+      name: Images[i].alt
+    });
+  }
+  // (END) Carousel images
+
+  const imgCarousel = <CarouselDynamic imgsArr={images} />;
 
   useEffect(() => {
     getData("Home");
@@ -28,9 +42,7 @@ const Home = props => {
         <div className="sidebar">
           <NavLeft />
         </div>
-        <div className="content">
-          <DemoCarousel />
-        </div>
+        <div className="content">{imgCarousel}</div>
       </section>
       <TitleSplitter categoryArr={catData["Live"]} />
       <ItemsFeatured categoryName="Live" />

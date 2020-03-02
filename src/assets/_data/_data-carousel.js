@@ -6,23 +6,23 @@ import img5 from "../images/carousel/triumph-tr6-headlamp.jpg";
 
 const imgArray = [
   {
-    url: img1,
+    src: img1,
     alt: "alt 1"
   },
   {
-    url: img2,
+    src: img2,
     alt: "alt 2"
   },
   {
-    url: img3,
+    src: img3,
     alt: "alt 3"
   },
   {
-    url: img4,
+    src: img4,
     alt: "alt 4"
   },
   {
-    url: img5,
+    src: img5,
     alt: "alt 5"
   }
 ];
