@@ -3,8 +3,54 @@
 // REF: https://stackoverflow.com/questions/6483425/prevent-iphone-from-zooming-in-on-select-in-web-app
 @media screen and (max-width: $bp-sm-1) {
   select:active,
-  input:active,
+  input:not(.btn):active,
   textarea:active {
     font-size: 16px;
+  }
+}
+
+// form
+.form-wrap {
+  form {
+    label {
+      margin-right: $offset-1;
+      &.required:before {
+        content: "*";
+        color: #f00;
+        font-weight: bold;
+        // font-size: 1.4em;
+        // line-height: 14px;
+        margin: 0 5px 0 0;
+      }
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: $offset-1;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      margin-top: 5px;
+      resize: vertical;
+    }
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    input.inp-error {
+      border-color: red;
+    }
+
+    span.required {
+      color: #f00;
+    }
   }
 }

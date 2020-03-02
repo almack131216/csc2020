@@ -1,9 +1,16 @@
 import React from "react";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import WidgetData from "../../assets/_data/_data-widgets";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import Widget from "../../components/Sidebar/InfoBox/InfoBox";
+import FormRequest from "../../components/Forms/Request/Request";
+import NavData from "../../assets/_data/_data-navigation";
 
-const FilmTvHire = props => {
+const Request = props => {
+  let crumbsArr = [];
+  let pageArr = NavData.request;
+  crumbsArr.push(pageArr);
+
   return (
     <div className="container">
       <section className="row">
@@ -13,11 +20,12 @@ const FilmTvHire = props => {
           <Widget body={WidgetData.contact} />
         </div>
         <div className="content col-sm-12 col-md-9">
-          <h1>FilmTvHire</h1>
+          <Breadcrumbs crumbsArr={crumbsArr} pageType="page" />
+          <FormRequest />
         </div>
       </section>
     </div>
   );
 };
 
-export default FilmTvHire;
+export default Request;

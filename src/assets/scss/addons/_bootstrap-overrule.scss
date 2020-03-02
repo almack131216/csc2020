@@ -82,3 +82,8 @@ nav .container {
     width: 100%;
   }
 }
+.col-xxs-6 {
+  @media (max-width: $bp-xxs-1) {
+    width: 50%;
+  }
+}

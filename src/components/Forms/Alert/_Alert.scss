@@ -3,9 +3,13 @@
 .alert {
   position: relative;
   padding: $offset-1 $offset-g1;
-  margin-bottom: 1rem;
+  margin-bottom: $offset-g1;
   border: 1px solid transparent;
   @include border-radius(5px);
+
+  img.loading {
+    margin-right: $offset-g1;
+  }
 }
 .alert-success {
   color: #155724;
@@ -21,4 +25,9 @@
   color: #721c24;
   background-color: #f8d7da;
   border-color: #f5c6cb;
+}
+.alert-info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
 }
