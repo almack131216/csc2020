@@ -9,21 +9,26 @@ import { Link } from "react-router-dom";
 
 const TitleSplitter = props => {
   // console.log('[TitleSplitter.js]'...);
-  const title = props.categoryArr.title;
-  const slug = props.categoryArr.slug;
+  const title = props.categoryArr ? props.categoryArr.title : props.title;
+  const slug = props.categoryArr ? props.categoryArr.slug : null;
   let seeAll = props.seeAll ? props.seeAll : { ...props.categoryArr };
-  if (seeAll && !props.seeAll) seeAll.title = "See All";
-  if (seeAll && !seeAll.slug) seeAll.slug = props.categoryArr.slug;
+  if (slug && seeAll && !props.seeAll) seeAll.title = "See All";
+  if (slug && seeAll && !seeAll.slug) seeAll.slug = props.categoryArr.slug;
+  if (!slug) seeAll = {};
+
+  const titleTag = seeAll.slug ? (
+    <Link to={slug}>
+      <h2>{title}</h2>
+    </Link>
+  ) : (
+    title
+  );
 
   return (
     <div className="title_splitter_wrap margin-top-0">
-      <div className="title">
-        <Link to={slug}>
-          <h2>{title}</h2>
-        </Link>
-      </div>
+      <div className="title">{titleTag}</div>
       <span className="spacer-line" />
-      {seeAll ? (
+      {seeAll.slug ? (
         <div className="see-all">
           <Link to={seeAll.slug}>{seeAll.title}</Link>
         </div>
