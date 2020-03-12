@@ -58,23 +58,27 @@ const ItemExtras = props => {
   }
   // (END) PRICE
 
+  const btnPhotos = handleForLargeImageList ? (
+    <li>
+      <a
+        onClick={() => handleForLargeImageList()}
+        href="#photos"
+        title={`Link to ${name} Photos`}
+        className="icon-text"
+      >
+        <FaCamera />
+        <span>Large Photos</span>
+      </a>
+    </li>
+  ) : null;
+
   return (
     <div className={classesWrap.join(" ")}>
       <div className="feature-list">
         {priceRow}
         <div className="post-btns">
           <ul className="ul-inline">
-            <li>
-              <a
-                onClick={() => handleForLargeImageList()}
-                href="#photos"
-                title={`Link to ${name} Photos`}
-                className="icon-text"
-              >
-                <FaCamera />
-                <span>Large Photos</span>
-              </a>
-            </li>
+            {btnPhotos}
             <li>
               <a
                 href={`mailto:sales@classicandsportscar.ltd.uk?subject=Enquiry: ${name} ${

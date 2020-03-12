@@ -42,7 +42,7 @@ class App extends Component {
                 <ItemDetails
                   categoryName="PageText"
                   itemId={8695}
-                  showCarousel={true}
+                  pageStyle="TextOnly"
                 />
               )}
             />
@@ -53,11 +53,21 @@ class App extends Component {
                 <ItemDetails
                   categoryName="PageText"
                   itemId={6513}
-                  showCarousel={true}
+                  pageStyle="ImgCarousel"
                 />
               )}
             />
-            <Route exact path="/registration-numbers" component={Home} />
+            <Route
+              exact
+              path="/registration-numbers"
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="PageText"
+                  itemId={8695}
+                  pageStyle="TextOnly"
+                />
+              )}
+            />
             <Route exact path="/request-a-classic-car" component={Request} />
             <Route
               exact
@@ -66,7 +76,7 @@ class App extends Component {
                 <ItemDetails
                   categoryName="FilmTvHire"
                   itemId={13675}
-                  showCarousel={true}
+                  pageStyle="ImgCarousel"
                 />
               )}
             />
@@ -114,6 +124,7 @@ class App extends Component {
                 <ItemDetails
                   categoryName="Live"
                   itemId={routerProps.match.params.slug}
+                  pageStyle="ImgDetails"
                 />
               )}
             />
@@ -124,6 +135,7 @@ class App extends Component {
                 <ItemDetails
                   categoryName="Archive"
                   itemId={routerProps.match.params.slug}
+                  pageStyle="ImgDetails"
                 />
               )}
             />
@@ -134,7 +146,7 @@ class App extends Component {
                 <ItemDetails
                   categoryName="Press"
                   itemId={routerProps.match.params.slug}
-                  showCarousel={true}
+                  pageStyle="ImgCarousel"
                 />
               )}
             />
@@ -145,7 +157,7 @@ class App extends Component {
                 <ItemDetails
                   categoryName="Testimonials"
                   itemId={routerProps.match.params.slug}
-                  showCarousel={true}
+                  pageStyle="ImgCarousel"
                 />
               )}
             />
@@ -156,7 +168,7 @@ class App extends Component {
                 <ItemDetails
                   categoryName="News"
                   itemId={routerProps.match.params.slug}
-                  showCarousel={true}
+                  pageStyle="ImgCarousel"
                 />
               )}
             />

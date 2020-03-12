@@ -41,7 +41,7 @@ export default class ItemDetails extends Component {
       fetchError: "",
       photoIndex: 0,
       isOpen: false,
-      showCarousel: this.props.showCarousel,
+      pageStyle: this.props.pageStyle, // "TextOnly","ImgCarousel","ImgDetails"
       showImgLargeList: hash === "photos" ? true : false
     };
   }
@@ -93,7 +93,6 @@ export default class ItemDetails extends Component {
     // LIGHTBOX props
     const handleForLightbox = this.handleForLightbox;
     const handleForLargeImageList = this.handleForLargeImageList;
-    const { photoIndex, isOpen, showCarousel } = this.state;
     // (END) LIGHTBOX props
     const {
       formatPrice,
@@ -106,7 +105,10 @@ export default class ItemDetails extends Component {
       fetchError,
       itemPrimary,
       itemImages,
-      showImgLargeList
+      showImgLargeList,
+      photoIndex,
+      isOpen,
+      pageStyle
     } = this.state;
     // INIT settings.item
     let widgetOpeningHours = null;
@@ -170,7 +172,7 @@ export default class ItemDetails extends Component {
     // Right panel (IMAGE Grid (attachments) || share)
     let imgColRight = <Loading />;
     // Default or Carousel?...
-    if (!showCarousel) {
+    if (pageStyle === "ImgDetails") {
       imgRowClasses.push("bg-secondary");
       txtRowClasses.push("item");
       imgColLeft = (
@@ -188,12 +190,7 @@ export default class ItemDetails extends Component {
     } else {
       imgRowClasses.push("carousel");
       imgColLeft = <CarouselDynamic imgsArr={images} />;
-      imgColRight = (
-        <ItemExtras
-          itemArr={itemPrimary}
-          handleForLargeImageList={handleForLargeImageList.bind(this)}
-        />
-      );
+      imgColRight = <ItemExtras itemArr={itemPrimary} />;
     }
     const imgLargeList = (
       <ImgList
@@ -216,78 +213,96 @@ export default class ItemDetails extends Component {
     }
     // (END) GET appearance
 
-    return (
-      <>
-        <section className="content-wrap match-heights bg-accent">
-          <div className="sidebar">
-            <NavLeft categoryName={categoryArr.name} />
-          </div>
-          <div className={imgRowClasses.join(" ")}>
-            <Breadcrumbs crumbsArr={crumbsArr} pageType="item-details" />
-            <div className="row row-post-img">
-              <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
-                {imgColLeft}
-              </div>
-              <div className="col-xs-12 col-sm-4 col-post-img-grid">
-                {imgColRight}
-              </div>
+    const pageContent =
+      pageStyle !== "TextOnly" ? (
+        <>
+          <section className="content-wrap match-heights bg-accent">
+            <div className="sidebar">
+              <NavLeft categoryName={categoryArr.name} />
             </div>
-          </div>
-        </section>
-        <div className={txtRowClasses.join(" ")}>
-          <section className="row">
-            <div className="sidebar hidden-md-down col-md-3 padding-x-0">
-              {widgetOpeningHours}
-              {widgetContact}
-            </div>
-            <div className="content col-sm-12 col-md-9 padding-x-0">
-              <div className="col-post-text">
-                <h1>{title}</h1>
-                <div className="post-text-body">
-                  {!showCarousel ? (
-                    <ItemExtras
-                      showPrice={true}
-                      itemArr={itemPrimary}
-                      handleForLargeImageList={handleForLargeImageList.bind(
-                        this
-                      )}
-                      class="position-right"
-                    />
-                  ) : null}
-                  {descriptionParsed}
-                  <p>{categoryLinkTag}</p>
+            <div className={imgRowClasses.join(" ")}>
+              <Breadcrumbs crumbsArr={crumbsArr} pageType="item-details" />
+              <div className="row row-post-img">
+                <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
+                  {imgColLeft}
+                </div>
+                <div className="col-xs-12 col-sm-4 col-post-img-grid">
+                  {imgColRight}
                 </div>
               </div>
             </div>
           </section>
+          <div className={txtRowClasses.join(" ")}>
+            <section className="row">
+              <div className="sidebar hidden-md-down col-md-3 padding-x-0">
+                {widgetOpeningHours}
+                {widgetContact}
+              </div>
+              <div className="content col-sm-12 col-md-9 padding-x-0">
+                <div className="col-post-text">
+                  <h1>{title}</h1>
+                  <div className="post-text-body">
+                    {pageStyle === "ImgDetails" ? (
+                      <ItemExtras
+                        showPrice={true}
+                        itemArr={itemPrimary}
+                        handleForLargeImageList={handleForLargeImageList.bind(
+                          this
+                        )}
+                        class="position-right"
+                      />
+                    ) : null}
+                    {descriptionParsed}
+                    <p>{categoryLinkTag}</p>
+                  </div>
+                </div>
+              </div>
+            </section>
 
-          <a name="photos" />
-          {showImgLargeList ? imgLargeList : null}
-        </div>
+            <a name="photos" />
+            {showImgLargeList ? imgLargeList : null}
+          </div>
 
-        {/* Lightbox */}
-        {isOpen && (
-          <Lightbox
-            mainSrc={images[photoIndex].src}
-            nextSrc={images[(photoIndex + 1) % images.length].src}
-            prevSrc={
-              images[(photoIndex + images.length - 1) % images.length].src
-            }
-            onCloseRequest={() => this.setState({ isOpen: false })}
-            onMovePrevRequest={() =>
-              this.setState({
-                photoIndex: (photoIndex + images.length - 1) % images.length
-              })
-            }
-            onMoveNextRequest={() =>
-              this.setState({
-                photoIndex: (photoIndex + 1) % images.length
-              })
-            }
-          />
-        )}
-        {/* (END) Lightbox */}
-      </>
-    );
+          {/* Lightbox */}
+          {isOpen && (
+            <Lightbox
+              mainSrc={images[photoIndex].src}
+              nextSrc={images[(photoIndex + 1) % images.length].src}
+              prevSrc={
+                images[(photoIndex + images.length - 1) % images.length].src
+              }
+              onCloseRequest={() => this.setState({ isOpen: false })}
+              onMovePrevRequest={() =>
+                this.setState({
+                  photoIndex: (photoIndex + images.length - 1) % images.length
+                })
+              }
+              onMoveNextRequest={() =>
+                this.setState({
+                  photoIndex: (photoIndex + 1) % images.length
+                })
+              }
+            />
+          )}
+          {/* (END) Lightbox */}
+        </>
+      ) : (
+        <section className="content-wrap match-heights">
+          <div className="sidebar">
+            <NavLeft categoryName={categoryArr.name} />
+            {widgetOpeningHours}
+            {widgetContact}
+          </div>
+          <div className="content col-sm-12 col-md-9 padding-x-0">
+            <Breadcrumbs crumbsArr={crumbsArr} pageType="item-details" />
+            <div className="col-post-text">
+              <h1>{title}</h1>
+              <div className="post-text-body">{descriptionParsed}</div>
+            </div>
+          </div>
+        </section>
+      );
+
+    return <>{pageContent}</>;
   }
 }
