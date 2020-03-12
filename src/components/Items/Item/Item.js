@@ -24,8 +24,10 @@ const Item = memo(({ item, itemSettingsCust }) => {
   // INIT item
   const {
     name,
+    url,
     subcategoryArr,
     image,
+    src,
     price,
     price_details,
     source,
@@ -119,18 +121,32 @@ const Item = memo(({ item, itemSettingsCust }) => {
       ) : null;
   }
 
+  const imgLink = url ? (
+    <a href={url} title={`Link to ${name} in a new window`} target="_blank">
+      <Img src={[src, ImageNotFound]} alt={name} className="img-loading" />
+    </a>
+  ) : (
+    <Link to={formatItemLink(item)}>{myImg}</Link>
+  );
+
+  const titleLink = url ? (
+    <a href={url} title={`Link to ${name} in a new window`} target="_blank">
+      {name}
+    </a>
+  ) : (
+    <Link to={formatItemLink(item)}>{name}</Link>
+  );
+
   return (
     <div className={itemClass.join(" ")}>
       <article>
         <div className={imgClass}>
-          <Link to={formatItemLink(item)}>{myImg}</Link>
+          {imgLink}
           {ribbonNewToday}
           {ribbonSold}
         </div>
         <div className="card-txt">
-          <h5 className="title">
-            <Link to={formatItemLink(item)}>{name}</Link>
-          </h5>
+          <h5 className="title">{titleLink}</h5>
           {sourceTag}
           {excerptTag}
           {itemPriceTag}

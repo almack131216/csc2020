@@ -8,29 +8,40 @@ import img6 from "../images/contact/eden-camp.jpg";
 const imgArray = [
   {
     src: img1,
-    alt: "National Railway Museum"
+    name: "National Railway Museum",
+    url: "https://www.yorkshire.com/places/yorkshire-coast",
+    excerpt: ""
   },
   {
     src: img2,
-    alt: "Visit York"
+    name: "Visit York",
+    url: "https://www.yorkshire.com/places/yorkshire-coast",
+    excerpt: ""
   },
   {
     src: img3,
-    alt: "North Yorkshire Moors Railway (NYMR)"
+    name: "North Yorkshire Moors Railway (NYMR)",
+    url: "https://www.yorkshire.com/places/yorkshire-coast",
+    excerpt: ""
   },
   {
     src: img4,
-    alt: "Yorkshire Coast",
-    link: "https://www.yorkshire.com/places/yorkshire-coast"
+    name: "Yorkshire Coast",
+    url: "https://www.yorkshire.com/places/yorkshire-coast",
+    excerpt: ""
   },
   {
     src: img5,
-    alt: "Castle Howard"
+    name: "Castle Howard",
+    url: "https://www.yorkshire.com/places/yorkshire-coast",
+    excerpt: ""
   },
   {
     src: img6,
-    alt: "Eden Camp"
+    name: "Eden Camp",
+    url: "https://www.yorkshire.com/places/yorkshire-coast",
+    excerpt: ""
   }
 ];
 
-export default imgArray;
+export { imgArray };

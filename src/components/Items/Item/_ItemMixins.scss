@@ -74,17 +74,23 @@ $card-color-accent-link-category: $color_secondary;
   box-sizing: border-box;
   padding: 0;
 
-  &:not(.big) {
-    @media (min-width: $bp-sm) {
-      width: calc(33.33333333% - #{$offset-g2});
-    }
-    @media (min-width: $bp-tablet) and (max-width: $bp-sm-1) {
+  &.big {
+    @media (min-width: $bp-tablet) {
       width: calc(50% - #{$offset-g2});
     }
   }
-
-  &.big {
-    @media (min-width: $bp-tablet) {
+  // &.six {
+  //   @media (min-width: $bp-md) {
+  //     width: calc(16.66666666% - #{$offset-g2});
+  //   }
+  // }
+  &:not(.big) {
+    // &:not(.six) {
+    @media (min-width: $bp-sm) {
+      width: calc(33.33333333% - #{$offset-g2});
+    }
+    // }
+    @media (min-width: $bp-tablet) and (max-width: $bp-sm-1) {
       width: calc(50% - #{$offset-g2});
     }
   }
