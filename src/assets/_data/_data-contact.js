@@ -44,4 +44,9 @@ const imgArray = [
   }
 ];
 
-export { imgArray };
+const textArray = {
+  body:
+    "Classic & Sportscar Centre is based in one of the most beautiful areas of England. If you're coming to view one of our cars why not take the chance to enjoy some of our local sights."
+};
+
+export { imgArray, textArray };

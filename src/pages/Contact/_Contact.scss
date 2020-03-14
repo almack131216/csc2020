@@ -1,0 +1,75 @@
+/* _Contact.scss */
+
+//REF: https://tobiasahlin.com/blog/flexbox-break-to-new-row/
+
+section.generic-row {
+  padding: 0;
+  @media (min-width: $bp-tablet) {
+    padding: 0 $offset-g1;
+  }
+  //   padding-top: 0;
+  //   @include resp-prop-half("padding-left", $offset-g1);
+  //   @include resp-prop-half("padding-right", $offset-g1);
+  width: 100%;
+  background: white;
+  box-sizing: border-box;
+}
+
+.flex-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.break {
+  &.sm-down {
+    @media (max-width: $bp-sm-1) {
+      flex-basis: 100%;
+      @include resp-prop-half("height", $offset-g2);
+    }
+  }
+  &.xs-down {
+    @media (max-width: $bp-xs-1) {
+      flex-basis: 100%;
+      @include resp-prop-half("height", $offset-g2);
+    }
+  }
+}
+.list-item {
+  display: flex;
+  padding: 0 $offset-g1;
+
+  &.flex-tablet-6 {
+    @media (max-width: $bp-sm-1) {
+      width: 50%;
+    }
+  }
+
+  &.flex-tablet-12 {
+    @media (max-width: $bp-sm-1) {
+      width: 100%;
+    }
+  }
+
+  &.flex-sm-4 {
+    @media (min-width: $bp-sm) {
+      width: 33.33333333%;
+    }
+  }
+}
+
+.list-content {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  //   padding: 1em;
+  width: 100%;
+
+  .widget {
+    height: 100%;
+  }
+}
+.list-content p {
+  flex: 1 0 auto;
+}

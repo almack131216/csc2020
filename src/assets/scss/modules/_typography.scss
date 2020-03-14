@@ -16,6 +16,10 @@ p {
   font-size: $base-font-size;
   color: $base-font-color;
   line-height: $base-font-line-height;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
 }
 
 h1 {

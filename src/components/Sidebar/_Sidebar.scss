@@ -1,3 +1,11 @@
+/* _Sidebar.scss */
+
 .col-sidebar {
   @extend .bg-accent;
+}
+
+.sidebar {
+  .widget {
+    margin: $offset-g2;
+  }
 }

@@ -2,8 +2,14 @@
 
 .items-wrap.big-items-wrap {
   padding: 0;
-  @include resp-prop-half("padding-left", $offset-g1);
-  @include resp-prop-half("padding-right", $offset-g1);
+  @media (min-width: $bp-tablet) {
+    @include resp-prop-half("padding-left", $offset-g1);
+    @include resp-prop-half("padding-right", $offset-g1);
+  }
+  @media (max-width: $bp-tablet-1) {
+    padding-left: $offset-g1;
+    padding-right: $offset-g1;
+  }
 
   .cards {
     .item-card.big {
