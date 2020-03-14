@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import parse from "html-react-parser";
 /*
 * USAGE:
 <TitleSplitter categoryArr={catData["Archive"]} />
@@ -11,6 +12,7 @@ const TitleSplitter = props => {
   // console.log('[TitleSplitter.js]'...);
   const title = props.categoryArr ? props.categoryArr.title : props.title;
   const slug = props.categoryArr ? props.categoryArr.slug : null;
+  const body = props.body ? props.body : null;
   let seeAll = props.seeAll ? props.seeAll : { ...props.categoryArr };
   if (slug && seeAll && !props.seeAll) seeAll.title = "See All";
   if (slug && seeAll && !seeAll.slug) seeAll.slug = props.categoryArr.slug;
@@ -26,13 +28,16 @@ const TitleSplitter = props => {
 
   return (
     <div className="title_splitter_wrap margin-top-0">
-      <div className="title">{titleTag}</div>
-      <span className="spacer-line" />
-      {seeAll.slug ? (
-        <div className="see-all">
-          <Link to={seeAll.slug}>{seeAll.title}</Link>
-        </div>
-      ) : null}
+      <div className="title-wrap">
+        <div className="title">{titleTag}</div>
+        <span className="spacer-line" />
+        {seeAll.slug ? (
+          <div className="see-all">
+            <Link to={seeAll.slug}>{seeAll.title}</Link>
+          </div>
+        ) : null}
+      </div>
+      {body ? <div className="body">{parse(body)}</div> : null}
     </div>
   );
 };

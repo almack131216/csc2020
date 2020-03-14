@@ -1,9 +1,6 @@
 /* _TitleSplitter.scss */
 
 .title_splitter_wrap {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   padding-top: $offset-g2;
   @include resp-prop-half("padding-bottom", $offset-g1);
   @include resp-prop-half("padding-left", $offset-g2);
@@ -12,38 +9,48 @@
   background: white;
   box-sizing: border-box;
 
-  .title {
-    white-space: nowrap;
-    padding-right: $offset-g1;
-    text-transform: uppercase;
+  .title-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-    h2 {
-      @extend .h4;
-      @extend .a-black;
-      margin: 0;
-      background-color: transparent;
+    .title {
+      white-space: nowrap;
+      padding-right: $offset-g1;
+      text-transform: uppercase;
+
+      h2 {
+        @extend .h4;
+        @extend .a-black;
+        margin: 0;
+        background-color: transparent;
+      }
     }
-  }
-  /* (END) .title */
+    /* (END) .title */
 
-  .spacer-line {
-    flex-grow: 1;
-    height: 1px;
-    background: $color_layout-border-strong;
-    align-self: center;
-  }
-
-  .see-all {
-    white-space: nowrap;
-    padding-left: $offset-g1;
-
-    > a {
-      @extend .a-black;
+    .spacer-line {
+      flex-grow: 1;
+      height: 1px;
+      background: $color_layout-border-strong;
+      align-self: center;
     }
 
-    @media (max-width: $bp-xs-1) {
-      display: none;
+    .see-all {
+      white-space: nowrap;
+      padding-left: $offset-g1;
+
+      > a {
+        @extend .a-black;
+      }
+
+      @media (max-width: $bp-xs-1) {
+        display: none;
+      }
     }
+    /* (END) .see-all */
   }
-  /* (END) .see-all */
+
+  .body {
+    padding-top: $offset-g1;
+  }
 }
