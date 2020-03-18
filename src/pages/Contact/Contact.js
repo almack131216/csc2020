@@ -6,13 +6,14 @@ import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
 // import { ItemContext } from "../../Context";
 import { setDocumentTitle } from "../../assets/js/Helpers";
 import { imgArray, textArray } from "../../assets/_data/_data-contact";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import SiteData from "../../assets/_data/_data";
-import SocialBtns from "../../components/SocialBtns/SocialBtns";
+// import SocialBtns from "../../components/SocialBtns/SocialBtns";
 import BigGrid from "../../components/Items/BigGrid/BigGrid";
-import Widget from "../../components/Sidebar/InfoBox/InfoBox";
-import WidgetData from "../../assets/_data/_data-widgets";
-import parse from "html-react-parser";
+// import Widget from "../../components/Sidebar/InfoBox/InfoBox";
+// import WidgetData from "../../assets/_data/_data-widgets";
+import ContactBoxes from "../../components/ContactBoxes/ContactBoxes";
+// import parse from "html-react-parser";
 
 const Contact = props => {
   const [images, setImages] = useState([]);
@@ -76,59 +77,7 @@ const Contact = props => {
         </div>
       </section>
       <TitleSplitter title={SiteData.brand.name} />
-      <section className="generic-row">
-        <div class="flex-list">
-          <div className="list-item flex-tablet-6 flex-sm-4">
-            <div className="list-content">
-              <Widget body={WidgetData.openingHours} class="bg-basic" />
-            </div>
-          </div>
-
-          <div class="break xs-down"></div>
-
-          <div className="list-item flex-tablet-6 flex-sm-4">
-            <div className="list-content">
-              <div class="widget">
-                <strong>Contact</strong>
-                <ul>
-                  <li>
-                    <a href="mailto:sales@classicandsportscar.ltd.uk">
-                      Contact Sales
-                    </a>
-                  </li>
-                  <li>Telephone: {SiteData.contact.telephone}</li>
-
-                  <li>
-                    <SocialBtns social={SiteData.social} classes="" />
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="break sm-down"></div>
-
-          <div className="list-item flex-tablet-12 flex-sm-4">
-            <div className="list-content">
-              <div class="widget">
-                <strong>Address</strong>
-                <ul>
-                  <li>
-                    <a
-                      href={SiteData.navigationFooter.columnC[1].url}
-                      title={SiteData.navigationFooter.columnC[1].titleHover}
-                      target={SiteData.navigationFooter.columnC[1].target}
-                    >
-                      {SiteData.navigationFooter.columnC[1].title}
-                    </a>
-                  </li>
-                  <li>{parse(SiteData.contact.address)}</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ContactBoxes cols={3} />
       <TitleSplitter title="Local Attractions" body={textArray.body} />
       {images ? <BigGrid items={images} settings={imageSettings} /> : null}
     </React.Fragment>

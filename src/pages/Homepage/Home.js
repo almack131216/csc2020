@@ -3,6 +3,7 @@ import ItemsFeatured from "../../components/ItemsFeatured/ItemsFeatured";
 import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
+import ContactBoxes from "../../components/ContactBoxes/ContactBoxes";
 import BigGrid from "../../components/Items/BigGrid/BigGrid";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
@@ -48,7 +49,8 @@ const Home = props => {
       <ItemsFeatured categoryName="Live" />
       <TitleSplitter categoryArr={catData["Archive"]} />
       <ItemsFeatured categoryName="Archive" />
-
+      <TitleSplitter title="CLASSIC & SPORTSCAR CENTRE" />
+      <ContactBoxes cols={2} />
       {featuredItemsNews ? (
         <>
           <TitleSplitter categoryArr={catData["News"]} />
