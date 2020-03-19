@@ -177,6 +177,37 @@ const catArray = {
         }
       }
     }
+  },
+  History: {
+    id: 10,
+    name: "History",
+    title: "History: 1991-2011",
+    titleSub: "Thanks to all our customers over the years",
+    titleHover: "Link to our history page",
+    titleDocument: "History: 1991-2011",
+    text:
+      "April 4th 1991 was the date of incorporation of our company, previously known as Grundy Mack. We began trading at the height of the last recession, and we’re busy trading through another. As long as there are men and women with a love of nostalgia and old cars, there will always be a business in buying and selling them. But it’s been much more than a business – more a way of life.",
+    slug: "/history",
+    api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=History`,
+    settings: {
+      showFilter: false,
+      showBrandList: false,
+      showWidgetOpeningHours: true,
+      showWidgetContactDetails: true,
+      showTitle: true,
+      showTitleSub: true,
+      layout: "row",
+      classContainer: "",
+      item: {
+        layout: "item-row",
+        showExcerpt: true,
+        showCategoryLink: false,
+        details: {
+          showWidgetOpeningHours: true,
+          showWidgetContactDetails: true
+        }
+      }
+    }
   }
 };
 

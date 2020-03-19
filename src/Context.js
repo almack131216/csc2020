@@ -55,11 +55,11 @@ export default class ItemProvider extends Component {
       ).then(data => data.json());
 
       const dataArchive = await fetch(
-        CatData["Archive"].apiFeatured
+        CatData.Archive.apiFeatured
       ).then(dataArchive => dataArchive.json());
 
       const dataOther = await fetch(
-        CatData["General"].apiFeatured
+        CatData.General.apiFeatured
       ).then(dataOther => dataOther.json());
 
       let items = this.formatData(data);
@@ -354,11 +354,12 @@ export default class ItemProvider extends Component {
       ? getCategoryName
       : this.state.categoryNameDefault;
 
-    if (itemCategoryName === 4) return CatData["Press"].slug;
-    if (itemCategoryName === 1) return CatData["General"].slug;
-    if (itemCategoryName === 3) return CatData["Testimonials"].slug;
-    if (itemCategoryName === 5) return CatData["News"].slug;
-    if (itemCategoryName === 7) return CatData["PageText"].slug;
+    if (itemCategoryName === 4) return CatData.Press.slug;
+    if (itemCategoryName === 1) return CatData.General.slug;
+    if (itemCategoryName === 3) return CatData.Testimonials.slug;
+    if (itemCategoryName === 5) return CatData.News.slug;
+    if (itemCategoryName === 7) return CatData.PageText.slug;
+    if (itemCategoryName === 10) return CatData.History.slug;
 
     if (itemCategoryName === 2 && getItemStatus === 1)
       return CatData[this.state.categoryNameDefault].slug;
@@ -367,7 +368,7 @@ export default class ItemProvider extends Component {
       (itemCategoryName === "Archive" || itemCategoryName === 2) &&
       getItemStatus === 2
     )
-      return CatData["Archive"].slug;
+      return CatData.Archive.slug;
 
     // console.log(
     //   "[Context.js] formatCategoryLink > getCategoryName...",
@@ -414,15 +415,16 @@ export default class ItemProvider extends Component {
 
     if (itemCategoryName === 3) return CatData.Testimonials;
     if (itemCategoryName === 4) return CatData.Press;
-    if (itemCategoryName === 1) return CatData["General"];
-    if (itemCategoryName === 5) return CatData["News"];
-    if (itemCategoryName === 7) return CatData["PageText"];
+    if (itemCategoryName === 1) return CatData.General;
+    if (itemCategoryName === 5) return CatData.News;
+    if (itemCategoryName === 7) return CatData.PageText;
+    if (itemCategoryName === 10) return CatData.History;
 
     if (
       (itemCategoryName === "Archive" || itemCategoryName === 2) &&
       getItemStatus === 2
     )
-      return CatData["Archive"];
+      return CatData.Archive;
 
     // console.log(
     //   "[Context.js] getCategoryArr > getCategoryName...",

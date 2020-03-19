@@ -109,6 +109,11 @@ class App extends Component {
             />
             <Route
               exact
+              path="/history"
+              component={() => <Items category="History" />}
+            />
+            <Route
+              exact
               path="/:brand_for-sale"
               component={() => <Items category="Live" />}
             />
@@ -167,6 +172,17 @@ class App extends Component {
               component={routerProps => (
                 <ItemDetails
                   categoryName="News"
+                  itemId={routerProps.match.params.slug}
+                  pageStyle="ImgCarousel"
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/*/history/:slug"
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="History"
                   itemId={routerProps.match.params.slug}
                   pageStyle="ImgCarousel"
                 />

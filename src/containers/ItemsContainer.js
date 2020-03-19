@@ -30,10 +30,12 @@ function ItemsContainer({ context }) {
 
     const title = catSettings.showTitle ? categoryArr.title : null;
     const titleSub = catSettings.showTitle ? categoryArr.titleSub : null;
+    const text =
+      catSettings.showTitle && categoryArr.text ? categoryArr.text : null;
 
     titlesComponent =
       title || titleSub ? (
-        <TitleText title={title} titleSub={categoryArr.titleSub} />
+        <TitleText title={title} titleSub={categoryArr.titleSub} text={text} />
       ) : null;
   }
   // PAGINATION
