@@ -39,6 +39,11 @@ $card-color-accent-link-category: $color_secondary;
         font-weight: bold;
       }
 
+      .dateHistory {
+        color: red;
+        font-weight: bold;
+      }
+
       .price {
         color: $card-color-txt;
         &.detail {

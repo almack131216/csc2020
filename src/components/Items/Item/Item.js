@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import parse from "html-react-parser";
+import Moment from "react-moment";
 import PropTypes from "prop-types";
 import { memo } from "react";
 import Img from "react-image";
@@ -53,6 +54,7 @@ const Item = memo(({ item, itemSettingsCust }) => {
   let itemYearTag = null;
   let categoryLinkTag = null;
   let sourceTag = null;
+  let dateHistory = null;
   let ftrTag = null;
   let itemSettings = {};
   // INIT item settings from category or custom received prop
@@ -71,6 +73,18 @@ const Item = memo(({ item, itemSettingsCust }) => {
       categoryName === "Press" && source ? (
         <span className="source">Source: {source}</span>
       ) : null;
+    // HISTORY
+    dateHistory =
+      categoryName === "History" && (price_details || date) ? (
+        <span className="dateHistory">
+          {
+            <Moment
+              date={price_details ? price_details : date}
+              format="MMMM YYYY"
+            />
+          }
+        </span>
+      ) : null;
 
     categoryLinkTag = itemSettings.showCategoryLink ? (
       <Link
@@ -80,7 +94,8 @@ const Item = memo(({ item, itemSettingsCust }) => {
         {subcategoryArr.brand}
       </Link>
     ) : null;
-    excerptTag = itemSettings.showExcerpt ? parse(`<p>${excerpt}</p>`) : null;
+    excerptTag =
+      itemSettings.showExcerpt && excerpt ? parse(`<p>${excerpt}</p>`) : null;
 
     ribbonNewToday =
       itemSettings.showRibbons && status === 1 && date === dateToday ? (
@@ -147,6 +162,7 @@ const Item = memo(({ item, itemSettingsCust }) => {
         </div>
         <div className="card-txt">
           <h5 className="title">{titleLink}</h5>
+          {dateHistory}
           {sourceTag}
           {excerptTag}
           {itemPriceTag}
