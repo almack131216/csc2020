@@ -289,7 +289,7 @@ export default class ItemProvider extends Component {
   formatData(getItemsData) {
     let tempItems = getItemsData.map(dataItem => {
       let id = dataItem.id;
-      let name = dataItem.name;
+      let name = parse(dataItem.name);
       let slug = dataItem.slug;
       let status = dataItem.status;
       let category = dataItem.category;
