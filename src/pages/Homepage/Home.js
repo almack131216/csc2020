@@ -45,22 +45,25 @@ const Home = props => {
         </div>
         <div className="content">{imgCarousel}</div>
       </section>
-      <TitleSplitter categoryArr={catData["Live"]} />
+      <TitleSplitter titleArr={catData["Live"]} />
       <ItemsFeatured categoryName="Live" />
-      <TitleSplitter categoryArr={catData["Archive"]} />
+      <TitleSplitter titleArr={catData["Archive"]} />
       <ItemsFeatured categoryName="Archive" />
-      <TitleSplitter title="CLASSIC & SPORTSCAR CENTRE" />
+      <TitleSplitter
+        titleArr={{ title: "CLASSIC & SPORTSCAR CENTRE", slug: "/about" }}
+        seeAllArr={{ title: "About Us" }}
+      />
       <ContactBoxes cols={2} />
       {featuredItemsNews ? (
         <>
-          <TitleSplitter categoryArr={catData["News"]} />
+          <TitleSplitter titleArr={catData["News"]} />
           <BigGrid items={featuredItemsNews} />
         </>
       ) : null}
 
       {featuredItemsTestimonials ? (
         <>
-          <TitleSplitter categoryArr={catData["Testimonials"]} />
+          <TitleSplitter titleArr={catData["Testimonials"]} />
           <BigGrid items={featuredItemsTestimonials} />
         </>
       ) : null}

@@ -25,7 +25,6 @@ const ContactBoxes = props => {
 
   return (
     <React.Fragment>
-      {/* <TitleSplitter title={SiteData.brand.name} /> */}
       <section className={rowClass.join(" ")}>
         <div className="flex-list">
           <div className={colClass.join(" ")}>

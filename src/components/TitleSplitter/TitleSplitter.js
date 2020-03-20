@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import parse from "html-react-parser";
 /*
 * USAGE:
-<TitleSplitter categoryArr={catData["Archive"]} />
+<TitleSplitter titleArr={catData["Archive"]} />
 * OR: use custom values for 'See All' link
-<TitleSplitter categoryArr={catData["Archive"]} seeAll={{ title: "All", slug: catData["Live"].slug }} />
+<TitleSplitter titleArr={{ title: "Classic & Sportscar Centre", slug: "/about" }} seeAllArr={{ title: "All", slug: catData["Live"].slug }} />
 */
 
 const TitleSplitter = props => {
-  // console.log('[TitleSplitter.js]'...);
-  const title = props.categoryArr ? props.categoryArr.title : props.title;
-  const slug = props.categoryArr ? props.categoryArr.slug : null;
-  const body = props.body ? props.body : null;
-  let seeAll = props.seeAll ? props.seeAll : { ...props.categoryArr };
-  if (slug && seeAll && !props.seeAll) seeAll.title = "See All";
-  if (slug && seeAll && !seeAll.slug) seeAll.slug = props.categoryArr.slug;
-  if (!slug) seeAll = {};
+  console.log("[TitleSplitter.js]...", props.seeAllArr);
+  const title = props.titleArr.title ? props.titleArr.title : null;
+  const slug = props.titleArr.slug ? props.titleArr.slug : null;
+  const body = props.titleArr.body ? props.titleArr.body : null;
+  
+  const seeAllTitle = props.seeAllArr ? props.seeAllArr.title : "See All";
+  const seeAllSlug = props.seeAllArr && props.seeAllArr.slug ? props.seeAllArr.slug : slug;
+  // if (!slug) seeAll = {};
 
-  const titleTag = seeAll.slug ? (
+  const titleTag = seeAllSlug ? (
     <Link to={slug}>
       <h2>{title}</h2>
     </Link>
@@ -31,9 +31,9 @@ const TitleSplitter = props => {
       <div className="title-wrap">
         <div className="title">{titleTag}</div>
         <span className="spacer-line" />
-        {seeAll.slug ? (
+        {seeAllSlug ? (
           <div className="see-all">
-            <Link to={seeAll.slug}>{seeAll.title}</Link>
+            <Link to={seeAllSlug}>{seeAllTitle}</Link>
           </div>
         ) : null}
       </div>

@@ -76,9 +76,11 @@ const Contact = props => {
           ></iframe>
         </div>
       </section>
-      <TitleSplitter title={SiteData.brand.name} />
+      <TitleSplitter titleArr={{ title: SiteData.brand.name }} />
       <ContactBoxes cols={3} />
-      <TitleSplitter title="Local Attractions" body={textArray.body} />
+      <TitleSplitter
+        titleArr={{ title: "Local Attractions", body: textArray.body }}
+      />
       {images ? <BigGrid items={images} settings={imageSettings} /> : null}
     </React.Fragment>
   );

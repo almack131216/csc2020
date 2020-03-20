@@ -52,6 +52,13 @@ function ItemsContainer({ context }) {
   // (END) PAGINATION
   // SET breadcrumbs array
   let crumbsArr = [];
+  if (categoryArr.name === "History") {
+    let categorAboutArr = {
+      title: "About Us",
+      slug: "/about"
+    };
+    crumbsArr.push(categorAboutArr);
+  }
   categoryArr.class = categoryArr.name;
   crumbsArr.push(categoryArr);
 
