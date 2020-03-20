@@ -77,7 +77,9 @@ const About = props => {
           </p>
         </div>
       </section>
-      <TitleSplitter titleArr={{ title: "Visit or Contact" }} />
+      <TitleSplitter
+        titleArr={{ title: "Visit or Contact", slug: "/contact" }}
+      />
       <ContactBoxes cols={2} rowClass="padding-bottom" />
     </React.Fragment>
   );

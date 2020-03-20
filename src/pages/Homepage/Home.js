@@ -45,25 +45,49 @@ const Home = props => {
         </div>
         <div className="content">{imgCarousel}</div>
       </section>
-      <TitleSplitter titleArr={catData["Live"]} />
+      <TitleSplitter
+        titleArr={{
+          title: catData["Live"].title,
+          slug: catData["Live"].slug,
+          seeAll: true
+        }}
+      />
       <ItemsFeatured categoryName="Live" />
-      <TitleSplitter titleArr={catData["Archive"]} />
+      <TitleSplitter
+        titleArr={{
+          title: catData["Archive"].title,
+          slug: catData["Archive"].slug,
+          seeAll: true
+        }}
+      />
       <ItemsFeatured categoryName="Archive" />
       <TitleSplitter
         titleArr={{ title: "CLASSIC & SPORTSCAR CENTRE", slug: "/about" }}
-        seeAllArr={{ title: "About Us" }}
+        seeAllArr={{ title: "About Us", slug: "/about" }}
       />
       <ContactBoxes cols={2} />
       {featuredItemsNews ? (
         <>
-          <TitleSplitter titleArr={catData["News"]} />
+          <TitleSplitter
+            titleArr={{
+              title: catData["News"].title,
+              slug: catData["News"].slug,
+              seeAll: true
+            }}
+          />
           <BigGrid items={featuredItemsNews} />
         </>
       ) : null}
 
       {featuredItemsTestimonials ? (
         <>
-          <TitleSplitter titleArr={catData["Testimonials"]} />
+          <TitleSplitter
+            titleArr={{
+              title: catData["Testimonials"].title,
+              slug: catData["Testimonials"].slug,
+              seeAll: true
+            }}
+          />
           <BigGrid items={featuredItemsTestimonials} />
         </>
       ) : null}

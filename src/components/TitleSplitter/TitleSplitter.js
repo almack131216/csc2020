@@ -5,7 +5,7 @@ import parse from "html-react-parser";
 * USAGE:
 <TitleSplitter titleArr={catData["Archive"]} />
 * OR: use custom values for 'See All' link
-<TitleSplitter titleArr={{ title: "Classic & Sportscar Centre", slug: "/about" }} seeAllArr={{ title: "All", slug: catData["Live"].slug }} />
+<TitleSplitter titleArr={{ title: "Classic & Sportscar Centre", slug: "/about", seeAll: true }} seeAllArr={{ title: "All", slug: catData["Live"].slug }} />
 */
 
 const TitleSplitter = props => {
@@ -13,12 +13,17 @@ const TitleSplitter = props => {
   const title = props.titleArr.title ? props.titleArr.title : null;
   const slug = props.titleArr.slug ? props.titleArr.slug : null;
   const body = props.titleArr.body ? props.titleArr.body : null;
-  
-  const seeAllTitle = props.seeAllArr ? props.seeAllArr.title : "See All";
-  const seeAllSlug = props.seeAllArr && props.seeAllArr.slug ? props.seeAllArr.slug : slug;
+
+  let seeAllTitle = props.seeAllArr ? props.seeAllArr.title : null;
+  let seeAllSlug =
+    props.seeAllArr && props.seeAllArr.slug ? props.seeAllArr.slug : null;
+  if (props.titleArr.seeAll) {
+    seeAllTitle = "See All";
+    seeAllSlug = slug;
+  }
   // if (!slug) seeAll = {};
 
-  const titleTag = seeAllSlug ? (
+  const titleTag = slug ? (
     <Link to={slug}>
       <h2>{title}</h2>
     </Link>
