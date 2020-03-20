@@ -120,3 +120,21 @@ hr {
     @include resp-prop-half("padding", $offset-g2);
   }
 }
+
+section {
+  .content-inner {
+    @include resp-prop-half("padding-left", $offset-g2);
+    @include resp-prop-half("padding-right", $offset-g2);
+  }
+
+  &.padding-y {
+    @include resp-prop-half("padding-top", $offset-g2);
+    @include resp-prop-half("padding-bottom", $offset-g2);
+  }
+  &.padding-top {
+    @include resp-prop-half("padding-top", $offset-g2);
+  }
+  &.padding-bottom {
+    @include resp-prop-half("padding-bottom", $offset-g2);
+  }
+}

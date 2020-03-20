@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./assets/css/bootstrap.min.css";
 import "./App.scss";
 import Home from "./pages/Homepage/Home";
+import About from "./pages/About/About";
 import Items from "./pages/Items/Items";
 import ItemDetails from "./pages/ItemDetails/ItemDetails";
 import Contact from "./pages/Contact/Contact";
@@ -35,6 +36,7 @@ class App extends Component {
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/about" component={About} />
             <Route
               exact
               path="/selling-a-classic-car"

@@ -3,8 +3,8 @@
 //REF: https://tobiasahlin.com/blog/flexbox-break-to-new-row/
 
 section.generic-row {
-  padding-top: 0;
-  padding-bottom: 0;
+  // padding-top: 0;
+  // padding-bottom: 0;
   @include resp-prop-half("padding-left", $offset-g1);
   @include resp-prop-half("padding-right", $offset-g1);
   width: 100%;
@@ -17,72 +17,76 @@ section.generic-row {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
-}
 
-.break {
-  &.sm-down {
-    @media (max-width: $bp-sm-1) {
-      flex-basis: 100%;
-      @include resp-prop-half("height", $offset-g2);
+  .break {
+    &.sm-down {
+      @media (max-width: $bp-sm-1) {
+        flex-basis: 100%;
+        @include resp-prop-half("height", $offset-g2);
+      }
+    }
+    &.xs-down {
+      @media (max-width: $bp-xs-1) {
+        flex-basis: 100%;
+        @include resp-prop-half("height", $offset-g2);
+      }
     }
   }
-  &.xs-down {
-    @media (max-width: $bp-xs-1) {
-      flex-basis: 100%;
-      @include resp-prop-half("height", $offset-g2);
+  .list-item {
+    display: flex;
+    padding-top: 0;
+    padding-bottom: 0;
+    @include resp-prop-half("padding-left", $offset-g1);
+    @include resp-prop-half("padding-right", $offset-g1);
+    width: 100%;
+
+    &.flex-tablet-6 {
+      @media (min-width: $bp-xs) and (max-width: $bp-sm-1) {
+        width: 50%;
+      }
+    }
+
+    &.flex-tablet-12 {
+      @media (max-width: $bp-sm-1) {
+        width: 100%;
+      }
+    }
+
+    &.flex-tablet-hidden {
+      @media (max-width: $bp-sm-1) {
+        display: none;
+      }
+    }
+
+    &.flex-sm-6 {
+      @media (min-width: $bp-sm) {
+        width: 50%;
+      }
+    }
+
+    &.flex-sm-4 {
+      @media (min-width: $bp-sm) {
+        width: 33.33333333%;
+      }
     }
   }
-}
-.list-item {
-  display: flex;
-  padding-top: 0;
-  padding-bottom: 0;
-  @include resp-prop-half("padding-left", $offset-g1);
-  @include resp-prop-half("padding-right", $offset-g1);
-  width: 100%;
 
-  &.flex-tablet-6 {
-    @media (min-width: $bp-xs) and (max-width: $bp-sm-1) {
-      width: 50%;
+  .list-content {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    //   padding: 1em;
+    width: 100%;
+
+    .widget {
+      height: 100%;
+
+      h3 {
+        margin: 0 0 $offset-g1 0;
+      }
     }
   }
-
-  &.flex-tablet-12 {
-    @media (max-width: $bp-sm-1) {
-      width: 100%;
-    }
+  .list-content p {
+    flex: 1 0 auto;
   }
-
-  &.flex-tablet-hidden {
-    @media (max-width: $bp-sm-1) {
-      display: none;
-    }
-  }
-
-  &.flex-sm-6 {
-    @media (min-width: $bp-sm) {
-      width: 50%;
-    }
-  }
-
-  &.flex-sm-4 {
-    @media (min-width: $bp-sm) {
-      width: 33.33333333%;
-    }
-  }
-}
-
-.list-content {
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  //   padding: 1em;
-  width: 100%;
-
-  .widget {
-    height: 100%;
-  }
-}
-.list-content p {
-  flex: 1 0 auto;
 }

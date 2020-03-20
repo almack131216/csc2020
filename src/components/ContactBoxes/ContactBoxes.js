@@ -7,6 +7,11 @@ import WidgetData from "../../assets/_data/_data-widgets";
 import parse from "html-react-parser";
 
 const ContactBoxes = props => {
+  let rowClass = ["generic-row"];
+  if (props.rowClass) {
+    rowClass.push(props.rowClass);
+  }
+
   let colClass = ["list-item", "flex-xs-12", "flex-tablet-6"];
   console.log("[ContactBoxes] props.cols = ", props.cols);
   if (props.cols === 2) {
@@ -21,7 +26,7 @@ const ContactBoxes = props => {
   return (
     <React.Fragment>
       {/* <TitleSplitter title={SiteData.brand.name} /> */}
-      <section className="generic-row">
+      <section className={rowClass.join(" ")}>
         <div className="flex-list">
           <div className={colClass.join(" ")}>
             <div className="list-content">
