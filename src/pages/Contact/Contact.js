@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from "react";
-// import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
-// import { useContext } from "react";
-// import { ItemContext } from "../../Context";
 import { setDocumentTitle } from "../../assets/js/Helpers";
 import { imgArray, textArray } from "../../assets/_data/_data-contact";
-// import { Link } from "react-router-dom";
 import SiteData from "../../assets/_data/_data";
-// import SocialBtns from "../../components/SocialBtns/SocialBtns";
 import BigGrid from "../../components/Items/BigGrid/BigGrid";
-// import Widget from "../../components/Sidebar/InfoBox/InfoBox";
-// import WidgetData from "../../assets/_data/_data-widgets";
-import ContactBoxes from "../../components/ContactBoxes/ContactBoxes";
-// import parse from "html-react-parser";
+import {
+  CB_Contact,
+  CB_OpeningHours,
+  CB_Address
+} from "../../components/ContactBoxes/ContactBoxes";
+import InfoBoxes from "../../components/InfoBoxes/InfoBoxes";
 
 const Contact = props => {
   const [images, setImages] = useState([]);
   const [imageSettings, setImageSettings] = useState({});
+  const columnsContact = [CB_OpeningHours, CB_Contact, CB_Address];
   // let images = [];
   // const context = useContext(ItemContext);
   // const { getData, catData } = context;
@@ -77,9 +75,9 @@ const Contact = props => {
         </div>
       </section>
       <TitleSplitter titleArr={{ title: SiteData.brand.name }} />
-      <ContactBoxes cols={3} />
+      <InfoBoxes columnsArr={columnsContact} rowClass="generic-row" />
       <TitleSplitter
-        titleArr={{ title: "Local Attractions", body: textArray.body }}
+        titleArr={{ title: "Local Attractions", text: textArray.text }}
       />
       {images ? <BigGrid items={images} settings={imageSettings} /> : null}
     </React.Fragment>

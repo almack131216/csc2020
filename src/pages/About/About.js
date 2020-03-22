@@ -4,10 +4,15 @@ import { Link } from "react-router-dom";
 import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
-import ContactBoxes from "../../components/ContactBoxes/ContactBoxes";
+import {
+  CB_Contact,
+  CB_OpeningHours
+} from "../../components/ContactBoxes/ContactBoxes";
+import InfoBoxes from "../../components/InfoBoxes/InfoBoxes";
 import { setDocumentTitle } from "../../assets/js/Helpers";
 import { textArray } from "../../assets/_data/_data-about";
 import Images from "../../assets/_data/_data-carousel";
+import SiteData from "../../assets/_data/_data";
 
 const About = props => {
   let colClass = ["list-item", "flex-xs-12", "flex-tablet-6", "flex-sm-6"];
@@ -26,8 +31,23 @@ const About = props => {
   const imgCarousel = <CarouselDynamic imgsArr={images} />;
 
   useEffect(() => {
-    setDocumentTitle(`About`);
+    setDocumentTitle(`About ${SiteData.brand.name}`);
   }, []);
+
+  const columnsArr = [
+    {
+      title: textArray.box1.title,
+      text: parse(textArray.box1.text),
+      class: "title-red"
+    },
+    {
+      title: textArray.box2.title,
+      text: parse(textArray.box2.text),
+      class: "title-green"
+    }
+  ];
+
+  const columnsContact = [CB_OpeningHours, CB_Contact];
 
   return (
     <React.Fragment>
@@ -41,29 +61,14 @@ const About = props => {
         <div className="content-inner">
           <h1>{parse(textArray.title)}</h1>
           <h2>{parse(textArray.titleSub)}</h2>
-          {parse(textArray.body)}
+          {parse(textArray.text)}
         </div>
       </section>
-      <section className="generic-row padding-y">
-        <div className="flex-list">
-          <div className={colClass.join(" ")}>
-            <div className="list-content">
-              <div className="widget">{parse(textArray.box1)}</div>
-            </div>
-          </div>
+      <InfoBoxes columnsArr={columnsArr} rowClass="generic-row padding-y" />
 
-          <div className="break xs-down"></div>
-
-          <div className={`${colClass.join(" ")}`}>
-            <div className="list-content">
-              <div className="widget">{parse(textArray.box2)}</div>
-            </div>
-          </div>
-        </div>
-      </section>
       <section>
         <div className="content-inner">
-          {parse(textArray.bodyAppend)}
+          {parse(textArray.textAppend)}
 
           <p>
             <strong>More information</strong> on our
@@ -80,7 +85,10 @@ const About = props => {
       <TitleSplitter
         titleArr={{ title: "Visit or Contact", slug: "/contact" }}
       />
-      <ContactBoxes cols={2} rowClass="padding-bottom" />
+      <InfoBoxes
+        columnsArr={columnsContact}
+        rowClass="generic-row padding-bottom"
+      />
     </React.Fragment>
   );
 };

@@ -1,4 +1,4 @@
-/* _ContactBoxes.scss */
+/* _InfoBoxes.scss */
 
 //REF: https://tobiasahlin.com/blog/flexbox-break-to-new-row/
 
@@ -81,8 +81,19 @@ section.generic-row {
     .widget {
       height: 100%;
 
-      h3 {
-        margin: 0 0 $offset-g1 0;
+      h3,
+      strong {
+        margin: 0 0 5px 0;
+        display: inline-block;
+        padding: 0 0 5px 0;
+        border-bottom: 1px solid $color_layout-border;
+      }
+
+      &.title-green strong {
+        color: $color_good;
+      }
+      &.title-red strong {
+        color: $color_danger;
       }
     }
   }

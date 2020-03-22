@@ -2,8 +2,11 @@ import React, { useEffect } from "react";
 import ItemsContainer from "../../containers/ItemsContainer";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import BrandList from "../../components/Sidebar/BrandList/BrandList";
-import WidgetData from "../../assets/_data/_data-widgets";
-import Widget from "../../components/Sidebar/InfoBox/InfoBox";
+import {
+  CB_Contact,
+  CB_OpeningHours
+} from "../../components/ContactBoxes/ContactBoxes";
+import InfoBox from "../../components/Sidebar/InfoBox/InfoBox";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
 
@@ -40,10 +43,10 @@ const Items = props => {
     widgetBrandList = catSettings.showBrandList ? <BrandList /> : null;
 
     widgetOpeningHours = catSettings.showWidgetOpeningHours ? (
-      <Widget body={WidgetData.openingHours} />
+      <InfoBox arr={CB_OpeningHours} />
     ) : null;
     widgetContact = catSettings.showWidgetContactDetails ? (
-      <Widget body={WidgetData.contact} />
+      <InfoBox arr={CB_Contact} />
     ) : null;
   }
   // (END) GET appearance

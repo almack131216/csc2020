@@ -12,7 +12,7 @@ const TitleSplitter = props => {
   console.log("[TitleSplitter.js]...", props.seeAllArr);
   const title = props.titleArr.title ? props.titleArr.title : null;
   const slug = props.titleArr.slug ? props.titleArr.slug : null;
-  const body = props.titleArr.body ? props.titleArr.body : null;
+  const body = props.titleArr.text ? props.titleArr.text : null;
 
   let seeAllTitle = props.seeAllArr ? props.seeAllArr.title : null;
   let seeAllSlug =

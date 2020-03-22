@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
-import WidgetData from "../../assets/_data/_data-widgets";
-import Widget from "../../components/Sidebar/InfoBox/InfoBox";
+import InfoBox from "../../components/Sidebar/InfoBox/InfoBox";
+import {
+  CB_Contact,
+  CB_OpeningHours
+} from "../../components/ContactBoxes/ContactBoxes";
 import ImgFeatured from "../../components/ItemDetails/ImgFeatured/ImgFeatured";
 import ImgGrid from "../../components/ItemDetails/ImgGrid/ImgGrid";
 import ImgList from "../../components/ItemDetails/ImgList/ImgList";
@@ -205,10 +208,10 @@ export default class ItemDetails extends Component {
       const mySettings = { ...categoryArr.settings.item };
 
       widgetOpeningHours = mySettings.details.showWidgetOpeningHours ? (
-        <Widget body={WidgetData.openingHours} />
+        <InfoBox arr={CB_OpeningHours} />
       ) : null;
       widgetContact = mySettings.details.showWidgetContactDetails ? (
-        <Widget body={WidgetData.contact} />
+        <InfoBox arr={CB_Contact} />
       ) : null;
     }
     // (END) GET appearance

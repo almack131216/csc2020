@@ -3,11 +3,15 @@ import ItemsFeatured from "../../components/ItemsFeatured/ItemsFeatured";
 import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
-import ContactBoxes from "../../components/ContactBoxes/ContactBoxes";
 import BigGrid from "../../components/Items/BigGrid/BigGrid";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
 import { setDocumentTitle } from "../../assets/js/Helpers";
+import {
+  CB_Contact,
+  CB_OpeningHours
+} from "../../components/ContactBoxes/ContactBoxes";
+import InfoBoxes from "../../components/InfoBoxes/InfoBoxes";
 import Images from "../../assets/_data/_data-carousel";
 
 const Home = props => {
@@ -18,6 +22,7 @@ const Home = props => {
     getData,
     catData
   } = context;
+  const columnsContact = [CB_OpeningHours, CB_Contact];
 
   // Carousel images
   // ARR - put objects into array (need for .map())
@@ -65,7 +70,8 @@ const Home = props => {
         titleArr={{ title: "CLASSIC & SPORTSCAR CENTRE", slug: "/about" }}
         seeAllArr={{ title: "About Us", slug: "/about" }}
       />
-      <ContactBoxes cols={2} />
+      {/* <ContactBoxes cols={2} /> */}
+      <InfoBoxes columnsArr={columnsContact} rowClass="generic-row" />
       {featuredItemsNews ? (
         <>
           <TitleSplitter
