@@ -33,7 +33,7 @@ const InfoBoxes = props => {
                 }`}
               >
                 {columnsArr[0].title
-                  ? parse(`<strong>${columnsArr[0].title}</strong>`)
+                  ? parse(`<h5>${columnsArr[0].title}</h5>`)
                   : null}
                 {columnsArr[0].text}
               </div>
@@ -52,7 +52,7 @@ const InfoBoxes = props => {
                     }`}
                   >
                     {columnsArr[1].title
-                      ? parse(`<strong>${columnsArr[1].title}</strong>`)
+                      ? parse(`<h5>${columnsArr[1].title}</h5>`)
                       : null}
                     {columnsArr[1].text}
                   </div>
@@ -73,7 +73,7 @@ const InfoBoxes = props => {
                     }`}
                   >
                     {columnsArr[2].title
-                      ? parse(`<strong>${columnsArr[2].title}</strong>`)
+                      ? parse(`<h5>${columnsArr[2].title}</h5>`)
                       : null}
                     {columnsArr[2].text}
                   </div>

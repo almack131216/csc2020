@@ -1,7 +1,7 @@
 import React from "react";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
-import InfoBox from "../../components/Sidebar/InfoBox/InfoBox";
+import InfoBox from "../../components/InfoBoxes/InfoBox/InfoBox";
 import FormRequest from "../../components/Forms/Request/Request";
 import NavData from "../../assets/_data/_data-navigation";
 import {

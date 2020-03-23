@@ -6,7 +6,7 @@ import {
   CB_Contact,
   CB_OpeningHours
 } from "../../components/ContactBoxes/ContactBoxes";
-import InfoBox from "../../components/Sidebar/InfoBox/InfoBox";
+import InfoBox from "../../components/InfoBoxes/InfoBox/InfoBox";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
 

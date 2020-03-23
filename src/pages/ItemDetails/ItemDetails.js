@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
-import InfoBox from "../../components/Sidebar/InfoBox/InfoBox";
+import InfoBox from "../../components/InfoBoxes/InfoBox/InfoBox";
 import {
   CB_Contact,
   CB_OpeningHours

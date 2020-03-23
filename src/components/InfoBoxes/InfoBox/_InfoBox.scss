@@ -16,19 +16,12 @@
 .widget {
   padding: $offset-g1;
   border: 1px solid $color_layout-border;
-
-  // &.bg-basic {
   background: #f9f9f9;
-  // }
 
-  // &:not(.bg-basic) {
-  //   @include bg-gradient-x;
-  // }
-
-  &.opening-hours {
-  }
-
-  &.contact-details {
+  &.clean {
+    padding: 0;
+    background: transparent;
+    border: none;
   }
 
   h1 {
@@ -37,6 +30,17 @@
   }
 
   h5 {
+    margin: 0 0 5px 0;
+    display: inline-block;
+    padding: 0 0 5px 0;
+    border-bottom: 1px solid $color_layout-border-strong;
+  }
+
+  &.title-green h5 {
+    color: $color_good;
+  }
+  &.title-red h5 {
+    color: $color_danger;
   }
 
   p {

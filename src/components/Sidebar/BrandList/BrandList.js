@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function BrandList() {
   const context = useContext(ItemContext);
-  const { brandArr, categoryArr, categoryName, formatBrandLink } = context
+  const { brandArr, categoryArr, categoryName, formatBrandLink } = context;
   // SET title
   let brandCount = brandArr[0] ? brandArr[0].itemCount : 0;
   const title = `${brandCount} ${categoryArr.title}`;
@@ -25,7 +25,7 @@ export default function BrandList() {
 
   return (
     <div className="widget clean">
-      <h5 className="title">{title}</h5>
+      <h5>{title}</h5>
       <ul>{brands}</ul>
     </div>
   );
