@@ -35,6 +35,17 @@
     }
   }
 
+  h5 {
+    @extend .h5-underline;
+  }
+
+  div.item-related {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
   div.feature-list {
     > div {
       padding-top: $offset-1;

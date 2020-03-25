@@ -17,6 +17,7 @@ import Lightbox from "react-image-lightbox";
 import Loading from "../../components/Loading/Loading";
 import ItemNotFound from "../../components/ItemDetails/ItemNotFound/ItemNotFound";
 import ItemExtras from "../../components/ItemDetails/ItemExtras/ItemExtras";
+import ItemRelated from "../../components/ItemDetails/ItemRelated/ItemRelated";
 import "react-image-lightbox/style.css";
 
 export default class ItemDetails extends Component {
@@ -216,6 +217,10 @@ export default class ItemDetails extends Component {
     }
     // (END) GET appearance
 
+    const relatedItem = itemPrimary.related ? (
+      <ItemRelated itemId={itemPrimary.related} />
+    ) : null;
+
     const pageContent =
       pageStyle !== "TextOnly" ? (
         <>
@@ -255,6 +260,7 @@ export default class ItemDetails extends Component {
                         class="position-right"
                       />
                     ) : null}
+                    {relatedItem}
                     {descriptionParsed}
                     <p>{categoryLinkTag}</p>
                   </div>
