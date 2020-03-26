@@ -49,6 +49,12 @@
   .post-text-body {
     line-height: $offset-g2;
 
+    .excerpt {
+      display: block;
+      font-weight: bold;
+      margin: 0 0 $offset-g1 0;
+    }
+
     img {
       max-width: 100%;
     }

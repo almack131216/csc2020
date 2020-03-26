@@ -5,11 +5,6 @@
   &.item-related {
     display: block;
     width: 100%;
-    @media (min-width: $bp-xs) {
-      float: right;
-      width: 33.33333333%;
-      @include resp-prop-half("margin-left", $offset-g2);
-    }
 
     .ir-wrap {
       .ir-img {
@@ -26,7 +21,7 @@
         display: block;
       }
 
-      @media (max-width: $bp-xs-1) {
+      @media (max-width: $bp-tablet-1) {
         display: flex;
         flex-direction: row;
 

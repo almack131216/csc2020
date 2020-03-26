@@ -151,7 +151,7 @@ export default class ItemDetails extends Component {
     // (END) LIGHTBOX images
 
     // ITEM fields
-    let { title, price, category, status, description } = itemPrimary;
+    let { title, price, category, status, excerpt, description } = itemPrimary;
     // ITEM Price
     const priceFormatted = formatPrice(price, status);
     itemPrimary.priceFormatted = priceFormatted;
@@ -159,6 +159,10 @@ export default class ItemDetails extends Component {
     const categoryArr = getCategoryArr(category, status);
     const categoryLinkTag = getCategoryLinkTag(categoryArr);
     setDocumentTitle(`${title} | ${categoryArr.title}`);
+    // ITEM excerpt + parsed
+    const excerptParsed = excerpt
+      ? formatDescription(`<span class="excerpt">${excerpt}</span>`)
+      : null;
     // ITEM description + parsed
     const descriptionParsed = formatDescription(description);
     // SET breadcrumbs array
@@ -217,9 +221,20 @@ export default class ItemDetails extends Component {
     }
     // (END) GET appearance
 
-    const relatedItem = itemPrimary.related ? (
-      <ItemRelated itemId={itemPrimary.related} />
-    ) : null;
+    // RELATED
+    let relatedItems = [];
+    if (itemPrimary.related) {
+      let tmpArr = itemPrimary.related.split(",").map(Number);
+      relatedItems = relatedItems.concat(tmpArr);
+    }
+    if (itemPrimary.related2) {
+      let tmpArr2 = itemPrimary.related2.split(",").map(Number);
+      relatedItems = relatedItems.concat(tmpArr2);
+    }
+    relatedItems = relatedItems.filter(e => e !== 0); // will remove '0' values
+
+    const relatedItemsTag =
+      relatedItems.length > 0 ? <ItemRelated itemId={relatedItems} /> : null;
 
     const pageContent =
       pageStyle !== "TextOnly" ? (
@@ -251,16 +266,22 @@ export default class ItemDetails extends Component {
                   <h1>{title}</h1>
                   <div className="post-text-body">
                     {pageStyle === "ImgDetails" ? (
-                      <ItemExtras
-                        showPrice={true}
-                        itemArr={itemPrimary}
-                        handleForLargeImageList={handleForLargeImageList.bind(
-                          this
-                        )}
-                        class="position-right"
-                      />
+                      <div className="item-extras-wrap position-right">
+                        <ItemExtras
+                          showPrice={true}
+                          itemArr={itemPrimary}
+                          handleForLargeImageList={handleForLargeImageList.bind(
+                            this
+                          )}
+                        />
+                        {relatedItemsTag}
+                      </div>
+                    ) : relatedItemsTag ? (
+                      <div className="item-extras-wrap position-right">
+                        {relatedItemsTag}
+                      </div>
                     ) : null}
-                    {relatedItem}
+                    {excerptParsed}
                     {descriptionParsed}
                     <p>{categoryLinkTag}</p>
                   </div>

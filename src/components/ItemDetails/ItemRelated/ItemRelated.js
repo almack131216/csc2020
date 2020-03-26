@@ -8,7 +8,9 @@ import Img from "react-image";
 import ImageNotFound from "../../../assets/images/image-not-found.jpg";
 
 const ItemRelated = props => {
-  console.log("[ItemRelated] related itemId = ", props.itemId);
+  const itemId = props.itemId[0];
+  console.log("[ItemRelated] related itemId = ", props.itemId, itemId);
+
   // INIT context
   const context = useContext(ItemContext);
   const { formatItemLink } = context;
@@ -16,17 +18,20 @@ const ItemRelated = props => {
   // API - generate end point based on categoryName + itemId
   const apiArr = {
     categoryName: "Listing",
-    itemId: props.itemId
+    itemId: itemId
   };
+  console.log("[ItemRelated] apiArr = ", apiArr);
 
   let apiUrlListing = null;
   const [itemRelated, setItemRelated] = useState({});
   const [loading, setLoading] = useState(true);
+  const [irTitle, setIrTitle] = useState("");
 
   let classesWrap = ["item-extras item-related"];
   if (props.class) classesWrap.push(props.class);
 
   const apiUrlRelated = apiGetItemDetails(apiArr);
+  console.log("[ItemRelated] apiUrlRelated: ", apiUrlRelated);
 
   useEffect(() => {
     setLoading(true);
@@ -48,6 +53,18 @@ const ItemRelated = props => {
 
         apiUrlListing = formatItemLink(getItemRelated);
         getItemRelated.slug = apiUrlListing;
+
+        switch (getItemRelated.category) {
+          case 1:
+            setIrTitle("This car is for sale");
+            break;
+          case 2:
+            setIrTitle("View Listing");
+            break;
+          case 3:
+            setIrTitle("Testimonial from owner...");
+            break;
+        }
         // getItemRelated.name = "xxx";
         // getItemRelated.slug = "xxx";
         // getItemRelated.category = 2;
@@ -59,7 +76,7 @@ const ItemRelated = props => {
 
   return (
     <div className={classesWrap.join(" ")}>
-      <h5>View Listing</h5>
+      <h5>{irTitle}</h5>
       {itemRelated.title ? (
         <div className="ir-wrap">
           <div className="ir-img">
