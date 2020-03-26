@@ -23,7 +23,7 @@ const ItemRelated = props => {
   const [itemRelated, setItemRelated] = useState({});
   const [loading, setLoading] = useState(true);
 
-  let classesWrap = ["item-extras position-right"];
+  let classesWrap = ["item-extras item-related"];
   if (props.class) classesWrap.push(props.class);
 
   const apiUrlRelated = apiGetItemDetails(apiArr);
@@ -61,17 +61,21 @@ const ItemRelated = props => {
     <div className={classesWrap.join(" ")}>
       <h5>View Listing</h5>
       {itemRelated.title ? (
-        <div className="item-related">
-          <Link to={itemRelated.slug}>
-            <Img
-              src={[itemRelated.imagePath, ImageNotFound]}
-              alt={itemRelated.title}
-              className="img-loading"
-            />
-          </Link>
-          <p>
-            <Link to={itemRelated.slug}>{itemRelated.title}</Link>
-          </p>
+        <div className="ir-wrap">
+          <div className="ir-img">
+            <Link to={itemRelated.slug}>
+              <Img
+                src={[itemRelated.imagePath, ImageNotFound]}
+                alt={itemRelated.title}
+                className="img-loading"
+              />
+            </Link>
+          </div>
+          <div className="ir-txt">
+            <p>
+              <Link to={itemRelated.slug}>{itemRelated.title}</Link>
+            </p>
+          </div>
         </div>
       ) : null}
     </div>

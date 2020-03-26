@@ -1,1 +1,43 @@
 /* _ItemRelated.scss */
+// nested style within _ItemExtras.scss
+
+.item-extras {
+  &.item-related {
+    display: block;
+    width: 100%;
+    @media (min-width: $bp-xs) {
+      float: right;
+      width: 33.33333333%;
+      @include resp-prop-half("margin-left", $offset-g2);
+    }
+
+    .ir-wrap {
+      .ir-img {
+        margin: $offset-1 0;
+        a {
+          display: block;
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+      .ir-txt {
+        display: block;
+      }
+
+      @media (max-width: $bp-xs-1) {
+        display: flex;
+        flex-direction: row;
+
+        .ir-img {
+          width: 30%;
+        }
+        .ir-txt {
+          width: 70%;
+          padding: 0 $offset-g1;
+        }
+      }
+    }
+  }
+}
