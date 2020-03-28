@@ -234,7 +234,7 @@ export default class ItemDetails extends Component {
     relatedItems = relatedItems.filter(e => e !== 0); // will remove '0' values
 
     const relatedItemsTag =
-      relatedItems.length > 0 ? <ItemRelated itemId={relatedItems} /> : null;
+      relatedItems.length > 0 ? <ItemRelated itemIds={relatedItems} /> : null;
 
     const pageContent =
       pageStyle !== "TextOnly" ? (

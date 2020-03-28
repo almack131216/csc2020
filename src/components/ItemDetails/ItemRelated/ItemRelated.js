@@ -6,10 +6,38 @@ import Parser from "html-react-parser";
 import { ItemContext } from "../../../Context";
 import Img from "react-image";
 import ImageNotFound from "../../../assets/images/image-not-found.jpg";
+import Loading from "../../../components/Loading/Loading";
+
+const PrintItem = props => {
+  const item = props.item;
+  const title = item.year
+    ? `${item.year} ${Parser(item.name)}`
+    : Parser(item.name);
+  const imagePath = process.env.REACT_APP_IMG_DIR_LARGE + item.image;
+
+  return (
+    <div className="ir-wrap">
+      <div className="ir-img">
+        <Link to={props.url}>
+          <Img
+            src={[imagePath, ImageNotFound]}
+            alt={title}
+            className="img-loading"
+          />
+        </Link>
+      </div>
+      <div className="ir-txt">
+        <p>
+          <Link to={props.url}>{title}</Link>
+        </p>
+      </div>
+    </div>
+  );
+};
 
 const ItemRelated = props => {
-  const itemId = props.itemId[0];
-  console.log("[ItemRelated] related itemId = ", props.itemId, itemId);
+  const itemIds = props.itemIds;
+  console.log("[ItemRelated] related itemId = ", props.itemIds, itemIds);
 
   // INIT context
   const context = useContext(ItemContext);
@@ -17,13 +45,13 @@ const ItemRelated = props => {
 
   // API - generate end point based on categoryName + itemId
   const apiArr = {
-    categoryName: "Listing",
-    itemId: itemId
+    categoryName: "ItemRelated",
+    itemId: itemIds.length === 1 ? itemIds : null,
+    itemIds: itemIds.length > 1 ? itemIds : null
   };
   console.log("[ItemRelated] apiArr = ", apiArr);
 
-  let apiUrlListing = null;
-  const [itemRelated, setItemRelated] = useState({});
+  const [itemsRelated, setItemsRelated] = useState([]);
   const [loading, setLoading] = useState(true);
   const [irTitle, setIrTitle] = useState("");
 
@@ -33,6 +61,7 @@ const ItemRelated = props => {
   const apiUrlRelated = apiGetItemDetails(apiArr);
   console.log("[ItemRelated] apiUrlRelated: ", apiUrlRelated);
 
+  // FETCH data
   useEffect(() => {
     setLoading(true);
 
@@ -40,21 +69,13 @@ const ItemRelated = props => {
       .then(response => response.json())
       .then(data => {
         console.log("[ItemRelated] useEffect() data: ", data);
-        let [getItemRelated, ...img] = data;
+        let [...getItemsRelated] = [...data];
         console.log(
-          "[ItemRelated] useEffect() getItemRelated: ",
-          getItemRelated
+          "[ItemRelated] useEffect() getItemsRelated: ",
+          getItemsRelated
         );
-        getItemRelated.title = getItemRelated.year
-          ? `${getItemRelated.year} ${Parser(getItemRelated.name)}`
-          : Parser(getItemRelated.name);
-        getItemRelated.imagePath =
-          process.env.REACT_APP_IMG_DIR_LARGE + getItemRelated.image;
 
-        apiUrlListing = formatItemLink(getItemRelated);
-        getItemRelated.slug = apiUrlListing;
-
-        switch (getItemRelated.category) {
+        switch (getItemsRelated[0].category) {
           case 1:
             setIrTitle("This car is for sale");
             break;
@@ -65,36 +86,22 @@ const ItemRelated = props => {
             setIrTitle("Testimonial from owner...");
             break;
         }
-        // getItemRelated.name = "xxx";
-        // getItemRelated.slug = "xxx";
-        // getItemRelated.category = 2;
-        setItemRelated(getItemRelated);
-        // console.log("[ItemRelated] useEffect() ItemRelated: ", ItemRelated);
+
+        setItemsRelated(getItemsRelated);
         setLoading(false);
       });
   }, []);
 
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className={classesWrap.join(" ")}>
       <h5>{irTitle}</h5>
-      {itemRelated.title ? (
-        <div className="ir-wrap">
-          <div className="ir-img">
-            <Link to={itemRelated.slug}>
-              <Img
-                src={[itemRelated.imagePath, ImageNotFound]}
-                alt={itemRelated.title}
-                className="img-loading"
-              />
-            </Link>
-          </div>
-          <div className="ir-txt">
-            <p>
-              <Link to={itemRelated.slug}>{itemRelated.title}</Link>
-            </p>
-          </div>
-        </div>
-      ) : null}
+      {/* <p>!!!{itemsRelated ? itemsRelated : "xxxxxxx"}</p> */}
+      {itemsRelated.map((item, index) => {
+        return <PrintItem key={index} item={item} url={formatItemLink(item)} />;
+      })}
     </div>
   );
 };

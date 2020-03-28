@@ -7,7 +7,9 @@ export function setDocumentTitle(getString) {
 
 export function apiGetItemDetails(getApiArr) {
   // console.log("[Helpers.js] apiGetItemDetails()... ", getApiArr);
-  const apiUrl = `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=${getApiArr.categoryName}&id=${getApiArr.itemId}`;
+  let apiUrl = `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=${getApiArr.categoryName}`;
+  if (getApiArr.itemId) apiUrl += `&id=${getApiArr.itemId}`;
+  if (getApiArr.itemIds) apiUrl += `&ids=${getApiArr.itemIds}`;
   console.log("API: ", apiUrl);
   return apiUrl;
   // return "../../api-dummy/dummy-item-details.json";
