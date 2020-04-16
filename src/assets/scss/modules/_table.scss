@@ -1,0 +1,33 @@
+/* _table.scss */
+
+.table {
+  border: 1px solid $color_layout-border;
+  margin: $offset-g2 0;
+  display: block;
+  width: 100%;
+  max-width: 300px;
+
+  .tr {
+    display: block;
+    width: 100%;
+
+    &.title {
+      background: $table-color-bg-th;
+      border-bottom: 1px solid $color_layout-border;
+
+      .td {
+        font-weight: bold;
+      }
+    }
+
+    &:nth-child(odd) {
+      background: $table-color-bg-tr-odd;
+    }
+
+    .td {
+      display: inline-block;
+      width: 50%;
+      padding: 5px $offset-1;
+    }
+  }
+}

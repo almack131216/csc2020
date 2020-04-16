@@ -65,7 +65,7 @@ class App extends Component {
               component={routerProps => (
                 <ItemDetails
                   categoryName="PageText"
-                  itemId={8695}
+                  itemId={8709}
                   pageStyle="TextOnly"
                 />
               )}
