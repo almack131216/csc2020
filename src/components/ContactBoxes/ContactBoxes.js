@@ -9,7 +9,7 @@ const CB_OpeningHours = {
   title: "Opening Hours",
   text: (
     <ul>
-      <li>Mon-Fri: 9.00am-5.30pm</li>
+      <li>Mon-Fri: 9am-5.30pm</li>
       <li>Sunday: 10am-4pm</li>
       <li>Closed Saturday</li>
     </ul>
@@ -41,7 +41,7 @@ const CB_Contact = {
       <li>
         <a href="mailto:sales@classicandsportscar.ltd.uk">Contact Sales</a>
       </li>
-      <li>Telephone: {SiteData.contact.telephone}</li>
+      <li>Tel: {SiteData.contact.telephone}</li>
       <li>{socialBtnsElement}</li>
     </ul>
   )

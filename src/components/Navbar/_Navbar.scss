@@ -80,7 +80,7 @@
 
   .navbar-brand {
     float: left;
-    margin: 0;
+    margin: $offset-1 0 0 0;
     height: auto; //bs2do
     padding: 0;
     background: $color_debug2;

@@ -27,7 +27,7 @@ const siteData = {
   social: {
     facebook: "https://www.facebook.com/classicandsportscarcentre/",
     instagram: "https://www.instagram.com/classicandsportscar_centre/",
-    youtube: "https://www.youtube.com/channel/UCe47Y8zbsm1wJrb6H2LmKeA"
+    youtube: "https://www.youtube.com/user/Classicandsportscar1/videos"
   },
   navigation: [
     NavArray.home,

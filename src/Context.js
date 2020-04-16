@@ -243,7 +243,7 @@ export default class ItemProvider extends Component {
       myObj
     );
     myUniqueBrandListWithCount = [
-      { id: "all", brand: "all", itemCount: myObj.length },
+      { id: "all", brand: "ALL", itemCount: myObj.length },
       ...myUniqueBrandListWithCount
     ];
     console.log(

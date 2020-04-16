@@ -72,18 +72,6 @@ const Home = props => {
       />
       {/* <ContactBoxes cols={2} /> */}
       <InfoBoxes columnsArr={columnsContact} rowClass="generic-row" />
-      {featuredItemsNews ? (
-        <>
-          <TitleSplitter
-            titleArr={{
-              title: catData["News"].title,
-              slug: catData["News"].slug,
-              seeAll: true
-            }}
-          />
-          <BigGrid items={featuredItemsNews} />
-        </>
-      ) : null}
 
       {featuredItemsTestimonials ? (
         <>
@@ -95,6 +83,19 @@ const Home = props => {
             }}
           />
           <BigGrid items={featuredItemsTestimonials} />
+        </>
+      ) : null}
+
+      {featuredItemsNews ? (
+        <>
+          <TitleSplitter
+            titleArr={{
+              title: catData["News"].title,
+              slug: catData["News"].slug,
+              seeAll: true
+            }}
+          />
+          <BigGrid items={featuredItemsNews} />
         </>
       ) : null}
     </React.Fragment>
