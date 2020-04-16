@@ -159,6 +159,7 @@ export default class ItemDetails extends Component {
     const categoryArr = getCategoryArr(category, status);
     const categoryLinkTag = getCategoryLinkTag(categoryArr);
     setDocumentTitle(`${title} | ${categoryArr.title}`);
+    const navLeft = <NavLeft categoryName={categoryArr.name} />;
     // ITEM excerpt + parsed
     const excerptParsed = excerpt
       ? formatDescription(`<span class="excerpt">${excerpt}</span>`)
@@ -170,6 +171,9 @@ export default class ItemDetails extends Component {
     categoryArr.class = categoryArr.name;
     crumbsArr.push(categoryArr);
     crumbsArr.push(itemPrimary);
+    const breadcrumbsTag = (
+      <Breadcrumbs crumbsArr={crumbsArr} pageType="item-details" />
+    );
 
     // SET images (IMG || Carousel)
     // change background style if
@@ -195,16 +199,19 @@ export default class ItemDetails extends Component {
           handleForLightbox={handleForLightbox.bind(this)}
         />
       );
-    } else {
+    } else if (pageStyle === "ImgCarousel") {
       imgRowClasses.push("carousel");
       imgColLeft = <CarouselDynamic imgsArr={images} />;
       imgColRight = <ItemExtras itemArr={itemPrimary} />;
     }
     const imgLargeList = (
-      <ImgList
-        imgsArr={images}
-        handleForLightbox={handleForLightbox.bind(this)}
-      />
+      <>
+        <a name="photos" />
+        <ImgList
+          imgsArr={images}
+          handleForLightbox={handleForLightbox.bind(this)}
+        />
+      </>
     );
     // (END) SET images
 
@@ -221,30 +228,41 @@ export default class ItemDetails extends Component {
     }
     // (END) GET appearance
 
-    // RELATED
+    // RELATED | convert string array to number array: "123,456" -> [123,456]
     let relatedItems = [];
     if (itemPrimary.related) {
-      let tmpArr = itemPrimary.related.split(",").map(Number);
+      let tmpArr = itemPrimary.related
+        .trim()
+        .split(",")
+        .map(Number);
       relatedItems = relatedItems.concat(tmpArr);
     }
     if (itemPrimary.related2) {
-      let tmpArr2 = itemPrimary.related2.split(",").map(Number);
+      let tmpArr2 = itemPrimary.related2
+        .trim()
+        .split(",")
+        .map(Number);
       relatedItems = relatedItems.concat(tmpArr2);
     }
     relatedItems = relatedItems.filter(e => e !== 0); // will remove '0' values
-
+    console.log(
+      "[ItemDetails] relatedItems = ",
+      relatedItems,
+      relatedItems.length
+    );
     const relatedItemsTag =
-      relatedItems.length > 0 ? <ItemRelated itemIds={relatedItems} /> : null;
+      relatedItems.length > 0 && !isNaN(relatedItems[0]) ? (
+        <ItemRelated itemIds={relatedItems} />
+      ) : null;
+    // (END) RELATED
 
     const pageContent =
       pageStyle !== "TextOnly" ? (
         <>
           <section className="content-wrap match-heights bg-accent">
-            <div className="sidebar">
-              <NavLeft categoryName={categoryArr.name} />
-            </div>
+            <div className="sidebar">{navLeft}</div>
             <div className={imgRowClasses.join(" ")}>
-              <Breadcrumbs crumbsArr={crumbsArr} pageType="item-details" />
+              {breadcrumbsTag}
               <div className="row row-post-img">
                 <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
                   {imgColLeft}
@@ -283,13 +301,12 @@ export default class ItemDetails extends Component {
                     ) : null}
                     {excerptParsed}
                     {descriptionParsed}
-                    <p>{categoryLinkTag}</p>
+                    {categoryLinkTag}
                   </div>
                 </div>
               </div>
             </section>
 
-            <a name="photos" />
             {showImgLargeList ? imgLargeList : null}
           </div>
 
@@ -317,14 +334,15 @@ export default class ItemDetails extends Component {
           {/* (END) Lightbox */}
         </>
       ) : (
+        // TextOnly
         <section className="content-wrap match-heights">
           <div className="sidebar">
-            <NavLeft categoryName={categoryArr.name} />
+            {navLeft}
             {widgetOpeningHours}
             {widgetContact}
           </div>
           <div className="content col-sm-12 col-md-9 padding-x-0">
-            <Breadcrumbs crumbsArr={crumbsArr} pageType="item-details" />
+            {breadcrumbsTag}
             <div className="col-post-text">
               <h1>{title}</h1>
               <div className="post-text-body">{descriptionParsed}</div>
