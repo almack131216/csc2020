@@ -89,11 +89,11 @@ const navArray = {
   },
   restoration: {
     title: "Automotive Body & Paint",
-    titleHover: "Link to Malton Coachworks",
+    titleHover: "Link to Restoration Services page",
     titleDocument: "Restoration Services",
     slug: "/restoration",
     navTop: false,
-    navSide: false,
+    navSide: true,
     class: "restoration"
   },
   filmTvHire: {

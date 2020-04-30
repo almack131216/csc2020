@@ -82,6 +82,17 @@ class App extends Component {
                 />
               )}
             />
+            <Route
+              exact
+              path="/restoration"
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="Restoration"
+                  itemId={46989}
+                  pageStyle="ImgCarousel"
+                />
+              )}
+            />            
             <Route exact path="/contact" component={Contact} />
 
             <Route
