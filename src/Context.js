@@ -260,7 +260,8 @@ export default class ItemProvider extends Component {
 		let tempItems = getItemsData.map((dataItem) => {
 			let id = dataItem.id;
 			let name = parse(dataItem.name);
-			let slug = dataItem.slug;
+			// let slug = dataItem.slug;
+			let slug = this.generateSlugFromName(name);
 			let status = dataItem.status;
 			let category = dataItem.category;
 			let categoryArr = this.getCategoryArr(category, dataItem.status);
@@ -403,6 +404,14 @@ export default class ItemProvider extends Component {
 
 		itemLink += `/${id}`;
 		return itemLink;
+	};
+
+	/////////////////////////////////////////////////////////////////////////// GENERATE slug from name
+	// sanitize the name so it is URL friendly
+	// Porsche 911 GT3 3.8 PDK -> porsche-911-gt3-3.8-pdk
+	generateSlugFromName = (getName) => {
+		getName = slugify(getName, { lower: true });
+		return getName;
 	};
 
 	/////////////////////////////////////////////////////////////////////////// STYLE append class
