@@ -21,13 +21,13 @@ const navLeft = props => {
     // ASSIGN class if active
     let className = isActive ? "active" : "";
 
-    return (
+    return link.navTop ? (
       <li key={index} className={liClass}>
         <Link to={link.slug} title={link.titleHover} className={className}>
           {link.title}
         </Link>
       </li>
-    );
+    ) : null;
   });
 
   return (
