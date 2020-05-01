@@ -3,6 +3,7 @@ import "./assets/css/bootstrap.min.css";
 import "./App.scss";
 import Home from "./pages/Homepage/Home";
 import About from "./pages/About/About";
+import Archive from "./pages/Archive/Archive";
 import Items from "./pages/Items/Items";
 import ItemDetails from "./pages/ItemDetails/ItemDetails";
 import Contact from "./pages/Contact/Contact";
@@ -37,6 +38,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
+            <Route exact path="/classic-car-archive/all" component={Archive} />
             <Route
               exact
               path="/selling-a-classic-car"
@@ -65,7 +67,7 @@ class App extends Component {
               component={routerProps => (
                 <ItemDetails
                   categoryName="PageText"
-                  itemId={8709}
+                  itemId={47034}
                   pageStyle="TextOnly"
                 />
               )}
@@ -205,7 +207,7 @@ class App extends Component {
             <Route component={Error} />
           </Switch>
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }

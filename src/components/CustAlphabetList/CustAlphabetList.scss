@@ -1,0 +1,155 @@
+/* _cust_AlphabetList.scss */
+
+/* Extends.scss */
+
+.aClass {
+  color: $color_hyperlink-text;
+  &:hover {
+    color: $color_hyperlink-text-hover;
+  }
+  &:active {
+    color: $color_hyperlink-text-active;
+  }
+}
+.aLozengeClass {
+  color: $color_hyperlink-text;
+  background: white;
+  border: 1px solid $table-color-border;
+  padding: 5px;
+  text-decoration: none;
+  line-height: 20px;
+  border-radius: 5px;
+
+  &:hover {
+    border-color: $color_hyperlink-text-hover;
+    background: $color_hyperlink-text-hover;
+    color: white;
+  }
+  &:active {
+    border-color: $color_hyperlink-text-active;
+    background: $color_hyperlink-text-active;
+    color: white;
+  }
+}
+
+
+.alpha-list-wrap {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+
+  .alpha-list {
+    box-sizing: border-box;
+    position: relative !important;
+    width: 100% !important;
+    border: 1px solid $table-color-border;
+    height: auto;//calc(100vh - 400px) !important;
+    min-height: 300px;
+    margin: 0 auto;
+
+    // A-Z results box
+    > div:first-child {
+      width: 100% !important;
+      margin: 0 auto;
+      background: yellow;
+      padding: $offset-g1;
+      padding-right: 50px !important; // leave gap for the [A]-[Z] buttons
+      box-sizing: border-box;
+
+      // A(#)-Z(#) titles
+      > div > div:first-child {
+        color: black !important;
+        font-weight: bold;
+      }
+
+      // word link / tag
+      .alphabet-list-tag {
+        @extend .aLozengeClass;
+        display: inline-block;
+        margin: 0 5px 5px 0;
+        &.small {
+          padding: 0 5px;
+          font-size: 0.8em;
+        }
+      }
+    }
+
+    // [A]-[Z] buttons bar
+    > div:nth-child(2) {
+      background: yellow;
+      top: $offset-g1 !important;
+      right: $offset-g2 !important; //avoid the scrollbar
+      width: auto;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+
+      // [A]-[Z] buttons
+      > div {
+        @extend .aLozengeClass;
+        @extend .aCustAlphabetListLetterBtn;
+      }
+    }
+  }
+}
+
+// if HEIGHT is too small, move [A]-[Z] nav to be horizontal
+@media (max-height: $bp-tablet-1) {
+  .alpha-list-wrap {
+    .alpha-list {
+      > div:first-child {
+      }
+
+      > div:nth-child(2) {
+        top: 0px !important;
+        width: auto !important;
+        flex-direction: row;
+        justify-content: center;
+        padding: 5px;
+
+        > div {
+          display: inline-block;
+          // margin-right: 2px !important;
+        }
+      }
+    }
+  }
+}
+
+// if WIDTH is too small, hide [A]-[Z] nav
+@media (max-width: $bp-xs-1) {
+  .alpha-list-wrap {
+    .alpha-list {
+      > div:first-child {
+      }
+
+      > div:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+}
+
+.aCustAlphabetListLetterBtn {
+  background: transparent;
+  border: none;
+  color: $color_hyperlink-text !important;
+  font-weight: bold;
+  text-align: center;
+  line-height: 20px !important;
+  font-size: 10px !important;
+  width: 20px;
+  height: 20px;
+  margin: 0px !important;
+  padding: 0px !important;
+  vertical-align: unset !important;
+
+  &:hover {
+    color: white !important;
+  }
+
+  &:active {
+    color: white !important;
+  }
+}
