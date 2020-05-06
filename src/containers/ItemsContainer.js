@@ -79,7 +79,7 @@ function ItemsContainer({ context }) {
     }
     
     let archiveAllArr = {
-      title: 'All',
+      title: 'Archive',
       slug: `/classic-car-archive/all`
     };
     crumbsArr.push(archiveAllArr);

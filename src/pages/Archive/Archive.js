@@ -35,7 +35,7 @@ const Archive = props => {
   };
   crumbsArr.push(categorAboutArr);
   let crumbAll = {
-    title: "All Makes",
+    title: "Archive",
   };
   crumbsArr.push(crumbAll);
 
@@ -107,7 +107,7 @@ const Archive = props => {
 				<div className="content col-sm-12 col-md-9 col-posts-parent">
             {breadcrumbsTag}
             <div className="col-post-text">
-              <h1>All Models Sold</h1>      
+              <h1>Archive</h1>      
               <h2>Selling classic cars worldwide for over 25 years</h2>
               <h3>Our online archive dates from 2007</h3>
               <CustAlphabetSorter data={brandsArrLite}></CustAlphabetSorter>        
