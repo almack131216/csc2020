@@ -44,19 +44,22 @@ const catArray = {
     id: 2,
     name: "Archive",
     title: "Classic Cars Sold",
+    titleSub: `Sold since 1st January 2020`,
     titleHover: "Link to archive showing cars sold over the years",
     titleDocument:
       "Classic Cars Sold by Classic and Sportscar Centre, Malton, North Yorkshire",
-    slug: "/classic-car-archive",
+      text:
+      "To view our full online archive, please go to <a href=\"/classic-car-archive/all\">all cars sold</a>.",
+    slug: "/classic-car-archive",    
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Archive`,
     apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Archive`,
     settings: {
       showFilter: false,
-      showBrandList: true,
-      showWidgetOpeningHours: false,
-      showWidgetContactDetails: false,
-      showTitle: false,
-      showTitleSub: false,
+      showBrandList: false,
+      showWidgetOpeningHours: true,
+      showWidgetContactDetails: true,
+      showTitle: true,
+      showTitleSub: true,
       layout: "grid accent",
       item: {
         layout: "item-card accent",

@@ -88,7 +88,7 @@ const navArray = {
     navSide: true
   },
   restoration: {
-    title: "Automotive Body & Paint",
+    title: "Restoration Services",
     titleHover: "Link to Restoration Services page",
     titleDocument: "Restoration Services",
     slug: "/restoration",

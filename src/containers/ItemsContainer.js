@@ -11,7 +11,7 @@ function ItemsContainer({ context }) {
   // console.log("[ItemsContainer.js] ...");
   //
   // INIT context
-  const { categoryArr, siteData, loading, sortedItems, items } = context;
+  const { categoryArr, siteData, loading, sortedItems, items, subcategoryArr } = context;
   // INIT appearance
   let catSettings = categoryArr.settings;
   let itemLayout = null; // LAYOUT items should be displayed in grid or row?
@@ -28,14 +28,21 @@ function ItemsContainer({ context }) {
       <ItemsFilter items={items} />
     ) : null;
 
-    const title = catSettings.showTitle ? categoryArr.title : null;
-    const titleSub = catSettings.showTitle ? categoryArr.titleSub : null;
-    const text =
+    let title = catSettings.showTitle ? categoryArr.title : null;
+    let titleSub = catSettings.showTitle ? categoryArr.titleSub : null;
+    let text =
       catSettings.showTitle && categoryArr.text ? categoryArr.text : null;
+
+    // change title & text for the Archive pages when brand is selected
+    if(categoryArr.name === "Archive" && subcategoryArr.brand){
+      title = `${subcategoryArr.brand} Sold`;
+      titleSub = '';
+    }
+
 
     titlesComponent =
       title || titleSub ? (
-        <TitleText title={title} titleSub={categoryArr.titleSub} text={text} />
+        <TitleText title={title} titleSub={titleSub} text={text} />
       ) : null;
   }
   // PAGINATION
@@ -58,9 +65,25 @@ function ItemsContainer({ context }) {
       slug: "/about"
     };
     crumbsArr.push(categorAboutArr);
-  }
+  }  
   categoryArr.class = categoryArr.name;
   crumbsArr.push(categoryArr);
+  // Archive (brand selected)
+  if (categoryArr.name === "Archive") {
+    if(subcategoryArr.brand){
+      let subcatArr = {
+        title: subcategoryArr.brand,
+        slug: `${subcategoryArr.slug}_sold`
+      };
+      crumbsArr.push(subcatArr);
+    }
+    
+    let archiveAllArr = {
+      title: 'All',
+      slug: `/classic-car-archive/all`
+    };
+    crumbsArr.push(archiveAllArr);
+  }
 
   if (loading) {
     return <Loading />;

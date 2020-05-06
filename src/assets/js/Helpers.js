@@ -5,6 +5,17 @@ export function setDocumentTitle(getString) {
   document.title = getString;
 }
 
+export function apiGetItems(getApiArr) {
+  console.log("[Helpers.js] apiGetItems()... ", getApiArr);
+  let apiUrl = getApiArr.base;
+  if (getApiArr.brandId) apiUrl += `&brandId=${getApiArr.brandId}`;
+  if (getApiArr.brandName) apiUrl += `&brandName=${getApiArr.brandName}`;
+  console.log("API: ", apiUrl);
+  return apiUrl;
+  // return "../../api-dummy/dummy-item-details.json";
+  // return `${process.env.REACT_APP_API_ENDPOINT}item/${getItemSlug}`;
+}
+
 export function apiGetItemDetails(getApiArr) {
   // console.log("[Helpers.js] apiGetItemDetails()... ", getApiArr);
   let apiUrl = `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=${getApiArr.categoryName}`;

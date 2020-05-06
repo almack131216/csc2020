@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import SiteData from './assets/_data/_data';
 import CatData from './assets/_data/_data-categories';
 import SortFilterRangeData from './assets/_data/_data-filter-sort';
-import { setDocumentTitle, getDateToday, getExcerpt } from './assets/js/Helpers';
+import { setDocumentTitle, getDateToday, getExcerpt, apiGetItems } from './assets/js/Helpers';
 const slugify = require('slugify');
 const ItemContext = React.createContext();
 //
@@ -92,7 +92,12 @@ export default class ItemProvider extends Component {
 
 		try {
 			this.setState({ loading: true });
-			const data = await fetch(CatData[getCategoryName].api, {
+			let apiArr = {
+				base: CatData[getCategoryName].api,
+				brandName: getBrandSlug !== "all" ? getBrandSlug : null
+			}
+
+			const data = await fetch(apiGetItems(apiArr), {
 				method: 'GET'
 			}).then((data) => data.json());
 
@@ -106,8 +111,10 @@ export default class ItemProvider extends Component {
 			let sortedItems = [];
 
 			let brand = null;
+			let subcategoryArr = {};
 			if (brandSlug) {
-				brand = allItems.find((x) => x.subcategoryArr.slug === brandSlug).brand;
+				subcategoryArr = allItems.find((x) => x.subcategoryArr.slug === brandSlug).subcategoryArr;
+				brand = subcategoryArr.id;
 				console.log('[Context.js] brandSlug received...', brand);
 				sortedItems = allItems.filter((item) => item.subcategoryArr.slug === brandSlug);
 			} else {
@@ -158,6 +165,7 @@ export default class ItemProvider extends Component {
 				items,
 				categoryName,
 				categoryArr,
+				subcategoryArr,
 				brand,
 				brandArr,
 				sortedItems,

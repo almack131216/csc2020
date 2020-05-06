@@ -38,15 +38,15 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
       return item.title ? (
         <li key={index} className={item.class ? item.class : ""}>
           <FaChevronRight />
-          {index < crumbsArr.length - 1 ? (
+          {/* {index < crumbsArr.length - 1 ? ( */}
             <Link to={item.slug} className="crumb-resp">
               <span>{item.title}</span>
             </Link>
-          ) : (
+          {/* ) : (
             <span className="crumb-resp">
               <span>{item.title}</span>
             </span>
-          )}
+          )} */}
         </li>
       ) : null;
     });

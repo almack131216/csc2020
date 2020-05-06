@@ -17,8 +17,7 @@ const alphabetSorterCust = props => {
           asGroup={props.data}
           asName='usage_example'
           type='link'
-          handleCheck={handleSorter} />
-      
+          handleCheck={handleSorter} />      
     </div>
   );
 };
