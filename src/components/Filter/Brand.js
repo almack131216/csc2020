@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const brandFilter = props => {
-  const brand = props.brand; //get active brand
+  const brand = props.brand === 'all' ? 'all' : props.brand; //get active brand
   const label = props.label ? props.label : "Select";
   // STYLE // get styling from filter container
   let classParent = props.classParent;
@@ -14,11 +15,19 @@ const brandFilter = props => {
   // MAP to jsx
   brands = brands.map((item, index) => {
     return (
-      <option value={item.id} key={index}>
-        {item.brand} {item.itemCount ? `(${item.itemCount})` : null}
+      <option value={item.slug} key={index}>        
+          {item.brand} {item.itemCount ? `(${item.itemCount})` : null}
       </option>
     );
   });
+
+  const handleSelectChange = (e) => {
+    const goToSlug = e.target.value === 'classic-cars-for-sale' ? 'classic-cars-for-sale' : `${e.target.value}_for-sale`;
+    console.log('history: ', goToSlug);
+    
+    // return <Redirect to='/target' />;
+		window.location = `/${goToSlug}`;
+  }
 
   return (
     <div className={classParent}>
@@ -30,7 +39,7 @@ const brandFilter = props => {
         id="brand"
         className={classControl}
         value={brand ? brand : ""}
-        onChange={props.changed}
+        onChange={handleSelectChange}
       >
         {brands}
       </select>

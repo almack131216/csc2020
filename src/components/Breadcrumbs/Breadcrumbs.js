@@ -14,7 +14,7 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   const {
     filterIsActive,
     categoryArr,
-    handleFilterChange,
+    subcategoryArr,
     brand,
     brandArr,
     styleAppendClass
@@ -116,9 +116,8 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
             classParent={classParent}
             classLabel={classLabel}
             classControl={classControl}
-            brand={brand}
+            brand={subcategoryArr.slug}
             brands={brandArr}
-            changed={handleFilterChange}
           />
           {/* (END) select brand */}
         </form>

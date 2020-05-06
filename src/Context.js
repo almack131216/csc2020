@@ -226,7 +226,7 @@ export default class ItemProvider extends Component {
 		// COUNT items in subcategory
 		let myUniqueBrandListWithCount = this.countItemsInBrand(myUniqueBrandList, myObj);
 		myUniqueBrandListWithCount = [
-			{ id: 'all', brand: 'ALL', itemCount: myObj.length },
+			{ id: 'all', brand: 'ALL', slug: 'classic-cars-for-sale', itemCount: myObj.length },
 			...myUniqueBrandListWithCount
 		];
 		console.log('[Context.js] myUniqueBrandList...', myUniqueBrandListWithCount);

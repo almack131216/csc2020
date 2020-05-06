@@ -35,7 +35,7 @@ const Archive = props => {
   };
   crumbsArr.push(categorAboutArr);
   let crumbAll = {
-    title: "All",
+    title: "All Makes",
   };
   crumbsArr.push(crumbAll);
 
