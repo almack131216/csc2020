@@ -19,6 +19,7 @@ import ItemNotFound from "../../components/ItemDetails/ItemNotFound/ItemNotFound
 import ItemExtras from "../../components/ItemDetails/ItemExtras/ItemExtras";
 import ItemRelated from "../../components/ItemDetails/ItemRelated/ItemRelated";
 import "react-image-lightbox/style.css";
+//
 
 export default class ItemDetails extends Component {
   constructor(props) {
@@ -99,12 +100,6 @@ export default class ItemDetails extends Component {
     const handleForLargeImageList = this.handleForLargeImageList;
     // (END) LIGHTBOX props
     const {
-      formatPrice,
-      formatDescription,
-      getCategoryArr,
-      getCategoryLinkTag
-    } = this.context;
-    const {
       loading,
       fetchError,
       itemPrimary,
@@ -151,21 +146,23 @@ export default class ItemDetails extends Component {
     // (END) LIGHTBOX images
 
     // ITEM fields
-    let { title, price, category, status, excerpt, description } = itemPrimary;
+    let { title, subtitle, brief, price, category, status, excerpt, description } = itemPrimary;
     // ITEM Price
-    const priceFormatted = formatPrice(price, status);
+    const priceFormatted = this.context.formatPrice(price, status);
     itemPrimary.priceFormatted = priceFormatted;
     // ITEM category
-    const categoryArr = getCategoryArr(category, status);
-    const categoryLinkTag = getCategoryLinkTag(categoryArr);
+    const categoryArr = this.context.getCategoryArr(category, status);
+    const categoryLinkTag = this.context.getCategoryLinkTag(categoryArr);
     setDocumentTitle(`${title} | ${categoryArr.title}`);
     const navLeft = <NavLeft categoryName={categoryArr.name} />;
     // ITEM excerpt + parsed
     const excerptParsed = excerpt
-      ? formatDescription(`<span class="excerpt">${excerpt}</span>`)
+      ? this.context.formatDescription(
+          `<span class="excerpt">${excerpt}</span>`
+        )
       : null;
     // ITEM description + parsed
-    const descriptionParsed = formatDescription(description);
+    const descriptionParsed = this.context.formatDescription(description);
     // SET breadcrumbs array
     let crumbsArr = [];
     categoryArr.class = categoryArr.name;
@@ -345,6 +342,8 @@ export default class ItemDetails extends Component {
             {breadcrumbsTag}
             <div className="col-post-text">
               <h1>{title}</h1>
+              {subtitle ? <h2>{subtitle}</h2> : null}
+              {brief ? <p>{brief}</p> : null}
               <div className="post-text-body">{descriptionParsed}</div>
             </div>
           </div>
