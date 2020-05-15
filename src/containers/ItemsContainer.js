@@ -73,14 +73,14 @@ function ItemsContainer({ context }) {
     if(subcategoryArr.brand){
       let subcatArr = {
         title: subcategoryArr.brand,
-        slug: `${subcategoryArr.slug}_sold`
+        slug: `/${subcategoryArr.slug}/sold`
       };
       crumbsArr.push(subcatArr);
     }
     
     let archiveAllArr = {
       title: 'Archive',
-      slug: `/classic-car-archive/all`
+      slug: `/sold`
     };
     crumbsArr.push(archiveAllArr);
   }

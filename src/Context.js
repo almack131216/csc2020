@@ -64,8 +64,8 @@ export default class ItemProvider extends Component {
 			let featuredItems = items.slice(0, SiteData.featuredItems.itemCount); // get first # items from main array
 			// Featured items [Archive]
 			let featuredItemsArchive = itemsArchive.slice(0, SiteData.featuredItems.itemCount);
-			let featuredItemsNews = itemsOther.slice(0, 2);
-			let featuredItemsTestimonials = itemsOther.slice(2, 4);
+			let featuredItemsNews = itemsOther.slice(2, 4);
+			let featuredItemsTestimonials = itemsOther.slice(0, 2);
 			console.log('???????????', featuredItemsNews);
 
 			///////////////
@@ -361,8 +361,11 @@ export default class ItemProvider extends Component {
 	/////////////////////////////////////////////////////////////////////////// FORMAT brand link
 	// get slug from CatData based on categoryName
 	formatBrandLink = (getCategoryName, getBrandSlug) => {
-		let apprendUrl = getCategoryName === 'Archive' ? '_sold' : '_for-sale';
-		let slug = getBrandSlug + apprendUrl;
+		console.log('[Context.js] formatBrandLink() getCategoryName=',getCategoryName,' | getBrandSlug=',getBrandSlug);
+		let apprendUrl = getCategoryName === 'Archive' ? '/sold' : '/for-sale';
+		let slug = '/' + getBrandSlug + apprendUrl;
+		console.log('[Context.js] formatBrandLink() slug=',slug,' | apprendUrl=',apprendUrl);
+		
 		// console.log(
 		//   "[Context.js] formatBrandLink > slug...",
 		//   slug,

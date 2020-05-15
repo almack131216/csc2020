@@ -36,12 +36,12 @@ class App extends Component {
         <Navbar />
         <main>
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/classic-car-archive/all" component={Archive} />
+            <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
+            <Route exact path={`${process.env.PUBLIC_URL}/about`} component={About} />
+            <Route exact path={`${process.env.PUBLIC_URL}/sold`} component={Archive} />
             <Route
               exact
-              path="/selling-a-classic-car"
+              path={`${process.env.PUBLIC_URL}/selling-a-classic-car`}
               component={routerProps => (
                 <ItemDetails
                   categoryName="PageText"
@@ -52,7 +52,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/classic-car-transportation"
+              path={`${process.env.PUBLIC_URL}/classic-car-transportation`}
               component={routerProps => (
                 <ItemDetails
                   categoryName="PageText"
@@ -63,7 +63,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/registration-numbers"
+              path={`${process.env.PUBLIC_URL}/registration-numbers`}
               component={routerProps => (
                 <ItemDetails
                   categoryName="PageText"
@@ -72,10 +72,10 @@ class App extends Component {
                 />
               )}
             />
-            <Route exact path="/request-a-classic-car" component={Request} />
+            <Route exact path={`${process.env.PUBLIC_URL}/request-a-classic-car`} component={Request} />
             <Route
               exact
-              path="/film-tv-hire"
+              path={`${process.env.PUBLIC_URL}/film-tv-hire`}
               component={routerProps => (
                 <ItemDetails
                   categoryName="FilmTvHire"
@@ -86,7 +86,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/restoration"
+              path={`${process.env.PUBLIC_URL}/restoration`}
               component={routerProps => (
                 <ItemDetails
                   categoryName="Restoration"
@@ -95,51 +95,51 @@ class App extends Component {
                 />
               )}
             />            
-            <Route exact path="/contact" component={Contact} />
+            <Route exact path={`${process.env.PUBLIC_URL}/contact`} component={Contact} />
 
             <Route
               exact
-              path="/classic-cars-for-sale"
+              path={`${process.env.PUBLIC_URL}/classic-cars-for-sale`}
               component={() => <Items category="Live" />}
             />
             <Route
               exact
-              path="/classic-car-archive"
+              path={`${process.env.PUBLIC_URL}/classic-car-archive`}
               component={() => <Items category="Archive" />}
             />
             <Route
               exact
-              path="/testimonials"
+              path={`${process.env.PUBLIC_URL}/testimonials`}
               component={() => <Items category="Testimonials" />}
             />
             <Route
               exact
-              path="/press"
+              path={`${process.env.PUBLIC_URL}/press`}
               component={() => <Items category="Press" />}
             />
             <Route
               exact
-              path="/news"
+              path={`${process.env.PUBLIC_URL}/news`}
               component={() => <Items category="News" />}
             />
             <Route
               exact
-              path="/history"
+              path={`${process.env.PUBLIC_URL}/history`}
               component={() => <Items category="History" />}
             />
             <Route
               exact
-              path="/:brand_for-sale"
-              component={() => <Items category="Live" />}
+              path={`${process.env.PUBLIC_URL}/:brand/for-sale`}
+              component={(routerProps) => <Items category="Live" brand={routerProps.match.params.brand} />}
             />
             <Route
               exact
-              path="/:brand_sold"
-              component={() => <Items category="Archive" />}
+              path={`${process.env.PUBLIC_URL}/:brand/sold`}
+              component={(routerProps) => <Items category="Archive" brand={routerProps.match.params.brand} />}
             />
             <Route
               exact
-              path="/*/classic-cars-for-sale/:slug"
+              path={`${process.env.PUBLIC_URL}/*/classic-cars-for-sale/:slug`}
               component={routerProps => (
                 <ItemDetails
                   categoryName="Live"
@@ -150,7 +150,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/*/classic-car-archive/:slug"
+              path={`${process.env.PUBLIC_URL}/*/classic-car-archive/:slug`}
               component={routerProps => (
                 <ItemDetails
                   categoryName="Archive"
@@ -161,7 +161,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/*/press/:slug"
+              path={`${process.env.PUBLIC_URL}/*/press/:slug`}
               component={routerProps => (
                 <ItemDetails
                   categoryName="Press"
@@ -172,7 +172,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/*/testimonials/:slug"
+              path={`${process.env.PUBLIC_URL}/*/testimonials/:slug`}
               component={routerProps => (
                 <ItemDetails
                   categoryName="Testimonials"
@@ -183,7 +183,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/*/news/:slug"
+              path={`${process.env.PUBLIC_URL}/*/news/:slug`}
               component={routerProps => (
                 <ItemDetails
                   categoryName="News"
@@ -194,7 +194,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/*/history/:slug"
+              path={`${process.env.PUBLIC_URL}/*/history/:slug`}
               component={routerProps => (
                 <ItemDetails
                   categoryName="History"

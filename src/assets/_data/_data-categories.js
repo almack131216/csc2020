@@ -49,7 +49,7 @@ const catArray = {
     titleDocument:
       "Classic Cars Sold by Classic and Sportscar Centre, Malton, North Yorkshire",
       text:
-      "To view our full online archive, please go to our <a href=\"/classic-car-archive/all\">Archive</a>.",
+      "To view our full online archive, please go to our <a href=\"/sold\">Archive</a>.",
     slug: "/classic-car-archive",    
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Archive`,
     apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Archive`,

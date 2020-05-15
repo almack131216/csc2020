@@ -21,8 +21,11 @@ const Items = (props) => {
 	let widgetOpeningHours = null;
 	let widgetContact = null;
 	// FUNCTIONS
+	let getBrandFromSlug = null;
 	let getSlug = window.location.pathname;
-	let getBrandFromSlug = getSlug.substr(0, getSlug.indexOf('_')).replace('/', '');
+	getBrandFromSlug = props.brand;
+	console.log('?>?>?>?>?>', props.brand, '>', getSlug, '>', getBrandFromSlug);
+	
 	// useEffect
 	useEffect(
 		() => {
