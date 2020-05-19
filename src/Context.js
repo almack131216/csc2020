@@ -360,16 +360,16 @@ export default class ItemProvider extends Component {
 
 	/////////////////////////////////////////////////////////////////////////// FORMAT brand link
 	// get slug from CatData based on categoryName
-	formatBrandLink = (getCategoryName, getBrandSlug) => {
-		console.log('[Context.js] formatBrandLink() getCategoryName=',getCategoryName,' | getBrandSlug=',getBrandSlug);
-		let apprendUrl = getCategoryName === 'Archive' ? '/sold' : '/for-sale';
+	formatBrandLink = (getStatusId, getBrandSlug) => {
+		console.log('[Context.js] formatBrandLink() getStatusId=',getStatusId,' | getBrandSlug=',getBrandSlug);
+		let apprendUrl = getStatusId === 2 ? '/sold' : '/for-sale';
 		let slug = '/' + getBrandSlug + apprendUrl;
 		console.log('[Context.js] formatBrandLink() slug=',slug,' | apprendUrl=',apprendUrl);
 		
 		// console.log(
 		//   "[Context.js] formatBrandLink > slug...",
 		//   slug,
-		//   getCategoryName,
+		//   getStatusId,
 		//   getBrandSlug
 		// );
 		return slug;
@@ -406,12 +406,12 @@ export default class ItemProvider extends Component {
 		let itemSlug = slug;
 		if (!slug) itemSlug = slugify(name, { lower: true });
 		let itemLink = `/${itemSlug}`;
-		if (this.state.categoryName && category === CatData[this.state.categoryName].id) {
+		// if (this.state.categoryName && category === CatData[this.state.categoryName].id) {
 			// console.log("NO REPEAT CALL", CatData[this.state.categoryName].slug);
-			itemLink += this.state.categoryArr.slug;
-		} else {
+			// itemLink += this.state.categoryArr.slug;
+		// } else {
 			itemLink += `${this.formatCategoryLink(category, status)}`; //this.state.categoryNameDefault
-		}
+		// }
 
 		itemLink += `/${id}`;
 		return itemLink;

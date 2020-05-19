@@ -89,7 +89,7 @@ const Item = memo(({ item, itemSettingsCust }) => {
     categoryLinkTag = itemSettings.showCategoryLink ? (
       <Link
         className="category"
-        to={formatBrandLink(categoryName, subcategoryArr.slug)}
+        to={formatBrandLink(status, subcategoryArr.slug)}
       >
         {subcategoryArr.brand}
       </Link>
