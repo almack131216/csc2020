@@ -64,6 +64,13 @@ export default class ItemDetails extends Component {
     this.setState({ showImgLargeList: true });
   };
 
+  // Check isFileImage
+  isFileImage = (file) => {    
+    if(file.match(/jpg.*/)||file.match(/jpeg.*/)){
+      return true;
+    }
+  }
+
   // API - componentDidMount
   async componentDidMount() {
     // console.log("[ItemDetails.js] componentDidMount()...");
@@ -128,16 +135,26 @@ export default class ItemDetails extends Component {
     // LIGHTBOX images
     // ARR - put objects into array (need for .map())
     const images = [];
+    const pdfs = [];
     // XXX - for testing purposes only (2do)
     const imgDirHighRes =
       itemPrimary.id === 38097
         ? "https://www.classicandsportscar.ltd.uk/uploads/high-res/"
-        : process.env.REACT_APP_IMG_DIR_LARGE;
+        : process.env.REACT_APP_IMG_DIR_LARGE;    
 
     for (let i = 0; i < itemImages.length; i++) {
+      this.isFileImage(itemImages[i].image) ? 
       images.push({
         // src: "https://via.placeholder.com/640x480",
         thumb: `${process.env.REACT_APP_IMG_DIR_THUMBS}${itemImages[i].image}`,
+        src: `${imgDirHighRes}${itemImages[i].image}`,
+        filename: itemImages[i].image,
+        name: itemImages[i].name
+      })
+
+      : pdfs.push({
+        // src: "https://via.placeholder.com/640x480",
+        thumb: `${process.env.REACT_APP_IMG_DIR_LARGE}${itemImages[i].image}`,
         src: `${imgDirHighRes}${itemImages[i].image}`,
         filename: itemImages[i].image,
         name: itemImages[i].name
@@ -199,7 +216,7 @@ export default class ItemDetails extends Component {
     } else if (pageStyle === "ImgCarousel") {
       imgRowClasses.push("carousel");
       imgColLeft = <CarouselDynamic imgsArr={images} />;
-      imgColRight = <ItemExtras itemArr={itemPrimary} />;
+      imgColRight = <ItemExtras itemArr={itemPrimary} itemAttachments={pdfs}/>;
     }
     const imgLargeList = (
       <>

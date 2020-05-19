@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaCamera, FaInfoCircle } from "react-icons/fa";
+import { FaFilePdf, FaCamera, FaInfoCircle } from "react-icons/fa";
+// import { GoFilePdf } from "react-icons/go";
+// import parse from "html-react-parser";
+
 // react-share | buttons
 import {
   EmailShareButton,
@@ -58,6 +61,21 @@ const ItemExtras = props => {
   }
   // (END) PRICE
 
+  // ATTACHMENT
+  let attachmentsRow = null;
+  if(props.itemAttachments.length){
+    console.log('??? ATTACHMENTS: ', props.itemAttachments);
+    const attachments = props.itemAttachments.map((item, index) => {
+      return (<li key={index}>
+        <a href={item.thumb} target="_blank" rel="noopener noreferrer" className="icon-text">
+        <FaFilePdf />Read / Download</a>
+        </li>)
+    })
+    
+    attachmentsRow = <div className="post-attachments"><ul>{attachments}</ul></div>;
+  }
+  // (END) ATTACHMENT
+
   const btnPhotos = handleForLargeImageList ? (
     <li>
       <a
@@ -76,6 +94,7 @@ const ItemExtras = props => {
     <div className={classesWrap.join(" ")}>
       <div className="feature-list">
         {priceRow}
+        {attachmentsRow}
         <div className="post-btns">
           <ul className="ul-inline">
             {btnPhotos}
