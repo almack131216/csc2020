@@ -63,7 +63,7 @@ const ItemExtras = props => {
 
   // ATTACHMENT
   let attachmentsRow = null;
-  if(props.itemAttachments.length){
+  if(props.itemAttachments && props.itemAttachments.length){
     console.log('??? ATTACHMENTS: ', props.itemAttachments);
     const attachments = props.itemAttachments.map((item, index) => {
       return (<li key={index}>
