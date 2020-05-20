@@ -3,8 +3,8 @@ import parse from "html-react-parser";
 import { Link, Redirect } from "react-router-dom";
 import NavLeft from '../../components/Sidebar/Navleft/NavLeft';
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
-// import CustAlphabetList from "../../components/CustAlphabetList/CustAlphabetList";
-import CustAlphabetSorter from "../../components/CustAlphabetSorter/CustAlphabetSorter";
+import AlphabetList from "../../components/AlphabetList/AlphabetList"
+// import CustAlphabetSorter from "../../components/CustAlphabetSorter/CustAlphabetSorter";
 import { CB_Contact, CB_OpeningHours } from '../../components/ContactBoxes/ContactBoxes';
 import InfoBox from '../../components/InfoBoxes/InfoBox/InfoBox';
 import { setDocumentTitle } from "../../assets/js/Helpers";
@@ -79,7 +79,7 @@ const Archive = props => {
           char = getBrandsArr[i].brand[0].toLowerCase();
           if(!letters.includes(char)){
             letters.push(char);
-            getBrandsArrLite.push({value: 1, label: char});
+            getBrandsArrLite.push({value: 1, label: char, char: true});
           }
           getBrandsArrLite.push({value: getBrandsArr[i].id, label: `${getBrandsArr[i].brand} (${getBrandsArr[i].itemCount})`, href: `${getBrandsArr[i].slug}/sold`});
         }
@@ -111,7 +111,8 @@ const Archive = props => {
               <h1>Archive: 2007-today</h1>      
               <h2>Selling classic cars worldwide for over 25 years</h2>
               {/* <h3>Our online archive dates from 2007</h3> */}
-              {brandsArrLite ? <CustAlphabetSorter data={brandsArrLite}></CustAlphabetSorter> : 'Loading...'}
+              {brandsArrLite ? <AlphabetList data={brandsArrLite}></AlphabetList> : 'Loading...'}
+              {/* {brandsArrLite ? <CustAlphabetSorter data={brandsArrLite}></CustAlphabetSorter> : 'Loading...'} */}
               {/* {brandsArrLite ? <CustAlphabetList data={brandsArrLite} parentSlug={''} /> : null } */}
               {/* <div className="alpha-list-wrap">
               <div className="alpha-list">

@@ -1,0 +1,61 @@
+/* _AlphabetList.scss */
+
+/* Extends */
+.aClass {
+    color: $color_hyperlink-text;
+    &:hover {
+      color: $color_hyperlink-text-hover;
+    }
+    &:active {
+      color: $color_hyperlink-text-active;
+    }
+  }
+
+
+  .aLozengeClass {
+    color: $color_hyperlink-text;
+    background: white;
+    border: 1px solid $table-color-border;
+    padding: 5px;
+    text-decoration: none;
+    line-height: 20px;
+    border-radius: 5px;
+  
+    &:hover {
+      border-color: $color_hyperlink-text-hover;
+      background: $color_hyperlink-text-hover;
+      color: white;
+    }
+    &:active {
+      border-color: $color_hyperlink-text-active;
+      background: $color_hyperlink-text-active;
+      color: white;
+    }
+  }
+  
+  .alpha-list-wrap {
+
+      ul {
+          list-style:none;
+
+          li {
+              display:inline-block;
+              margin:0 5px 5px 0;
+
+              &.is-char {
+                  margin-top:$offset-g1;
+                  display:block;
+                  text-transform:uppercase;
+                  font-weight:bold;
+              }
+  
+            a {
+                @include border-radius(5px);
+                display:block;
+                border:1px solid #ccc;
+                padding:5px 10px;
+              }
+        }
+      }
+    
+  }
