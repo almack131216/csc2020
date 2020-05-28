@@ -163,7 +163,7 @@ export default class ItemDetails extends Component {
     // (END) LIGHTBOX images
 
     // ITEM fields
-    let { title, subtitle, brief, price, category, status, excerpt, description } = itemPrimary;
+    let { title, subtitle, price, category, status, excerpt, description } = itemPrimary;
     // ITEM Price
     const priceFormatted = this.context.formatPrice(price, status);
     itemPrimary.priceFormatted = priceFormatted;
@@ -360,7 +360,7 @@ export default class ItemDetails extends Component {
             <div className="col-post-text">
               <h1>{title}</h1>
               {subtitle ? <h2>{subtitle}</h2> : null}
-              {brief ? <p>{brief}</p> : null}
+              {excerpt ? <p>{excerpt}</p> : null}
               <div className="post-text-body">{descriptionParsed}</div>
             </div>
           </div>
