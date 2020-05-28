@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import parse from "html-react-parser";
+import { Link, Redirect } from "react-router-dom";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import ItemsFilter from "./ItemsFilter/ItemsFilter";
 import TitleText from "../components/TitleText/TitleText";
@@ -6,6 +8,7 @@ import ItemsList from "../components/Items/ItemsList/ItemsList";
 import Pagination from "../components/Pagination/Pagination";
 import { withItemConsumer } from "../Context";
 import Loading from "../components/Loading/Loading";
+import Linkify from 'linkifyjs/react';
 
 function ItemsContainer({ context }) {
   // console.log("[ItemsContainer.js] ...");
@@ -30,8 +33,12 @@ function ItemsContainer({ context }) {
 
     let title = catSettings.showTitle ? categoryArr.title : null;
     let titleSub = catSettings.showTitle ? categoryArr.titleSub : null;
-    let text =
-      catSettings.showTitle && categoryArr.text ? categoryArr.text : null;
+    let text = catSettings.showTitle && categoryArr.text ? categoryArr.text : null;
+      
+    // LINKIFY - convert <a> tags to <Link> route tags
+    // To view our full online archive, please go to our <a href="/2020/sold">sold</a>
+    const textWithLinks = text ? <Linkify>{parse(text)}</Linkify> : null;
+    // (END) LINKIFY
 
     // change title & text for the Archive pages when brand is selected
     if(categoryArr.name === "Archive" && subcategoryArr.brand){
@@ -39,11 +46,7 @@ function ItemsContainer({ context }) {
       titleSub = '';
     }
 
-
-    titlesComponent =
-      title || titleSub ? (
-        <TitleText title={title} titleSub={titleSub} text={text} />
-      ) : null;
+    titlesComponent = title || titleSub ? <TitleText title={title} titleSub={titleSub} text={textWithLinks} /> : null;
   }
   // PAGINATION
   // GET current posts

@@ -21,7 +21,7 @@ const catArray = {
     apiItem: "./api-dummy/dummy-item-details.json",
     settings: {
       showFilter: false,
-      showBrandList: true,
+      showBrandList: false,
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
       showTitle: false,
@@ -48,8 +48,7 @@ const catArray = {
     titleHover: "Link to archive showing cars sold over the years",
     titleDocument:
       "Classic Cars Sold by Classic and Sportscar Centre, Malton, North Yorkshire",
-      text:
-      "To view our full online archive, please go to our <a href=\"/sold\">Archive</a>.",
+      text: `To view our full online archive, please go to our <a href="/2020/sold">sold</a>`,
     slug: "/classic-car-archive",    
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Archive`,
     apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Archive`,

@@ -39,7 +39,7 @@ const Request = () => {
 
   const titlesComponent =
     title || titleSub ? (
-      <TitleText title={title} titleSub={titleSub} text={pageText} />
+      <TitleText title={title} titleSub={titleSub} text={pageText} parseText={true}/>
     ) : null;
 
   const onSubmit = data => {
