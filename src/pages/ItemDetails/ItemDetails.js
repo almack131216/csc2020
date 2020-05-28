@@ -66,7 +66,7 @@ export default class ItemDetails extends Component {
 
   // Check isFileImage
   isFileImage = (file) => {    
-    if(file.match(/jpg.*/)||file.match(/jpeg.*/)){
+    if(file.match(/jpg.*/)||file.match(/jpeg.*/)||file.match(/png.*/)){
       return true;
     }
   }
