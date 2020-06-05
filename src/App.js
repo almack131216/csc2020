@@ -84,7 +84,7 @@ class App extends Component {
                 />
               )}
             />
-            <Route
+            {/* <Route
               exact
               path={`${process.env.PUBLIC_URL}/restoration`}
               component={routerProps => (
@@ -94,7 +94,12 @@ class App extends Component {
                   pageStyle="ImgCarousel"
                 />
               )}
-            />            
+            />             */}
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/restoration`}
+              component={() => <Items category="Restoration" />}
+            />
             <Route exact path={`${process.env.PUBLIC_URL}/contact`} component={Contact} />
 
             <Route
@@ -198,6 +203,17 @@ class App extends Component {
               component={routerProps => (
                 <ItemDetails
                   categoryName="History"
+                  itemId={routerProps.match.params.slug}
+                  pageStyle="ImgCarousel"
+                />
+              )}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/*/restoration/:slug`}
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="Restoration"
                   itemId={routerProps.match.params.slug}
                   pageStyle="ImgCarousel"
                 />

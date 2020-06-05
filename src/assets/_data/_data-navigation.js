@@ -88,13 +88,12 @@ const navArray = {
     navSide: true
   },
   restoration: {
-    title: "Restoration Services",
-    titleHover: "Link to Restoration Services page",
-    titleDocument: "Restoration Services",
-    slug: "/restoration",
+    title: CatData["Restoration"].title,
+    titleHover: CatData["Restoration"].titleHover,
+    titleDocument: CatData["Restoration"].titleDocument,
+    slug: CatData["Restoration"].slug,
     navTop: true,
-    navSide: true,
-    class: "restoration"
+    navSide: true
   },
   filmTvHire: {
     title: "Film & TV Hire",

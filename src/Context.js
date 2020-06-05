@@ -333,6 +333,7 @@ export default class ItemProvider extends Component {
 		if (itemCategoryName === 5) return CatData.News.slug;
 		if (itemCategoryName === 7) return CatData.PageText.slug;
 		if (itemCategoryName === 10) return CatData.History.slug;
+		if (itemCategoryName === 11) return CatData.Restoration.slug;
 
 		if (itemCategoryName === 2 && getItemStatus === 1) return CatData[this.state.categoryNameDefault].slug;
 
@@ -388,6 +389,7 @@ export default class ItemProvider extends Component {
 		if (itemCategoryName === 5) return CatData.News;
 		if (itemCategoryName === 7) return CatData.PageText;
 		if (itemCategoryName === 10) return CatData.History;
+		if (itemCategoryName === 11) return CatData.Restoration;
 
 		if ((itemCategoryName === 'Archive' || itemCategoryName === 2) && getItemStatus === 2) return CatData.Archive;
 

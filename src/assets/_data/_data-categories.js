@@ -161,6 +161,39 @@ const catArray = {
       }
     }
   },
+  Restoration: {
+    id: 2,
+    name: "Restoration",
+    title: "Restoration Services",
+    titleHover: "Link to our restoration services page",
+    titleDocument: "Restoration Services",
+    text: "Whether you require a service on a modern or classic car, a repair or full restoration, Classic & Sportscar Restorations is the ‘one-stop’ go to destination for high quality work.",
+    slug: "/restoration",
+    apiJson: "./api-dummy/dummy-for-sale.json",
+    api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Restoration`,
+    apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Restoration`,
+    apiItem: "./api-dummy/dummy-item-details.json",
+    settings: {
+      showFilter: false,
+      showBrandList: false,
+      showWidgetOpeningHours: true,
+      showWidgetContactDetails: true,
+      showTitle: true,
+      showTitleSub: true,
+      layout: "grid accentXXX",
+      item: {
+        layout: "item-card accentXXX",
+        showPrice: false,
+        showRibbons: false,
+        showYear: false,
+        showCategoryLink: false,
+        details: {
+          showWidgetOpeningHours: true,
+          showWidgetContactDetails: true
+        }
+      }
+    }
+  },
   PageText: {
     id: 7,
     name: "PageText",
