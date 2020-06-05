@@ -8,7 +8,7 @@ import ItemsList from "../components/Items/ItemsList/ItemsList";
 import Pagination from "../components/Pagination/Pagination";
 import { withItemConsumer } from "../Context";
 import Loading from "../components/Loading/Loading";
-import Linkify from 'linkifyjs/react';
+import Linkify from 'linkifyjs/react';// 2do - might not need when we lose /2020/ subdir
 
 function ItemsContainer({ context }) {
   // console.log("[ItemsContainer.js] ...");
@@ -23,6 +23,9 @@ function ItemsContainer({ context }) {
   // INIT pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(siteData.pagination.postsPerPage);
+
+  let title = null;
+  let titleSub = null;
   // GET appearance
   if (catSettings) {
     itemLayout = catSettings.layout ? catSettings.layout : "grid";
@@ -31,13 +34,13 @@ function ItemsContainer({ context }) {
       <ItemsFilter items={items} />
     ) : null;
 
-    let title = catSettings.showTitle ? categoryArr.title : null;
-    let titleSub = catSettings.showTitle ? categoryArr.titleSub : null;
+    title = catSettings.showTitle ? categoryArr.title : null;
+    titleSub = catSettings.showTitle ? categoryArr.titleSub : null;
     let text = catSettings.showTitle && categoryArr.text ? categoryArr.text : null;
       
     // LINKIFY - convert <a> tags to <Link> route tags
     // To view our full online archive, please go to our <a href="/2020/sold">sold</a>
-    const textWithLinks = text ? <Linkify>{parse(text)}</Linkify> : null;
+    let textWithLinks = text ? <Linkify>{parse(text)}</Linkify> : null;
     // (END) LINKIFY
 
     // change title & text for the Archive pages when brand is selected
@@ -46,7 +49,7 @@ function ItemsContainer({ context }) {
       titleSub = '';
     }
 
-    titlesComponent = title || titleSub ? <TitleText title={title} titleSub={titleSub} text={textWithLinks} /> : null;
+    titlesComponent = title || titleSub ? <TitleText title={title} titleSub={titleSub} text={textWithLinks} /> : null;    
   }
   // PAGINATION
   // GET current posts
@@ -95,7 +98,20 @@ function ItemsContainer({ context }) {
     <>
       <Breadcrumbs crumbsArr={crumbsArr} pageType="items-list" />
       {itemsFilterComponent}
-      {titlesComponent}
+
+      {/* // 2do - cull when LIVE */}
+      {
+        // 2do - when we no longer need the /2020/ subdir, undo this
+      categoryArr.name === "Archive"  ? 
+        <div className="title-text">
+          {title ? <h1>{title}</h1> : null}
+          {titleSub ? <h2>{titleSub}</h2> : null}
+          <span>To view our full online archive, please go to our </span>
+          <Link to="/sold">archive</Link>
+        </div>
+        : titlesComponent
+      }
+
       <ItemsList items={currentPosts} layout={itemLayout} />
       {showPagination === true ? (
         <Pagination
