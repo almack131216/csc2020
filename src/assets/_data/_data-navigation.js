@@ -26,6 +26,14 @@ const navArray = {
     navTop: true,
     navSide: true
   },
+  restoration: {
+    title: CatData["Restoration"].title,
+    titleHover: CatData["Restoration"].titleHover,
+    titleDocument: CatData["Restoration"].titleDocument,
+    slug: CatData["Restoration"].slug,
+    navTop: true,
+    navSide: true
+  },
   selling: {
     title: "Selling a Classic Car",
     titleSub:
@@ -86,15 +94,7 @@ const navArray = {
     slug: "/request-a-classic-car",
     navTop: true,
     navSide: true
-  },
-  restoration: {
-    title: CatData["Restoration"].title,
-    titleHover: CatData["Restoration"].titleHover,
-    titleDocument: CatData["Restoration"].titleDocument,
-    slug: CatData["Restoration"].slug,
-    navTop: true,
-    navSide: true
-  },
+  },  
   filmTvHire: {
     title: "Film & TV Hire",
     titleHover: "Link to Film & TV Hire page",
