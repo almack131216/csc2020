@@ -58,6 +58,7 @@ const CarouselDynamic = props => {
     } else {
       // use imgsArr sent by parent
       setImages(props.imgsArr);
+      setLoading(false);
       console.log('[CarouselDynamic] Images: ', props.imgsArr);
     }    
   }, [props.itemId,props.imgsArr]);
