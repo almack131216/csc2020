@@ -167,7 +167,7 @@ const catArray = {
     title: "Restoration Services",
     titleHover: "Link to our restoration services page",
     titleDocument: "Restoration Services",
-    text: "Whether you require a service on a modern or classic car, a repair or full restoration, Classic & Sportscar Restorations is the ‘one-stop’ go to destination for high quality work.",
+    text: "Here at Classic & Sportscar Centre we also offer a wide range of classic car maintenance and restoration services. We can carry out all aspects of classic car bodywork and paint, upholstery and re-trimming work, and mechanical repairs to include engine and gearbox rebuilds, general servicing and maintenance, and of course full restoration. Please click the links below to read more information on each department and view our gallery of work which will be regularly updated with recent projects.",
     slug: "/restoration",
     apiJson: "./api-dummy/dummy-for-sale.json",
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Restoration`,
@@ -216,10 +216,10 @@ const catArray = {
   History: {
     id: 10,
     name: "History",
-    title: "History: 1991-2011",
+    title: "History: 1991-Today",
     titleSub: "Thanks to all our customers over the years",
     titleHover: "Link to our history page",
-    titleDocument: "History: 1991-2011",
+    titleDocument: "History: 1991-Today",
     text:
       "April 4th 1991 was the date of incorporation of our company, previously known as Grundy Mack. We began trading at the height of the last recession, and we’re busy trading through another. As long as there are men and women with a love of nostalgia and old cars, there will always be a business in buying and selling them. But it’s been much more than a business – more a way of life.",
     slug: "/history",
