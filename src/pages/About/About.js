@@ -11,22 +11,12 @@ import {
 import InfoBoxes from "../../components/InfoBoxes/InfoBoxes";
 import { setDocumentTitle } from "../../assets/js/Helpers";
 import { textArray } from "../../assets/_data/_data-about";
-import Images from "../../assets/_data/_data-carousel";
+import {Images} from "../../assets/_data/_data-carousel";
 import SiteData from "../../assets/_data/_data";
 
 const About = props => {
   // Carousel images
-  // ARR - put objects into array (need for .map())
-  const images = [];
-  for (let i = 0; i < Images.length; i++) {
-    images.push({
-      src: `${Images[i].src}`,
-      name: Images[i].alt
-    });
-  }
-  // (END) Carousel images
-
-  const imgCarousel = <CarouselDynamic imgsArr={images} />;
+  const imgCarousel = <CarouselDynamic imgsArr={Images} />;
 
   useEffect(() => {
     setDocumentTitle(`About ${SiteData.brand.name}`);

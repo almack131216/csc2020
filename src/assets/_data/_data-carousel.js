@@ -1,10 +1,10 @@
-import img1 from "../images/carousel/aston-martin-front.jpg";
-import img2 from "../images/carousel/aston-martin-rear.jpg";
-import img3 from "../images/carousel/jaguar-etype.jpg";
-import img4 from "../images/carousel/showroom.jpg";
-import img5 from "../images/carousel/triumph-tr6-headlamp.jpg";
+import img1 from "../images/carousel/homepage/aston-martin-front.jpg";
+import img2 from "../images/carousel/homepage/aston-martin-rear.jpg";
+import img3 from "../images/carousel/homepage/jaguar-etype.jpg";
+import img4 from "../images/carousel/homepage/showroom.jpg";
+import img5 from "../images/carousel/homepage/triumph-tr6-headlamp.jpg";
 
-const imgArray = [
+const imgArr = [
   {
     src: img1,
     alt: "alt 1"
@@ -27,4 +27,15 @@ const imgArray = [
   }
 ];
 
-export default imgArray;
+// Carousel images
+// ARR - put objects into array (need for .map())
+let Images = [];
+for (let i = 0; i < imgArr.length; i++) {
+  Images.push({
+    src: `${imgArr[i].src}`,
+    name: imgArr[i].alt
+  });
+}
+// (END) Carousel images
+
+export { imgArr, Images };

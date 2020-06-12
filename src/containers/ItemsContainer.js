@@ -6,7 +6,7 @@ import ItemsFilter from "./ItemsFilter/ItemsFilter";
 import TitleText from "../components/TitleText/TitleText";
 import ItemsList from "../components/Items/ItemsList/ItemsList";
 import Pagination from "../components/Pagination/Pagination";
-import CarouselDynamic from "../components/CarouselDynamic/CarouselDynamic";
+// import CarouselDynamic from "../components/CarouselDynamic/CarouselDynamic";
 import { withItemConsumer } from "../Context";
 import Loading from "../components/Loading/Loading";
 import Linkify from 'linkifyjs/react';// 2do - might not need when we lose /2020/ subdir
@@ -113,7 +113,7 @@ function ItemsContainer({ context }) {
             </div>
         </div>
       }
-      {
+      {/* {
         // 2do - when we no longer need the /2020/ subdir, undo this
         categoryArr.name === "Restoration" &&
         <div className="title-text">
@@ -124,7 +124,7 @@ function ItemsContainer({ context }) {
             {text}</div>
           ) : null}
         </div>
-      }
+      } */}
       {      
       categoryArr.name !== "Archive" && categoryArr.name !== "Restoration" && titlesComponent
       }

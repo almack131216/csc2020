@@ -12,7 +12,7 @@ import {
   CB_OpeningHours
 } from "../../components/ContactBoxes/ContactBoxes";
 import InfoBoxes from "../../components/InfoBoxes/InfoBoxes";
-import Images from "../../assets/_data/_data-carousel";
+import {Images} from "../../assets/_data/_data-carousel";
 
 const Home = props => {
   const context = useContext(ItemContext);
@@ -25,17 +25,7 @@ const Home = props => {
   const columnsContact = [CB_OpeningHours, CB_Contact];
 
   // Carousel images
-  // ARR - put objects into array (need for .map())
-  const images = [];
-  for (let i = 0; i < Images.length; i++) {
-    images.push({
-      src: `${Images[i].src}`,
-      name: Images[i].alt
-    });
-  }
-  // (END) Carousel images
-
-  const imgCarousel = <CarouselDynamic imgsArr={images} />;
+  const imgCarousel = <CarouselDynamic imgsArr={Images} />;
 
   useEffect(() => {
     getData("Home");

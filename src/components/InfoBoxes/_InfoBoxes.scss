@@ -10,6 +10,23 @@ section.generic-row {
   width: 100%;
   background: white;
   box-sizing: border-box;
+
+  &.pad-x-2 {
+    @include resp-prop-half("padding-left", $offset-g2);
+    @include resp-prop-half("padding-right", $offset-g2);
+  }
+
+  &.pad-y {
+    @include resp-prop-half("padding-top", $offset-g1);
+    @include resp-prop-half("padding-bottom", $offset-g1);
+  }
+  &.pad-y-2 {
+    @include resp-prop-half("padding-top", $offset-g2);
+    @include resp-prop-half("padding-bottom", $offset-g2);
+  }
+  &.pad-bottom-2 {
+    @include resp-prop-half("padding-bottom", $offset-g2);
+  }
 }
 
 .flex-list {

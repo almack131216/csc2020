@@ -220,8 +220,7 @@ const catArray = {
     titleSub: "Thanks to all our customers over the years",
     titleHover: "Link to our history page",
     titleDocument: "History: 1991-Today",
-    text:
-      "April 4th 1991 was the date of incorporation of our company, previously known as Grundy Mack. We began trading at the height of the last recession, and we’re busy trading through another. As long as there are men and women with a love of nostalgia and old cars, there will always be a business in buying and selling them. But it’s been much more than a business – more a way of life.",
+    text: "April 4th 1991 was the date of incorporation of our company, previously known as Grundy Mack. We believe that as long as there are men and women with a love of nostalgia and old cars, there will always be a business in buying and selling them but for us it’s been much more than a business – more a way of life.",
     slug: "/history",
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=History`,
     settings: {

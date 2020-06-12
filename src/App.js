@@ -3,6 +3,7 @@ import "./assets/css/bootstrap.min.css";
 import "./App.scss";
 import Home from "./pages/Homepage/Home";
 import About from "./pages/About/About";
+import Restoration from "./pages/Restoration/Restoration";
 import Archive from "./pages/Archive/Archive";
 import Items from "./pages/Items/Items";
 import ItemDetails from "./pages/ItemDetails/ItemDetails";
@@ -39,6 +40,40 @@ class App extends Component {
             <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
             <Route exact path={`${process.env.PUBLIC_URL}/about`} component={About} />
             <Route exact path={`${process.env.PUBLIC_URL}/sold`} component={Archive} />
+            <Route exact path={`${process.env.PUBLIC_URL}/restoration`} component={Restoration} />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/restoration/classic-car-maintenance`}
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="PageText"
+                  itemId={47562}
+                  pageStyle="ImgCarousel"
+                />
+              )}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/restoration/classic-car-body-and-paintwork`}
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="PageText"
+                  itemId={47563}
+                  pageStyle="ImgCarousel"
+                />
+              )}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/restoration/vehicle-upholstery-and-trimming`}
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="PageText"
+                  itemId={47564}
+                  pageStyle="ImgCarousel"
+                />
+              )}
+            />            
             <Route
               exact
               path={`${process.env.PUBLIC_URL}/selling-a-classic-car`}
@@ -84,11 +119,11 @@ class App extends Component {
                 />
               )}
             />        
-            <Route
+            {/* <Route
               exact
               path={`${process.env.PUBLIC_URL}/restoration`}
               component={() => <Items category="Restoration" />}
-            />
+            /> */}
             <Route exact path={`${process.env.PUBLIC_URL}/contact`} component={Contact} />
 
             <Route
