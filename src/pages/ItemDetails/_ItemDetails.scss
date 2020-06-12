@@ -45,19 +45,23 @@
     margin-top: 0;
     margin-bottom: $offset-g1;
   }
+}
 
-  .post-text-body {
-    line-height: $offset-g2;
+.post-text-body {
+  line-height: $base-font-line-height;
 
-    .excerpt {
-      display: block;
-      // font-weight: bold;
-      margin: 0 0 $offset-g1 0;
-    }
+  .excerpt {
+    display: block;
+    // font-weight: bold;
+    margin: 0 0 $offset-g1 0;
+  }
 
-    img {
-      max-width: 100%;
-    }
+  img {
+    max-width: 100%;
+  }
+
+  .slick-slider {
+    margin-bottom:$offset-g1;
   }
 }
 

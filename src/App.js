@@ -83,18 +83,7 @@ class App extends Component {
                   pageStyle="ImgCarousel"
                 />
               )}
-            />
-            {/* <Route
-              exact
-              path={`${process.env.PUBLIC_URL}/restoration`}
-              component={routerProps => (
-                <ItemDetails
-                  categoryName="Restoration"
-                  itemId={46989}
-                  pageStyle="ImgCarousel"
-                />
-              )}
-            />             */}
+            />        
             <Route
               exact
               path={`${process.env.PUBLIC_URL}/restoration`}

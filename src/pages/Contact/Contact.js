@@ -66,6 +66,7 @@ const Contact = props => {
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9342.847452496195!2d-0.6581869!3d54.1674676!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x54cad499cf1d7ba1!2sClassic%20%26%20Sportscar%20Centre!5e0!3m2!1sen!2scz!4v1584009165896!5m2!1sen!2scz"
             width="100%"
             height="100%"
+            title="Google Map"
             frameBorder="0"
             style={{ border: "0", minHeight: "240px" }}
             allowFullScreen={false}

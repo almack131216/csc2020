@@ -137,7 +137,7 @@ const Item = memo(({ item, itemSettingsCust }) => {
   }
 
   const imgLink = url ? (
-    <a href={url} title={`Link to ${name} in a new window`} target="_blank">
+    <a href={url} title={`Link to ${name} in a new window`} target="_blank" without rel="noopener noreferrer">
       <Img src={[src, ImageNotFound]} alt={name} className="img-loading" />
     </a>
   ) : (
@@ -145,7 +145,7 @@ const Item = memo(({ item, itemSettingsCust }) => {
   );
 
   const titleLink = url ? (
-    <a href={url} title={`Link to ${name} in a new window`} target="_blank">
+    <a href={url} title={`Link to ${name} in a new window`} target="_blank" without rel="noopener noreferrer">
       {name}
     </a>
   ) : (

@@ -15,7 +15,6 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
     filterIsActive,
     categoryArr,
     subcategoryArr,
-    brand,
     brandArr,
     styleAppendClass
   } = context;

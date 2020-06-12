@@ -85,12 +85,15 @@ const ItemRelated = props => {
           case 3:
             setIrTitle("Testimonial from owner...");
             break;
+          default:
+            setIrTitle("More photos");
+            break;
         }
 
         setItemsRelated(getItemsRelated);
         setLoading(false);
       });
-  }, []);
+  }, [apiUrlRelated]);
 
   if (loading) {
     return <Loading />;

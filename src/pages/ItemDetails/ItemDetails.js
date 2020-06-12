@@ -220,7 +220,7 @@ export default class ItemDetails extends Component {
     }
     const imgLargeList = (
       <>
-        <a name="photos" />
+        <a name="photos">More photos...</a>
         <ImgList
           imgsArr={images}
           handleForLightbox={handleForLightbox.bind(this)}
@@ -243,6 +243,7 @@ export default class ItemDetails extends Component {
     // (END) GET appearance
 
     // RELATED | convert string array to number array: "123,456" -> [123,456]
+    console.log('[ItemDetails] itemPrimary = ', itemPrimary);
     let relatedItems = [];
     if (itemPrimary.related) {
       let tmpArr = itemPrimary.related

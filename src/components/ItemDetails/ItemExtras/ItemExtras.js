@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { FaFilePdf, FaCamera, FaInfoCircle } from "react-icons/fa";
 // import { GoFilePdf } from "react-icons/go";
 // import parse from "html-react-parser";

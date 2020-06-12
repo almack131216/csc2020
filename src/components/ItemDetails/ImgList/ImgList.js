@@ -2,7 +2,6 @@ import React from "react";
 import Img from "react-image";
 import ImageNotFound from "../../../assets/images/image-not-found.jpg";
 import { MdZoomOutMap, MdFileDownload } from "react-icons/md";
-import { Link } from "react-router-dom";
 
 const ImgList = props => {
   console.log("[ImgList] ...");

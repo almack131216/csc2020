@@ -120,7 +120,7 @@ function ItemsContainer({ context }) {
           {title ? <h1>{title}</h1> : null}          
           {text ? (
             <div className="post-text-body">
-            <CarouselDynamic itemId={46989}/>
+            <CarouselDynamic itemId={47693}/>
             {text}</div>
           ) : null}
         </div>

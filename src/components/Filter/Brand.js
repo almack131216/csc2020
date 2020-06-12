@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const brandFilter = props => {
   const brand = props.brand === 'all' ? 'all' : props.brand; //get active brand

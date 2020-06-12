@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import parse from "html-react-parser";
-import { Link, Redirect } from "react-router-dom";
 import NavLeft from '../../components/Sidebar/Navleft/NavLeft';
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import AlphabetList from "../../components/AlphabetList/AlphabetList"
@@ -23,7 +21,7 @@ const Archive = props => {
 	let classContainer = [ 'container items', 'a-z' ];
   // FUNCTIONS
 
-  const [brandsArr, setBrandsArr] = useState([]);
+  // const [brandsArr, setBrandsArr] = useState([]);
   const [brandsArrLite, setBrandsArrLite] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -55,47 +53,49 @@ const Archive = props => {
 		() => {
 			// window.scrollTo(0, 0);
       // console.log('[pages>Items.js] useEffect()...', categoryArr);      
-      setDocumentTitle('Classic Cars Sold (all)');
-      setLoading(true);
-    fetchItems();
-  }, []);
+      setDocumentTitle('Classic Cars Sold (all)');   
+      
+      const fetchItems = async () => {
+        setLoading(true);
+        await fetch(apiUrlRelated)
+          .then(response => response.json())
+          .then(data => {
+            console.log("[ItemRelated] useEffect() data: ", data);
+            let [...getBrandsArr] = [...data];
+            console.log(
+              "[ItemRelated] useEffect() getBrandsArr: ",
+              getBrandsArr
+            );
+            let getBrandsArrLite = [];
+            let letters = [];
+            let char = null;
+            for(let i = 0;i < getBrandsArr.length; i++){
+              char = getBrandsArr[i].brand[0].toLowerCase();
+              if(!letters.includes(char)){
+                letters.push(char);
+                getBrandsArrLite.push({value: 1, label: char, char: true});
+              }
+              getBrandsArrLite.push({value: getBrandsArr[i].id, label: `${getBrandsArr[i].brand} (${getBrandsArr[i].itemCount})`, href: `${getBrandsArr[i].slug}/sold`});
+            }
+            // getBrandsArr.map((item, index) => {
+            //   letters.indexOf('a') === -1 ? letters.push('a');
+            //   getBrandsArrLite.push({value: item.id, label: item.brand})
+            // });
+            console.log(
+              "[ItemRelated] useEffect() getBrandsArrLite: ",
+              getBrandsArrLite
+            );
+            // setBrandsArr(getBrandsArr);
+            setBrandsArrLite(getBrandsArrLite);
+            setLoading(false);
+          });
+      };
+      fetchItems();
+  }, [apiUrlRelated]);
 
   // const [items, setItems] = useState([]);
 
-  const fetchItems = async () => {
-    await fetch(apiUrlRelated)
-      .then(response => response.json())
-      .then(data => {
-        console.log("[ItemRelated] useEffect() data: ", data);
-        let [...getBrandsArr] = [...data];
-        console.log(
-          "[ItemRelated] useEffect() getBrandsArr: ",
-          getBrandsArr
-        );
-        let getBrandsArrLite = [];
-        let letters = [];
-        let char = null;
-        for(let i = 0;i < getBrandsArr.length; i++){
-          char = getBrandsArr[i].brand[0].toLowerCase();
-          if(!letters.includes(char)){
-            letters.push(char);
-            getBrandsArrLite.push({value: 1, label: char, char: true});
-          }
-          getBrandsArrLite.push({value: getBrandsArr[i].id, label: `${getBrandsArr[i].brand} (${getBrandsArr[i].itemCount})`, href: `${getBrandsArr[i].slug}/sold`});
-        }
-        // getBrandsArr.map((item, index) => {
-        //   letters.indexOf('a') === -1 ? letters.push('a');
-        //   getBrandsArrLite.push({value: item.id, label: item.brand})
-        // });
-        console.log(
-          "[ItemRelated] useEffect() getBrandsArrLite: ",
-          getBrandsArrLite
-        );
-        setBrandsArr(getBrandsArr);
-        setBrandsArrLite(getBrandsArrLite);
-        setLoading(false);
-      });
-  };
+  
 
 	return (
 		<div className={classContainer.join(' ')}>
@@ -111,7 +111,7 @@ const Archive = props => {
               <h1>Archive: 2007-today</h1>      
               <h2>Selling classic cars worldwide for over 25 years</h2>
               {/* <h3>Our online archive dates from 2007</h3> */}
-              {brandsArrLite ? <AlphabetList data={brandsArrLite}></AlphabetList> : 'Loading...'}
+              {brandsArrLite && !loading ? <AlphabetList data={brandsArrLite}></AlphabetList> : 'Loading...'}
               {/* {brandsArrLite ? <CustAlphabetSorter data={brandsArrLite}></CustAlphabetSorter> : 'Loading...'} */}
               {/* {brandsArrLite ? <CustAlphabetList data={brandsArrLite} parentSlug={''} /> : null } */}
               {/* <div className="alpha-list-wrap">

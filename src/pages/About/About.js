@@ -15,8 +15,6 @@ import Images from "../../assets/_data/_data-carousel";
 import SiteData from "../../assets/_data/_data";
 
 const About = props => {
-  let colClass = ["list-item", "flex-xs-12", "flex-tablet-6", "flex-sm-6"];
-
   // Carousel images
   // ARR - put objects into array (need for .map())
   const images = [];
