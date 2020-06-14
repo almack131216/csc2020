@@ -1,11 +1,12 @@
 import React from "react";
 import Item from "../Item/Item";
+import Loading from "../../Loading/Loading";
 
 const ItemsList = ({ items, layout }) => {
   if (items.length === 0) {
     return (
       <section className="items">
-        <h3>Unfortunately, no items matched your search parameters</h3>
+        <Loading />
       </section>
     );
   }
