@@ -21,7 +21,7 @@ const catArray = {
     apiItem: "./api-dummy/dummy-item-details.json",
     settings: {
       showFilter: false,
-      showBrandList: false,
+      showBrandList: true,
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
       showTitle: false,

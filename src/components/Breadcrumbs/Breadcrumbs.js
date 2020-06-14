@@ -104,25 +104,26 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
     );
   }
 
-  if (showBrandList) {
-    brandJumpList = (
-      <li className="li-jump-menu-wrap">
-        <FaChevronRight />
-        <form className={classForm}>
-          {/* select brand */}
-          <BrandFilter
-            label="Make"
-            classParent={classParent}
-            classLabel={classLabel}
-            classControl={classControl}
-            brand={subcategoryArr.slug}
-            brands={brandArr}
-          />
-          {/* (END) select brand */}
-        </form>
-      </li>
-    );
-  }
+  // 2do - restore when on LIVE domain
+  // if (showBrandList) {
+  //   brandJumpList = (
+  //     <li className="li-jump-menu-wrap">
+  //       <FaChevronRight />
+  //       <form className={classForm}>
+  //         {/* select brand */}
+  //         <BrandFilter
+  //           label="Make"
+  //           classParent={classParent}
+  //           classLabel={classLabel}
+  //           classControl={classControl}
+  //           brand={subcategoryArr.slug}
+  //           brands={brandArr}
+  //         />
+  //         {/* (END) select brand */}
+  //       </form>
+  //     </li>
+  //   );
+  // }
 
   // UI - better control styling of breadcrumbs - especially for responsive
   let classCrumbsUl = [];
