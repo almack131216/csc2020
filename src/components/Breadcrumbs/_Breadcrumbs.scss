@@ -72,7 +72,7 @@
 
         // on posts page
         // &.has-3-crumbs {
-        @media (max-width: $bp-tablet-1) {
+        @media (max-width: $bp-sm-1) {
           li.Live,
           li.Archive {
             .crumb-resp > span {
@@ -96,9 +96,12 @@
 
         // on single post page
         &.has-4-crumbs {
-          @media (max-width: $bp-sm-1) {
-            li.Live,
-            li.Archive {
+          @media (max-width: $bp-tablet-1) {
+            // li.Live,
+            // li.Archive {
+            //   display: none;
+            // }
+            li.crumb-item {
               display: none;
             }
           }

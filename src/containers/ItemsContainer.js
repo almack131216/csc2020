@@ -77,7 +77,7 @@ function ItemsContainer({ context }) {
   categoryArr.class = categoryArr.name;
   crumbsArr.push(categoryArr);
   // Archive (brand selected)
-  if (categoryArr.name === "Archive") {
+  if (categoryArr.name === "Archive" && subcategoryArr.brand) {
     if(subcategoryArr.brand){
       let subcatArr = {
         title: subcategoryArr.brand,
@@ -91,6 +91,17 @@ function ItemsContainer({ context }) {
       slug: `/sold`
     };
     crumbsArr.push(archiveAllArr);
+  }
+
+  // Brand crumb
+  if(categoryArr.name === "Live" && subcategoryArr.brand){
+    const saleStatus = categoryArr.name === "Live" ? '/for-sale' : '/sold';
+    const tmp = {
+      title: subcategoryArr.brand,
+      slug: `/${subcategoryArr.slug}${saleStatus}`,
+      class: 'crumb-subcategory'
+    }
+    crumbsArr.push(tmp);
   }
 
   if (loading) {

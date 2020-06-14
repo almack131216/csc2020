@@ -163,7 +163,7 @@ export default class ItemDetails extends Component {
     // (END) LIGHTBOX images
 
     // ITEM fields
-    let { title, subtitle, price, category, status, excerpt, description } = itemPrimary;
+    let { title, subtitle, price, category, status, excerpt, description, catalogue_subcat } = itemPrimary;
     // ITEM Price
     const priceFormatted = this.context.formatPrice(price, status);
     itemPrimary.priceFormatted = priceFormatted;
@@ -184,7 +184,24 @@ export default class ItemDetails extends Component {
     let crumbsArr = [];
     categoryArr.class = categoryArr.name;
     crumbsArr.push(categoryArr);
-    crumbsArr.push(itemPrimary);
+    // Brand crumb
+    if((catalogue_subcat && catalogue_subcat.brand) && (categoryArr.name === "Live" || categoryArr.name === "Archive")){
+      const saleStatus = categoryArr.name === "Live" ? '/for-sale' : '/sold';
+      const tmp = {
+        title: catalogue_subcat.brand,
+        slug: `/${catalogue_subcat.slug}${saleStatus}`,
+        class: 'crumb-subcategory'
+      }
+      crumbsArr.push(tmp);
+    }
+    // CRUMB - item
+    const itemCrumb = {
+      title: itemPrimary.title,
+      slug: itemPrimary.slug,
+      class: 'crumb-item'
+    }
+    crumbsArr.push(itemCrumb);
+
     const breadcrumbsTag = (
       <Breadcrumbs crumbsArr={crumbsArr} pageType="item-details" />
     );
