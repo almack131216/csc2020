@@ -43,6 +43,17 @@ class App extends Component {
             <Route exact path={`${process.env.PUBLIC_URL}/restoration`} component={Restoration} />
             <Route
               exact
+              path={`${process.env.PUBLIC_URL}/privacy`}
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="PageText"
+                  itemId={37006}
+                  pageStyle="TextOnly"
+                />
+              )}
+            />
+            <Route
+              exact
               path={`${process.env.PUBLIC_URL}/restoration/classic-car-maintenance`}
               component={routerProps => (
                 <ItemDetails

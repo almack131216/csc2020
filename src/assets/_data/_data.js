@@ -57,7 +57,11 @@ const siteData = {
       NavArray.press,
       NavArray.news
     ],
-    columnC: [NavArray.contact, NavArray.contactMap]
+    columnC: [
+      NavArray.contact,
+      NavArray.contactMap,
+      NavArray.privacyPolicy
+    ]
   }
 };
 

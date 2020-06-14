@@ -38,6 +38,11 @@ const Footer = () => {
                   {SiteData.navigationFooter.columnC[1].title}
                 </a>
               </li>
+              <li>
+              <Link to={SiteData.navigationFooter.columnC[2].slug}>
+                  {SiteData.navigationFooter.columnC[2].title}
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

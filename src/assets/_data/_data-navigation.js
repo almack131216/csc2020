@@ -121,6 +121,16 @@ const navArray = {
     target: "_blank",
     navTop: false,
     navSide: true
+  },
+  privacyPolicy: {
+    title: "Privacy Policy",
+    titleHover: "Link to the Classic and Sportscar Centre Privacy Policy page",
+    titleDocument:
+      "Privacy Policy",
+    slug: "/privacy",
+    navTop: false,
+    navSide: false,
+    class: ""
   }
 };
 
