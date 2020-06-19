@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
-import BrandFilter from "../../components/Filter/Brand";
+// import BrandFilter from "../../components/Filter/Brand";//2do - restore whn live
 import NavData from "../../assets/_data/_data-navigation";
 import { FaHome, FaFilter, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -14,9 +14,8 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   const {
     filterIsActive,
     categoryArr,
-    subcategoryArr,
-    brandArr,
-    styleAppendClass
+    // subcategoryArr,
+    // brandArr
   } = context;
 
   let crumbCount = 1; // home
@@ -58,29 +57,23 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   let btnToggleFilterClasses = ["btn icon-md btn-toggle-filter"];
 
   let showFilter = false;
-  let showBrandList = false;
+  // let showBrandList = false;//2do - restore when live
   switch (pageType) {
     case "item-details":
       showFilter = false;
-      showBrandList = false;
+      // showBrandList = false;
       break;
 
     case "items-list":
       if (catSettings && catSettings.showFilter) showFilter = true;
-      if (catSettings && catSettings.showBrandList) showBrandList = true;
+      // if (catSettings && catSettings.showBrandList) showBrandList = true;
       break;
 
     default:
       showFilter = false;
-      showBrandList = false;
+      // showBrandList = false;
   }
 
-  // pageType
-  // STYLE
-  let classForm = styleAppendClass("form-inline", "");
-  let classParent = styleAppendClass("form-group", "");
-  let classLabel = styleAppendClass("form-label", "display-none");
-  let classControl = styleAppendClass("form-control", "form-control-sm");
   // FUNC
   const toggleFilter = e => {
     e.preventDefault();

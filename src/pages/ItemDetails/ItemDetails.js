@@ -237,7 +237,7 @@ export default class ItemDetails extends Component {
     }
     const imgLargeList = (
       <>
-        <a name="photos">More photos...</a>
+        <a name="photos" href={`${this.state.path}#photos`}>More photos...</a>
         <ImgList
           imgsArr={images}
           handleForLightbox={handleForLightbox.bind(this)}
