@@ -45,11 +45,8 @@ export default class ItemProvider extends Component {
 
 		try {
 			this.setState({ loading: true });
-
 			const data = await fetch(CatData[this.state.categoryNameDefault].apiFeatured).then((data) => data.json());
-
 			const dataArchive = await fetch(CatData.Archive.apiFeatured).then((dataArchive) => dataArchive.json());
-
 			const dataOther = await fetch(CatData.General.apiFeatured).then((dataOther) => dataOther.json());
 
 			let items = this.formatData(data);
@@ -103,7 +100,6 @@ export default class ItemProvider extends Component {
 			}).then((data) => data.json());
 
 			const categoryName = getCategoryName; // ? getCategoryName : null;
-
 			const statusId = categoryName === 'Archive' ? 2 : 1;
 			const brandSlug = getBrandSlug ? getBrandSlug : null; // status determines Live or Archive
 
@@ -185,8 +181,8 @@ export default class ItemProvider extends Component {
 				sortRangeArr
 			});
 		} catch (error) {
-			console.log(error);
-			console.log('[Context] getDataItems > error: ' + error);
+			console.log('[Context] getDataItems() > error...');
+			console.log(error);			
 		}
 	};
 	// (END) getDataItems
@@ -269,8 +265,7 @@ export default class ItemProvider extends Component {
 		let tempItems = getItemsData.map((dataItem) => {
 			let id = dataItem.id;
 			let name = parse(dataItem.name);
-			// let slug = dataItem.slug;
-			let slug = this.generateSlugFromName(name);
+			let slug = this.generateSlugFromName(name);// 2do - get from API (dataItem.slug)
 			let status = dataItem.status;
 			let category = dataItem.category;
 			let categoryArr = this.getCategoryArr(category, dataItem.status);
@@ -282,8 +277,6 @@ export default class ItemProvider extends Component {
 			let year = dataItem.year;
 			let date = dataItem.createdAt;
 			let excerpt = dataItem.excerpt ? parse(getExcerpt(dataItem.excerpt)) : null;
-			// let image = `https://via.placeholder.com/150x110`; // `http://localhost:8080/csc2020-img/images/${dataItem.image}`;
-			// let image = `http://www.classicandsportscar.ltd.uk/images_catalogue/${dataItem.image}`;
 			let image = `${process.env.REACT_APP_IMG_DIR_LARGE}${dataItem.image}`;
 
 			let item = {
@@ -328,18 +321,8 @@ export default class ItemProvider extends Component {
 	formatCategoryLink = (getCategoryName, getItemStatus) => {
 		let itemCategoryName = getCategoryName ? getCategoryName : this.state.categoryNameDefault;
 
-		if (itemCategoryName === 4) return CatData.Press.slug;
-		if (itemCategoryName === 1) return CatData.General.slug;
-		if (itemCategoryName === 3) return CatData.Testimonials.slug;
-		if (itemCategoryName === 5) return CatData.News.slug;
-		if (itemCategoryName === 7) return CatData.PageText.slug;
-		if (itemCategoryName === 10) return CatData.History.slug;
-		if (itemCategoryName === 11) return CatData.Restoration.slug;
-
-		if (itemCategoryName === 2 && getItemStatus === 1) return CatData[this.state.categoryNameDefault].slug;
-
-		if ((itemCategoryName === 'Archive' || itemCategoryName === 2) && getItemStatus === 2)
-			return CatData.Archive.slug;
+		const tmpCategoryArr = this.getCategoryArr(getCategoryName, getItemStatus);
+		if(tmpCategoryArr.slug) return tmpCategoryArr.slug;
 
 		// ConsoleLog(
 		//   "[Context] formatCategoryLink > getCategoryName..." +
@@ -375,17 +358,15 @@ export default class ItemProvider extends Component {
 	getCategoryArr = (getCategoryName, getItemStatus) => {
 		let itemCategoryName = getCategoryName ? getCategoryName : this.state.categoryNameDefault;
 
-		if (itemCategoryName === 2 && getItemStatus === 1) return CatData[this.state.categoryNameDefault];
-
-		if (itemCategoryName === 3) return CatData.Testimonials;
-		if (itemCategoryName === 4) return CatData.Press;
 		if (itemCategoryName === 1) return CatData.General;
+		if (itemCategoryName === 2 && getItemStatus === 1) return CatData[this.state.categoryNameDefault];
+		if ((itemCategoryName === 2 || itemCategoryName === 'Archive') && getItemStatus === 2) return CatData.Archive;
+		if (itemCategoryName === 3) return CatData.Testimonials;
+		if (itemCategoryName === 4) return CatData.Press;		
 		if (itemCategoryName === 5) return CatData.News;
 		if (itemCategoryName === 7) return CatData.PageText;
 		if (itemCategoryName === 10) return CatData.History;
 		if (itemCategoryName === 11) return CatData.Restoration;
-
-		if ((itemCategoryName === 'Archive' || itemCategoryName === 2) && getItemStatus === 2) return CatData.Archive;
 
 		// ConsoleLog(
 		//   "[Context] getCategoryArr > getCategoryName...",
@@ -398,7 +379,7 @@ export default class ItemProvider extends Component {
 	// [domain]/item-slug/category-slug/item-id
 	formatItemLink = (getItem) => {
 		let { id, name, slug, status, category } = getItem;
-		// ConsoleLog("??? item this.state.categoryName: ", this.state.categoryName);
+		// ConsoleLog("[Context] formatItemLink() > item this.state.categoryName: ", this.state.categoryName);
 		let itemSlug = slug;
 		if (!slug) itemSlug = slugify(name, { lower: true });
 		let itemLink = `/${itemSlug}`;
@@ -416,6 +397,7 @@ export default class ItemProvider extends Component {
 	/////////////////////////////////////////////////////////////////////////// GENERATE slug from name
 	// sanitize the name so it is URL friendly
 	// Porsche 911 GT3 3.8 PDK -> porsche-911-gt3-3.8-pdk
+	// 2do - have this done at the API or CMS (field) to save processing time
 	generateSlugFromName = (getName) => {
 		getName = slugify(getName, { lower: true });
 		return getName;
