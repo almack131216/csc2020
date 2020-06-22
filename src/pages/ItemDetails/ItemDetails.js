@@ -136,7 +136,8 @@ export default class ItemDetails extends Component {
     // ARR - put objects into array (need for .map())
     const images = [];
     const pdfs = [];
-    // XXX - for testing purposes only (2do)
+    // 2do - for testing purposes only - show high-res images for just this item
+    // 2do - update with high-res image for all when we have that working in the CMS
     const imgDirHighRes =
       itemPrimary.id === 38097
         ? "https://www.classicandsportscar.ltd.uk/uploads/high-res/"

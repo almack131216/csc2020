@@ -98,7 +98,6 @@ const ItemRelated = props => {
   return (
     <div className={classesWrap.join(" ")}>
       <h5>{irTitle}</h5>
-      {/* <p>!!!{itemsRelated ? itemsRelated : "xxxxxxx"}</p> */}
       {itemsRelated.map((item, index) => {
         return <PrintItem key={index} item={item} url={formatItemLink(item)} />;
       })}

@@ -180,9 +180,9 @@ const catArray = {
       showWidgetContactDetails: true,
       showTitle: true,
       showTitleSub: true,
-      layout: "grid accentXXX",
+      layout: "grid",
       item: {
-        layout: "item-card accentXXX",
+        layout: "item-card",
         showPrice: false,
         showRibbons: false,
         showYear: false,

@@ -62,7 +62,7 @@ const Restoration = props => {
         <div className="content">{imgCarousel}</div>
       </section>
 
-      <section className="generic-rowXXX pad-x-2XXX pad-y-2XXX">
+      <section>
         <div className="title-text border-0">
           <h1>{catData["Restoration"].title}</h1>
           <div className="post-text-body">
