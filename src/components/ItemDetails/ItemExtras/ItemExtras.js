@@ -63,7 +63,7 @@ const ItemExtras = props => {
   // ATTACHMENT
   let attachmentsRow = null;
   if(props.itemAttachments && props.itemAttachments.length){
-    console.log('??? ATTACHMENTS: ', props.itemAttachments);
+    // console.log('[ItemExtras] ATTACHMENTS: ', props.itemAttachments);
     const attachments = props.itemAttachments.map((item, index) => {
       return (<li key={index}>
         <a href={item.thumb} target="_blank" rel="noopener noreferrer" className="icon-text">

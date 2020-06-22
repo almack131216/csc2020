@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import SiteData from './assets/_data/_data';
 import CatData from './assets/_data/_data-categories';
 import SortFilterRangeData from './assets/_data/_data-filter-sort';
-import { setDocumentTitle, getDateToday, getExcerpt, apiGetItems } from './assets/js/Helpers';
+import { setDocumentTitle, getDateToday, getExcerpt, apiGetItems, ConsoleLog } from './assets/js/Helpers';
 const slugify = require('slugify');
 const ItemContext = React.createContext();
 //
@@ -55,7 +55,7 @@ export default class ItemProvider extends Component {
 			let items = this.formatData(data);
 			let itemsArchive = this.formatData(dataArchive);
 			let itemsOther = this.formatData(dataOther);
-			// console.log("[Context.js] getData > items...", items);
+			// ConsoleLog("[Context] getData > items..." + items);
 
 			//////////////
 			// FEATURED //
@@ -66,7 +66,7 @@ export default class ItemProvider extends Component {
 			let featuredItemsArchive = itemsArchive.slice(0, SiteData.featuredItems.itemCount);
 			let featuredItemsNews = itemsOther.slice(2, 4);
 			let featuredItemsTestimonials = itemsOther.slice(0, 2);
-			console.log('???????????', featuredItemsNews);
+			ConsoleLog('[Context] featuredItemsNews: ' + featuredItemsNews);
 
 			///////////////
 			// SET STATE //
@@ -79,7 +79,7 @@ export default class ItemProvider extends Component {
 				loading: false
 			});
 		} catch (error) {
-			console.log('[Context.js] getData > error...', error);
+			console.log('[Context] getData > error: ' + error);
 		}
 	};
 	// (END) getData
@@ -88,7 +88,8 @@ export default class ItemProvider extends Component {
 	// Get data from API to show on the items page(s)
 	// accept category and status parameter to determine api call
 	getDataItems = async (getCategoryName, getBrandSlug) => {
-		console.log('[Context.js] getDataItems()...', getCategoryName, getBrandSlug);
+		ConsoleLog('[Context] getDataItems() > getCategoryName: ' + getCategoryName);
+		ConsoleLog('[Context] getDataItems() > getBrandSlug: ' + getBrandSlug);
 
 		try {
 			this.setState({ loading: true });
@@ -115,12 +116,12 @@ export default class ItemProvider extends Component {
 			if (brandSlug) {
 				subcategoryArr = allItems.find((x) => x.subcategoryArr.slug === brandSlug).subcategoryArr;
 				brand = subcategoryArr.id;
-				console.log('[Context.js] brandSlug received...', brand);
+				ConsoleLog('[Context] brandSlug received...' + brand);
 				sortedItems = allItems.filter((item) => item.subcategoryArr.slug === brandSlug);
 			} else {
 				sortedItems = allItems;
 			}
-			// console.log("[Context.js] getDataItems > items...", items);
+			// ConsoleLog("[Context] getDataItems > items..." + items);
 
 			////////////
 			// FILTER // properties based on items
@@ -154,7 +155,7 @@ export default class ItemProvider extends Component {
 			// CONDITION: Only show Years option for Live/Archive pages
 			sortRangeArr.push(SortFilterRangeData.YearDesc);
 			sortRangeArr.push(SortFilterRangeData.YearAsc);
-			// console.log("[Context.js] sortRangeArr...", sortRangeArr);
+			// ConsoleLog("[Context] sortRangeArr..." + sortRangeArr);
 			const sortByArr = sortRangeArr[0];
 			const sortBy = sortByArr.name;
 
@@ -185,23 +186,23 @@ export default class ItemProvider extends Component {
 			});
 		} catch (error) {
 			console.log(error);
-			console.log('[Context.js] getDataItems > error...', error);
+			console.log('[Context] getDataItems > error: ' + error);
 		}
 	};
 	// (END) getDataItems
 
 	componentDidMount() {
-		// console.log(
-		//   "[Context.js] componentDidMount()... category = " +
+		// ConsoleLog(
+		//   "[Context] componentDidMount()... category = " +
 		//     this.state.categoryName
 		// );
 	}
 
 	componentDidUpdate() {
-		console.log(
-			'[Context.js] componentDidUpdate() > categoryName = ',
-			this.state.categoryName,
-			' | brand = ' + this.state.brand
+		ConsoleLog(
+			'[Context] componentDidUpdate() > categoryName: '
+			+ this.state.categoryName
+			+ ' | brand = ' + this.state.brand
 		);
 	}
 
@@ -229,7 +230,7 @@ export default class ItemProvider extends Component {
 			{ id: 'all', brand: 'ALL', slug: 'classic-cars-for-sale', itemCount: myObj.length },
 			...myUniqueBrandListWithCount
 		];
-		console.log('[Context.js] myUniqueBrandList...', myUniqueBrandListWithCount);
+		ConsoleLog('[Context] myUniqueBrandList...' + myUniqueBrandListWithCount);
 		return myUniqueBrandListWithCount;
 	};
 
@@ -340,8 +341,8 @@ export default class ItemProvider extends Component {
 		if ((itemCategoryName === 'Archive' || itemCategoryName === 2) && getItemStatus === 2)
 			return CatData.Archive.slug;
 
-		// console.log(
-		//   "[Context.js] formatCategoryLink > getCategoryName...",
+		// ConsoleLog(
+		//   "[Context] formatCategoryLink > getCategoryName..." +
 		//   getCategoryName + ", getItemStatus: " + getItemStatus
 		// );
 		return CatData[itemCategoryName].slug;
@@ -350,7 +351,7 @@ export default class ItemProvider extends Component {
 	/////////////////////////////////////////////////////////////////////////// GET category link tag
 	// get slug from CatData based on categoryName
 	getCategoryLinkTag = (getCategoryArr) => {
-		console.log('[Context.js] getCategoryLinkTag...', getCategoryArr);
+		ConsoleLog('[Context] getCategoryLinkTag...' + getCategoryArr);
 
 		return getCategoryArr.slug ? (
 			<Link to={getCategoryArr.slug} className="link-category">
@@ -362,17 +363,10 @@ export default class ItemProvider extends Component {
 	/////////////////////////////////////////////////////////////////////////// FORMAT brand link
 	// get slug from CatData based on categoryName
 	formatBrandLink = (getStatusId, getBrandSlug) => {
-		console.log('[Context.js] formatBrandLink() getStatusId=',getStatusId,' | getBrandSlug=',getBrandSlug);
+		ConsoleLog('[Context] formatBrandLink() getStatusId: ' + getStatusId + ' | getBrandSlug: ' + getBrandSlug);
 		let apprendUrl = getStatusId === 2 ? '/sold' : '/for-sale';
 		let slug = '/' + getBrandSlug + apprendUrl;
-		console.log('[Context.js] formatBrandLink() slug=',slug,' | apprendUrl=',apprendUrl);
-		
-		// console.log(
-		//   "[Context.js] formatBrandLink > slug...",
-		//   slug,
-		//   getStatusId,
-		//   getBrandSlug
-		// );
+		ConsoleLog('[Context] formatBrandLink() slug: ' + slug + ' | apprendUrl: ' + apprendUrl);
 		return slug;
 	};
 
@@ -393,8 +387,8 @@ export default class ItemProvider extends Component {
 
 		if ((itemCategoryName === 'Archive' || itemCategoryName === 2) && getItemStatus === 2) return CatData.Archive;
 
-		// console.log(
-		//   "[Context.js] getCategoryArr > getCategoryName...",
+		// ConsoleLog(
+		//   "[Context] getCategoryArr > getCategoryName...",
 		//   getCategoryName + ", getItemStatus: " + getItemStatus
 		// );
 		return CatData[itemCategoryName];
@@ -404,12 +398,12 @@ export default class ItemProvider extends Component {
 	// [domain]/item-slug/category-slug/item-id
 	formatItemLink = (getItem) => {
 		let { id, name, slug, status, category } = getItem;
-		// console.log("??? item this.state.categoryName: ", this.state.categoryName);
+		// ConsoleLog("??? item this.state.categoryName: ", this.state.categoryName);
 		let itemSlug = slug;
 		if (!slug) itemSlug = slugify(name, { lower: true });
 		let itemLink = `/${itemSlug}`;
 		// if (this.state.categoryName && category === CatData[this.state.categoryName].id) {
-			// console.log("NO REPEAT CALL", CatData[this.state.categoryName].slug);
+			// ConsoleLog("NO REPEAT CALL", CatData[this.state.categoryName].slug);
 			// itemLink += this.state.categoryArr.slug;
 		// } else {
 			itemLink += `${this.formatCategoryLink(category, status)}`; //this.state.categoryNameDefault
@@ -446,9 +440,9 @@ export default class ItemProvider extends Component {
 		const value = target.type === 'checkbox' ? target.checked : target.value;
 		const name = event.target.name;
 		// const value = event.target.value;
-		// console.log("[Context.js] handleFilterChange > this is type..." + type);
-		console.log('[Context.js] handleFilterChange > ' + name + ' = ' + value);
-		// console.log("[Context.js] handleFilterChange > this is value..." + value);
+		// ConsoleLog("[Context] handleFilterChange > this is type..." + type);
+		ConsoleLog('[Context] handleFilterChange > ' + name + ' = ' + value);
+		// ConsoleLog("[Context] handleFilterChange > this is value..." + value);
 		this.setState(
 			{
 				[name]: value
@@ -464,14 +458,14 @@ export default class ItemProvider extends Component {
 	};
 	// filter items
 	filterItems = () => {
-		console.log('[Context.js] filterItems...');
+		ConsoleLog('[Context] filterItems...');
 		let { items, categoryName, brand, minPrice, maxPrice, minYear, maxYear, sortBy, sortRangeArr } = this.state;
 
 		// all the items
 		let sortedItems = [ ...items ];
 		// filter by brand
 		if (brand && brand !== 'all') {
-			// console.log("[Context.js] filterItems() > BRAND CHANGED", brand);
+			// ConsoleLog("[Context] filterItems() > BRAND CHANGED", brand);
 			sortedItems = sortedItems.filter((item) => item.brand === parseInt(brand));
 		}
 		// filter by price and year
@@ -483,11 +477,11 @@ export default class ItemProvider extends Component {
 				: sortedItems;
 
 		const sortByArr = sortRangeArr.find((item) => item.name === sortBy);
-		// console.log("[Context.js] filterItems > sortByArr...", sortBy, sortByArr);
+		// ConsoleLog("[Context] filterItems > sortBy: " + sortBy + ", sortByArr: " + sortByArr);
 		const field = sortByArr.field;
 		const field2 = sortByArr.field2;
 		sortedItems.sort(this.fieldSorter([ field, field2 ]));
-		console.log('[Context.js] filterItems > sortedItems...', sortedItems);
+		ConsoleLog('[Context] filterItems > sortedItems...' + sortedItems);
 
 		///////////////
 		// SET STATE //

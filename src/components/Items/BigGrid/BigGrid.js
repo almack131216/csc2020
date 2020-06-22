@@ -3,7 +3,7 @@ import Item from "../Item/Item";
 
 const BigGrid = props => {
   const items = [...props.items];
-  console.log("[BigGrid] item[0] = ", items);
+  // console.log("[BigGrid] item[0] = ", items);
 
   // styling for Homepage News & Testimonials
   let settingsDefault = {};

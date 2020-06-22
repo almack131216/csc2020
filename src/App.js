@@ -13,7 +13,7 @@ import Error from "./pages/Error";
 import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import { setDocumentTitle } from "./assets/js/Helpers";
+import { setDocumentTitle, ConsoleLog } from "./assets/js/Helpers";
 
 class App extends Component {
   constructor(props) {
@@ -21,16 +21,16 @@ class App extends Component {
     // const context = useContext(ItemContext);
     // const { setDocumentTitle } = this.state;
     setDocumentTitle(process.env.REACT_APP_DOC_TITLE);
-    console.log("[App.js] constructor");
+    ConsoleLog("[App] constructor");
   }
 
   componentDidMount() {
-    console.log("[App.js] componentDidMount");
+    ConsoleLog("[App] componentDidMount");
   }
 
   render() {
-    // console.log("[App.js] render... ");
-    console.log("[App.js] render... ");
+    // ConsoleLog("[App] render... ");
+    ConsoleLog("[App] render... ");
 
     return (
       <div className="App">

@@ -11,13 +11,13 @@ const InfoBoxes = props => {
   }
 
   let colClass = ["list-item", "flex-xs-12", "flex-tablet-6"];
-  console.log("[InfoBoxes] columnCount = ", props.cols);
+  // console.log("[InfoBoxes] columnCount = ", props.cols);
   if (columnCount === 2) {
-    console.log("[InfoBoxes] columnCount = YES = ", columnCount);
+    // console.log("[InfoBoxes] columnCount = YES = ", columnCount);
     colClass.push("flex-sm-6");
   }
   if (columnCount === 3) {
-    console.log("[InfoBoxes] columnCount = YES = ", columnCount);
+    // console.log("[InfoBoxes] columnCount = YES = ", columnCount);
     colClass.push("flex-sm-4");
   }
 

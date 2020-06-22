@@ -9,7 +9,7 @@ import parse from "html-react-parser";
 */
 
 const TitleSplitter = props => {
-  console.log("[TitleSplitter.js]...", props.seeAllArr);
+  // console.log("[TitleSplitter]...", props.seeAllArr);
   const title = props.titleArr.title ? props.titleArr.title : null;
   const slug = props.titleArr.slug ? props.titleArr.slug : null;
   const body = props.titleArr.text ? props.titleArr.text : null;

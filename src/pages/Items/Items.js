@@ -22,15 +22,13 @@ const Items = (props) => {
 	let widgetContact = null;
 	// FUNCTIONS
 	let getBrandFromSlug = null;
-	let getSlug = window.location.pathname;
 	getBrandFromSlug = props.brand;
-	console.log('?>?>?>?>?>', props.brand, '>', getSlug, '>', getBrandFromSlug);
 	
 	// useEffect
 	useEffect(
 		() => {
 			window.scrollTo(0, 0);
-			console.log('[pages>Items.js] useEffect()...', getBrandFromSlug);
+			// console.log('[pages>Items] useEffect() > getBrandFromSlug: ' + getBrandFromSlug);
 			getDataItems(categoryName, getBrandFromSlug);
 		},
 		[ getDataItems, categoryName, getBrandFromSlug ]

@@ -11,7 +11,7 @@ import ImgGrid from "../../components/ItemDetails/ImgGrid/ImgGrid";
 import ImgList from "../../components/ItemDetails/ImgList/ImgList";
 import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import { ItemContext } from "../../Context";
-import { setDocumentTitle, apiGetItemDetails } from "../../assets/js/Helpers";
+import { setDocumentTitle, apiGetItemDetails, ConsoleLog } from "../../assets/js/Helpers";
 import Parser from "html-react-parser";
 import Lightbox from "react-image-lightbox";
 import Loading from "../../components/Loading/Loading";
@@ -24,7 +24,7 @@ import "react-image-lightbox/style.css";
 export default class ItemDetails extends Component {
   constructor(props) {
     super(props);
-    console.log("[Item.js] this.props...", this.props);
+    ConsoleLog("[Item] this.props: " + this.props);
     // REF: https://gist.github.com/nathanlogan/941f296aee7f3fa59689666382101d9f
     // get URL hash (minus the hash mark)
     const hash = window.location.hash.substring(1);
@@ -53,14 +53,14 @@ export default class ItemDetails extends Component {
 
   // LIGHTBOX - open lightbox on selected photoIndex
   handleForLightbox = getIndex => {
-    console.log("openLightbox()...", getIndex);
+    ConsoleLog("[ItemDetails] handleForLightbox() > getIndex: ", getIndex);
     const photoIndex = getIndex ? getIndex : 0;
     this.setState({ isOpen: true, photoIndex });
   };
 
   // Large Image List
   handleForLargeImageList = () => {
-    console.log("handleForLargeImageList()...", this.state.showImgLargeList);
+    ConsoleLog("[ItemDetails] handleForLargeImageList() > showImgLargeList: " + this.state.showImgLargeList);
     this.setState({ showImgLargeList: true });
   };
 
@@ -73,12 +73,12 @@ export default class ItemDetails extends Component {
 
   // API - componentDidMount
   async componentDidMount() {
-    // console.log("[ItemDetails.js] componentDidMount()...");
+    // ConsoleLog("[ItemDetails] componentDidMount()...");
     this.setState({ loading: true });
     await fetch(this.apiUrl)
       .then(response => response.json())
       .then(data => {
-        console.log("[ItemDetails.js] componentDidMount() data: ", data);
+        ConsoleLog("[ItemDetails] componentDidMount() > data: " + data);
         let [itemPrimary, ...itemImageAttachments] = data;
         itemPrimary.title = itemPrimary.year
           ? `${itemPrimary.year} ${Parser(itemPrimary.name)}`
@@ -129,8 +129,8 @@ export default class ItemDetails extends Component {
     if (loading) {
       return <Loading />;
     }
-    // console.log("FIRST:", itemPrimary); // 'PARENT item'
-    // console.log("images:", itemImages); // 'PARENT item attachments'
+    // ConsoleLog("[ItemDetails] FIRST:", itemPrimary); // 'PARENT item'
+    // ConsoleLog("[ItemDetails] images:", itemImages); // 'PARENT item attachments'
 
     // LIGHTBOX images
     // ARR - put objects into array (need for .map())
@@ -260,7 +260,7 @@ export default class ItemDetails extends Component {
     // (END) GET appearance
 
     // RELATED | convert string array to number array: "123,456" -> [123,456]
-    console.log('[ItemDetails] itemPrimary = ', itemPrimary);
+    ConsoleLog('[ItemDetails] itemPrimary: ' + itemPrimary);
     let relatedItems = [];
     if (itemPrimary.related) {
       let tmpArr = itemPrimary.related
@@ -277,11 +277,8 @@ export default class ItemDetails extends Component {
       relatedItems = relatedItems.concat(tmpArr2);
     }
     relatedItems = relatedItems.filter(e => e !== 0); // will remove '0' values
-    console.log(
-      "[ItemDetails] relatedItems = ",
-      relatedItems,
-      relatedItems.length
-    );
+    ConsoleLog("[ItemDetails] relatedItems: " + relatedItems + " (" + relatedItems.length + ")");
+
     const relatedItemsTag =
       relatedItems.length > 0 && !isNaN(relatedItems[0]) ? (
         <ItemRelated itemIds={relatedItems} />

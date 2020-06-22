@@ -3,7 +3,8 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import TitleText from "../../TitleText/TitleText";
 import Alert from "../Alert/Alert";
-const API_PATH = "https://www.amactive.net/csc2020-api/mail/index.php";
+import { ConsoleLog } from "../../../assets/js/Helpers";
+const API_PATH = "https://www.classicandsportscar.ltd.uk/2020/api/mail/index.php";
 
 const Request = () => {
   let [mailSent, setMailSent] = useState(null);
@@ -12,9 +13,9 @@ const Request = () => {
   const { register, handleSubmit, reset, errors } = useForm();
 
   // const onSubmit = data => {
-  //   console.log(data);
+  //   ConsoleLog(data);
   // }
-  console.log("[Request] ERRORS: ", errors);
+  ConsoleLog("[Request] errors: " + errors);
 
   const alertSent = (
     <Alert
@@ -44,12 +45,12 @@ const Request = () => {
 
   const onSubmit = data => {
     // e.preventDefault();
-    console.log("[Request] onSubmit > data = ", data);
+    ConsoleLog("[Request] onSubmit > data: " + data);
     if (errors.length > 0) {
-      console.log("[Request] onSubmit > errors (form not sent)", errors);
+      ConsoleLog("[Request] onSubmit > errors (form not sent): " + errors);
       return;
     }
-    console.log("[Request] onSubmit > send form...");
+    ConsoleLog("[Request] onSubmit > send form...");
     mailSent = setMailSent(null);
     mailSending = setMailSending(true);
     mailFailed = setMailFailed(null);
@@ -61,20 +62,18 @@ const Request = () => {
       if (response.data.status === "success") {
         // alert("Message Sent.");
         // this.resetForm()
-        console.log(
-          "[Request] onSubmit > send form > success: " + response.data.message
-        );
+        ConsoleLog("[Request] onSubmit > send form > success: " + response.data.message);
         mailSending = setMailSending(false);
         mailSent = setMailSent(true);
       } else if (response.data.status === "fail") {
         alert("Message failed to send.");
-        console.log("[Request] onSubmit > send form > fail: " + response);
+        ConsoleLog("[Request] onSubmit > send form > fail: " + response);
         mailSending = setMailSending(false);
         mailFailed = setMailFailed(true);
       }
     });
     // .catch(error => {
-    //   console.log("[Request] onSubmit > send form > fail: " + error.message);
+    //   ConsoleLog("[Request] onSubmit > send form > fail: " + error.message);
     //   mailFailed = setMailFailed("Bad!");
     // });
   };

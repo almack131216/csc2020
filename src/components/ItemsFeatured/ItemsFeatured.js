@@ -9,10 +9,7 @@ import Slider from "react-slick";
 export default class ItemsFeatured extends Component {
   constructor(props) {
     super(props);
-    console.log(
-      "[ItemsFeatured.js] constructor() > props.categoryName...",
-      props.categoryName
-    );
+    // console.log("[ItemsFeatured] constructor() > props.categoryName...", props.categoryName);
     this.switch = props.categoryName;
   }
 
@@ -25,7 +22,7 @@ export default class ItemsFeatured extends Component {
       featuredItems: items,
       featuredItemsArchive: items2
     } = this.context;
-    console.log("[ItemsFeatured.js] items...", items);
+    // console.log("[ItemsFeatured] items...", items);
 
     let SwitchItems = this.switch === "Live" ? items : items2;
     let itemSettingsCust = catData[this.switch]

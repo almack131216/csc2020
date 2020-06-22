@@ -13,7 +13,7 @@ const priceFilter = props => {
   let minPriceArr = priceRange.filter(item => item < props.maxPrice);
   let maxPriceArr = priceRange.filter(item => item > props.minPrice);
   maxPriceArr = [...maxPriceArr, maxPriceRounded]; //(value / 1000).toFixed() * 1000
-  console.log("[Filters > Price.js] minPriceArr...", minPriceArr);
+  console.log("[Filters > Price] minPriceArr: " + minPriceArr);
 
   return (
     <div className={classParent}>

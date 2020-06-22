@@ -4,7 +4,7 @@ import ImageNotFound from "../../../assets/images/image-not-found.jpg";
 import { MdZoomOutMap } from "react-icons/md";
 
 const ImgFeatured = props => {
-  console.log("[ImgFeatured] ...");
+  // console.log("[ImgFeatured] ...");
   const handleForLightbox = props.handleForLightbox;
   // const imgUrl = "https://via.placeholder.com/640x480";
   const imgUrl = `${process.env.REACT_APP_IMG_DIR_LARGE}${props.imgArr.image}`;

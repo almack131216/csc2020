@@ -7,7 +7,7 @@ import { FaHome, FaFilter, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Breadcrumbs({ items, crumbsArr, pageType }) {
-  console.log("[Breadcrumbs.js] ItemContext...", items, crumbsArr);
+  // console.log("[Breadcrumbs] ItemContext...", items, crumbsArr);
 
   // INIT context
   const context = useContext(ItemContext);
@@ -32,7 +32,7 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   const dynamicCrumbs =
     crumbsArr &&
     crumbsArr.map((item, index) => {
-      console.log("CRUMBS:", item.title, " | " + item.name);
+      // console.log("[Breadcrumbs] ", item.title, " | " + item.name);
       return item.title ? (
         <li key={index} className={item.class ? item.class : ""}>
           <FaChevronRight />
@@ -78,7 +78,6 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   const toggleFilter = e => {
     e.preventDefault();
     context.setFilterToggle();
-    // console.log("??? toggleFilter", catSettings.showFilter, filterIsActive);
   };
   // GET appearance
   if (showFilter) {

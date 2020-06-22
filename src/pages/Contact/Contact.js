@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
-import { setDocumentTitle } from "../../assets/js/Helpers";
+import { setDocumentTitle, ConsoleLog } from "../../assets/js/Helpers";
 import { imgArray, textArray } from "../../assets/_data/_data-contact";
 import SiteData from "../../assets/_data/_data";
 import BigGrid from "../../components/Items/BigGrid/BigGrid";
@@ -25,10 +25,8 @@ const Contact = props => {
   useEffect(() => {
     // getData("Contact");
     setDocumentTitle(`Contact ${SiteData.brand.name}`);
-
-    console.log(imgArray);
     const Images = [...imgArray];
-    console.log(Images);
+    // ConsoleLog(Images);
 
     // Carousel imgArray
     // ARR - put objects into array (need for .map())
@@ -42,7 +40,7 @@ const Contact = props => {
         excerpt: Images[i].excerpt
       });
     }
-    console.log(">>>", imgArr);
+    ConsoleLog("[Contact] imgArr: " + imgArr);
     setImages(imgArr);
 
     let gridSettings = {};
@@ -70,7 +68,7 @@ const Contact = props => {
             frameBorder="0"
             style={{ border: "0", minHeight: "240px" }}
             allowFullScreen={false}
-            aria-hidden="false"
+            aria-hidden={false}
             tabIndex="0"
           ></iframe>
         </div>

@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { ItemContext } from "../../../Context";
 
 const Item = memo(({ item, itemSettingsCust }) => {
-  // console.log("[Item.js] ...", itemSettingsCust);
+  // console.log("[Item] ...", itemSettingsCust);
   // INIT context
   const context = useContext(ItemContext);
   const {
@@ -137,7 +137,7 @@ const Item = memo(({ item, itemSettingsCust }) => {
   }
 
   const imgLink = url ? (
-    <a href={url} title={`Link to ${name} in a new window`} target="_blank" without rel="noopener noreferrer">
+    <a href={url} title={`Link to ${name} in a new window`} target="_blank" rel="noopener noreferrer">
       <Img src={[src, ImageNotFound]} alt={name} className="img-loading" />
     </a>
   ) : (
@@ -145,7 +145,7 @@ const Item = memo(({ item, itemSettingsCust }) => {
   );
 
   const titleLink = url ? (
-    <a href={url} title={`Link to ${name} in a new window`} target="_blank" without rel="noopener noreferrer">
+    <a href={url} title={`Link to ${name} in a new window`} target="_blank" rel="noopener noreferrer">
       {name}
     </a>
   ) : (

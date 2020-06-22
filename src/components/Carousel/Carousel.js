@@ -18,7 +18,7 @@ class SimpleSlider extends React.Component {
       slidesToScroll: 1
     };
 
-    console.log(Images);
+    // console.log('[Carousel] Images: ' + Images);
     const slides = Images.map((img, index) => {
       //   let imgUrl = `http://localhost:8080/csc2020-img/images/carousel/${img.url}`;
       let imgUrl = img.url;

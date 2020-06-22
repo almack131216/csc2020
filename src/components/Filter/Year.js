@@ -11,7 +11,7 @@ const yearFilter = props => {
   let classLabel = props.classLabel;
   let classControl = props.classControl;
   // (END) STYLE
-  console.log("[Filters > Year.js] minYear...", minYear, maxYear);
+  console.log("[Filters > Year] minYear: " + minYear + ", maxYear: " + maxYear);
 
   return (
     <div className={classParent}>

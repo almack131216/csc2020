@@ -5,13 +5,13 @@ import AlphabetList from "../../components/AlphabetList/AlphabetList"
 // import CustAlphabetSorter from "../../components/CustAlphabetSorter/CustAlphabetSorter";
 import { CB_Contact, CB_OpeningHours } from '../../components/ContactBoxes/ContactBoxes';
 import InfoBox from '../../components/InfoBoxes/InfoBox/InfoBox';
-import { setDocumentTitle } from "../../assets/js/Helpers";
+import { setDocumentTitle, ConsoleLog } from "../../assets/js/Helpers";
 // import { useContext } from 'react';
 // import { ItemContext } from '../../Context';
 
 const Archive = props => {
 
-  // console.log('[pages->Items]...')
+  // ConsoleLog('[pages->Items]...')
 	// INIT context
 	// const context = useContext(ItemContext);
 	// const { categoryArr } = context;
@@ -52,7 +52,6 @@ const Archive = props => {
 	useEffect(
 		() => {
 			// window.scrollTo(0, 0);
-      // console.log('[pages>Items.js] useEffect()...', categoryArr);      
       setDocumentTitle('Classic Cars Sold (all)');   
       
       const fetchItems = async () => {
@@ -60,12 +59,9 @@ const Archive = props => {
         await fetch(apiUrlRelated)
           .then(response => response.json())
           .then(data => {
-            console.log("[ItemRelated] useEffect() data: ", data);
+            ConsoleLog("[Archive] useEffect() > fetchItems() > data: " + data);
             let [...getBrandsArr] = [...data];
-            console.log(
-              "[ItemRelated] useEffect() getBrandsArr: ",
-              getBrandsArr
-            );
+            ConsoleLog("[Archive] useEffect() > fetchItems() > getBrandsArr: " + getBrandsArr);
             let getBrandsArrLite = [];
             let letters = [];
             let char = null;
@@ -81,10 +77,7 @@ const Archive = props => {
             //   letters.indexOf('a') === -1 ? letters.push('a');
             //   getBrandsArrLite.push({value: item.id, label: item.brand})
             // });
-            console.log(
-              "[ItemRelated] useEffect() getBrandsArrLite: ",
-              getBrandsArrLite
-            );
+            ConsoleLog("[ItemRelated] useEffect() > getBrandsArrLite: " + getBrandsArrLite);
             // setBrandsArr(getBrandsArr);
             setBrandsArrLite(getBrandsArrLite);
             setLoading(false);

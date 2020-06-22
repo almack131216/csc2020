@@ -12,7 +12,7 @@ import Loading from "../components/Loading/Loading";
 import Linkify from 'linkifyjs/react';// 2do - might not need when we lose /2020/ subdir
 
 function ItemsContainer({ context }) {
-  // console.log("[ItemsContainer.js] ...");
+  // console.log("[ItemsContainer] ...");
   //
   // INIT context
   const { categoryArr, siteData, loading, sortedItems, items, subcategoryArr } = context;

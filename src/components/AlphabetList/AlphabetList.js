@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const alphabetList = props => {
 
   const azList = props.data.map((item,index) => {
-    console.log('[AlphabetList] item = ' + item);
+    // console.log('[AlphabetList] item = ' + item);
     return <li key={index} className={item.char ? 'is-char' : ''}>
       {item.href ? <Link to={item.href}>{item.label}</Link> : item.label}
       </li>

@@ -3,7 +3,7 @@ import Img from "react-image";
 import ImageNotFound from "../../../assets/images/image-not-found.jpg";
 
 const ImgGrid = props => {
-  console.log("[ImgGrid] ...");
+  // console.log("[ImgGrid] ...");
   const handleForLightbox = props.handleForLightbox;
   const itemImages = props.imgsArr;
 

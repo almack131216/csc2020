@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { apiGetItemDetails } from "../../../assets/js/Helpers";
+import { apiGetItemDetails, ConsoleLog } from "../../../assets/js/Helpers";
 import Parser from "html-react-parser";
 // import Item from "../../Items/Item/Item";
 import { ItemContext } from "../../../Context";
@@ -37,7 +37,7 @@ const PrintItem = props => {
 
 const ItemRelated = props => {
   const itemIds = props.itemIds;
-  console.log("[ItemRelated] related itemId = ", props.itemIds, itemIds);
+  ConsoleLog("[ItemRelated] itemId: " + props.itemIds + ", itemIds: " + itemIds);
 
   // INIT context
   const context = useContext(ItemContext);
@@ -49,7 +49,7 @@ const ItemRelated = props => {
     itemId: itemIds.length === 1 ? itemIds : null,
     itemIds: itemIds.length > 1 ? itemIds : null
   };
-  console.log("[ItemRelated] apiArr = ", apiArr);
+  ConsoleLog("[ItemRelated] apiArr: " + apiArr);
 
   const [itemsRelated, setItemsRelated] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -59,7 +59,7 @@ const ItemRelated = props => {
   if (props.class) classesWrap.push(props.class);
 
   const apiUrlRelated = apiGetItemDetails(apiArr);
-  console.log("[ItemRelated] apiUrlRelated: ", apiUrlRelated);
+  ConsoleLog("[ItemRelated] apiUrlRelated: " + apiUrlRelated);
 
   // FETCH data
   useEffect(() => {
@@ -68,12 +68,9 @@ const ItemRelated = props => {
     fetch(apiUrlRelated)
       .then(response => response.json())
       .then(data => {
-        console.log("[ItemRelated] useEffect() data: ", data);
+        ConsoleLog("[ItemRelated] useEffect() data: " + data);
         let [...getItemsRelated] = [...data];
-        console.log(
-          "[ItemRelated] useEffect() getItemsRelated: ",
-          getItemsRelated
-        );
+        ConsoleLog("[ItemRelated] useEffect() getItemsRelated: " + getItemsRelated);
 
         switch (getItemsRelated[0].category) {
           case 1:

@@ -6,22 +6,22 @@ export function setDocumentTitle(getString) {
 }
 
 export function apiGetItems(getApiArr) {
-  console.log("[Helpers.js] apiGetItems()... ", getApiArr);
+  ConsoleLog("[Helpers] apiGetItems() > getApiArr: " + getApiArr);
   let apiUrl = getApiArr.base;
   if (getApiArr.brandId) apiUrl += `&brandId=${getApiArr.brandId}`;
   if (getApiArr.brandName) apiUrl += `&brandName=${getApiArr.brandName}`;
-  console.log("API: ", apiUrl);
+  ConsoleLog("[Helpers] apiGetItems() > apiUrl: " + apiUrl);
   return apiUrl;
   // return "../../api-dummy/dummy-item-details.json";
   // return `${process.env.REACT_APP_API_ENDPOINT}item/${getItemSlug}`;
 }
 
 export function apiGetItemDetails(getApiArr) {
-  // console.log("[Helpers.js] apiGetItemDetails()... ", getApiArr);
+  // ConsoleLog("[Helpers] apiGetItemDetails() > getApiArr: " + getApiArr);
   let apiUrl = `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=${getApiArr.categoryName}`;
   if (getApiArr.itemId) apiUrl += `&id=${getApiArr.itemId}`;
   if (getApiArr.itemIds) apiUrl += `&ids=${getApiArr.itemIds}`;
-  console.log("API: ", apiUrl);
+  ConsoleLog("[Helpers] apiGetItemDetails() > apiUrl: " + apiUrl);
   return apiUrl;
   // return "../../api-dummy/dummy-item-details.json";
   // return `${process.env.REACT_APP_API_ENDPOINT}item/${getItemSlug}`;
@@ -60,4 +60,8 @@ export function getExcerpt(sentence) {
     result = resultArray.join(" ") + "...";
   }
   return result;
+}
+
+export function ConsoleLog(msg) {
+  // console.log("[CLG] ", msg);
 }

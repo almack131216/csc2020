@@ -2,7 +2,7 @@ import React from "react";
 import { FaFacebook, FaYoutube, FaInstagram } from "react-icons/fa";
 
 const SocialBtns = props => {
-  console.log("[SocialBtns] props = ", props);
+  // console.log("[SocialBtns] props = ", props);
 
   const social = { ...props.social };
 

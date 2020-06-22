@@ -5,7 +5,7 @@ import Img from "react-image";
 import ImageNotFound from "../../../assets/images/image-not-found.jpg";
 
 const ItemLite = ({item, itemSettingsCust}) => {
-  // console.log("[ItemLite.js] ...", itemSettingsCust);
+  // console.log("[ItemLite] ...", itemSettingsCust);
   // INIT item
   const {
     name,

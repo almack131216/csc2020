@@ -4,7 +4,7 @@ import ImageNotFound from "../../../assets/images/image-not-found.jpg";
 import { MdZoomOutMap, MdFileDownload } from "react-icons/md";
 
 const ImgList = props => {
-  console.log("[ImgList] ...");
+  // console.log("[ImgList] ...");
   const handleForLightbox = props.handleForLightbox;
   const itemImages = props.imgsArr;
 
