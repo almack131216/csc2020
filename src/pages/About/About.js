@@ -26,12 +26,12 @@ const About = props => {
     {
       title: textArray.box1.title,
       text: parse(textArray.box1.text),
-      class: "title-red"
+      class: "title-green"
     },
     {
       title: textArray.box2.title,
       text: parse(textArray.box2.text),
-      class: "title-green"
+      class: "title-red"
     }
   ];
 
