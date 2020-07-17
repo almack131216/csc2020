@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const navLeft = props => {
   const navLinks = SiteData.navigation.map((link, index) => {
     // SET active class (basic: match url to slug)
-    let isActive = window.location.pathname === `/2020${link.slug}`;//2do - remove /2020 when we finally push to live root
+    let isActive = window.location.pathname === `${link.slug}`;// add /[dirname] if working in subdir
     // SET class to <li> tag so we can control responsive
     let liClass = link.class ? link.class : null;
     // SET active class (for when we are on a brand page - need to highlight parent category link)

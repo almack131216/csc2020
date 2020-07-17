@@ -41,7 +41,7 @@ function ItemsContainer({ context }) {
     text = catSettings.showTitle && categoryArr.text ? categoryArr.text : null;
       
     // LINKIFY - convert <a> tags to <Link> route tags
-    // To view our full online archive, please go to our <a href="/2020/sold">sold</a>
+    // To view our full online archive, please go to our <a href="/sold">sold</a>
     let textWithLinks = text ? <Linkify>{parse(text)}</Linkify> : null;
     // (END) LINKIFY
 
@@ -114,7 +114,7 @@ function ItemsContainer({ context }) {
 
       {
         // 2do - when we no longer need the /2020/ subdir, undo this
-        categoryArr.name === "Archive" &&
+        categoryArr.name === "ArchiveXXX" &&
         <div className="title-text">
           {title ? <h1>{title}</h1> : null}
           {titleSub ? <h2>{titleSub}</h2> : null}
@@ -124,20 +124,8 @@ function ItemsContainer({ context }) {
             </div>
         </div>
       }
-      {/* {
-        // 2do - when we no longer need the /2020/ subdir, undo this
-        categoryArr.name === "Restoration" &&
-        <div className="title-text">
-          {title ? <h1>{title}</h1> : null}          
-          {text ? (
-            <div className="post-text-body">
-            <CarouselDynamic itemId={47693}/>
-            {text}</div>
-          ) : null}
-        </div>
-      } */}
       {      
-      categoryArr.name !== "Archive" && categoryArr.name !== "Restoration" && titlesComponent
+      categoryArr.name !== "ArchiveXXX" && categoryArr.name !== "Restoration" && titlesComponent
       }
 
 

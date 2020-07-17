@@ -48,7 +48,7 @@ const catArray = {
     titleHover: "Link to archive showing cars sold over the years",
     titleDocument:
       "Classic Cars Sold by Classic and Sportscar Centre, Malton, North Yorkshire",
-      text: `To view our full online archive, please go to our <a href="/2020/sold">sold</a>`,
+      text: `Since 1991 we've sold towards £100,000,000 of classic vehicles. To view 2500 sold vehicles since we started our archive in 2007 please <a href="/sold">click here</a>`,
     slug: "/classic-car-archive",    
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Archive`,
     apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Archive`,

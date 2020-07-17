@@ -8,8 +8,8 @@ import { ItemProvider } from "./Context";
 
 ReactDOM.render(
   <ItemProvider>
-    {/* basename={process.env.REACT_APP_ROOT_DIR} */}
-    <Router basename="2020">
+    {/* <Router basename="2020"> */}
+    <Router>
       <App />
     </Router>
   </ItemProvider>,
