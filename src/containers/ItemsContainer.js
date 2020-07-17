@@ -119,8 +119,8 @@ function ItemsContainer({ context }) {
           {title ? <h1>{title}</h1> : null}
           {titleSub ? <h2>{titleSub}</h2> : null}
           <div className="post-text-body">
-            <span>To view our full online archive, please go to our </span>
-            <Link to="/sold">archive</Link>
+            <span>Since 1991 we've sold towards £100,000,000 of classic vehicles. To view 2500 sold vehicles since we started our archive in 2007 please </span>
+            <Link to="/sold">click here</Link>
             </div>
         </div>
       }
