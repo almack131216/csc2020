@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import SiteData from "../../assets/_data/_data";
 import SocialBtns from "../SocialBtns/SocialBtns";
 import parse from "html-react-parser";
+import CookieConsent from "react-cookie-consent";
 
 const Footer = () => {
   return (
+    <>
     <footer>
       <div className="container">
         <div className="row">
@@ -48,6 +50,8 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>
+    </>
   );
 };
 
