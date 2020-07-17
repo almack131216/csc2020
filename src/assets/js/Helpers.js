@@ -65,3 +65,10 @@ export function getExcerpt(sentence) {
 export function ConsoleLog(msg) {
   // console.log("[CLG] ", msg);
 }
+
+export function GetMailPath() {
+  // return "https://www.classicandsportscar.ltd.uk/2020/api/mail/index.php";
+  return `${process.env.REACT_APP_API_DIR}mail/index.php`;
+  // return `https://www.amactive.net/csc2020-api/mail/index.php`;
+}
+

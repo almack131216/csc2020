@@ -3,8 +3,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import TitleText from "../../TitleText/TitleText";
 import Alert from "../Alert/Alert";
-import { ConsoleLog } from "../../../assets/js/Helpers";
-const API_PATH = "https://www.classicandsportscar.ltd.uk/2020/api/mail/index.php";
+import { ConsoleLog, GetMailPath } from "../../../assets/js/Helpers";
 
 const Request = () => {
   let [mailSent, setMailSent] = useState(null);
@@ -12,10 +11,12 @@ const Request = () => {
   let [mailSending, setMailSending] = useState(null);
   const { register, handleSubmit, reset, errors } = useForm();
 
+  const API_PATH = GetMailPath();
+
   // const onSubmit = data => {
   //   ConsoleLog(data);
   // }
-  ConsoleLog("[Request] errors: " + errors);
+  if(errors.length > 0) console.log("[Request] errors: " + errors);
 
   const alertSent = (
     <Alert
@@ -43,39 +44,45 @@ const Request = () => {
       <TitleText title={title} titleSub={titleSub} text={pageText} parseText={true}/>
     ) : null;
 
-  const onSubmit = data => {
+  const onSubmit = data => {    
     // e.preventDefault();
     ConsoleLog("[Request] onSubmit > data: " + data);
     if (errors.length > 0) {
-      ConsoleLog("[Request] onSubmit > errors (form not sent): " + errors);
+      console.log("[Request] onSubmit > errors (form not sent): ", errors);
       return;
     }
     ConsoleLog("[Request] onSubmit > send form...");
+    ConsoleLog("[Request] onSubmit > send form... API_PATH: " + API_PATH);
+    console.log("[Request] onSubmit > send form... data: ", data);
+    
     mailSent = setMailSent(null);
     mailSending = setMailSending(true);
     mailFailed = setMailFailed(null);
+
     axios({
       method: "POST",
       url: `${API_PATH}`,
+      //headers: { "content-type": "application/json" },
       data: data
     }).then(response => {
-      if (response.data.status === "success") {
+      console.log("[Request] onSubmit > send form > response: ", response);
+      if (response.data.status === "success" || response.status === 200) {
         // alert("Message Sent.");
         // this.resetForm()
         ConsoleLog("[Request] onSubmit > send form > success: " + response.data.message);
         mailSending = setMailSending(false);
         mailSent = setMailSent(true);
-      } else if (response.data.status === "fail") {
+      } else if (response.data.status === "fail" || response.status !== 200) {
         alert("Message failed to send.");
-        ConsoleLog("[Request] onSubmit > send form > fail: " + response);
+        console.log("[Request] onSubmit > send form > fail: ", response);
         mailSending = setMailSending(false);
         mailFailed = setMailFailed(true);
       }
+    })
+    .catch(error => {
+      console.log("[Request] onSubmit > send form > fail: " + error.message);
+      mailFailed = setMailFailed("Bad!");
     });
-    // .catch(error => {
-    //   ConsoleLog("[Request] onSubmit > send form > fail: " + error.message);
-    //   mailFailed = setMailFailed("Bad!");
-    // });
   };
 
   return (
@@ -270,7 +277,7 @@ const Request = () => {
             <input
               type="button"
               value="Dummy Data"
-              className="btn pull-right"
+              className="btn pull-right cull-2do"
               onClick={() => {
                 reset({
                   fName: "al",
