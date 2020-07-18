@@ -10,7 +10,7 @@ const siteData = {
   },
   priceRangeArr: [0, 5000, 10000, 20000, 30000, 40000, 100000],
   featuredItems: {
-    itemCount: 8
+    itemCount: 7
   },
   pagination: {
     postsPerPage: 12

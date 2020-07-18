@@ -71,6 +71,22 @@ $card-color-accent-link-category: $color_secondary;
       }
     }
   }
+
+  &.custom-link {
+    article {
+      .card-img {
+        background:transparent;
+      }
+      .card-txt {
+        .title {
+          text-align:center;
+          a {
+            color:white;
+          }
+        }
+      }
+    }
+  }
 }
 
 @mixin item-card() {

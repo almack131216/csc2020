@@ -88,6 +88,10 @@
   }
 }
 
+.item-card.custom-link {
+  background: $color_accent;
+}
+
 .item.item-row {
   @include item-shared-props();
   @include item-row();

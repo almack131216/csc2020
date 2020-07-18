@@ -24,6 +24,8 @@ const Item = memo(({ item, itemSettingsCust }) => {
   } = context;
   // INIT item
   const {
+    isCustomLink,
+    slug,
     name,
     url,
     subcategoryArr,
@@ -86,7 +88,7 @@ const Item = memo(({ item, itemSettingsCust }) => {
         </span>
       ) : null;
 
-    categoryLinkTag = itemSettings.showCategoryLink ? (
+    categoryLinkTag = itemSettings.showCategoryLink && !isCustomLink > 1 ? (
       <Link
         className="category"
         to={formatBrandLink(status, subcategoryArr.slug)}
@@ -136,7 +138,7 @@ const Item = memo(({ item, itemSettingsCust }) => {
       ) : null;
   }
 
-  const imgLink = url ? (
+  let imgLink = url ? (
     <a href={url} title={`Link to ${name} in a new window`} target="_blank" rel="noopener noreferrer">
       <Img src={[src, ImageNotFound]} alt={name} className="img-loading" />
     </a>
@@ -144,13 +146,18 @@ const Item = memo(({ item, itemSettingsCust }) => {
     <Link to={formatItemLink(item)}>{myImg}</Link>
   );
 
-  const titleLink = url ? (
+  let titleLink = url ? (
     <a href={url} title={`Link to ${name} in a new window`} target="_blank" rel="noopener noreferrer">
       {name}
     </a>
   ) : (
     <Link to={formatItemLink(item)}>{name}</Link>
   );
+  if(isCustomLink){
+    itemClass.push('custom-link');
+    imgLink = <Link to={slug}>{myImg}</Link>;
+    titleLink = <Link to={slug}>{name}</Link>;
+  }
 
   return (
     <div className={itemClass.join(" ")}>

@@ -5,6 +5,7 @@ import Item from "../Items/Item/Item";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import MoreGrid from "../../assets/images/more-grid.png";
 
 export default class ItemsFeatured extends Component {
   constructor(props) {
@@ -19,18 +20,24 @@ export default class ItemsFeatured extends Component {
     let {
       catData,
       loading,
-      featuredItems: items,
-      featuredItemsArchive: items2
+      featuredItems,
+      featuredItemsArchive
     } = this.context;
     // console.log("[ItemsFeatured] items...", items);
 
-    let SwitchItems = this.switch === "Live" ? items : items2;
+    this.switch === "Live" && featuredItems && featuredItems.push({isCustomLink: true, id:1, name:'..See ALL models for sale', slug: 'classic-cars-for-sale', image: MoreGrid});
+    this.switch === "Archive" && featuredItemsArchive && featuredItemsArchive.push({isCustomLink: true, id:2, name:'..See ALL models sold', slug: 'sold', image: MoreGrid});
+
+    let SwitchItems = this.switch === "Live" ? featuredItems : featuredItemsArchive;
+    
+    //console.log(SwitchItems);
+
     let itemSettingsCust = catData[this.switch]
       ? { ...catData[this.switch].settings.item }
       : {};
     itemSettingsCust.layout = "item-card featured";
 
-    items = SwitchItems.map(item => {
+    let items = SwitchItems.map(item => {
       return (
         <Item key={item.id} item={item} itemSettingsCust={itemSettingsCust} />
       );
@@ -73,7 +80,12 @@ export default class ItemsFeatured extends Component {
     };
     return (
       <section className="featured-items-wrap">
-        {loading ? <Loading /> : <Slider {...settings}>{items}</Slider>}
+        {
+          loading ? <Loading /> : 
+          <Slider {...settings}>
+            {items}            
+          </Slider>
+          }
       </section>
     );
   }
