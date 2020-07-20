@@ -88,7 +88,7 @@ const Item = memo(({ item, itemSettingsCust }) => {
         </span>
       ) : null;
 
-    categoryLinkTag = itemSettings.showCategoryLink && !isCustomLink > 1 ? (
+    categoryLinkTag = itemSettings.showCategoryLink && !isCustomLink ? (
       <Link
         className="category"
         to={formatBrandLink(status, subcategoryArr.slug)}
