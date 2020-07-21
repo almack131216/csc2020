@@ -171,7 +171,7 @@ export default class ItemDetails extends Component {
     // ITEM category
     const categoryArr = this.context.getCategoryArr(category, status);
     const categoryLinkTag = this.context.getCategoryLinkTag(categoryArr);
-    setDocumentTitle(`${title} | ${categoryArr.title}`);
+    setDocumentTitle(`${title} ${categoryArr.title ? ' | ' + categoryArr.title : ''}`);
     const navLeft = <NavLeft categoryName={categoryArr.name} />;
     // ITEM excerpt + parsed
     const excerptParsed = excerpt

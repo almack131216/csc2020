@@ -29,7 +29,7 @@ const Archive = props => {
   let crumbsArr = [];
   let categorAboutArr = {
     title: "Classic Cars Sold",
-    slug: "/classic-car-archive"
+    slug: "/classic-cars-sold"
   };
   crumbsArr.push(categorAboutArr);
   let crumbAll = {

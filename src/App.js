@@ -38,7 +38,11 @@ class App extends Component {
         <main>
           <Switch>
             <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
+            <Route exact path={`${process.env.PUBLIC_URL}/homepage`} component={Home} />
+
             <Route exact path={`${process.env.PUBLIC_URL}/about`} component={About} />
+            <Route exact path={`${process.env.PUBLIC_URL}/about-classic-and-sportscar-centre`} component={About} />
+
             <Route exact path={`${process.env.PUBLIC_URL}/sold`} component={Archive} />
             <Route exact path={`${process.env.PUBLIC_URL}/restoration`} component={Restoration} />
             <Route
@@ -135,12 +139,19 @@ class App extends Component {
               path={`${process.env.PUBLIC_URL}/restoration`}
               component={() => <Items category="Restoration" />}
             /> */}
-            <Route exact path={`${process.env.PUBLIC_URL}/contact`} component={Contact} />
-
+            <Route exact path={ `${process.env.PUBLIC_URL}/contact`} component={Contact} />
+            <Route exact path={ `${process.env.PUBLIC_URL}/contact-details`} component={Contact} />
+            <Route exact path={ `${process.env.PUBLIC_URL}/malton/google-map`} component={Contact} />
+            
             <Route
               exact
               path={`${process.env.PUBLIC_URL}/classic-cars-for-sale`}
               component={() => <Items category="Live" />}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/classic-cars-sold`}
+              component={() => <Items category="Archive" />}
             />
             <Route
               exact
@@ -190,7 +201,18 @@ class App extends Component {
             />
             <Route
               exact
-              path={`${process.env.PUBLIC_URL}/*/classic-car-archive/:slug`}
+              path={`${process.env.PUBLIC_URL}/*/classic-cars-sold/:slug`}
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="Archive"
+                  itemId={routerProps.match.params.slug}
+                  pageStyle="ImgDetails"
+                />
+              )}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/*/classic-cars-sold/:slug`}
               component={routerProps => (
                 <ItemDetails
                   categoryName="Archive"

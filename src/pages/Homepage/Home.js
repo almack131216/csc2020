@@ -51,7 +51,7 @@ const Home = props => {
       <TitleSplitter
         titleArr={{
           title: catData["Archive"].title,
-          slug: catData["Archive"].slug,
+          slug: '/sold',
           seeAll: true
         }}
       />
