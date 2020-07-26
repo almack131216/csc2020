@@ -270,6 +270,7 @@ export default class ItemProvider extends Component {
 			let category = dataItem.category;
 			let categoryArr = this.getCategoryArr(category, dataItem.status);
 			let subcategoryArr = dataItem.catalogue_subcat;
+			if(!dataItem.catalogue_subcat.slug) dataItem.catalogue_subcat.slug = this.generateSlugFromName(dataItem.catalogue_subcat.brand);//if subcat slug is not defined
 			let price = dataItem.price;
 			let price_details = dataItem.price_details;
 			let source = dataItem.source;
