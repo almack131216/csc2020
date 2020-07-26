@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import fetch from 'cross-fetch';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
