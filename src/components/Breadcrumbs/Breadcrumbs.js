@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
-// import BrandFilter from "../../components/Filter/Brand";//2do - restore whn live
+import BrandFilter from "../../components/Filter/Brand";//2do - restore whn live
 import NavData from "../../assets/_data/_data-navigation";
 import { FaHome, FaFilter, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -14,8 +14,9 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   const {
     filterIsActive,
     categoryArr,
-    // subcategoryArr,
-    // brandArr
+    subcategoryArr,
+    brandArr,
+    styleAppendClass
   } = context;
 
   let crumbCount = 1; // home
@@ -57,21 +58,22 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   let btnToggleFilterClasses = ["btn icon-md btn-toggle-filter"];
 
   let showFilter = false;
-  // let showBrandList = false;//2do - restore when live
+  let showBrandList = false;
+
   switch (pageType) {
     case "item-details":
       showFilter = false;
-      // showBrandList = false;
+      showBrandList = false;
       break;
 
     case "items-list":
       if (catSettings && catSettings.showFilter) showFilter = true;
-      // if (catSettings && catSettings.showBrandList) showBrandList = true;
+      if (catSettings && catSettings.showBrandList) showBrandList = true;
       break;
 
     default:
       showFilter = false;
-      // showBrandList = false;
+      showBrandList = false;
   }
 
   // FUNC
@@ -96,26 +98,33 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
     );
   }
 
-  // 2do - restore when on LIVE domain
-  // if (showBrandList) {
-  //   brandJumpList = (
-  //     <li className="li-jump-menu-wrap">
-  //       <FaChevronRight />
-  //       <form className={classForm}>
-  //         {/* select brand */}
-  //         <BrandFilter
-  //           label="Make"
-  //           classParent={classParent}
-  //           classLabel={classLabel}
-  //           classControl={classControl}
-  //           brand={subcategoryArr.slug}
-  //           brands={brandArr}
-  //         />
-  //         {/* (END) select brand */}
-  //       </form>
-  //     </li>
-  //   );
-  // }
+  // brandlist
+  if (showBrandList) {
+    // STYLE
+  let classForm = styleAppendClass("form-inline", "");
+  let classParent = styleAppendClass("form-group", "");
+  let classLabel = styleAppendClass("form-label", "");
+  let classControl = styleAppendClass("form-control", "form-control-sm");
+  // (END) STYLE
+
+    brandJumpList = (
+      <li className="li-jump-menu-wrap">
+        <FaChevronRight />
+        <form className={classForm}>
+          {/* select brand */}
+          <BrandFilter
+            label="Make"
+            classParent={classParent}
+            classLabel={classLabel}
+            classControl={classControl}
+            brand={subcategoryArr.slug}
+            brands={brandArr}
+          />
+          {/* (END) select brand */}
+        </form>
+      </li>
+    );
+  }
 
   // UI - better control styling of breadcrumbs - especially for responsive
   let classCrumbsUl = [];
