@@ -264,7 +264,7 @@ export default class ItemProvider extends Component {
 	formatData(getItemsData) {
 		let tempItems = getItemsData.map((dataItem) => {
 			let id = dataItem.id;
-			let name = parse(dataItem.name);
+			let name = parse(dataItem.name).toString();
 			let slug = this.generateSlugFromName(name);// 2do - get from API (dataItem.slug)
 			let status = dataItem.status;
 			let category = dataItem.category;
@@ -277,7 +277,7 @@ export default class ItemProvider extends Component {
 			let brand = dataItem.brand;
 			let year = dataItem.year;
 			let date = dataItem.createdAt;
-			let excerpt = dataItem.excerpt ? parse(getExcerpt(dataItem.excerpt)) : null;
+			let excerpt = dataItem.excerpt ? parse(getExcerpt(dataItem.excerpt)).toString() : '...';
 			let image = `${process.env.REACT_APP_IMG_DIR_LARGE}${dataItem.image}`;
 
 			let item = {
