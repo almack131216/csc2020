@@ -67,7 +67,7 @@ hr {
  * Add the correct display in IE.
  */
 
-main {
+.main {
   display: block;
 }
 

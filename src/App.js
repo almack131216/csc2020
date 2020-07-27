@@ -35,7 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <main>
+        <div className="main">
           <Switch>
             <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
             <Route exact path={`${process.env.PUBLIC_URL}/homepage`} component={Home} />
@@ -279,7 +279,7 @@ class App extends Component {
 
             <Route component={Error} />
           </Switch>
-        </main>
+        </div>
         <Footer />
       </div>
     );
