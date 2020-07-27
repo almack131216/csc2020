@@ -10,7 +10,8 @@
     flex-direction: row;
     // Switch card-row
     @media (max-width: $bp-tablet-1) {
-      flex-direction: column;
+      flex-direction: unset;
+      align-content: flex-start;
     }
 
     .item-card:not(.featured) {
