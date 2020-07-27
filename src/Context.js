@@ -400,7 +400,8 @@ export default class ItemProvider extends Component {
 	// Porsche 911 GT3 3.8 PDK -> porsche-911-gt3-3.8-pdk
 	// 2do - have this done at the API or CMS (field) to save processing time
 	generateSlugFromName = (getName) => {
-		getName = slugify(getName, { lower: true });
+		// console.log('[Context] generateSlugFromName: ', getName);
+		getName = getName ? slugify(getName.toString(), { lower: true }) : 'stock';
 		return getName;
 	};
 
