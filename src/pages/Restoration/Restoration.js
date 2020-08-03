@@ -6,7 +6,7 @@ import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
 import ItemLite from "../../components/Items/Item/ItemLite";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
-import { setDocumentTitle } from "../../assets/js/Helpers";
+import { setDocumentTitle, ConsoleLog } from "../../assets/js/Helpers";
 import {
   CB_Contact,
   CB_OpeningHours
@@ -50,8 +50,11 @@ const Restoration = props => {
   const imgCarousel = <CarouselDynamic imgsArr={Images} />;
 
   useEffect(() => {
+    ConsoleLog('[Restoration]');
+    window.scrollTo(0, 0);
     setDocumentTitle(`Restoration Services`);
   }, []);
+  // (END) useEffect
 
   return (
     <React.Fragment>

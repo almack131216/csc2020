@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import InfoBox from "../../components/InfoBoxes/InfoBox/InfoBox";
@@ -8,11 +8,20 @@ import {
   CB_Contact,
   CB_OpeningHours
 } from "../../components/ContactBoxes/ContactBoxes";
+import { setDocumentTitle, ConsoleLog } from "../../assets/js/Helpers";
 
 const Request = props => {
   let crumbsArr = [];
-  let pageArr = NavData.request;
-  crumbsArr.push(pageArr);
+  // useEffect
+	useEffect(
+		() => {		
+      ConsoleLog('[Request]');	
+      let pageArr = NavData.request;
+      crumbsArr.push(pageArr);
+      window.scrollTo(0, 0);
+      setDocumentTitle('Request a car');
+  }, [crumbsArr]);
+  // (END) useEffect
 
   return (
     <div className="container">
