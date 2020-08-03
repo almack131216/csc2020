@@ -51,7 +51,7 @@ const Archive = props => {
 	// useEffect
 	useEffect(
 		() => {
-			// window.scrollTo(0, 0);
+			window.scrollTo(0, 0);
       setDocumentTitle('Classic Cars Sold (all)');   
       
       const fetchItems = async () => {

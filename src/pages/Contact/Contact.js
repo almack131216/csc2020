@@ -22,8 +22,10 @@ const Contact = props => {
 
   // const imgCarousel = <CarouselDynamic imgsArr={Images} />;
 
+  // useEffect
   useEffect(() => {
-    // getData("Contact");
+    ConsoleLog('[Contact]');
+    window.scrollTo(0, 0);
     setDocumentTitle(`Contact ${SiteData.brand.name}`);
     const Images = [...imgArray];
     // ConsoleLog(Images);
@@ -50,6 +52,7 @@ const Contact = props => {
     setImageSettings(gridSettings);
     // (END) Carousel Images
   }, []);
+  // (END) useEffect
 
   return (
     <React.Fragment>

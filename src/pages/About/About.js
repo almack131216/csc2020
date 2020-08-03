@@ -9,7 +9,7 @@ import {
   CB_OpeningHours
 } from "../../components/ContactBoxes/ContactBoxes";
 import InfoBoxes from "../../components/InfoBoxes/InfoBoxes";
-import { setDocumentTitle } from "../../assets/js/Helpers";
+import { setDocumentTitle, ConsoleLog } from "../../assets/js/Helpers";
 import { textArray } from "../../assets/_data/_data-about";
 import {Images} from "../../assets/_data/_data-carousel";
 import SiteData from "../../assets/_data/_data";
@@ -19,8 +19,11 @@ const About = props => {
   const imgCarousel = <CarouselDynamic imgsArr={Images} />;
 
   useEffect(() => {
+    ConsoleLog('[About]');
+    window.scrollTo(0, 0);
     setDocumentTitle(`About ${SiteData.brand.name}`);
   }, []);
+  // (END) useEffect
 
   const columnsArr = [
     {

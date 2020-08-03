@@ -6,7 +6,7 @@ import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
 import BigGrid from "../../components/Items/BigGrid/BigGrid";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
-import { setDocumentTitle } from "../../assets/js/Helpers";
+import { setDocumentTitle, ConsoleLog } from "../../assets/js/Helpers";
 import {
   CB_Contact,
   CB_OpeningHours
@@ -27,10 +27,14 @@ const Home = props => {
   // Carousel images
   const imgCarousel = <CarouselDynamic imgsArr={Images} />;
 
+  // useEffect
   useEffect(() => {
+    ConsoleLog('[Restoration]');
+    window.scrollTo(0, 0);
     getData("Home");
     setDocumentTitle(``);
   }, [getData]);
+  // (END) useEffect
 
   return (
     <React.Fragment>
