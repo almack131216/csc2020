@@ -7,11 +7,13 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { ItemProvider } from "./Context";
+import GA from './GoogleAnalytics'
 
 ReactDOM.render(
   <ItemProvider>
     {/* <Router basename="2020"> */}
     <Router>
+    { GA.init() && <GA.RouteTracker /> }
       <App />
     </Router>
   </ItemProvider>,
