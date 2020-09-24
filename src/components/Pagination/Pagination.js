@@ -16,11 +16,16 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
     let liClass = isPrev || isNext ? "li-prev-next" : "li-num";
     if (isActive === true) {
       liClass += " active";
+    }    
+
+    const updatePagination = (getPageNum) => {
+      window.scrollTo(0, 0);      
+      paginate(getPageNum);
     }
 
     let liTag = (
       <li key={liKey} className={liClass}>
-        <button onClick={() => paginate(num)}>
+        <button onClick={() => updatePagination(num)}>
           {isPrev ? <FaChevronLeft /> : null}
           {isNext ? <FaChevronRight /> : null}
           {!isPrev && !isNext ? num : null}
