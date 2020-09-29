@@ -27,7 +27,7 @@ class GoogleAnalytics extends Component {
     logPageChange (pathname, search = '') {               
         const page = pathname + search;
         const { location } = window;
-        console.log('GA | logPageChange() | page = ', page); 
+        // console.log('GA | logPageChange() | page = ', page); 
         ReactGA.set({
             page,
             location: `${location.origin}${page}`,
@@ -52,7 +52,7 @@ GoogleAnalytics.propTypes = {
 const RouteTracker = () => <Route component={GoogleAnalytics} />;
 
 const init = (options = {}) => {
-    const isGAEnabled = true;//process.env.NODE_ENV === 'production';
+    const isGAEnabled = process.env.NODE_ENV === 'production';
 
     if (isGAEnabled) {
         ReactGA.initialize("UA-12902280-1");
