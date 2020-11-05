@@ -48,12 +48,12 @@ const Request = () => {
     // e.preventDefault();
     ConsoleLog("[Request] onSubmit > data: " + data);
     if (errors.length > 0) {
-      console.log("[Request] onSubmit > errors (form not sent): ", errors);
+      ConsoleLog("[Request] onSubmit > errors (form not sent): ", errors);
       return;
     }
     ConsoleLog("[Request] onSubmit > send form...");
     ConsoleLog("[Request] onSubmit > send form... API_PATH: " + API_PATH);
-    console.log("[Request] onSubmit > send form... data: ", data);
+    ConsoleLog("[Request] onSubmit > send form... data: ", data);
     
     mailSent = setMailSent(null);
     mailSending = setMailSending(true);
@@ -65,7 +65,7 @@ const Request = () => {
       //headers: { "content-type": "application/json" },
       data: data
     }).then(response => {
-      console.log("[Request] onSubmit > send form > response: ", response);
+      ConsoleLog("[Request] onSubmit > send form > response: ", response);
       if (response.data.status === "success" || response.status === 200) {
         // alert("Message Sent.");
         // this.resetForm()

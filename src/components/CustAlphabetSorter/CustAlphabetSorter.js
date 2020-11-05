@@ -8,7 +8,7 @@ const slugify = require('slugify');
 const alphabetSorterCust = props => {
 
   const handleSorter = (selected) => {
-    console.log(selected)
+    // console.log(selected)
   }
 
   return (

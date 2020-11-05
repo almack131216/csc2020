@@ -22,7 +22,7 @@ const brandFilter = props => {
 
   const handleSelectChange = (e) => {
     const goToSlug = e.target.value === 'classic-cars-for-sale' ? 'classic-cars-for-sale' : `${e.target.value}/for-sale`;
-    console.log('[Brands] history: ', goToSlug);
+    // console.log('[Brands] history: ', goToSlug);
     
     // return <Redirect to='/target' />;
 		window.location = `/${goToSlug}`;

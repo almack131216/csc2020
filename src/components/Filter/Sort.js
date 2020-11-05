@@ -8,7 +8,7 @@ const sortFilter = props => {
   let classLabel = props.classLabel;
   let classControl = props.classControl;
   // (END) STYLE
-  console.log("[Filters > Sort] sortRangeArr: " + sortRangeArr);
+  // console.log("[Filters > Sort] sortRangeArr: " + sortRangeArr);
 
   return (
     <div className={classParent}>
