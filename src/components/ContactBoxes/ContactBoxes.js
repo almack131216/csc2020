@@ -6,7 +6,7 @@ import parse from "html-react-parser";
 const socialBtnsElement = <SocialBtns social={SiteData.social} classes="" />;
 
 const CB_OpeningHours = {
-  title: "Opening Hours",
+  title: "Office Hours",
   text: (
     <ul>
       <li>Mon-Fri: 9am-5.30pm</li>

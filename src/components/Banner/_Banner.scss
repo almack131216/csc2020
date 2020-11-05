@@ -1,0 +1,30 @@
+/* _Banner.scss */
+
+.banner {
+  @include resp-prop-half("padding-top", $offset-g2);
+  @include resp-prop-half("padding-bottom", $offset-g2);
+  @include resp-prop-half("padding-left", $offset-g2);
+  @include resp-prop-half("padding-right", $offset-g2);
+  width: 100%;
+  background: yellow;
+  box-sizing: border-box;
+
+  h1 {
+    margin-top:0;
+  }
+
+  .btn-primary {
+    svg {
+      margin-right:5px;
+    }
+  }
+
+  &.high-alert {
+    background: $color_accent3;
+
+    h1, a {
+      color:white;
+    }
+  }
+
+}

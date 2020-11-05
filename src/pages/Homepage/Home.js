@@ -3,6 +3,8 @@ import ItemsFeatured from "../../components/ItemsFeatured/ItemsFeatured";
 import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
+import Banner from "../../components/Banner/Banner";
+// import { Link } from "react-router-dom";
 import BigGrid from "../../components/Items/BigGrid/BigGrid";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
@@ -13,6 +15,7 @@ import {
 } from "../../components/ContactBoxes/ContactBoxes";
 import InfoBoxes from "../../components/InfoBoxes/InfoBoxes";
 import {Images} from "../../assets/_data/_data-carousel";
+import { FaChevronRight } from "react-icons/fa";
 
 const Home = props => {
   const context = useContext(ItemContext);
@@ -44,6 +47,14 @@ const Home = props => {
         </div>
         <div className="content">{imgCarousel}</div>
       </section>
+      <Banner title="Covid 19 update and opening information" subtitle="" type="high-alert">
+      <a href="https://www.classicandsportscar.ltd.uk/covid-19-november-update/news/50047" className="btn-primary">
+        <FaChevronRight />More information
+        </a>
+        {/* <Link to="/contact" className="btn-primary">
+        <FaChevronRight />Office Hours
+        </Link> */}
+      </Banner>
       <TitleSplitter
         titleArr={{
           title: catData["Live"].title,
