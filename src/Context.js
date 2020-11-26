@@ -279,6 +279,9 @@ export default class ItemProvider extends Component {
 			let date = dataItem.createdAt;
 			let excerpt = dataItem.excerpt ? parse(getExcerpt(dataItem.excerpt)).toString() : '...';
 			let image = dataItem.id > 801 ? `${process.env.REACT_APP_IMG_DIR}${dataItem.image}` : `${process.env.REACT_APP_IMG_DIR_LARGE}${dataItem.image}`;
+			let imageDir = dataItem.imageDir;
+			image = imageDir !== '' ? `${process.env.REACT_APP_IMG_DDIR}${imageDir}/large/${dataItem.image}` : image;
+			console.log('??? > ' + `${imageDir}` + ' > ' + image);
 
 			let item = {
 				id,
@@ -294,6 +297,7 @@ export default class ItemProvider extends Component {
 				source,
 				year,
 				image,
+				imageDir,
 				excerpt,
 				date
 			};
