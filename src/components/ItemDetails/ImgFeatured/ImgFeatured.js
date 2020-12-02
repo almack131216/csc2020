@@ -7,8 +7,8 @@ const ImgFeatured = props => {
   // console.log("[ImgFeatured] ...");
   const handleForLightbox = props.handleForLightbox;
   // const imgUrl = "https://via.placeholder.com/640x480";
-  const imgUrl = props.imgArr.imageDir ? `${process.env.REACT_APP_IMG_DDIR}${props.imgArr.imageDir}/large/${props.imgArr.image}` : `${process.env.REACT_APP_IMG_DIR_LARGE}${props.imgArr.image}`;
-  console.log('[ImgFeatured] ' + imgUrl);
+  const imgUrl = `${process.env.REACT_APP_IMG_DIR_LARGE}${props.imgArr.image}`;
+  // console.log('[ImgFeatured] ' + imgUrl);
 
   const imgPrimary = (
     <Img

@@ -47,8 +47,13 @@ const Home = props => {
         </div>
         <div className="content">{imgCarousel}</div>
       </section>
-      <Banner title="Covid 19 update and opening information" subtitle="" type="high-alert">
+      {/* <Banner title="Covid 19 update and opening information" subtitle="" type="high-alert">
       <a href="https://www.classicandsportscar.ltd.uk/covid-19-november-update/news/50047" className="btn-primary">
+        <FaChevronRight />More information
+        </a>
+      </Banner> */}
+      <Banner title="COVID 19 update, opening information & Christmas Message" subtitle="" type="christmas">
+      <a href="https://www.classicandsportscar.ltd.uk/covid-19-december-update-and-christmas-message/news/50425" className="btn-primary">
         <FaChevronRight />More information
         </a>
         {/* <Link to="/contact" className="btn-primary">

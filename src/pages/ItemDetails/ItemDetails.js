@@ -84,8 +84,8 @@ export default class ItemDetails extends Component {
           ? `${itemPrimary.year} ${Parser(itemPrimary.name)}`
           : Parser(itemPrimary.name);
         itemPrimary.itemPath = this.state.path;
-        itemPrimary.imagePath = itemPrimary.imageDir !== '' ? process.env.REACT_APP_IMG_DDIR + itemPrimary.imageDir + '/large/' + itemPrimary.image : process.env.REACT_APP_IMG_DIR_LARGE + itemPrimary.image;
-        console.log('[ItemDetails] ' + JSON.stringify(itemPrimary));
+        itemPrimary.imagePath = process.env.REACT_APP_IMG_DIR_LARGE + itemPrimary.image;
+        // console.log('[ItemDetails] ' + JSON.stringify(itemPrimary));
 
         const itemImages = [itemPrimary, ...itemImageAttachments];
         this.setState({ itemPrimary, itemImages, loading: false });
@@ -142,13 +142,12 @@ export default class ItemDetails extends Component {
       itemPrimary.id === 38097
         ? "https://www.classicandsportscar.ltd.uk/uploads/high-res/"
         : process.env.REACT_APP_IMG_DIR_LARGE;
-    if(itemPrimary.imageDir) imgDirHighRes = `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/large/`;
 
     for (let i = 0; i < itemImages.length; i++) {
       this.isFileImage(itemImages[i].image) ? 
       images.push({
         // src: "https://via.placeholder.com/640x480",
-        thumb: itemPrimary.imageDir ? `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/thumb/${itemImages[i].image}` : `${process.env.REACT_APP_IMG_DIR_THUMBS}${itemImages[i].image}`,
+        thumb: `${process.env.REACT_APP_IMG_DIR_THUMBS}${itemImages[i].image}`,
         src: `${imgDirHighRes}${itemImages[i].image}`,
         filename: itemImages[i].image,
         name: itemImages[i].name
