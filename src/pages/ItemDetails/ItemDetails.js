@@ -84,8 +84,8 @@ export default class ItemDetails extends Component {
           ? `${itemPrimary.year} ${Parser(itemPrimary.name)}`
           : Parser(itemPrimary.name);
         itemPrimary.itemPath = this.state.path;
-        itemPrimary.imagePath = process.env.REACT_APP_IMG_DIR_LARGE + itemPrimary.image;
-        // console.log('[ItemDetails] ' + JSON.stringify(itemPrimary));
+        itemPrimary.imagePath = itemPrimary.imageDir ? process.env.REACT_APP_IMG_DDIR + itemPrimary.imageDir + '/lg/' + itemPrimary.image : process.env.REACT_APP_IMG_DIR_LARGE + itemPrimary.image;
+        ConsoleLog('[ItemDetails] ' + JSON.stringify(itemPrimary));
 
         const itemImages = [itemPrimary, ...itemImageAttachments];
         this.setState({ itemPrimary, itemImages, loading: false });
@@ -138,17 +138,20 @@ export default class ItemDetails extends Component {
     const pdfs = [];
     // 2do - for testing purposes only - show high-res images for just this item
     // 2do - update with high-res image for all when we have that working in the CMS
-    let imgDirHighRes =
+    let imageDirHighRes =
       itemPrimary.id === 38097
         ? "https://www.classicandsportscar.ltd.uk/uploads/high-res/"
         : process.env.REACT_APP_IMG_DIR_LARGE;
+    if(itemPrimary.imageDir) imageDirHighRes = `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/lg/`;
 
     for (let i = 0; i < itemImages.length; i++) {
       this.isFileImage(itemImages[i].image) ? 
       images.push({
+        // 2do: Switch to high res when we have
         // src: "https://via.placeholder.com/640x480",
-        thumb: `${process.env.REACT_APP_IMG_DIR_THUMBS}${itemImages[i].image}`,
-        src: `${imgDirHighRes}${itemImages[i].image}`,
+        thumb: itemPrimary.imageDir ? `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/th/${itemImages[i].image}` : `${process.env.REACT_APP_IMG_DIR_THUMBS}${itemImages[i].image}`,
+        src: `${imageDirHighRes}${itemImages[i].image}`,
+        dir: itemPrimary.imageDir ? `images/${itemPrimary.imageDir}/lg/` : 'images_catalogue/large/',
         filename: itemImages[i].image,
         name: itemImages[i].name
       })
@@ -156,7 +159,8 @@ export default class ItemDetails extends Component {
       : pdfs.push({
         // src: "https://via.placeholder.com/640x480",
         thumb: `${process.env.REACT_APP_IMG_DIR_LARGE}${itemImages[i].image}`,
-        src: `${imgDirHighRes}${itemImages[i].image}`,
+        src: `${imageDirHighRes}${itemImages[i].image}`,
+        dir: itemPrimary.imageDir ? `images/${itemPrimary.imageDir}/lg/` : 'images_catalogue/large/',
         filename: itemImages[i].image,
         name: itemImages[i].name
       });
