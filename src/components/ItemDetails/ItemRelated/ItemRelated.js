@@ -13,7 +13,8 @@ const PrintItem = props => {
   const title = item.year
     ? `${item.year} ${Parser(item.name)}`
     : Parser(item.name);
-  const imagePath = process.env.REACT_APP_IMG_DIR + item.image;
+  // const imagePath = process.env.REACT_APP_IMG_DIR + item.image;
+  const imagePath = item.imageDir ? process.env.REACT_APP_IMG_DDIR + item.imageDir + '/pr/' + item.image : process.env.REACT_APP_IMG_DIR + item.image;
 
   return (
     <div className="ir-wrap">

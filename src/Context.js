@@ -278,8 +278,16 @@ export default class ItemProvider extends Component {
 			let year = dataItem.year;
 			let date = dataItem.createdAt;
 			let excerpt = dataItem.excerpt ? parse(getExcerpt(dataItem.excerpt)).toString() : '...';
-			let image = dataItem.id > 801 ? `${process.env.REACT_APP_IMG_DIR}${dataItem.image}` : `${process.env.REACT_APP_IMG_DIR_LARGE}${dataItem.image}`;
+			let image = dataItem.id > 801 ? `${process.env.REACT_APP_IMG_DIR}${dataItem.image}` : `${process.env.REACT_APP_IMG_DIR_LARGE}${dataItem.image}`;//show larger images for old items
 			let imageDir = dataItem.imageDir;
+			if(imageDir){//show images from new imageDir
+				image = `${process.env.REACT_APP_IMG_DDIR}${imageDir}/lg/${dataItem.image}`;
+				// year += '.';//2do - remove this when all migration is complete
+				ConsoleLog(`[Context.js] IMG > ${id} > ${imageDir} + > ${image}`);
+			}else{
+				ConsoleLog(`[Context.js] IMG > ${id} >--- F ---> ${image}`);
+			}
+					
 
 			let item = {
 				id,
