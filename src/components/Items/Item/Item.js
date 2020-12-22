@@ -37,12 +37,19 @@ const Item = memo(({ item, itemSettingsCust }) => {
     status,
     year,
     excerpt,
-    date
+    date,
+    imageDir,
+    imageFilename
   } = item;
   // INIT image
   // <IMG> - shows 'image not found' graphic as fallback
+  const imgSrcLarge = `${process.env.REACT_APP_IMG_DDIR}${imageDir}/lg/${imageFilename}`;
+  const imgSrcPrimary = `${process.env.REACT_APP_IMG_DDIR}${imageDir}/pr/${imageFilename}`;
   const myImg = (
-    <Img src={[image, ImageNotFound]} alt={name} className="img-loading" />
+    <Img src={[image, ImageNotFound]}
+      alt={name}
+      className="img-loading"
+      srcSet={imageDir ? `${imgSrcLarge} 640w,${imgSrcPrimary} 400w` : null} />
   );
   // INIT settings.item
   let itemClass = ["item"];
@@ -140,7 +147,10 @@ const Item = memo(({ item, itemSettingsCust }) => {
 
   let imgLink = url ? (
     <a href={url} title={`Link to ${name} in a new window`} target="_blank" rel="noopener noreferrer">
-      <Img src={[src, ImageNotFound]} alt={name} className="img-loading" />
+      <Img src={[src, ImageNotFound]}
+        alt={name}
+        className="img-loading" 
+        srcSet={imageDir ? `${imgSrcLarge} 640w,${imgSrcPrimary} 400w` : null}/>
     </a>
   ) : (
     <Link to={formatItemLink(item)}>{myImg}</Link>
