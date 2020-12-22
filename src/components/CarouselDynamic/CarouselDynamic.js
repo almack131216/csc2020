@@ -48,7 +48,7 @@ const CarouselDynamic = props => {
           for (let i = 0; i < itemImages.length; i++) {
             images.push({
               src: `${process.env.REACT_APP_IMG_DIR_LARGE}${itemImages[i].image}`,
-              name: itemImages[i].alt
+              alt: itemImages[i].alt
             });
           }
           setImages(images);

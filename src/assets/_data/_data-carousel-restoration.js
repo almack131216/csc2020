@@ -63,7 +63,7 @@ let Images = [];
 for (let i = 0; i < imgArr.length; i++) {
   Images.push({
     src: `${imgArr[i].src}`,
-    name: imgArr[i].alt
+    alt: imgArr[i].alt
   });
 }
 // (END) Carousel images

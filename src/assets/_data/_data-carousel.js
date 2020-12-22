@@ -7,23 +7,23 @@ import img5 from "../images/carousel/homepage/triumph-tr6-headlamp.jpg";
 const imgArr = [
   {
     src: img1,
-    alt: "alt 1"
+    alt: "Silver Aston Martin DB5 front"
   },
   {
     src: img2,
-    alt: "alt 2"
+    alt: "Blue Aston Martin DB6 rear quarter"
   },
   {
     src: img3,
-    alt: "alt 3"
+    alt: "Jaguar E-Type"
   },
   {
     src: img4,
-    alt: "alt 4"
+    alt: "Classic & Sportscar Centre Showroom"
   },
   {
     src: img5,
-    alt: "alt 5"
+    alt: "Yellow Triumph TR6 headlamp"
   }
 ];
 
@@ -33,7 +33,7 @@ let Images = [];
 for (let i = 0; i < imgArr.length; i++) {
   Images.push({
     src: `${imgArr[i].src}`,
-    name: imgArr[i].alt
+    alt: imgArr[i].alt
   });
 }
 // (END) Carousel images
