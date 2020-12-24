@@ -276,6 +276,18 @@ class App extends Component {
                 />
               )}
             />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/*/classic-cars-for-sale/:slug/preview`}
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="Live"
+                  itemId={routerProps.match.params.slug}
+                  preview={true}
+                  pageStyle="ImgDetails"
+                />
+              )}
+            />
 
             <Route component={Error} />
           </Switch>

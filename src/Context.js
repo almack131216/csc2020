@@ -380,6 +380,7 @@ export default class ItemProvider extends Component {
 		if (itemCategoryName === 7) return CatData.PageText;
 		if (itemCategoryName === 10) return CatData.History;
 		if (itemCategoryName === 11) return CatData.Restoration;
+		if (itemCategoryName === 2 && getItemStatus === 0) return CatData[this.state.categoryNameDefault];
 
 		// ConsoleLog(
 		//   "[Context] getCategoryArr > getCategoryName...",

@@ -33,7 +33,8 @@ export default class ItemDetails extends Component {
     // API - generate end point based on categoryName + itemId
     const apiArr = {
       categoryName: this.props.categoryName,
-      itemId: this.props.itemId
+      itemId: this.props.itemId,
+      preview: this.props.preview
     };
     this.apiUrl = apiGetItemDetails(apiArr);
 
@@ -42,6 +43,7 @@ export default class ItemDetails extends Component {
       itemImages: [],
       itemCategoryName: apiArr.categoryName,
       slug: apiArr.itemId, //this.props.match.params.slug
+      preview: apiArr.preview,
       path: process.env.REACT_APP_ROOT + window.location.pathname,
       fetchError: "",
       photoIndex: 0,
@@ -142,7 +144,8 @@ export default class ItemDetails extends Component {
       itemPrimary.id === 38097
         ? "https://www.classicandsportscar.ltd.uk/uploads/high-res/"
         : process.env.REACT_APP_IMG_DIR_LARGE;
-    if(itemPrimary.imageDir) imageDirHighRes = `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/lg/`;
+        if(itemPrimary.imageDir) imageDirHighRes = `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/lg/`;
+        if(itemPrimary.imageDir && (itemPrimary.id===50949 || itemPrimary.id===50958)) imageDirHighRes = `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/hi/`;//2do - remove
 
     for (let i = 0; i < itemImages.length; i++) {
       this.isFileImage(itemImages[i].image) ? 

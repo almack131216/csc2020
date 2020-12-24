@@ -21,6 +21,7 @@ export function apiGetItemDetails(getApiArr) {
   let apiUrl = `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=${getApiArr.categoryName}`;
   if (getApiArr.itemId) apiUrl += `&id=${getApiArr.itemId}`;
   if (getApiArr.itemIds) apiUrl += `&ids=${getApiArr.itemIds}`;
+  if (getApiArr.preview) apiUrl += `&preview=true`;
   ConsoleLog("[Helpers] apiGetItemDetails() > apiUrl: " + apiUrl);
   return apiUrl;
   // return "../../api-dummy/dummy-item-details.json";
