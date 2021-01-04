@@ -18,7 +18,7 @@ const CB_OpeningHoursDefault = {
 };
 
 const CB_OpeningHoursChristmas = {
-  title: "Office Hours",
+  title: "Christmas Office Hours",
   text: (
     <ul>
       <li>24th Dec. 8.30am-1pm</li>

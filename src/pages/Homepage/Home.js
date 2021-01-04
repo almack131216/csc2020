@@ -47,19 +47,19 @@ const Home = props => {
         </div>
         <div className="content">{imgCarousel}</div>
       </section>
-      {/* <Banner title="Covid 19 update and opening information" subtitle="" type="high-alert">
-      <a href="https://www.classicandsportscar.ltd.uk/covid-19-november-update/news/50047" className="btn-primary">
+      <Banner title="COVID 19 January Update" subtitle="Happy New Year Message - 30 years in business" type="high-alert">
+      <a href="https://www.classicandsportscar.ltd.uk/covid-19-january-update-happy-new-year-message-30-years-in-business/news/51009" className="btn-primary">
         <FaChevronRight />More information
         </a>
-      </Banner> */}
-      <Banner title="COVID 19 update, opening information & Christmas Message" subtitle="" type="christmas">
+      </Banner>
+      {/* <Banner title="COVID 19 update, opening information & Christmas Message" subtitle="" type="christmas">
       <a href="https://www.classicandsportscar.ltd.uk/covid-19-december-update-and-christmas-message/news/50425" className="btn-primary">
         <FaChevronRight />More information
         </a>
         {/* <Link to="/contact" className="btn-primary">
         <FaChevronRight />Office Hours
         </Link> */}
-      </Banner>
+      {/* </Banner> */}
       <TitleSplitter
         titleArr={{
           title: catData["Live"].title,
