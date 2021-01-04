@@ -7,6 +7,8 @@ const ImgList = props => {
   // console.log("[ImgList] ...");
   const handleForLightbox = props.handleForLightbox;
   const itemImages = props.imgsArr;
+  // console.log("[ImgList] ...", itemImages);
+  const dirDownloadFrom = props.dirDownloadFrom;
 
   // MAP - return images
   const imgAttachments = itemImages.map((img, index) => {
@@ -21,7 +23,7 @@ const ImgList = props => {
           <div className="overlay">
             <div className="btns">
               <a
-                href={`https://www.classicandsportscar.ltd.uk/force-download.php?file=${img.dir}${img.filename}`}
+                href={`https://www.classicandsportscar.ltd.uk/force-download.php?file=${dirDownloadFrom.replace('https://www.classicandsportscar.ltd.uk/','')}${img.filename}`}
                 className="btn-download"
                 title="Download this photo"
               >

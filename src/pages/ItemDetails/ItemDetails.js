@@ -140,30 +140,30 @@ export default class ItemDetails extends Component {
     const pdfs = [];
     // 2do - for testing purposes only - show high-res images for just this item
     // 2do - update with high-res image for all when we have that working in the CMS
-    let imageDirHighRes =
-      itemPrimary.id === 38097
-        ? "https://www.classicandsportscar.ltd.uk/uploads/high-res/"
-        : process.env.REACT_APP_IMG_DIR_LARGE;
-        if(itemPrimary.imageDir) imageDirHighRes = `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/lg/`;
-        if(itemPrimary.imageDir && (itemPrimary.id===50949 || itemPrimary.id===50958)) imageDirHighRes = `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/hi/`;//2do - remove
+    let imageDirThumbs = itemPrimary.imageDir ? `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/th/` : 'images_catalogue/thumbs/';
+    let imageDirLarge = itemPrimary.imageDir ? `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/lg/` : 'images_catalogue/large/';
+    let imageDirHighRes = process.env.REACT_APP_IMG_DIR_LARGE;
+    if(itemPrimary.imageDir) imageDirHighRes = `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/lg/`;
+    if(itemPrimary.imageDir && itemPrimary.imageHi) imageDirHighRes = `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/hi/`;//2do - remove
+    const imageDirToDownload = imageDirHighRes ? imageDirHighRes : imageDirLarge;
 
     for (let i = 0; i < itemImages.length; i++) {
       this.isFileImage(itemImages[i].image) ? 
       images.push({
         // 2do: Switch to high res when we have
         // src: "https://via.placeholder.com/640x480",
-        thumb: itemPrimary.imageDir ? `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/th/${itemImages[i].image}` : `${process.env.REACT_APP_IMG_DIR_THUMBS}${itemImages[i].image}`,
+        thumb: `${imageDirThumbs}${itemImages[i].image}`,
         src: `${imageDirHighRes}${itemImages[i].image}`,
-        dir: itemPrimary.imageDir ? `images/${itemPrimary.imageDir}/lg/` : 'images_catalogue/large/',
+        dir: imageDirLarge,
         filename: itemImages[i].image,
         name: itemImages[i].name
       })
 
       : pdfs.push({
         // src: "https://via.placeholder.com/640x480",
-        thumb: `${process.env.REACT_APP_IMG_DIR_LARGE}${itemImages[i].image}`,
-        src: `${imageDirHighRes}${itemImages[i].image}`,
-        dir: itemPrimary.imageDir ? `images/${itemPrimary.imageDir}/lg/` : 'images_catalogue/large/',
+        thumb: `${imageDirLarge}${itemImages[i].image}`,
+        src: `${imageDirLarge}${itemImages[i].image}`,
+        dir: imageDirLarge,
         filename: itemImages[i].image,
         name: itemImages[i].name
       });
@@ -249,6 +249,7 @@ export default class ItemDetails extends Component {
         <ImgList
           imgsArr={images}
           handleForLightbox={handleForLightbox.bind(this)}
+          dirDownloadFrom={imageDirToDownload}
         />
       </>
     );

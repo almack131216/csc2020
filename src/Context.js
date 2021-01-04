@@ -281,6 +281,7 @@ export default class ItemProvider extends Component {
 			let imageFilename = dataItem.image;
 			let image = dataItem.id > 801 ? `${process.env.REACT_APP_IMG_DIR}${imageFilename}` : `${process.env.REACT_APP_IMG_DIR_LARGE}${imageFilename}`;//show larger images for old items
 			let imageDir = dataItem.imageDir;
+			let imageHi = dataItem.imageHi;
 			if(imageDir){//show images from new imageDir
 				image = `${process.env.REACT_APP_IMG_DDIR}${imageDir}/lg/${imageFilename}`;
 				// year += '.';//2do - remove this when all migration is complete
@@ -305,6 +306,7 @@ export default class ItemProvider extends Component {
 				year,
 				image,
 				imageDir,
+				imageHi,
 				imageFilename,
 				excerpt,
 				date
