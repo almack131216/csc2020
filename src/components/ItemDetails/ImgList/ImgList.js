@@ -23,7 +23,7 @@ const ImgList = props => {
           <div className="overlay">
             <div className="btns">
               <a
-                href={`https://www.classicandsportscar.ltd.uk/force-download.php?file=${dirDownloadFrom.replace('https://www.classicandsportscar.ltd.uk/','')}${img.filename}`}
+                href={`https://classicandsportscar.ltd.uk/force-download.php?file=${dirDownloadFrom.replace('https://classicandsportscar.ltd.uk/','')}${img.filename}`}
                 className="btn-download"
                 title="Download this photo"
               >

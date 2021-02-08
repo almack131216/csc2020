@@ -68,8 +68,8 @@ export function ConsoleLog(msg) {
 }
 
 export function GetMailPath() {
-  // return "https://www.classicandsportscar.ltd.uk/2020/api/mail/index.php";
+  // return "https://classicandsportscar.ltd.uk/2020/api/mail/index.php";
   return `${process.env.REACT_APP_API_DIR}mail/index.php`;
-  // return `https://www.amactive.net/csc2020-api/mail/index.php`;
+  // return `https://amactive.net/csc2020-api/mail/index.php`;
 }
 

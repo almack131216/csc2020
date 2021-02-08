@@ -48,12 +48,12 @@ const Home = props => {
         <div className="content">{imgCarousel}</div>
       </section>
       <Banner title="COVID 19 January Update" subtitle="New Year Message - 30 years in business" type="high-alert">
-      <a href="https://www.classicandsportscar.ltd.uk/covid-19-january-update-happy-new-year-message-30-years-in-business/news/51009" className="btn-primary">
+      <a href="https://classicandsportscar.ltd.uk/covid-19-january-update-happy-new-year-message-30-years-in-business/news/51009" className="btn-primary">
         <FaChevronRight />More information
         </a>
       </Banner>
       {/* <Banner title="COVID 19 update, opening information & Christmas Message" subtitle="" type="christmas">
-      <a href="https://www.classicandsportscar.ltd.uk/covid-19-december-update-and-christmas-message/news/50425" className="btn-primary">
+      <a href="https://classicandsportscar.ltd.uk/covid-19-december-update-and-christmas-message/news/50425" className="btn-primary">
         <FaChevronRight />More information
         </a>
         {/* <Link to="/contact" className="btn-primary">
