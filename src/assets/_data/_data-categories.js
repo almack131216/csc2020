@@ -242,6 +242,36 @@ const catArray = {
         }
       }
     }
+  },
+  Videos: {
+    id: 13,
+    name: "Videos",
+    title: "Classic and Sportscar Centre YouTube Channel",
+    titleSub: "",
+    titleHover: "Link to our YouTube page",
+    titleDocument: "",
+    text: "text",
+    slug: "/videos",
+    api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Videos`,
+    settings: {
+      showFilter: false,
+      showBrandList: false,
+      showWidgetOpeningHours: true,
+      showWidgetContactDetails: true,
+      showTitle: true,
+      showTitleSub: true,
+      layout: "row",
+      classContainer: "",
+      item: {
+        layout: "item-row",
+        showExcerpt: true,
+        showCategoryLink: false,
+        details: {
+          showWidgetOpeningHours: true,
+          showWidgetContactDetails: true
+        }
+      }
+    }
   }
 };
 
