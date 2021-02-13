@@ -15,6 +15,8 @@ import { setDocumentTitle, apiGetItemDetails, ConsoleLog } from "../../assets/js
 import Parser from "html-react-parser";
 import Lightbox from "react-image-lightbox";
 import Loading from "../../components/Loading/Loading";
+import Img from "react-image";
+import ImageNotFound from "../../assets/images/image-not-found.jpg";
 import ItemNotFound from "../../components/ItemDetails/ItemNotFound/ItemNotFound";
 import ItemExtras from "../../components/ItemDetails/ItemExtras/ItemExtras";
 import ItemRelated from "../../components/ItemDetails/ItemRelated/ItemRelated";
@@ -48,14 +50,28 @@ export default class ItemDetails extends Component {
       fetchError: "",
       photoIndex: 0,
       isOpen: false,
+      isVideo: false,
       pageStyle: this.props.pageStyle, // "TextOnly","ImgCarousel","ImgDetails"
-      showImgLargeList: hash === "photos" ? true : false
+      showImgLargeList: hash === "photos" ? true : false,
+      videosArr: []
     };
   }
 
+  handleForYouTube = getArr => {
+    ConsoleLog("[ItemDetails] handleForYouTube() > handleForYouTube: videosArr = " + JSON.stringify(getArr));
+    this.setState({ videosArr: getArr ? getArr : [] });
+  }
+
+  // VIDEOBOX - open videobox on selected photoIndex
+  handleForVideobox = getIndex => {
+    ConsoleLog("[ItemDetails] handleForVideobox() > getIndex: " + getIndex);
+    const videoIndex = getIndex ? getIndex : 0;
+    this.setState({ isVideo: true, videoIndex });
+  };
+
   // LIGHTBOX - open lightbox on selected photoIndex
   handleForLightbox = getIndex => {
-    ConsoleLog("[ItemDetails] handleForLightbox() > getIndex: ", getIndex);
+    ConsoleLog("[ItemDetails] handleForLightbox() > getIndex: " + getIndex);
     const photoIndex = getIndex ? getIndex : 0;
     this.setState({ isOpen: true, photoIndex });
   };
@@ -109,6 +125,9 @@ export default class ItemDetails extends Component {
     const handleForLightbox = this.handleForLightbox;
     const handleForLargeImageList = this.handleForLargeImageList;
     // (END) LIGHTBOX props
+    const handleForVideobox = this.handleForVideobox;
+    const handleForYouTube = this.handleForYouTube;
+
     const {
       loading,
       fetchError,
@@ -139,6 +158,7 @@ export default class ItemDetails extends Component {
     // ARR - put objects into array (need for .map())
     const images = [];
     const pdfs = [];
+    const videos = this.state.videosArr;//['GMu0Tx67IfY','6TAJvC-e2b8'];
     // 2do - for testing purposes only - show high-res images for just this item
     // 2do - update with high-res image for all when we have that working in the CMS
     let imageDirThumbs = itemPrimary.imageDir ? `${process.env.REACT_APP_IMG_DDIR}${itemPrimary.imageDir}/th/` : `${process.env.REACT_APP_IMG_DIR_THUMBS}`;
@@ -232,13 +252,15 @@ export default class ItemDetails extends Component {
       imgColLeft = (
         <ImgFeatured
           imgArr={itemPrimary}
-          handleForLightbox={handleForLightbox.bind(this)}
+          handleForLightbox={handleForLightbox.bind(this)}          
         />
       );
       imgColRight = (
         <ImgGrid
           imgsArr={images}
           handleForLightbox={handleForLightbox.bind(this)}
+          handleForVideobox={handleForVideobox.bind(this)}
+          videosArr={videos}
         />
       );
     } else if (pageStyle === "ImgCarousel") {
@@ -257,6 +279,25 @@ export default class ItemDetails extends Component {
       </>
     );
     // (END) SET images
+
+    const YouTubeBox = (
+      <div class="wrap-iframe">
+      <Img
+        src={ImageNotFound}
+        className="img-loading is-hidden"
+        alt="YouTube Video"
+      />
+      <iframe
+        width="100%"
+        height="auto"
+        src={"https://www.youtube.com/embed/" + this.state.videoIndex}
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      >
+      </iframe>
+      </div>
+    )
 
     // GET appearance
     if (categoryArr && categoryArr.settings) {
@@ -281,21 +322,28 @@ export default class ItemDetails extends Component {
         .map(Number);
       relatedItems = relatedItems.concat(tmpArr);
     }
-    if (itemPrimary.related2) {
-      let tmpArr2 = itemPrimary.related2
-        .trim()
-        .split(",")
-        .map(Number);
-      relatedItems = relatedItems.concat(tmpArr2);
-    }
+    // if (itemPrimary.related2) {
+    //   let tmpArr2 = itemPrimary.related2
+    //     .trim()
+    //     .split(",")
+    //     .map(Number);
+    //   relatedItems = relatedItems.concat(tmpArr2);
+    // }
     relatedItems = relatedItems.filter(e => e !== 0); // will remove '0' values
-    ConsoleLog("[ItemDetails] relatedItems: " + relatedItems + " (" + relatedItems.length + ")");
+    console.log("[ItemDetails] relatedItems: " + relatedItems + " (" + relatedItems.length + ")");
 
     const relatedItemsTag =
       relatedItems.length > 0 && !isNaN(relatedItems[0]) ? (
-        <ItemRelated itemIds={relatedItems} />
+        <ItemRelated
+          itemIds={relatedItems}
+          videosArr={this.state.videosArr}
+          handleForYouTube={handleForYouTube.bind(this)}
+        />
       ) : null;
     // (END) RELATED
+
+    const hasVideo = this.state.videosArr && this.state.isVideo ? true : false;
+    console.log(relatedItems[0]);
 
     const pageContent =
       pageStyle !== "TextOnly" ? (
@@ -306,7 +354,7 @@ export default class ItemDetails extends Component {
               {breadcrumbsTag}
               <div className="row row-post-img">
                 <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
-                  {imgColLeft}
+                  {hasVideo ? YouTubeBox : imgColLeft}
                 </div>
                 <div className="col-xs-12 col-sm-4 col-post-img-grid">
                   {imgColRight}
@@ -326,6 +374,7 @@ export default class ItemDetails extends Component {
                   <div className="post-text-body">
                     {pageStyle === "ImgDetails" ? (
                       <div className="item-extras-wrap position-right">
+                        <p>PARENT: videosArr: {this.state.videosArr}</p>
                         <ItemExtras
                           showPrice={true}
                           itemArr={itemPrimary}

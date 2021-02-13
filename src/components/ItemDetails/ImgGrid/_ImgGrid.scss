@@ -23,4 +23,25 @@ ul.ul-img-grid {
     vertical-align: bottom;
     cursor: pointer;
   }
+
+  li.btn-youtube {
+    background:$color_youtube;
+    position:relative;
+    cursor: pointer;
+
+    img {
+      visibility:hidden;
+    }
+
+    svg {
+      position:absolute;
+      top:20%;
+      left:20%;
+      width:60%;
+      height:60%;
+      background:blue;
+      color:yellow;
+    }
+  }
+  
 }

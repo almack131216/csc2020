@@ -6,6 +6,10 @@
     display: block;
     width: 100%;
 
+    h5:not(:first-child) {
+      margin-top:$offset-g2;
+    }
+
     .ir-wrap {
       .ir-img {
         margin: $offset-1 0;
