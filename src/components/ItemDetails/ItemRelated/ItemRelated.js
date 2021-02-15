@@ -8,6 +8,21 @@ import Img from "react-image";
 import ImageNotFound from "../../../assets/images/image-not-found.jpg";
 import Loading from "../../../components/Loading/Loading";
 
+const getTitle = (getCategoryId) => {
+  switch (getCategoryId) {
+    case 1:
+      return "This car is for sale";
+    case 2:
+      return "View Listing";
+    case 3:
+      return "Owner's Testimonial";
+    case 13:
+      return "YouTube video";
+    default:
+      return "More Information";
+  }
+}
+
 const PrintItem = props => {  
   const item = props.item;
   const title = item.year
@@ -15,9 +30,12 @@ const PrintItem = props => {
     : Parser(item.name);
   // const imagePath = process.env.REACT_APP_IMG_DIR + item.image;
   const imagePath = item.imageDir ? process.env.REACT_APP_IMG_DDIR + item.imageDir + '/pr/' + item.image : process.env.REACT_APP_IMG_DIR + item.image;
+  const showIcon = props.showIcon;
 
   return (
-    <div className="ir-wrap">
+    <div className="ir-wrap-all">
+    <h5>{getTitle(item.category)}</h5>
+    <div className={`ir-wrap ${showIcon}`}>
       <div className="ir-img">
         <Link to={props.url}>
           <Img
@@ -32,6 +50,7 @@ const PrintItem = props => {
           <Link to={props.url}>{title}</Link>
         </p>
       </div>
+    </div>
     </div>
   );
 };
@@ -67,20 +86,7 @@ const ItemRelated = props => {
   const apiUrlRelated = apiGetItemDetails(apiArr);
   ConsoleLog("[ItemRelated] apiUrlRelated: " + apiUrlRelated);
 
-  const getTitle = (getCategoryId) => {
-    switch (getCategoryId) {
-      case 1:
-        return "This car is for sale";
-      case 2:
-        return "View Listing";
-      case 3:
-        return "Owner's Testimonial";
-      case 13:
-        return "YouTube video";
-      default:
-        return "More Information";
-    }
-  }
+  
 
   // FETCH data
   useEffect(() => {
@@ -96,9 +102,9 @@ const ItemRelated = props => {
         setItemsRelated(getItemsRelated);
         
         let tmpArr = [];
-        let tmpArr2 = getItemsRelated ? [...getItemsRelated].filter((item) => item.youtube !== '') : [];
+        let tmpArr2 = getItemsRelated && getItemsRelated[0].youtube ? [...getItemsRelated].filter((item) => item.youtube !== '') : [];
         ConsoleLog("[ItemRelated] useEffect() videosArr X: >>> " + JSON.stringify(tmpArr2));
-        ConsoleLog("[ItemRelated] useEffect() videosArr X: >>> " + tmpArr2[0].youtube);
+        // ConsoleLog("[ItemRelated] useEffect() videosArr X: >>> " + tmpArr2[0].youtube);
         for(let i=0; i < tmpArr2.length; i++){
           // loopData += `<li>${data[i].name}</li>`
           if(tmpArr2[i].youtube){
@@ -123,14 +129,12 @@ const ItemRelated = props => {
         // videosArr.push(item.youtube);
         // handleForYouTube([5555,6666]);
         return (
-          <div key={index} >
-          <h5>{getTitle(item.category)}</h5>
-          {item.youtube ? <b>?v={item.youtube}</b> : null}
         <PrintItem
+          key={index}
           item={item}
           url={formatItemLink(item)}
+          showIcon={item.youtube ? 'youtube' : null}
           />
-        </div>
         );
       })}
     </div>

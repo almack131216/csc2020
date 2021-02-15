@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFilePdf, FaCamera, FaInfoCircle } from "react-icons/fa";
+import { FaFilePdf, FaCamera, FaInfoCircle, FaYoutube } from "react-icons/fa";
 // import { GoFilePdf } from "react-icons/go";
 // import parse from "html-react-parser";
 
@@ -38,6 +38,8 @@ const ItemExtras = props => {
   let classesWrap = ["item-extras"];
   if (props.class) classesWrap.push(props.class);
   const handleForLargeImageList = props.handleForLargeImageList;
+  const handleForVideobox = props.handleForVideobox;
+  const itemVideos = props.itemVideos;
 
   // PRICE
   if (props.showPrice) {
@@ -89,12 +91,53 @@ const ItemExtras = props => {
     </li>
   ) : null;
 
+  const btnVideos = itemVideos && handleForVideobox ? (
+    <div className="post-btns">
+    <ul className="ul-inline big-btns">
+      {
+        // MAP - return images
+        itemVideos.map((vid, index) => {
+          return (
+            <li key={index}>
+              <a
+                onClick={() => handleForVideobox(vid)}
+                href="#youtube"
+                title={`Link to ${name} on YouTube`}
+                className="icon-text youtube"
+              >
+              <FaYoutube
+                vid={vid}          
+              />
+              <span>Play Video</span>
+              </a>
+            </li>
+          );
+        })
+      }
+      {/* <li>
+        <a
+          onClick={() => handleForVideobox()}
+          href="#youtube"
+          title={`Link to ${name} on YouTube`}
+          className="icon-text youtube"
+        >
+          <FaYoutube />
+          <span>Play Video</span>
+        </a>
+      </li> */}
+    </ul>
+    </div>
+  ) : null;
+
+  
+
   return (
     <div className={classesWrap.join(" ")}>
       <div className="feature-list">
         {priceRow}
         {attachmentsRow}
-        <div className="post-btns">
+        {btnVideos}
+        <div className="post-btns">          
           <ul className="ul-inline">
             {btnPhotos}
             <li>

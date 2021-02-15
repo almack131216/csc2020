@@ -66,6 +66,25 @@
         a.icon-text {
           white-space: nowrap;
         }
+
+        ul.big-btns {
+          li {
+            display:block;
+          }
+          a {
+            line-height:2em;
+            svg {
+              font-size:2em;
+              float:left;
+            }
+
+            &.youtube {
+              svg {
+                color:$color_youtube
+              }
+            }
+          }
+        }
       }
 
       &.post-share {

@@ -73,7 +73,7 @@ export default class ItemDetails extends Component {
   handleForLightbox = getIndex => {
     ConsoleLog("[ItemDetails] handleForLightbox() > getIndex: " + getIndex);
     const photoIndex = getIndex ? getIndex : 0;
-    this.setState({ isOpen: true, photoIndex });
+    this.setState({ isOpen: true, photoIndex, isVideo: false });
   };
 
   // Large Image List
@@ -281,21 +281,22 @@ export default class ItemDetails extends Component {
     // (END) SET images
 
     const YouTubeBox = (
-      <div class="wrap-iframe">
-      <Img
-        src={ImageNotFound}
-        className="img-loading is-hidden"
-        alt="YouTube Video"
-      />
-      <iframe
-        width="100%"
-        height="auto"
-        src={"https://www.youtube.com/embed/" + this.state.videoIndex}
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      >
-      </iframe>
+      <div className="wrap-iframe">
+        <Img
+          src={ImageNotFound}
+          className="img-loading is-hidden"
+          alt="YouTube Video"
+        />
+        <iframe
+          id="youtube"
+          width="100%"
+          height="auto"
+          src={"https://www.youtube.com/embed/" + this.state.videoIndex + "?autoplay=1"}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        >
+        </iframe>
       </div>
     )
 
@@ -374,13 +375,15 @@ export default class ItemDetails extends Component {
                   <div className="post-text-body">
                     {pageStyle === "ImgDetails" ? (
                       <div className="item-extras-wrap position-right">
-                        <p>PARENT: videosArr: {this.state.videosArr}</p>
+                        {/* <p>PARENT: videosArr: {this.state.videosArr}</p> */}
                         <ItemExtras
                           showPrice={true}
                           itemArr={itemPrimary}
                           handleForLargeImageList={handleForLargeImageList.bind(
                             this
                           )}
+                          handleForVideobox={handleForVideobox}
+                          itemVideos={this.state.videosArr}
                         />
                         {relatedItemsTag}
                       </div>

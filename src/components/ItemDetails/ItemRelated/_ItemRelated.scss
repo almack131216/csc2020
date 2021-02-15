@@ -6,8 +6,8 @@
     display: block;
     width: 100%;
 
-    h5:not(:first-child) {
-      margin-top:$offset-g2;
+    > div.ir-wrap-all:not(:first-child) {
+      margin-top:$offset-g2;//ensure related items have space below
     }
 
     .ir-wrap {
