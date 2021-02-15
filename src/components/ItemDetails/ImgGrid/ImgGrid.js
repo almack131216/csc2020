@@ -29,7 +29,7 @@ const ImgGrid = props => {
     return (
       <li key={index} className="btn-youtube" onClick={() => handleForVideobox(vid)}>
         <Img
-          src={ImageNotFound}
+          src={[itemImages[0].thumb, ImageNotFound]}
           className="img-loading is-hidden"
           alt="YouTube Video"
         />
