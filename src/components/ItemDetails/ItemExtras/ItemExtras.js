@@ -91,7 +91,7 @@ const ItemExtras = props => {
     </li>
   ) : null;
 
-  const btnVideos = itemVideos && handleForVideobox ? (
+  const btnVideos = itemVideos.length && handleForVideobox ? (
     <div className="post-btns">
     <ul className="ul-inline big-btns">
       {

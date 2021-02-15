@@ -323,6 +323,9 @@ export default class ItemDetails extends Component {
         .map(Number);
       relatedItems = relatedItems.concat(tmpArr);
     }
+    // relatedItems = relatedItems.filter(function (value) {
+    //     return !Number.isNaN(value);
+    // });
     // if (itemPrimary.related2) {
     //   let tmpArr2 = itemPrimary.related2
     //     .trim()
@@ -330,7 +333,7 @@ export default class ItemDetails extends Component {
     //     .map(Number);
     //   relatedItems = relatedItems.concat(tmpArr2);
     // }
-    relatedItems = relatedItems.filter(e => e !== 0); // will remove '0' values
+    relatedItems = relatedItems.filter(e => e !== 0 && !Number.isNaN(e)); // will remove '0' values
     console.log("[ItemDetails] relatedItems: " + relatedItems + " (" + relatedItems.length + ")");
 
     const relatedItemsTag =
