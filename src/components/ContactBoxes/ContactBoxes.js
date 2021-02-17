@@ -6,6 +6,16 @@ import parse from "html-react-parser";
 
 const socialBtnsElement = <SocialBtns social={SiteData.social} classes="" />;
 
+const CB_YouTubeBtn = {
+  title: "",
+  class: "logo-youtube",
+  text: (
+    <a href={SiteData.social.youtube} target="_blank" rel="external noopener noreferrer" title="Watch us on our YouTube channel in a new window">
+      <span>Watch us on YouTube</span>
+    </a>
+  )
+};
+
 const CB_OpeningHoursDefault = {
   title: "Office Hours",
   text: (
@@ -70,4 +80,4 @@ const CB_Contact = {
   )
 };
 
-export { CB_OpeningHours, CB_Address, CB_Contact };
+export { CB_OpeningHours, CB_Address, CB_Contact, CB_YouTubeBtn };

@@ -18,6 +18,24 @@
   border: 1px solid $color_layout-border;
   background: #f9f9f9;
 
+  &.logo-youtube {
+    background:white;
+    a {
+      background-image: url(../../../assets/images/logo-youtube-watch.png);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center;
+      background-color: white;
+      display:block;
+      width:100%;
+      height:40px;
+
+      span {
+        display:none;
+      }
+    }
+  }
+
   &.clean {
     padding: 0;
     background: transparent;

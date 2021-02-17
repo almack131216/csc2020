@@ -3,6 +3,7 @@ import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import InfoBox from "../../components/InfoBoxes/InfoBox/InfoBox";
 import {
+  CB_YouTubeBtn,
   CB_Contact,
   CB_OpeningHours
 } from "../../components/ContactBoxes/ContactBoxes";
@@ -73,7 +74,7 @@ export default class ItemDetails extends Component {
   handleForLightbox = getIndex => {
     ConsoleLog("[ItemDetails] handleForLightbox() > getIndex: " + getIndex);
     const photoIndex = getIndex ? getIndex : 0;
-    this.setState({ isOpen: true, photoIndex, isVideo: false });
+    this.setState({ isOpen: true, photoIndex });
   };
 
   // Large Image List
@@ -139,6 +140,7 @@ export default class ItemDetails extends Component {
       pageStyle
     } = this.state;
     // INIT settings.item
+    let widgetYouTubeBtn = null;
     let widgetOpeningHours = null;
     let widgetContact = null;
     // ITEM NOT FOUND
@@ -291,7 +293,7 @@ export default class ItemDetails extends Component {
           id="youtube"
           width="100%"
           height="auto"
-          src={"https://www.youtube.com/embed/" + this.state.videoIndex + "?autoplay=1"}
+          src={"https://www.youtube.com/embed/" + this.state.videoIndex + "?rel=0&autoplay=1"}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
@@ -304,6 +306,9 @@ export default class ItemDetails extends Component {
     if (categoryArr && categoryArr.settings) {
       const mySettings = { ...categoryArr.settings.item };
 
+      widgetYouTubeBtn = mySettings.details.showWidgetYouTubeBtn ? (
+        <InfoBox arr={CB_YouTubeBtn} />
+      ) : null;
       widgetOpeningHours = mySettings.details.showWidgetOpeningHours ? (
         <InfoBox arr={CB_OpeningHours} />
       ) : null;
@@ -369,6 +374,7 @@ export default class ItemDetails extends Component {
           <div className={txtRowClasses.join(" ")}>
             <section className="row">
               <div className="sidebar hidden-md-down col-md-3 padding-x-0">
+                {widgetYouTubeBtn}
                 {widgetOpeningHours}
                 {widgetContact}
               </div>
@@ -434,6 +440,7 @@ export default class ItemDetails extends Component {
         <section className="content-wrap match-heights">
           <div className="sidebar">
             {navLeft}
+            {widgetYouTubeBtn}
             {widgetOpeningHours}
             {widgetContact}
           </div>

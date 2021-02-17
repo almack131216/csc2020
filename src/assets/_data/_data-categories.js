@@ -22,6 +22,7 @@ const catArray = {
     settings: {
       showFilter: false,
       showBrandList: true,
+      showWidgetYouTubeBtn: true,
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
       showTitle: false,
@@ -55,6 +56,7 @@ const catArray = {
     settings: {
       showFilter: false,
       showBrandList: false,
+      showWidgetYouTubeBtn: true,
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
       showTitle: true,
@@ -86,6 +88,7 @@ const catArray = {
     settings: {
       showFilter: false,
       showBrandList: false,
+      showWidgetYouTubeBtn: true,
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
       showTitle: true,
@@ -115,6 +118,7 @@ const catArray = {
     settings: {
       showFilter: false,
       showBrandList: false,
+      showWidgetYouTubeBtn: true,
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
       showTitle: true,
@@ -144,6 +148,7 @@ const catArray = {
     settings: {
       showFilter: false,
       showBrandList: false,
+      showWidgetYouTubeBtn: true,
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
       showTitle: true,
@@ -176,6 +181,7 @@ const catArray = {
     settings: {
       showFilter: false,
       showBrandList: false,
+      showWidgetYouTubeBtn: true,
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
       showTitle: true,
@@ -188,6 +194,7 @@ const catArray = {
         showYear: false,
         showCategoryLink: false,
         details: {
+          showWidgetYouTubeBtn: true,
           showWidgetOpeningHours: true,
           showWidgetContactDetails: true
         }
@@ -202,11 +209,13 @@ const catArray = {
     settings: {
       showFilter: false,
       showBrandList: false,
+      showWidgetYouTubeBtn: true,
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
       item: {
         showCategoryLink: false,
         details: {
+          showWidgetYouTubeBtn: true,
           showWidgetOpeningHours: true,
           showWidgetContactDetails: true
         }
@@ -226,6 +235,7 @@ const catArray = {
     settings: {
       showFilter: false,
       showBrandList: false,
+      showWidgetYouTubeBtn: true,
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
       showTitle: true,
@@ -256,6 +266,7 @@ const catArray = {
     settings: {
       showFilter: false,
       showBrandList: false,
+      showWidgetYouTubeBtn: true,
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
       showTitle: true,
