@@ -100,6 +100,7 @@ const catArray = {
         showExcerpt: true,
         showCategoryLink: false,
         details: {
+          showWidgetYouTubeBtn: true,
           showWidgetOpeningHours: true,
           showWidgetContactDetails: true
         }
@@ -131,6 +132,7 @@ const catArray = {
         showSource: true,
         showCategoryLink: false,
         details: {
+          showWidgetYouTubeBtn: true,
           showWidgetOpeningHours: true,
           showWidgetContactDetails: true
         }
@@ -160,6 +162,7 @@ const catArray = {
         showExcerpt: true,
         showCategoryLink: false,
         details: {
+          showWidgetYouTubeBtn: true,
           showWidgetOpeningHours: true,
           showWidgetContactDetails: true
         }
@@ -247,6 +250,7 @@ const catArray = {
         showExcerpt: true,
         showCategoryLink: false,
         details: {
+          showWidgetYouTubeBtn: true,
           showWidgetOpeningHours: true,
           showWidgetContactDetails: true
         }
@@ -256,11 +260,11 @@ const catArray = {
   Videos: {
     id: 13,
     name: "Videos",
-    title: "Classic and Sportscar Centre YouTube Channel",
-    titleSub: "",
+    title: "YouTube Videos",
+    titleSub: "Classic and Sportscar Centre on YouTube",
     titleHover: "Link to our YouTube page",
     titleDocument: "",
-    text: "text",
+    text: "",
     slug: "/videos",
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Videos`,
     settings: {
@@ -270,14 +274,15 @@ const catArray = {
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
       showTitle: true,
-      showTitleSub: true,
-      layout: "row",
+      showTitleSub: true,      
+      layout: "grid youtube",
       classContainer: "",
       item: {
-        layout: "item-row",
-        showExcerpt: true,
+        layout: "item-card",
+        showExcerpt: false,
         showCategoryLink: false,
         details: {
+          showWidgetYouTubeBtn: true,
           showWidgetOpeningHours: true,
           showWidgetContactDetails: true
         }

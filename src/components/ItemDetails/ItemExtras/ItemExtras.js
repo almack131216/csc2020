@@ -129,6 +129,21 @@ const ItemExtras = props => {
     </div>
   ) : null;
 
+  const btnEnquire = props.showContact ? (
+    <li>
+      <a
+        href={`mailto:sales@classicandsportscar.ltd.uk?subject=Enquiry: ${name} ${
+          category === 2 ? `(${id})` : ""
+        }`}
+        title={`Make enquiry about ${name}`}
+        className="icon-text"
+      >
+        <FaInfoCircle />
+        <span>Enquire</span>
+      </a>
+    </li>
+  ) : null;
+
   
 
   return (
@@ -136,25 +151,17 @@ const ItemExtras = props => {
       <div className="feature-list">
         {priceRow}
         {attachmentsRow}
-        {btnVideos}
-        <div className="post-btns">          
-          <ul className="ul-inline">
-            {btnPhotos}
-            <li>
-              <a
-                href={`mailto:sales@classicandsportscar.ltd.uk?subject=Enquiry: ${name} ${
-                  category === 2 ? `(${id})` : ""
-                }`}
-                title={`Make enquiry about ${name}`}
-                className="icon-text"
-              >
-                <FaInfoCircle />
-                <span>Enquire</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
+        {btnVideos}        
+        {
+          btnPhotos || btnEnquire ? (
+            <div className="post-btns">
+              <ul className="ul-inline">
+                {btnPhotos}
+                {btnEnquire}
+              </ul>
+            </div>
+          ) : null
+        }
         <div className="post-share">
           <h4>Share:</h4>
           <ul className="ul-post-share">

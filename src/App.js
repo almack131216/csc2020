@@ -180,6 +180,11 @@ class App extends Component {
             />
             <Route
               exact
+              path={`${process.env.PUBLIC_URL}/videos`}
+              component={() => <Items category="Videos" />}
+            />
+            <Route
+              exact
               path={`${process.env.PUBLIC_URL}/:brand/for-sale`}
               component={(routerProps) => <Items category="Live" brand={routerProps.match.params.brand} />}
             />
@@ -273,6 +278,17 @@ class App extends Component {
                   categoryName="Restoration"
                   itemId={routerProps.match.params.slug}
                   pageStyle="ImgCarousel"
+                />
+              )}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/*/videos/:itemId`}
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="Videos"
+                  itemId={routerProps.match.params.itemId}
+                  pageStyle="IsVideo"
                 />
               )}
             />

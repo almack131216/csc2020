@@ -10,6 +10,7 @@ import {
 import ImgFeatured from "../../components/ItemDetails/ImgFeatured/ImgFeatured";
 import ImgGrid from "../../components/ItemDetails/ImgGrid/ImgGrid";
 import ImgList from "../../components/ItemDetails/ImgList/ImgList";
+import VideoEmbed from "../../components/ItemDetails/Video/VideoEmbed";
 import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import { ItemContext } from "../../Context";
 import { setDocumentTitle, apiGetItemDetails, ConsoleLog } from "../../assets/js/Helpers";
@@ -52,7 +53,7 @@ export default class ItemDetails extends Component {
       photoIndex: 0,
       isOpen: false,
       isVideo: false,
-      pageStyle: this.props.pageStyle, // "TextOnly","ImgCarousel","ImgDetails"
+      pageStyle: this.props.pageStyle, // "TextOnly","ImgCarousel","ImgDetails","IsVideo"
       showImgLargeList: hash === "photos" ? true : false,
       videosArr: []
     };
@@ -84,7 +85,7 @@ export default class ItemDetails extends Component {
   };
 
   // Check isFileImage
-  isFileImage = (file) => {    
+  isFileImage = (file) => {
     if(file.match(/jpg.*/)||file.match(/jpeg.*/)||file.match(/png.*/)){
       return true;
     }
@@ -105,6 +106,8 @@ export default class ItemDetails extends Component {
         itemPrimary.itemPath = this.state.path;
         itemPrimary.imagePath = itemPrimary.imageDir ? process.env.REACT_APP_IMG_DDIR + itemPrimary.imageDir + '/lg/' + itemPrimary.image : process.env.REACT_APP_IMG_DIR_LARGE + itemPrimary.image;
         itemPrimary.imageHi = parseInt(itemPrimary.imageHi) === 1 ? true : false;
+        itemPrimary.isVideo = itemPrimary.youtube ? true : false;
+        this.state.videoIndex = itemPrimary.isVideo && itemPrimary.youtube ? itemPrimary.youtube : null;
         ConsoleLog('[ItemDetails] ' + JSON.stringify(itemPrimary));
 
         const itemImages = [itemPrimary, ...itemImageAttachments];
@@ -145,9 +148,7 @@ export default class ItemDetails extends Component {
     let widgetContact = null;
     // ITEM NOT FOUND
     if (fetchError) {
-      return (
-        <ItemNotFound text={this.strItemNotFound} itemId={this.state.slug} />
-      );
+      return <ItemNotFound text={this.strItemNotFound} itemId={this.state.slug} />
     }
     // LOADING
     if (loading) {
@@ -247,6 +248,7 @@ export default class ItemDetails extends Component {
     let imgColLeft = <Loading />;
     // Right panel (IMAGE Grid (attachments) || share)
     let imgColRight = <Loading />;
+    let imgColFull = <Loading />;
     // Default or Carousel?...
     if (pageStyle === "ImgDetails") {
       imgRowClasses.push("bg-secondary");
@@ -268,7 +270,17 @@ export default class ItemDetails extends Component {
     } else if (pageStyle === "ImgCarousel") {
       imgRowClasses.push("carousel");
       imgColLeft = <CarouselDynamic imgsArr={images} />;
-      imgColRight = <ItemExtras itemArr={itemPrimary} itemAttachments={pdfs}/>;
+      imgColRight = <ItemExtras itemArr={itemPrimary} showContact={true} itemAttachments={pdfs}/>;
+    } else if (pageStyle ==="IsVideo") {
+      imgRowClasses.push("youtube-wrap");
+      imgColLeft = null;
+      imgColRight = null;
+      imgColFull = itemPrimary.isVideo && itemPrimary.youtube ? (
+        <VideoEmbed
+          videoId={itemPrimary.youtube}
+          imgArr={itemPrimary}
+          autoplay={0}/>
+       ) : '';
     }
     const imgLargeList = (
       <>
@@ -281,26 +293,6 @@ export default class ItemDetails extends Component {
       </>
     );
     // (END) SET images
-
-    const YouTubeBox = (
-      <div className="wrap-iframe">
-        <Img
-          src={ImageNotFound}
-          className="img-loading is-hidden"
-          alt="YouTube Video"
-        />
-        <iframe
-          id="youtube"
-          width="100%"
-          height="auto"
-          src={"https://www.youtube.com/embed/" + this.state.videoIndex + "?rel=0&autoplay=1"}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        >
-        </iframe>
-      </div>
-    )
 
     // GET appearance
     if (categoryArr && categoryArr.settings) {
@@ -354,6 +346,38 @@ export default class ItemDetails extends Component {
     const hasVideo = this.state.videosArr && this.state.isVideo ? true : false;
     console.log(relatedItems[0]);
 
+    let moreInfoBoxes = null;
+    if(pageStyle === "ImgDetails"){
+      moreInfoBoxes = (
+        <>        
+        <ItemExtras
+          showPrice={true}
+          showContact={true}
+          itemArr={itemPrimary}
+          handleForLargeImageList={handleForLargeImageList.bind(
+            this
+          )}
+          handleForVideobox={handleForVideobox}
+          itemVideos={this.state.videosArr}
+        />
+        {relatedItemsTag}
+        </>
+      )
+    }else if(pageStyle === "IsVideo"){
+      moreInfoBoxes = (
+        <>
+        {relatedItemsTag}
+        <ItemExtras
+          showContact={false}
+          showPrice={false}
+          itemArr={false}
+        />        
+        </>
+      )
+    }else{
+      moreInfoBoxes = relatedItemsTag ? relatedItemsTag : null
+    };
+
     const pageContent =
       pageStyle !== "TextOnly" ? (
         <>
@@ -361,14 +385,29 @@ export default class ItemDetails extends Component {
             <div className="sidebar">{navLeft}</div>
             <div className={imgRowClasses.join(" ")}>
               {breadcrumbsTag}
-              <div className="row row-post-img">
+              {pageStyle ==="IsVideo" ? (
+                <div className="row row-post-video full">
+                  <div className="col-xs-12 col-sm-12 margin-x-0 padding-x-0 col-post-video">
+                    {imgColFull}                    
+                    {/* {itemPrimary.isVideo ? <p>yes: {itemPrimary.youtube}</p> : null} */}
+                  </div>
+                </div>
+              ) : 
+              (
+                <div className="row row-post-img">
                 <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
-                  {hasVideo ? YouTubeBox : imgColLeft}
+                  {hasVideo ? (
+                    <VideoEmbed
+                    videoId={this.state.videoIndex}
+                    imgArr={itemPrimary}
+                    autoplay={1}/>
+                  ) : imgColLeft}
                 </div>
                 <div className="col-xs-12 col-sm-4 col-post-img-grid">
                   {imgColRight}
                 </div>
               </div>
+              )}              
             </div>
           </section>
           <div className={txtRowClasses.join(" ")}>
@@ -382,25 +421,13 @@ export default class ItemDetails extends Component {
                 <div className="col-post-text">
                   <h1>{title}</h1>
                   <div className="post-text-body">
-                    {pageStyle === "ImgDetails" ? (
-                      <div className="item-extras-wrap position-right">
-                        {/* <p>PARENT: videosArr: {this.state.videosArr}</p> */}
-                        <ItemExtras
-                          showPrice={true}
-                          itemArr={itemPrimary}
-                          handleForLargeImageList={handleForLargeImageList.bind(
-                            this
-                          )}
-                          handleForVideobox={handleForVideobox}
-                          itemVideos={this.state.videosArr}
-                        />
-                        {relatedItemsTag}
-                      </div>
-                    ) : relatedItemsTag ? (
-                      <div className="item-extras-wrap position-right">
-                        {relatedItemsTag}
-                      </div>
-                    ) : null}
+                    {
+                      moreInfoBoxes || relatedItemsTag ? (
+                        <div className="item-extras-wrap position-right">
+                          {moreInfoBoxes ? moreInfoBoxes : null}
+                        </div>
+                      ) : null
+                    }
                     {excerptParsed}
                     {descriptionParsed}
                     {categoryLinkTag}
