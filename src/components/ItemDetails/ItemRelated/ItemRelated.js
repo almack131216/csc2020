@@ -7,6 +7,7 @@ import { ItemContext } from "../../../Context";
 import Img from "react-image";
 import ImageNotFound from "../../../assets/images/image-not-found.jpg";
 import Loading from "../../../components/Loading/Loading";
+import { FaYoutube } from "react-icons/fa";
 
 const getTitle = (getCategoryId) => {
   switch (getCategoryId) {
@@ -31,11 +32,12 @@ const PrintItem = props => {
   // const imagePath = process.env.REACT_APP_IMG_DIR + item.image;
   const imagePath = item.imageDir ? process.env.REACT_APP_IMG_DDIR + item.imageDir + '/pr/' + item.image : process.env.REACT_APP_IMG_DIR + item.image;
   const showIcon = props.showIcon;
+  const wrapClass = showIcon ? `icon-overlay ${showIcon}` : null;
 
   return (
     <div className="ir-wrap-all">
     <h5>{getTitle(item.category)}</h5>
-    <div className={`ir-wrap ${showIcon}`}>
+    <div className={`ir-wrap ${wrapClass}`}>
       <div className="ir-img">
         <Link to={props.url}>
           <Img
@@ -43,6 +45,7 @@ const PrintItem = props => {
             alt={title}
             className="img-loading"
           />
+          {showIcon && showIcon === "youtube" ? <FaYoutube className="youtube"/> : null}
         </Link>
       </div>
       <div className="ir-txt">
