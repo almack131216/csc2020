@@ -120,7 +120,7 @@ const ItemRelated = props => {
         handleForYouTube(tmpArr);
         setLoading(false);        
       });
-  }, [apiUrlRelated]);
+  }, [apiUrlRelated,handleForYouTube]);
 
   if (loading) {
     return <Loading />;

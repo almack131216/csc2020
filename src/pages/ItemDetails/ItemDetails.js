@@ -17,8 +17,6 @@ import { setDocumentTitle, apiGetItemDetails, ConsoleLog } from "../../assets/js
 import Parser from "html-react-parser";
 import Lightbox from "react-image-lightbox";
 import Loading from "../../components/Loading/Loading";
-import Img from "react-image";
-import ImageNotFound from "../../assets/images/image-not-found.jpg";
 import ItemNotFound from "../../components/ItemDetails/ItemNotFound/ItemNotFound";
 import ItemExtras from "../../components/ItemDetails/ItemExtras/ItemExtras";
 import ItemRelated from "../../components/ItemDetails/ItemRelated/ItemRelated";
@@ -130,7 +128,7 @@ export default class ItemDetails extends Component {
     const handleForLargeImageList = this.handleForLargeImageList;
     // (END) LIGHTBOX props
     const handleForVideobox = this.handleForVideobox;
-    const handleForYouTube = this.handleForYouTube;
+    // const handleForYouTube = this.handleForYouTube;
 
     const {
       loading,
@@ -338,7 +336,7 @@ export default class ItemDetails extends Component {
         <ItemRelated
           itemIds={relatedItems}
           videosArr={this.state.videosArr}
-          handleForYouTube={handleForYouTube.bind(this)}
+          handleForYouTube={this.handleForYouTube}
         />
       ) : null;
     // (END) RELATED
