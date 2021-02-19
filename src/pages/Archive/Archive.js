@@ -102,7 +102,8 @@ const Archive = props => {
             {breadcrumbsTag}
             <div className="col-post-text">
               <h1>Archive: 2007-today</h1>      
-              <h2>Selling classic cars worldwide for over 25 years</h2>
+              {/* <h2>Celebrating 30 Years in Business</h2> */}
+              <h2>Selling classic cars worldwide for 30 years</h2>
               {/* <h3>Our online archive dates from 2007</h3> */}
               {brandsArrLite && !loading ? <AlphabetList data={brandsArrLite}></AlphabetList> : 'Loading...'}
               {/* {brandsArrLite ? <CustAlphabetSorter data={brandsArrLite}></CustAlphabetSorter> : 'Loading...'} */}

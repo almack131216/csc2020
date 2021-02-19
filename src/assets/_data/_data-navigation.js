@@ -3,7 +3,7 @@ import CatData from "./_data-categories";
 const navArray = {
   home: {
     title: "Homepage",
-    titleHover: "Link to the Classic and Sportscar Centre homepage",
+    titleHover: "Link to the Classic & Sportscar Centre homepage",
     titleDocument: process.env.REACT_APP_DOC_TITLE,
     slug: "/",
     navTop: true,
@@ -105,9 +105,9 @@ const navArray = {
   },
   contact: {
     title: "Contact",
-    titleHover: "Link to the Classic and Sportscar Centre contact page",
+    titleHover: "Link to the Classic & Sportscar Centre contact page",
     titleDocument:
-      "Contact Classic and Sportscar Centre, Malton, North Yorkshire, UK",
+      "Contact Classic & Sportscar Centre, Malton, North Yorkshire, UK",
     slug: "/contact",
     navTop: true,
     navSide: true,
@@ -124,7 +124,7 @@ const navArray = {
   },
   privacyPolicy: {
     title: "Privacy Policy",
-    titleHover: "Link to the Classic and Sportscar Centre Privacy Policy page",
+    titleHover: "Link to the Classic & Sportscar Centre Privacy Policy page",
     titleDocument:
       "Privacy Policy",
     slug: "/privacy",
