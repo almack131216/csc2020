@@ -53,6 +53,15 @@ const navArray = {
     navTop: true,
     navSide: true
   },
+  storage: {
+    title: "Storage & Maintenance",
+    titleHover:
+      "Link to Classic Car Storage & Maintenance services page",
+    titleDocument: "Classic Car Storage & Maintenance Services",
+    slug: "/classic-car-storage",
+    navTop: true,
+    navSide: true
+  },  
   testimonials: {
     title: CatData["Testimonials"].title,
     titleHover: CatData["Testimonials"].titleHover,

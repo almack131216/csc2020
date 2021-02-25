@@ -36,6 +36,7 @@ const siteData = {
     NavArray.archive,
     NavArray.restoration,
     NavArray.selling,
+    NavArray.storage,
     NavArray.transportation,
     NavArray.testimonials,
     NavArray.press,
@@ -50,7 +51,8 @@ const siteData = {
       NavArray.live,
       NavArray.archive,
       NavArray.selling,
-      NavArray.transportation
+      NavArray.transportation,
+      NavArray.storage,
     ],
     columnB: [
       NavArray.restoration,

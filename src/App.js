@@ -113,6 +113,17 @@ class App extends Component {
             />
             <Route
               exact
+              path={`${process.env.PUBLIC_URL}/classic-car-storage`}
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="PageText"
+                  itemId={51671}
+                  pageStyle="ImgCarousel"
+                />
+              )}
+            />
+            <Route
+              exact
               path={`${process.env.PUBLIC_URL}/registration-numbers`}
               component={routerProps => (
                 <ItemDetails
