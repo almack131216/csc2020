@@ -60,7 +60,8 @@ const navArray = {
     titleDocument: "Classic Car Storage & Maintenance Services",
     slug: "/classic-car-storage",
     navTop: true,
-    navSide: true
+    navSide: true,
+    class: "new"
   },  
   testimonials: {
     title: CatData["Testimonials"].title,

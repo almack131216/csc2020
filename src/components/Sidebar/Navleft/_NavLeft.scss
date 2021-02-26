@@ -19,6 +19,25 @@
         }
       }
 
+      &.new {
+        a {
+          padding-left:0;
+
+          span.detail {
+            background: $color_accent3;
+            color: white;
+            padding: 3px 5px;
+            margin-right: 5px;
+            border-radius: 5px;
+            font-size:9px;
+    
+            @media (max-width: $bp-lg-1) {
+              // display: none;
+            }
+          }
+        }       
+      }
+
       a {
         color: $navbar_color-link;
         padding: 0 $offset-g1;
