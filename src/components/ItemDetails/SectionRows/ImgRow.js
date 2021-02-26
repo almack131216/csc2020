@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import parse from "html-react-parser";
+import React from 'react';
+// import parse from "html-react-parser";
 import NavLeft from "../../Sidebar/Navleft/NavLeft";
 import VideoEmbed from "../Video/VideoEmbed";
-import Loading from "../../Loading/Loading";
+// import Loading from "../../Loading/Loading";
 import ImgFeatured from "../ImgFeatured/ImgFeatured";
 import ItemExtras from "../ItemExtras/ItemExtras";
 import ImgGrid from "../ImgGrid/ImgGrid";
@@ -12,7 +12,7 @@ const ImgRow = props => {
   const categoryName = props.categoryName;
   // const imgArea = props.imgArea;
   const breadcrumbsTag = props.breadcrumbsTag;
-  const pageStyle = props.pageStyle;
+  const pageStyle = props.pageStyle ? props.pageStyle : "TextOnly";
   const hasVideo = props.hasVideo;
   const itemPrimary = props.itemPrimary;
   const imagesArr = props.imgsArr;
@@ -32,12 +32,6 @@ const ImgRow = props => {
   // if (loading) {
   //   return <Loading />;
   // }
-
-  // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
-    // Update the document title using the browser API
-    // document.title = `You clicked ${count} times`;
-  });
 
   // SET images (IMG || Carousel)
   // change background style if
