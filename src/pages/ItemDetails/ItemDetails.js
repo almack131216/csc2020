@@ -7,11 +7,7 @@ import {
   CB_Contact,
   CB_OpeningHours
 } from "../../components/ContactBoxes/ContactBoxes";
-import ImgFeatured from "../../components/ItemDetails/ImgFeatured/ImgFeatured";
-import ImgGrid from "../../components/ItemDetails/ImgGrid/ImgGrid";
 import ImgList from "../../components/ItemDetails/ImgList/ImgList";
-import VideoEmbed from "../../components/ItemDetails/Video/VideoEmbed";
-import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import { ItemContext } from "../../Context";
 import { setDocumentTitle, apiGetItemDetails, ConsoleLog } from "../../assets/js/Helpers";
 import Parser from "html-react-parser";
@@ -20,6 +16,7 @@ import Loading from "../../components/Loading/Loading";
 import ItemNotFound from "../../components/ItemDetails/ItemNotFound/ItemNotFound";
 import ItemExtras from "../../components/ItemDetails/ItemExtras/ItemExtras";
 import ItemRelated from "../../components/ItemDetails/ItemRelated/ItemRelated";
+import ImgArea from "../../components/ItemDetails/SectionRows/ImgRow";
 import "react-image-lightbox/style.css";
 //
 
@@ -240,45 +237,15 @@ export default class ItemDetails extends Component {
 
     // SET images (IMG || Carousel)
     // change background style if
-    let imgRowClasses = ["content", "item-details-img"];
     let txtRowClasses = ["container"];
     // Featured / Primary
-    let imgColLeft = <Loading />;
     // Right panel (IMAGE Grid (attachments) || share)
-    let imgColRight = <Loading />;
-    let imgColFull = <Loading />;
+    // let imgColFull = <Loading />;
     // Default or Carousel?...
     if (pageStyle === "ImgDetails") {
-      imgRowClasses.push("bg-secondary");
       txtRowClasses.push("item");
-      imgColLeft = (
-        <ImgFeatured
-          imgArr={itemPrimary}
-          handleForLightbox={handleForLightbox.bind(this)}          
-        />
-      );
-      imgColRight = (
-        <ImgGrid
-          imgsArr={images}
-          handleForLightbox={handleForLightbox.bind(this)}
-          handleForVideobox={handleForVideobox.bind(this)}
-          videosArr={videos}
-        />
-      );
     } else if (pageStyle === "ImgCarousel") {
-      imgRowClasses.push("carousel");
-      imgColLeft = <CarouselDynamic imgsArr={images} />;
-      imgColRight = <ItemExtras itemArr={itemPrimary} showContact={true} itemAttachments={pdfs}/>;
     } else if (pageStyle ==="IsVideo") {
-      imgRowClasses.push("youtube-wrap");
-      imgColLeft = null;
-      imgColRight = null;
-      imgColFull = itemPrimary.isVideo && itemPrimary.youtube ? (
-        <VideoEmbed
-          videoId={itemPrimary.youtube}
-          imgArr={itemPrimary}
-          autoplay={0}/>
-       ) : '';
     }
     const imgLargeList = (
       <>
@@ -329,7 +296,7 @@ export default class ItemDetails extends Component {
     //   relatedItems = relatedItems.concat(tmpArr2);
     // }
     relatedItems = relatedItems.filter(e => e !== 0 && !Number.isNaN(e)); // will remove '0' values
-    console.log("[ItemDetails] relatedItems: " + relatedItems + " (" + relatedItems.length + ")");
+    ConsoleLog("[ItemDetails] relatedItems: " + relatedItems + " (" + relatedItems.length + ")");
 
     const relatedItemsTag =
       relatedItems.length > 0 && !isNaN(relatedItems[0]) ? (
@@ -342,7 +309,7 @@ export default class ItemDetails extends Component {
     // (END) RELATED
 
     const hasVideo = this.state.videosArr && this.state.isVideo ? true : false;
-    console.log(relatedItems[0]);
+    ConsoleLog(relatedItems[0]);
 
     let moreInfoBoxes = null;
     if(pageStyle === "ImgDetails"){
@@ -379,35 +346,20 @@ export default class ItemDetails extends Component {
     const pageContent =
       pageStyle !== "TextOnly" ? (
         <>
-          <section className="content-wrap match-heights bg-accent">
-            <div className="sidebar">{navLeft}</div>
-            <div className={imgRowClasses.join(" ")}>
-              {breadcrumbsTag}
-              {pageStyle ==="IsVideo" ? (
-                <div className="row row-post-video full">
-                  <div className="col-xs-12 col-sm-12 margin-x-0 padding-x-0 col-post-video">
-                    {imgColFull}                    
-                    {/* {itemPrimary.isVideo ? <p>yes: {itemPrimary.youtube}</p> : null} */}
-                  </div>
-                </div>
-              ) : 
-              (
-                <div className="row row-post-img">
-                <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
-                  {hasVideo ? (
-                    <VideoEmbed
-                    videoId={this.state.videoIndex}
-                    imgArr={itemPrimary}
-                    autoplay={1}/>
-                  ) : imgColLeft}
-                </div>
-                <div className="col-xs-12 col-sm-4 col-post-img-grid">
-                  {imgColRight}
-                </div>
-              </div>
-              )}              
-            </div>
-          </section>
+          <ImgArea
+            categoryName={categoryArr.name}
+            breadcrumbsTag={breadcrumbsTag}
+            itemPrimary={itemPrimary}
+            pageStyle={pageStyle}
+            hasVideo={hasVideo}
+            videoIndex={this.state.videoIndex}
+            imgsArr={images}
+            attachmentsArr={pdfs}
+            handleForLightbox={handleForLightbox.bind(this)}
+            handleForVideobox={handleForVideobox.bind(this)}
+            videosArr={videos}
+          />
+          
           <div className={txtRowClasses.join(" ")}>
             <section className="row">
               <div className="sidebar hidden-md-down col-md-3 padding-x-0">
