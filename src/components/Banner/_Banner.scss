@@ -11,13 +11,19 @@
 
   h1 {
     margin: 0 0 $offset-g1 0;
+    color: white;
+  }
+
+  h3 {
+    margin: 0 0 $offset-g1 0;
+    color: white;
   }
 
   p {
     margin: 0 0 $offset-g1 0;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 30px;
+    // font-weight: normal;
+    // font-size: 24px;
+    // line-height: 30px;
     color: white;
   }
 
@@ -35,30 +41,30 @@
     }
   }
 
-  &.christmas {
-    background: white url(../../assets/images/bg_christmas.jpg);
+//   &.christmas {
+//     background: white url(../../assets/images/bg_christmas.jpg);
 
-    h1 {
-      margin: 0 0 0.5em 0;
-      font-weight: normal;
-      font-size: 24px;
-      line-height: 30px;
-      color: $color_accent;
-    }
+//     h1 {
+//       margin: 0 0 0.5em 0;
+//       font-weight: normal;
+//       font-size: 24px;
+//       line-height: 30px;
+//       color: $color_accent;
+//     }
 
-    a.btn-primary {
-      color: $color_accent;
-      background: white;
-      border:1px solid $color_accent;
-      border-radius:5px;
-      padding:5px 10px;
-      text-decoration:none;
+//     a.btn-primary {
+//       color: $color_accent;
+//       background: white;
+//       border:1px solid $color_accent;
+//       border-radius:5px;
+//       padding:5px 10px;
+//       text-decoration:none;
 
-      &:hover {
-        background:$color_accent;
-        color:white;
-      }
-    }
-  }
+//       &:hover {
+//         background:$color_accent;
+//         color:white;
+//       }
+//     }
+//   }
 
 }
