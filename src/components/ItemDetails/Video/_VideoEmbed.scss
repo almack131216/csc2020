@@ -4,17 +4,21 @@
 .wrap-iframe {
   position:relative;
   width: 100%;
-  height: auto;
-  max-height: 340px;
+  height: 380px;
   z-index:0;
   text-align: center;
+  @media(min-width:$bp-tablet-1) and (max-width:$bp-md-1){
+    height: 440px;
+  }  
 
   img {
     visibility:hidden;
     z-index:0;
-    max-height: 340px;
+    height: 100%;
     width: auto;
     margin: 0 auto;
+
+    
   }
   iframe {
     position:absolute;
