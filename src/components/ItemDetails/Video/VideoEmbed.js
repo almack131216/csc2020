@@ -5,7 +5,7 @@ import Img from "react-image";
 const VideoEmbed = props => {
   // console.log("[ImgFeatured] ...");
   const imgSrcLarge = `${process.env.REACT_APP_IMG_DDIR}${props.imgArr.imageDir}/lg/${props.imgArr.image}`;
-  const imgSrcPrimary = `${process.env.REACT_APP_IMG_DDIR}${props.imgArr.imageDir}/pr/${props.imgArr.image}`;
+  // const imgSrcPrimary = `${process.env.REACT_APP_IMG_DDIR}${props.imgArr.imageDir}/pr/${props.imgArr.image}`;
   // const imgUrl = "https://via.placeholder.com/640x480";
   const imgUrl = props.imgArr.imageDir ? imgSrcLarge : `${process.env.REACT_APP_IMG_DIR_LARGE}${props.imgArr.image}`;//2do - remove condition when all images are transferred
   // console.log('[ImgFeatured] ' + imgUrl);
@@ -23,11 +23,11 @@ const VideoEmbed = props => {
     <Img
       src={imgUrl}
       className="img-loading is-hidden"
-      alt={props.imgArr.name}
-      srcSet={props.imgArr.imageDir ? `${imgSrcLarge} 640w,
-        ${imgSrcPrimary} 400w` : null}      
+      alt={props.imgArr.name}           
     />
   );
+  // srcSet={props.imgArr.imageDir ? `${imgSrcLarge} 640w,
+  //       // ${imgSrcPrimary} 400w` : null} 
 
   return (
     <div className="wrap-iframe">

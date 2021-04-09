@@ -38,19 +38,20 @@ const Item = memo(({ item, itemSettingsCust }) => {
     year,
     excerpt,
     date,
-    imageDir,
-    imageFilename
+    // imageDir,
+    // imageFilename
   } = item;
   // INIT image
   // <IMG> - shows 'image not found' graphic as fallback
-  const imgSrcLarge = `${process.env.REACT_APP_IMG_DDIR}${imageDir}/lg/${imageFilename}`;
-  const imgSrcPrimary = `${process.env.REACT_APP_IMG_DDIR}${imageDir}/pr/${imageFilename}`;
+  // const imgSrcLarge = `${process.env.REACT_APP_IMG_DDIR}${imageDir}/lg/${imageFilename}`;
+  // const imgSrcPrimary = `${process.env.REACT_APP_IMG_DDIR}${imageDir}/pr/${imageFilename}`;
   const myImg = (
     <Img src={[image, ImageNotFound]}
       alt={name}
       className="img-loading"
-      srcSet={imageDir ? `${imgSrcLarge} 640w,${imgSrcPrimary} 400w` : null} />
+      />
   );
+  //srcSet={imageDir ? `${imgSrcLarge} 640w,${imgSrcPrimary} 400w` : null}
   // INIT settings.item
   let itemClass = ["item"];
   let imgClass = "card-img";
@@ -150,7 +151,8 @@ const Item = memo(({ item, itemSettingsCust }) => {
       <Img src={[src, ImageNotFound]}
         alt={name}
         className="img-loading" 
-        srcSet={imageDir ? `${imgSrcLarge} 640w,${imgSrcPrimary} 400w` : null}/>
+        />
+        {/* srcSet={imageDir ? `${imgSrcLarge} 640w,${imgSrcPrimary} 400w` : null} */}
     </a>
   ) : (
     <Link to={formatItemLink(item)}>{myImg}</Link>
