@@ -85,7 +85,7 @@ $img-height-3: 210px;
   article {
     .card-img {
       background-color:white;
-            
+
       @media (min-width:$bp-lg) {
         height: 400px;
       }
@@ -109,7 +109,13 @@ $img-height-3: 210px;
       @media (min-width:$bp-lg){
         height: $img-height-1;
       }
-      @media (min-width:$bp-sm) and (max-width:$bp-lg-1){
+      @media (min-width:1024px) and (max-width:$bp-lg-1){
+        height: 160px;
+      }
+      @media (min-width:$bp-md) and (max-width:1023px){
+        height: 200px;
+      }
+      @media (min-width:$bp-sm) and (max-width:$bp-md-1){
         height: $img-height-2;
       }
       @media (min-width:700px) and (max-width:$bp-sm-1){
@@ -118,8 +124,17 @@ $img-height-3: 210px;
       @media (min-width:$bp-tablet) and (max-width:699px){
         height: 125px;
       }
-      @media (max-width:$bp-tablet-1) {
+      @media (min-width:$bp-xs) and (max-width:$bp-tablet-1) {
         height: 165px;
+      }
+      @media (min-width:400px) and (max-width:$bp-xs-1) {
+        height: 260px;
+      }
+      @media (min-width:360px) and (max-width:399px) {
+        height: 220px;
+      }
+      @media (max-width:359px) {
+        height: 200px;
       }
 
       img {
