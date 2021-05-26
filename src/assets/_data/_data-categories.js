@@ -208,7 +208,7 @@ const catArray = {
     id: 7,
     name: "PageText",
     title: "",
-    slug: "/",
+    slug: "/page",
     settings: {
       showFilter: false,
       showBrandList: false,

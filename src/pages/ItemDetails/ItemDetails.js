@@ -141,6 +141,7 @@ export default class ItemDetails extends Component {
     let widgetYouTubeBtn = null;
     let widgetOpeningHours = null;
     let widgetContact = null;
+    let custPageStyle = pageStyle;
     // ITEM NOT FOUND
     if (fetchError) {
       return <ItemNotFound text={this.strItemNotFound} itemId={this.state.slug} />
@@ -242,10 +243,14 @@ export default class ItemDetails extends Component {
     // Right panel (IMAGE Grid (attachments) || share)
     // let imgColFull = <Loading />;
     // Default or Carousel?...
-    if (pageStyle === "ImgDetails") {
+    if (custPageStyle === "ImgDetails") {
       txtRowClasses.push("item");
-    } else if (pageStyle === "ImgCarousel") {
-    } else if (pageStyle ==="IsVideo") {
+    } else if (custPageStyle === "ImgCarousel") {
+    } else if (custPageStyle ==="IsVideo") {
+    } else if (custPageStyle ==="isPage") {
+      custPageStyle = "ImgCarousel";
+      if(itemPrimary.category === 2) custPageStyle = "ImgDetails";
+      // if(itemPrimary.category === 3 || itemPrimary.category === 4 || itemPrimary.category === 5) custPageStyle = "ImgCarousel";
     }
     const imgLargeList = (
       <>
@@ -312,7 +317,7 @@ export default class ItemDetails extends Component {
     ConsoleLog(relatedItems[0]);
 
     let moreInfoBoxes = null;
-    if(pageStyle === "ImgDetails"){
+    if(custPageStyle === "ImgDetails"){
       moreInfoBoxes = (
         <>        
         <ItemExtras
@@ -328,7 +333,7 @@ export default class ItemDetails extends Component {
         {relatedItemsTag}
         </>
       )
-    }else if(pageStyle === "IsVideo"){
+    }else if(custPageStyle === "IsVideo"){
       moreInfoBoxes = (
         <>
         {relatedItemsTag}
@@ -344,13 +349,13 @@ export default class ItemDetails extends Component {
     };
 
     const pageContent =
-      pageStyle !== "TextOnly" ? (
+      custPageStyle !== "TextOnly" ? (
         <>
           <ImgArea
             categoryName={categoryArr.name}
             breadcrumbsTag={breadcrumbsTag}
             itemPrimary={itemPrimary}
-            pageStyle={pageStyle}
+            pageStyle={custPageStyle}
             hasVideo={hasVideo}
             videoIndex={this.state.videoIndex}
             imgsArr={images}

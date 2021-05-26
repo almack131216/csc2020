@@ -294,6 +294,17 @@ class App extends Component {
             />
             <Route
               exact
+              path={`${process.env.PUBLIC_URL}/*/page/:itemId`}
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="PageText"
+                  itemId={routerProps.match.params.itemId}
+                  pageStyle="isPage"
+                />
+              )}
+            />
+            <Route
+              exact
               path={`${process.env.PUBLIC_URL}/*/videos/:itemId`}
               component={routerProps => (
                 <ItemDetails
