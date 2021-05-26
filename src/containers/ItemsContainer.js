@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import parse from "html-react-parser";
-import { Link } from "react-router-dom";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import ItemsFilter from "./ItemsFilter/ItemsFilter";
 import TitleText from "../components/TitleText/TitleText";
@@ -112,23 +111,7 @@ function ItemsContainer({ context }) {
       <Breadcrumbs crumbsArr={crumbsArr} pageType="items-list" />
       {itemsFilterComponent}
 
-      {
-        // 2do - when we no longer need the /2020/ subdir, undo this
-        categoryArr.name === "ArchiveXXX" &&
-        <div className="title-text">
-          {title ? <h1>{title}</h1> : null}
-          {titleSub ? <h2>{titleSub}</h2> : null}
-          <div className="post-text-body">
-            <span>Since 1991 we've sold towards £100,000,000 of classic vehicles. To view 2500 sold vehicles since we started our archive in 2007 please </span>
-            <Link to="/sold">click here</Link>
-            </div>
-        </div>
-      }
-      {      
-      categoryArr.name !== "ArchiveXXX" && categoryArr.name !== "Restoration" && titlesComponent
-      }
-
-
+      {categoryArr.name !== "Restoration" && titlesComponent}
 
       <ItemsList items={currentPosts} layout={itemLayout} />
       {showPagination === true ? (
