@@ -42,7 +42,7 @@
       a {
         color: $navbar_color-link;
         padding: 0 $offset-g1;
-        line-height: $offset-g2;
+        line-height: 28px;//$offset-g2//2do - review nav
         display: block;
         width: 100%;
         text-align: right;
