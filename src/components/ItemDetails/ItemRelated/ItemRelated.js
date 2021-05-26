@@ -20,7 +20,7 @@ const getTitle = (getCategoryId) => {
     case 13:
       return "YouTube video";
     default:
-      return "More Information";
+      return "Related";
   }
 }
 
@@ -38,6 +38,8 @@ const PrintItem = props => {
     <div className="ir-wrap-all">
     <h5>{getTitle(item.category)}</h5>
     <div className={`ir-wrap ${wrapClass}`}>
+      {
+      imagePath ? (
       <div className="ir-img">
         <Link to={props.url}>
           <Img
@@ -48,6 +50,8 @@ const PrintItem = props => {
           {showIcon && showIcon === "youtube" ? <FaYoutube className="youtube"/> : null}
         </Link>
       </div>
+      ) : null
+      }
       <div className="ir-txt">
         <p>
           <Link to={props.url}>{title}</Link>
