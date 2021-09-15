@@ -158,7 +158,7 @@ class App extends Component {
               exact
               path={`${process.env.PUBLIC_URL}/classic-cars-for-sale`}
               component={() => <Items category="Live" />}
-            />
+            />            
             <Route
               exact
               path={`${process.env.PUBLIC_URL}/classic-cars-sold`}
@@ -194,6 +194,53 @@ class App extends Component {
               path={`${process.env.PUBLIC_URL}/videos`}
               component={() => <Items category="Videos" />}
             />
+            {/* PAGINATION */}
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/classic-cars-for-sale/page-:page`}
+              component={(routerProps) => <Items category="Live" page={routerProps.match.params.page} />}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/:brand/for-sale/page-:page`}
+              component={(routerProps) => <Items category="Live" brand={routerProps.match.params.brand} page={routerProps.match.params.page} />}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/classic-cars-sold/page-:page`}
+              component={(routerProps) => <Items category="Archive" page={routerProps.match.params.page} />}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/:brand/sold/page-:page`}
+              component={(routerProps) => <Items category="Archive" brand={routerProps.match.params.brand} page={routerProps.match.params.page} />}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/testimonials/page-:page`}
+              component={(routerProps) => <Items category="Testimonials" page={routerProps.match.params.page} />}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/press/page-:page`}
+              component={(routerProps) => <Items category="Press" page={routerProps.match.params.page} />}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/news/page-:page`}
+              component={(routerProps) => <Items category="News" page={routerProps.match.params.page} />}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/history/page-:page`}
+              component={(routerProps) => <Items category="History" page={routerProps.match.params.page} />}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/videos/page-:page`}
+              component={(routerProps) => <Items category="Videos" page={routerProps.match.params.page} />}
+            />
+            {/* (END) PAGINATION */}
             <Route
               exact
               path={`${process.env.PUBLIC_URL}/:brand/for-sale`}

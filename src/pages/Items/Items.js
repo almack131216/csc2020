@@ -22,8 +22,8 @@ const Items = (props) => {
 	let widgetOpeningHours = null;
 	let widgetContact = null;
 	// FUNCTIONS
-	let getBrandFromSlug = null;
-	getBrandFromSlug = props.brand;
+	let getBrandFromSlug = props.brand ? props.brand : null;
+	let getPage = props.page ? props.page : null;
 	
 	// useEffect
 	useEffect(
@@ -55,8 +55,8 @@ const Items = (props) => {
 					{widgetOpeningHours}
 					{widgetContact}
 				</div>
-				<div className="content col-sm-12 col-md-9 col-posts-parent 2do__cr">
-					<ItemsContainer />
+				<div className="content col-sm-12 col-md-9 col-posts-parent">
+					<ItemsContainer page={getPage} />
 				</div>
 			</section>
 		</div>

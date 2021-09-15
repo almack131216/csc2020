@@ -10,7 +10,7 @@ import { withItemConsumer } from "../Context";
 import Loading from "../components/Loading/Loading";
 import Linkify from 'linkifyjs/react';// 2do - might not need when we lose /2020/ subdir
 
-function ItemsContainer({ context }) {
+function ItemsContainer({ context, page }) {
   // console.log("[ItemsContainer] ...");
   //
   // INIT context
@@ -20,9 +20,29 @@ function ItemsContainer({ context }) {
   let itemLayout = null; // LAYOUT items should be displayed in grid or row?
   let titlesComponent = null;
   let itemsFilterComponent = null;
+  catSettings && console.log("[ItemsContainer] ... catSettings: " + categoryArr.slug);
+  
   // INIT pagination
-  const [currentPage, setCurrentPage] = useState(1);
+  let loadPageNum = 1;
+  if (Number.isInteger(parseInt(page))){
+    console.log("[ItemsContainer] ... is INT, ", page);
+    loadPageNum = page;
+  }else{
+    console.log("[ItemsContainer] ... is NOT INT, ", page);
+  }
+  // const [currentPage, setCurrentPage] = useState(loadPageNum);
   const [postsPerPage] = useState(siteData.pagination.postsPerPage);
+  // const pageCount = sortedItems.length && postsPerPage ? Math.ceil(sortedItems.length / postsPerPage) : 1;
+  
+  console.log("[ItemsContainer] ...", loadPageNum, " (", page, ")");
+  // if(loadPageNum > pageCount){    
+  //   loadPageNum = pageCount;
+  //   console.log("[ItemsContainer] ... DEFAULT TO: ", loadPageNum);
+  //   // setCurrentPage(12);
+  // }
+  const [currentPageBefore, setcurrentPageBefore] = useState(parseInt(loadPageNum));
+  let currentPageNum = parseInt(loadPageNum);
+  let currentPageSlug = categoryArr && categoryArr.slug ? categoryArr.slug : null;
 
   let title = null;
   let titleSub = null;
@@ -53,8 +73,10 @@ function ItemsContainer({ context }) {
     titlesComponent = title || titleSub ? <TitleText title={title} titleSub={titleSub} text={textWithLinks} /> : null;    
   }
   // PAGINATION
+  // const paginate = pageNumber => setCurrentPage(loadPageNum);
   // GET current posts
-  const indexOfLastPost = currentPage * postsPerPage;
+  console.log('[ItemsContainer] currentPageNum: ' + currentPageNum + ', currentPageBefore: ' + currentPageBefore );
+  const indexOfLastPost = currentPageNum * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts =
     sortedItems.length > postsPerPage
@@ -62,7 +84,7 @@ function ItemsContainer({ context }) {
       : sortedItems;
   const showPagination = sortedItems.length > postsPerPage ? true : false;
   // CHANGE page
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const paginate = pageNumber => setcurrentPageBefore(loadPageNum);
   // (END) PAGINATION
   // SET breadcrumbs array
   let crumbsArr = [];
@@ -83,6 +105,7 @@ function ItemsContainer({ context }) {
         slug: `/${subcategoryArr.slug}/sold`
       };
       crumbsArr.push(subcatArr);
+      currentPageSlug = subcatArr.slug;
     }
     
     let archiveAllArr = {
@@ -101,6 +124,7 @@ function ItemsContainer({ context }) {
       class: 'crumb-subcategory'
     }
     crumbsArr.push(tmp);
+    currentPageSlug = tmp.slug;
   }
 
   if (loading) {
@@ -114,12 +138,13 @@ function ItemsContainer({ context }) {
       {categoryArr.name !== "Restoration" && titlesComponent}
 
       <ItemsList items={currentPosts} layout={itemLayout} />
-      {showPagination === true ? (
+      {showPagination === true && currentPageNum ? (
         <Pagination
           postsPerPage={postsPerPage}
           totalPosts={sortedItems.length}
           paginate={paginate}
-          currentPage={currentPage}
+          currentPageNum={currentPageNum}
+          currentPageSlug={currentPageSlug}
         />
       ) : null}
     </>
