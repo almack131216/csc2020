@@ -43,6 +43,12 @@ function ItemsContainer({ context, page }) {
   const [currentPageBefore, setcurrentPageBefore] = useState(parseInt(loadPageNum));
   let currentPageNum = parseInt(loadPageNum);
   let currentPageSlug = categoryArr && categoryArr.slug ? categoryArr.slug : null;
+  const totalPages = Math.ceil(sortedItems.length / postsPerPage);
+  console.log('[ItemsContainer] totalPages: ' + totalPages + ', currentPageNum: ' + currentPageNum + ', currentPageBefore: ' + currentPageBefore );
+  if(currentPageNum > totalPages){
+    console.log('[ItemsContainer] !!! FORCE to last page');
+    currentPageNum = totalPages;
+  }
 
   let title = null;
   let titleSub = null;
@@ -83,6 +89,8 @@ function ItemsContainer({ context, page }) {
       ? sortedItems.slice(indexOfFirstPost, indexOfLastPost)
       : sortedItems;
   const showPagination = sortedItems.length > postsPerPage ? true : false;
+    
+
   // CHANGE page
   const paginate = pageNumber => setcurrentPageBefore(loadPageNum);
   // (END) PAGINATION
