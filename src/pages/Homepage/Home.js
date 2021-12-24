@@ -4,7 +4,7 @@ import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
 import Banner from "../../components/Banner/Banner";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BigGrid from "../../components/Items/BigGrid/BigGrid";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
@@ -47,20 +47,20 @@ const Home = props => {
         </div>
         <div className="content">{imgCarousel}</div>
       </section>
-      <Banner title="September 17th-19th" subtitle="Come and see us this weekend at Goodwood Revival" type="high-alert">
+      {/* <Banner title="September 17th-19th" subtitle="Come and see us this weekend at Goodwood Revival" type="high-alert">
         <a href="https://www.classicandsportscar.ltd.uk/goodwood-revival-17th-19th-september-2021/news/54437" title="Link to this story" className="btn-primary">
           <FaChevronRight />More information
         </a>
         <span className="caps-black">Please note: the showroom will be closed this Sunday</span>
-      </Banner>
-      {/* <Banner title="COVID 19 update, opening information & Christmas Message" subtitle="" type="christmas">
-      <a href="https://classicandsportscar.ltd.uk/covid-19-december-update-and-christmas-message/news/50425" className="btn-primary">
+      </Banner> */}
+      <Banner title="We would like to wish all of our friends & customers a very Happy Christmas and Prosperous New Year" subtitle="" type="christmas">
+      {/* <a href="https://classicandsportscar.ltd.uk/covid-19-december-update-and-christmas-message/news/50425" className="btn-primary">
         <FaChevronRight />More information
-        </a>
-        {/* <Link to="/contact" className="btn-primary">
-        <FaChevronRight />Office Hours
-        </Link> */}
-      {/* </Banner> */}
+        </a> */}
+        <Link to="/contact" className="btn-primary">
+        <FaChevronRight />Christmas Office Hours
+        </Link>
+      </Banner>
       <TitleSplitter
         titleArr={{
           title: catData["Live"].title,

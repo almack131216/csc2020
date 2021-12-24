@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
-import BrandFilter from "../../components/Filter/Brand";//2do - restore whn live
+import BrandFilter from "../../components/Filter/Brand";
 import NavData from "../../assets/_data/_data-navigation";
 import { FaHome, FaFilter, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";

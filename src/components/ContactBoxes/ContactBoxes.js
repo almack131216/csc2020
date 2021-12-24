@@ -29,25 +29,23 @@ const CB_OpeningHoursDefault = {
 
 const CB_OpeningHoursChristmas = {
   title: "Christmas Office Hours",
+  class: "christmas-hours",
   text: (
     <ul>
-      <li>24th Dec. 8.30am-1pm</li>
-      <li>25th Dec. Closed</li>
-      <li>26th Dec. Closed</li>
-      <li>27th Dec. Closed </li>
-      <li>28th Dec. By appointment only </li>
-      <li>29th Dec. 8.30am-5.30pm</li>
-      <li>30th Dec. 8.30am-5.30pm</li>
-      <li>31st Dec. 8.30am-1pm</li>
+      <li>24th Dec. 9am-1pm</li>
+      <li>25th-28th Dec. Closed</li>
+      <li>29th Dec. 9am-5.30pm</li>
+      <li>30th Dec. 9am-5.30pm</li>
+      <li>31st Dec. 9am-1pm</li>
       <li>1st Jan. Closed </li>
-      <li>2nd Jan. Closed</li>
-      <li>3rd Jan. By appointment only </li>
-      <li>4th Jan. Re open as normal </li>
+      <li>2nd Jan. By appointment only</li>
+      <li>3rd Jan. By appointment only</li>
+      <li>4th Jan. Reopen as normal</li>
     </ul>
   )
 };
 
-const CB_OpeningHours = getDateToday() > '2020-12-22' && getDateToday() < '2021-01-04' ? CB_OpeningHoursChristmas : CB_OpeningHoursDefault;
+const CB_OpeningHours = getDateToday() > '2021-12-16' && getDateToday() < '2022-01-04' ? CB_OpeningHoursChristmas : CB_OpeningHoursDefault;
 
 const CB_Address = {
   title: "Address",
