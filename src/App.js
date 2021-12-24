@@ -176,6 +176,11 @@ class App extends Component {
             />
             <Route
               exact
+              path={`${process.env.PUBLIC_URL}/staff`}
+              component={() => <Items category="Staff" />}
+            />
+            <Route
+              exact
               path={`${process.env.PUBLIC_URL}/press`}
               component={() => <Items category="Press" />}
             />
@@ -219,6 +224,11 @@ class App extends Component {
               exact
               path={`${process.env.PUBLIC_URL}/testimonials/page-:page`}
               component={(routerProps) => <Items category="Testimonials" page={routerProps.match.params.page} />}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/staff/page-:page`}
+              component={(routerProps) => <Items category="Staff" page={routerProps.match.params.page} />}
             />
             <Route
               exact
@@ -305,6 +315,22 @@ class App extends Component {
                   pageStyle="ImgCarousel"
                 />
               )}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/*/staff/:slug`}
+              component={routerProps => (
+                <ItemDetails
+                  categoryName="Staff"
+                  itemId={routerProps.match.params.slug}
+                  pageStyle="ImgCarousel"
+                />
+              )}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/:brand/staff`}
+              component={(routerProps) => <Items category="Staff" brand={routerProps.match.params.brand} />}
             />
             <Route
               exact

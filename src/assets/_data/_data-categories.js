@@ -288,6 +288,40 @@ const catArray = {
         }
       }
     }
+  },
+  Staff: {
+    id: 12,
+    name: "Staff",
+    title: "Meet the Staff",
+    titleSub: "",
+    titleHover: "Link to our staff page",
+    titleDocument: "Who are we?",
+    text: "",
+    slug: "/staff",
+    api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Staff`,
+    settings: {
+      showFilter: false,
+      showBrandList: false,
+      showWidgetYouTubeBtn: true,
+      showWidgetOpeningHours: true,
+      showWidgetContactDetails: true,
+      showTitle: true,
+      showTitleSub: true,
+      layout: "grid",
+      classContainer: "",
+      postsPerPage: 99,
+      item: {
+        layout: "item-card staff",
+        showSource: true,
+        showExcerpt: false,
+        showCategoryLink: true,
+        details: {
+          showWidgetYouTubeBtn: true,
+          showWidgetOpeningHours: true,
+          showWidgetContactDetails: true
+        }
+      }
+    }
   }
 };
 

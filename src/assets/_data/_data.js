@@ -38,6 +38,7 @@ const siteData = {
     NavArray.selling,
     NavArray.storage,
     NavArray.transportation,
+    NavArray.staff,
     NavArray.testimonials,
     NavArray.press,
     NavArray.news,

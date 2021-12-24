@@ -273,7 +273,7 @@ export default class ItemProvider extends Component {
 			if(!dataItem.catalogue_subcat.slug) dataItem.catalogue_subcat.slug = this.generateSlugFromName(dataItem.catalogue_subcat.brand);//if subcat slug is not defined
 			let price = dataItem.price;
 			let price_details = dataItem.price_details;
-			let source = dataItem.source;
+			let source = dataItem.source !== '0' ? dataItem.source : null;
 			let brand = dataItem.brand;
 			let year = dataItem.year;
 			let date = dataItem.createdAt;
@@ -319,6 +319,7 @@ export default class ItemProvider extends Component {
 	/////////////////////////////////////////////////////////////////////////// FORMAT price
 	formatPrice = (price, status) => {
 		if (status === 2) return 'Sold';
+		if (status === 0) return 'This vehicle is no longer available';
 		if (price === 0) return '£0';
 		return price ? '£' + price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : null;
 	};
@@ -382,7 +383,7 @@ export default class ItemProvider extends Component {
 		if (itemCategoryName === 7) return CatData.PageText;
 		if (itemCategoryName === 10) return CatData.History;
 		if (itemCategoryName === 11) return CatData.Restoration;
-		if (itemCategoryName === 12) return CatData.Team;
+		if (itemCategoryName === 12) return CatData.Staff;
 		if (itemCategoryName === 13) return CatData.Videos;
 		if (itemCategoryName === 2 && getItemStatus === 0) return CatData[this.state.categoryNameDefault];
 

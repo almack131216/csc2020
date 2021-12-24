@@ -9,6 +9,7 @@ import Pagination from "../components/Pagination/Pagination";
 import { withItemConsumer } from "../Context";
 import Loading from "../components/Loading/Loading";
 import Linkify from 'linkifyjs/react';// 2do - might not need when we lose /2020/ subdir
+// import { MdSettingsInputAntenna } from "react-icons/md";
 
 function ItemsContainer({ context, page }) {
   // console.log("[ItemsContainer] ...");
@@ -20,33 +21,36 @@ function ItemsContainer({ context, page }) {
   let itemLayout = null; // LAYOUT items should be displayed in grid or row?
   let titlesComponent = null;
   let itemsFilterComponent = null;
-  catSettings && console.log("[ItemsContainer] ... catSettings: " + categoryArr.slug);
+  let postsPerPage = useState(siteData.pagination.postsPerPage);
+  // catSettings && console.log("[ItemsContainer] ... catSettings: " + categoryArr.slug);
   
   // INIT pagination
   let loadPageNum = 1;
   if (Number.isInteger(parseInt(page))){
-    console.log("[ItemsContainer] ... is INT, ", page);
+    // console.log("[ItemsContainer] ... is INT, ", page);
     loadPageNum = page;
   }else{
-    console.log("[ItemsContainer] ... is NOT INT, ", page);
+    // console.log("[ItemsContainer] ... is NOT INT, ", page);
   }
   // const [currentPage, setCurrentPage] = useState(loadPageNum);
-  const [postsPerPage] = useState(siteData.pagination.postsPerPage);
+  // console.log('postsPerPage: ', categoryArr.settings);
+  // const [postsPerPage] = useState(siteData.pagination.postsPerPage);
+  if(categoryArr.settings && categoryArr.settings.postsPerPage) postsPerPage = categoryArr.settings.postsPerPage;
   // const pageCount = sortedItems.length && postsPerPage ? Math.ceil(sortedItems.length / postsPerPage) : 1;
   
-  console.log("[ItemsContainer] ...", loadPageNum, " (", page, ")");
+  // console.log("[ItemsContainer] ...", loadPageNum, " (", page, ")");
   // if(loadPageNum > pageCount){    
   //   loadPageNum = pageCount;
   //   console.log("[ItemsContainer] ... DEFAULT TO: ", loadPageNum);
   //   // setCurrentPage(12);
   // }
-  const [currentPageBefore, setcurrentPageBefore] = useState(parseInt(loadPageNum));
+  const [currentPageBefore, setCurrentPageBefore] = useState(parseInt(loadPageNum));
   let currentPageNum = parseInt(loadPageNum);
   let currentPageSlug = categoryArr && categoryArr.slug ? categoryArr.slug : null;
   const totalPages = Math.ceil(sortedItems.length / postsPerPage);
-  console.log('[ItemsContainer] totalPages: ' + totalPages + ', currentPageNum: ' + currentPageNum + ', currentPageBefore: ' + currentPageBefore );
+  // console.log('[ItemsContainer] totalPages: ' + totalPages + ', currentPageNum: ' + currentPageNum + ', currentPageBefore: ' + currentPageBefore );
   if(currentPageNum > totalPages){
-    console.log('[ItemsContainer] !!! FORCE to last page');
+    // console.log('[ItemsContainer] !!! FORCE to last page');
     currentPageNum = totalPages;
   }
 
@@ -81,7 +85,7 @@ function ItemsContainer({ context, page }) {
   // PAGINATION
   // const paginate = pageNumber => setCurrentPage(loadPageNum);
   // GET current posts
-  console.log('[ItemsContainer] currentPageNum: ' + currentPageNum + ', currentPageBefore: ' + currentPageBefore );
+  // console.log('[ItemsContainer] currentPageNum: ' + currentPageNum + ', currentPageBefore: ' + currentPageBefore );
   const indexOfLastPost = currentPageNum * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts =
@@ -92,7 +96,9 @@ function ItemsContainer({ context, page }) {
     
 
   // CHANGE page
-  const paginate = pageNumber => setcurrentPageBefore(loadPageNum);
+  const paginate = pageNumber => setCurrentPageBefore(loadPageNum);
+  // setCurrentPageBefore(loadPageNum);
+  // const paginate = pageNumber => currentPageBefore;
   // (END) PAGINATION
   // SET breadcrumbs array
   let crumbsArr = [];
@@ -151,6 +157,7 @@ function ItemsContainer({ context, page }) {
           postsPerPage={postsPerPage}
           totalPosts={sortedItems.length}
           paginate={paginate}
+          currentPageBefore={currentPageBefore}
           currentPageNum={currentPageNum}
           currentPageSlug={currentPageSlug}
         />

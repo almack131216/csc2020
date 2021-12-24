@@ -81,6 +81,11 @@
 .post-text-body {
   line-height: $base-font-line-height;
 
+  .source {
+    display: block;
+    font-weight: bold;
+    margin: 0 0 $offset-g1 0;
+  }
   .excerpt {
     display: block;
     // font-weight: bold;
@@ -93,6 +98,11 @@
 
   .slick-slider {
     margin-bottom:$offset-g1;
+  }
+
+  .link-category {
+    display:block;
+    margin-top:$offset-g2;
   }
 }
 

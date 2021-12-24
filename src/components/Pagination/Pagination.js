@@ -7,14 +7,14 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPageNum, curren
   const minPagesForPrevNext = 3;
   const totalPages = Math.ceil(totalPosts / postsPerPage);
   // const currentPageSlug = currentPageSlug;
-  console.log('[Pagination] currentPageNum: ', currentPageNum, " (", totalPages, ")");
+  // console.log('[Pagination] currentPageNum: ', currentPageNum, " (", totalPages, ")");
   if(currentPageNum > totalPages) paginate(totalPages);
 
   ///////
   // <li> Generate Tag to avoid duplication of markup
   const generateLiTag = ({ num, isPrev, isNext, isActive }) => {
     // console.log("[Pagination] generateLiTag() > isPrev: " + isPrev);
-    console.log('[Pagination] generateLiTag() > currentPageNum: ', num, ' - ', isActive);
+    // console.log('[Pagination] generateLiTag() > currentPageNum: ', num, ' - ', isActive);
 
     let liKey = num;
     if (isPrev) liKey = "li-prev";
@@ -31,7 +31,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPageNum, curren
 
     const updatePage = (getPageNum) => {
       // this.props.history(`/page-${getPageNum}`);
-      console.log('>>>PATHNAME: ',window.location);
+      // console.log('>>>PATHNAME: ',window.location);
       window.scrollTo(0, 0);
       paginate(getPageNum);
     }

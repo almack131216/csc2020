@@ -193,7 +193,7 @@ export default class ItemDetails extends Component {
     // (END) LIGHTBOX images
 
     // ITEM fields
-    let { title, subtitle, price, category, status, excerpt, description, catalogue_subcat } = itemPrimary;
+    let { title, subtitle, price, category, status, source, excerpt, description, catalogue_subcat } = itemPrimary;
     // ITEM Price
     const priceFormatted = this.context.formatPrice(price, status);
     itemPrimary.priceFormatted = priceFormatted;
@@ -202,6 +202,20 @@ export default class ItemDetails extends Component {
     const categoryLinkTag = this.context.getCategoryLinkTag(categoryArr);
     setDocumentTitle(`${title} ${categoryArr.title ? ' | ' + categoryArr.title : ''}`);
     const navLeft = <NavLeft categoryName={categoryArr.name} />;
+    // ITEM source
+    let sourceLabel = '';
+    if(categoryArr.name === "Press") sourceLabel = 'Source: ';
+    if(categoryArr.name === "Staff") sourceLabel = 'Role: ';
+    const sourceLabelTag = sourceLabel ? `<span class="cat-${categoryArr.id}">${sourceLabel}</span>` : null;
+    const sourceTag = source && sourceLabel
+      ? this.context.formatDescription(
+          `<span class="source">
+            ${sourceLabelTag}
+            ${source}
+          </span>`
+       )
+      : null;
+
     // ITEM excerpt + parsed
     const excerptParsed = excerpt
       ? this.context.formatDescription(
@@ -383,6 +397,7 @@ export default class ItemDetails extends Component {
                         </div>
                       ) : null
                     }
+                    {sourceTag}
                     {excerptParsed}
                     {descriptionParsed}
                     {categoryLinkTag}

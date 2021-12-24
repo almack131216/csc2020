@@ -78,11 +78,10 @@ const Item = memo(({ item, itemSettingsCust }) => {
   // GET settings
   if (itemSettings) {
     itemClass.push(itemSettings.layout);
-    // PRESS
-    sourceTag =
-      categoryName === "Press" && source ? (
-        <span className="source">Source: {source}</span>
-      ) : null;
+    // PRESS source / STAFF source(title)
+    if(source && categoryName === "Press") sourceTag = (<span className="source">Source: {source}</span>);
+    if(source && categoryName === "Staff") sourceTag = (<span className="source title">{source}</span>);
+    
     // HISTORY
     dateHistory =
       categoryName === "History" && (price_details || date) ? (
@@ -104,6 +103,14 @@ const Item = memo(({ item, itemSettingsCust }) => {
         {subcategoryArr.brand}
       </Link>
     ) : null;
+    if(categoryArr.id === 12 && itemSettings.showCategoryLink && !isCustomLink){
+      categoryLinkTag = <Link
+      className="category"
+      to={`${subcategoryArr.slug}/staff`}
+    >
+      {subcategoryArr.brand}
+    </Link>
+    }
     excerptTag =
       itemSettings.showExcerpt && excerpt ? parse(`<p>${excerpt}</p>`) : null;
 
