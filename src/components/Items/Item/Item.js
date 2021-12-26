@@ -106,7 +106,7 @@ const Item = memo(({ item, itemSettingsCust }) => {
     if(categoryArr.id === 12 && itemSettings.showCategoryLink && !isCustomLink){
       categoryLinkTag = <Link
       className="category"
-      to={`${subcategoryArr.slug}/staff`}
+      to={`/${subcategoryArr.slug}/staff`}
     >
       {subcategoryArr.brand}
     </Link>

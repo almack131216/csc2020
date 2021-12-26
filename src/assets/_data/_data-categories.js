@@ -292,7 +292,7 @@ const catArray = {
   Staff: {
     id: 12,
     name: "Staff",
-    title: "Meet the Staff",
+    title: "Meet the Team",
     titleSub: "",
     titleHover: "Link to our staff page",
     titleDocument: "Who are we?",

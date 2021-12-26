@@ -162,4 +162,12 @@ $card-color-accent-link-category: $color_secondary;
       }
     }
   }
+
+  &.staff {
+    article {  
+      .card-img {
+        min-height: 70px;
+      }
+    }
+  }
 }

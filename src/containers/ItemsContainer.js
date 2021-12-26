@@ -79,6 +79,11 @@ function ItemsContainer({ context, page }) {
       title = `${subcategoryArr.brand} Sold`;
       titleSub = '';
     }
+    // change title & text for the Staff pages when department is selected
+    if(categoryArr.name === "Staff" && subcategoryArr.brand){
+      title = `${categoryArr.title}: ${subcategoryArr.brand}`;
+      // titleSub = '';
+    }
 
     titlesComponent = title || titleSub ? <TitleText title={title} titleSub={titleSub} text={textWithLinks} /> : null;    
   }
@@ -135,6 +140,16 @@ function ItemsContainer({ context, page }) {
     const tmp = {
       title: subcategoryArr.brand,
       slug: `/${subcategoryArr.slug}${saleStatus}`,
+      class: 'crumb-subcategory'
+    }
+    crumbsArr.push(tmp);
+    currentPageSlug = tmp.slug;
+  }
+  // Staff department crumb
+  if(categoryArr.name === "Staff" && subcategoryArr.brand){
+    const tmp = {
+      title: subcategoryArr.brand,
+      slug: `/${subcategoryArr.slug}/staff`,
       class: 'crumb-subcategory'
     }
     crumbsArr.push(tmp);

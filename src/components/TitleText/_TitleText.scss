@@ -5,6 +5,11 @@
   margin-bottom: 0;
   padding-bottom: $offset-g1;
   border-bottom: 1px solid $color_accent;
+
+  @media screen and (max-width:$bp-tablet-1){
+    padding-bottom:0;
+  }
+
   h1 {
     // margin: 0;
     margin-bottom:0.5em;
