@@ -318,7 +318,7 @@ const catArray = {
       showTitleSub: true,
       layout: "grid",
       classContainer: "",
-      postsPerPage: 99,
+      postsPerPage: 30,
       item: {
         layout: "item-card staff",
         showSource: true,

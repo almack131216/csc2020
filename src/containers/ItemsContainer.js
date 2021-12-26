@@ -21,7 +21,8 @@ function ItemsContainer({ context, page }) {
   let itemLayout = null; // LAYOUT items should be displayed in grid or row?
   let titlesComponent = null;
   let itemsFilterComponent = null;
-  let postsPerPage = useState(siteData.pagination.postsPerPage);
+  let switchPostsPerPage = 0;
+  // let postsPerPage = useState(siteData.pagination.postsPerPage);
   // catSettings && console.log("[ItemsContainer] ... catSettings: " + categoryArr.slug);
   
   // INIT pagination
@@ -33,9 +34,10 @@ function ItemsContainer({ context, page }) {
     // console.log("[ItemsContainer] ... is NOT INT, ", page);
   }
   // const [currentPage, setCurrentPage] = useState(loadPageNum);
-  // console.log('postsPerPage: ', categoryArr.settings);
-  // const [postsPerPage] = useState(siteData.pagination.postsPerPage);
-  if(categoryArr.settings && categoryArr.settings.postsPerPage) postsPerPage = categoryArr.settings.postsPerPage;
+  // console.log('postsPerPage: ', categoryArr.settings.postsPerPage);
+  const [postsPerPage] = useState(siteData.pagination.postsPerPage);
+  switchPostsPerPage = categoryArr.settings && categoryArr.settings.postsPerPage ? categoryArr.settings && categoryArr.settings.postsPerPage : postsPerPage;
+  // if(categoryArr.settings && categoryArr.settings.postsPerPage) postsPerPage = categoryArr.settings.postsPerPage;
   // const pageCount = sortedItems.length && postsPerPage ? Math.ceil(sortedItems.length / postsPerPage) : 1;
   
   // console.log("[ItemsContainer] ...", loadPageNum, " (", page, ")");
@@ -47,7 +49,7 @@ function ItemsContainer({ context, page }) {
   const [currentPageBefore, setCurrentPageBefore] = useState(parseInt(loadPageNum));
   let currentPageNum = parseInt(loadPageNum);
   let currentPageSlug = categoryArr && categoryArr.slug ? categoryArr.slug : null;
-  const totalPages = Math.ceil(sortedItems.length / postsPerPage);
+  const totalPages = Math.ceil(sortedItems.length / switchPostsPerPage);
   // console.log('[ItemsContainer] totalPages: ' + totalPages + ', currentPageNum: ' + currentPageNum + ', currentPageBefore: ' + currentPageBefore );
   if(currentPageNum > totalPages){
     // console.log('[ItemsContainer] !!! FORCE to last page');
@@ -91,13 +93,13 @@ function ItemsContainer({ context, page }) {
   // const paginate = pageNumber => setCurrentPage(loadPageNum);
   // GET current posts
   // console.log('[ItemsContainer] currentPageNum: ' + currentPageNum + ', currentPageBefore: ' + currentPageBefore );
-  const indexOfLastPost = currentPageNum * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const indexOfLastPost = currentPageNum * switchPostsPerPage;
+  const indexOfFirstPost = indexOfLastPost - switchPostsPerPage;
   const currentPosts =
-    sortedItems.length > postsPerPage
+    sortedItems.length > switchPostsPerPage
       ? sortedItems.slice(indexOfFirstPost, indexOfLastPost)
       : sortedItems;
-  const showPagination = sortedItems.length > postsPerPage ? true : false;
+  const showPagination = sortedItems.length > switchPostsPerPage ? true : false;
     
 
   // CHANGE page
@@ -149,7 +151,7 @@ function ItemsContainer({ context, page }) {
       <ItemsList categoryName={categoryArr.name} items={currentPosts} layout={itemLayout} />
       {showPagination === true && currentPageNum ? (
         <Pagination
-          postsPerPage={postsPerPage}
+          postsPerPage={switchPostsPerPage}
           totalPosts={sortedItems.length}
           paginate={paginate}
           currentPageBefore={currentPageBefore}
