@@ -73,3 +73,6 @@ export function GetMailPath() {
   // return `https://amactive.net/csc2020-api/mail/index.php`;
 }
 
+export function StripOpeningSlash(str){
+  return str.substring(1);
+}

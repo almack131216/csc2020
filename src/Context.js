@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import SiteData from './assets/_data/_data';
 import CatData from './assets/_data/_data-categories';
 import SortFilterRangeData from './assets/_data/_data-filter-sort';
-import { setDocumentTitle, getDateToday, getExcerpt, apiGetItems, ConsoleLog } from './assets/js/Helpers';
+import { setDocumentTitle, getDateToday, getExcerpt, apiGetItems, ConsoleLog, StripOpeningSlash } from './assets/js/Helpers';
 const slugify = require('slugify');
 const ItemContext = React.createContext();
 //
@@ -223,10 +223,10 @@ export default class ItemProvider extends Component {
 		// COUNT items in subcategory
 		let myUniqueBrandListWithCount = this.countItemsInBrand(myUniqueBrandList, myObj);
 		myUniqueBrandListWithCount = [
-			{ id: 'all', brand: 'ALL', slug: 'classic-cars-for-sale', itemCount: myObj.length },
+			{ id: 'all', brand: 'ALL', slug: StripOpeningSlash(CatData.Live.slug), itemCount: myObj.length },
 			...myUniqueBrandListWithCount
 		];
-		ConsoleLog('[Context] myUniqueBrandList...' + myUniqueBrandListWithCount);
+		console.log('[Context] myUniqueBrandList...', myUniqueBrandListWithCount);
 		return myUniqueBrandListWithCount;
 	};
 
