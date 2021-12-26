@@ -3,6 +3,8 @@ import React from "react";
 const brandFilter = props => {
   const brand = props.brand === 'all' ? 'all' : props.brand; //get active brand
   const label = props.label ? props.label : "Select";
+  const categorySlugBase = props.categorySlugsArr.base;
+  const categorySlugAppendBrand = props.categorySlugsArr.appendBrand;
   // STYLE // get styling from filter container
   let classParent = props.classParent;
   let classLabel = props.classLabel;
@@ -21,7 +23,7 @@ const brandFilter = props => {
   });
 
   const handleSelectChange = (e) => {
-    const goToSlug = e.target.value === 'classic-cars-for-sale' ? 'classic-cars-for-sale' : `${e.target.value}/for-sale`;
+    const goToSlug = e.target.value === categorySlugBase ? categorySlugBase : `${e.target.value}${categorySlugAppendBrand}`;
     // console.log('[Brands] history: ', goToSlug);
     
     // return <Redirect to='/target' />;

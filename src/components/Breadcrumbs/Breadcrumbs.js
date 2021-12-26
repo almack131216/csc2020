@@ -5,6 +5,7 @@ import BrandFilter from "../../components/Filter/Brand";
 import NavData from "../../assets/_data/_data-navigation";
 import { FaHome, FaFilter, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { StripOpeningSlash } from '../../assets/js/Helpers';
 
 export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   // console.log("[Breadcrumbs] ItemContext...", items, crumbsArr);
@@ -60,6 +61,9 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   let showFilter = false;
   let showBrandList = false;
 
+  const slugBase = StripOpeningSlash(categoryArr.slug);
+  const slugAppendBrand = categoryArr.slugAppendBrand;
+
   switch (pageType) {
     case "item-details":
       showFilter = false;
@@ -101,11 +105,11 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   // brandlist
   if (showBrandList) {
     // STYLE
-  let classForm = styleAppendClass("form-inline", "");
-  let classParent = styleAppendClass("form-group", "");
-  let classLabel = styleAppendClass("form-label", "");
-  let classControl = styleAppendClass("form-control", "form-control-sm");
-  // (END) STYLE
+    let classForm = styleAppendClass("form-inline", "");
+    let classParent = styleAppendClass("form-group", "");
+    let classLabel = styleAppendClass("form-label", "");
+    let classControl = styleAppendClass("form-control", "form-control-sm");
+    // (END) STYLE
 
     brandJumpList = (
       <li className="li-jump-menu-wrap">
@@ -119,6 +123,12 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
             classControl={classControl}
             brand={subcategoryArr.slug}
             brands={brandArr}
+            categorySlugsArr={
+              {
+                base: slugBase,
+                appendBrand: slugAppendBrand
+              }
+            }
           />
           {/* (END) select brand */}
         </form>

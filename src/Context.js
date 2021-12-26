@@ -204,6 +204,8 @@ export default class ItemProvider extends Component {
 
 	/////////////////////////////////////////////////////////////////////////// SET brand array (items)
 	setBrandArr = (myObj) => {
+		// console.log('>>>', myObj[0].categoryArr);
+		const categorySlugBase = myObj[0].categoryArr.slug ? StripOpeningSlash(myObj[0].categoryArr.slug) : null;//get the base slug from first (any) item
 		const myArr = { list: myObj }; //put obj array into list for flatMap
 		const myUniqueBrandList = myArr.list
 			.flatMap((obj) => obj.subcategoryArr)
@@ -223,10 +225,10 @@ export default class ItemProvider extends Component {
 		// COUNT items in subcategory
 		let myUniqueBrandListWithCount = this.countItemsInBrand(myUniqueBrandList, myObj);
 		myUniqueBrandListWithCount = [
-			{ id: 'all', brand: 'ALL', slug: StripOpeningSlash(CatData.Live.slug), itemCount: myObj.length },
+			{ id: 'all', brand: 'ALL', slug: categorySlugBase, itemCount: myObj.length },
 			...myUniqueBrandListWithCount
 		];
-		console.log('[Context] myUniqueBrandList...', myUniqueBrandListWithCount);
+		// console.log('[Context] myUniqueBrandList...', myUniqueBrandListWithCount);
 		return myUniqueBrandListWithCount;
 	};
 

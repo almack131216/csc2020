@@ -310,7 +310,7 @@ const catArray = {
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Staff`,
     settings: {
       showFilter: false,
-      showBrandList: false,
+      showBrandList: true,
       showWidgetYouTubeBtn: true,
       showWidgetOpeningHours: true,
       showWidgetContactDetails: true,
