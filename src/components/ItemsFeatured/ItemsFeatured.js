@@ -39,7 +39,7 @@ export default class ItemsFeatured extends Component {
 
     let items = SwitchItems.map(item => {
       return (
-        <Item key={item.id} item={item} itemSettingsCust={itemSettingsCust} />
+        <Item categoryName={this.switch} key={item.id} item={item} itemSettingsCust={itemSettingsCust} />
       );
     });
 

@@ -16,7 +16,7 @@ export default function BrandList() {
   brands = brands.map((item, index) => {
     return (
       <li value={item.id} key={index}>
-        <Link to={formatBrandLink(null, item.slug)}>
+        <Link to={formatBrandLink({categoryName: categoryArr.name, status: null, slug: item.slug})}>
           {item.brand} ({item.itemCount})
         </Link>
       </li>

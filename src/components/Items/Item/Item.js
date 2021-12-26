@@ -10,14 +10,14 @@ import Ribbon from "../Ribbon/Ribbon";
 import { useContext } from "react";
 import { ItemContext } from "../../../Context";
 
-const Item = memo(({ item, itemSettingsCust }) => {
+const Item = memo(({ categoryName, item, itemSettingsCust }) => {
   // console.log("[Item] ...", itemSettingsCust);
   // INIT context
   const context = useContext(ItemContext);
   const {
     categoryArr,
     dateToday,
-    categoryName,
+    // categoryName,
     formatPrice,
     formatItemLink,
     formatBrandLink
@@ -67,6 +67,10 @@ const Item = memo(({ item, itemSettingsCust }) => {
   let dateHistory = null;
   let ftrTag = null;
   let itemSettings = {};
+  // SET category if not set at parent level
+  let itemCategoryName = null;
+  if(categoryName) itemCategoryName = categoryName;
+  if(!itemCategoryName && item.categoryArr) itemCategoryName = item.categoryArr.name;
   // INIT item settings from category or custom received prop
   if (itemSettingsCust) {
     itemSettings = itemSettingsCust;
@@ -79,12 +83,11 @@ const Item = memo(({ item, itemSettingsCust }) => {
   if (itemSettings) {
     itemClass.push(itemSettings.layout);
     // PRESS source / STAFF source(title)
-    if(source && categoryName === "Press") sourceTag = (<span className="source">Source: {source}</span>);
-    if(source && categoryName === "Staff") sourceTag = (<span className="source title">{source}</span>);
-    
+    if(source && itemCategoryName === "Press") sourceTag = (<span className="source">Source: {source}</span>);
+    if(source && itemCategoryName === "Staff") sourceTag = (<span className="source title">{source}</span>);
     // HISTORY
     dateHistory =
-      categoryName === "History" && (price_details || date) ? (
+    itemCategoryName === "History" && (price_details || date) ? (
         <span className="dateHistory">
           {
             <Moment
@@ -98,19 +101,12 @@ const Item = memo(({ item, itemSettingsCust }) => {
     categoryLinkTag = itemSettings.showCategoryLink && !isCustomLink ? (
       <Link
         className="category"
-        to={formatBrandLink(status, subcategoryArr.slug)}
+        to={formatBrandLink({categoryName: itemCategoryName, status: status, slug: subcategoryArr.slug})}
       >
         {subcategoryArr.brand}
       </Link>
     ) : null;
-    if(categoryArr.id === 12 && itemSettings.showCategoryLink && !isCustomLink){
-      categoryLinkTag = <Link
-      className="category"
-      to={`/${subcategoryArr.slug}/staff`}
-    >
-      {subcategoryArr.brand}
-    </Link>
-    }
+
     excerptTag =
       itemSettings.showExcerpt && excerpt ? parse(`<p>${excerpt}</p>`) : null;
 

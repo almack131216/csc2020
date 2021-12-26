@@ -116,44 +116,24 @@ function ItemsContainer({ context, page }) {
   }  
   categoryArr.class = categoryArr.name;
   crumbsArr.push(categoryArr);
-  // Archive (brand selected)
-  if (categoryArr.name === "Archive" && subcategoryArr.brand) {
-    if(subcategoryArr.brand){
-      let subcatArr = {
-        title: subcategoryArr.brand,
-        slug: `/${subcategoryArr.slug}/sold`
-      };
-      crumbsArr.push(subcatArr);
-      currentPageSlug = subcatArr.slug;
+
+  // Brand crumb (brand selected)
+  if(categoryArr && subcategoryArr && subcategoryArr.brand){
+    const tmp = {
+      title: `${subcategoryArr.brand}`,
+      slug: `/${subcategoryArr.slug}${categoryArr.slugAppendBrand}`,
+      class: 'crumb-subcategory'
     }
-    
+    crumbsArr.push(tmp);
+    currentPageSlug = tmp.slug;
+  }
+  // Archive [additional link to ALL]
+  if (categoryArr.name === "Archive" && subcategoryArr.brand) {    
     let archiveAllArr = {
       title: 'Archive',
-      slug: `/sold`
+      slug: `${categoryArr.slugAppendBrand}`
     };
     crumbsArr.push(archiveAllArr);
-  }
-
-  // Brand crumb
-  if(categoryArr.name === "Live" && subcategoryArr.brand){
-    const saleStatus = categoryArr.name === "Live" ? '/for-sale' : '/sold';
-    const tmp = {
-      title: subcategoryArr.brand,
-      slug: `/${subcategoryArr.slug}${saleStatus}`,
-      class: 'crumb-subcategory'
-    }
-    crumbsArr.push(tmp);
-    currentPageSlug = tmp.slug;
-  }
-  // Staff department crumb
-  if(categoryArr.name === "Staff" && subcategoryArr.brand){
-    const tmp = {
-      title: subcategoryArr.brand,
-      slug: `/${subcategoryArr.slug}/staff`,
-      class: 'crumb-subcategory'
-    }
-    crumbsArr.push(tmp);
-    currentPageSlug = tmp.slug;
   }
 
   if (loading) {
@@ -166,7 +146,7 @@ function ItemsContainer({ context, page }) {
 
       {categoryArr.name !== "Restoration" && titlesComponent}
 
-      <ItemsList items={currentPosts} layout={itemLayout} />
+      <ItemsList categoryName={categoryArr.name} items={currentPosts} layout={itemLayout} />
       {showPagination === true && currentPageNum ? (
         <Pagination
           postsPerPage={postsPerPage}

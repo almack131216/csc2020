@@ -81,7 +81,7 @@ const Contact = props => {
       <TitleSplitter
         titleArr={{ title: "Local Attractions", text: textArray.text }}
       />
-      {images ? <BigGrid items={images} settings={imageSettings} /> : null}
+      {images ? <BigGrid categoryName={null} items={images} settings={imageSettings} /> : null}
     </React.Fragment>
   );
 };

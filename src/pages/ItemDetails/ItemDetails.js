@@ -229,11 +229,10 @@ export default class ItemDetails extends Component {
     categoryArr.class = categoryArr.name;
     crumbsArr.push(categoryArr);
     // Brand crumb
-    if((catalogue_subcat && catalogue_subcat.brand) && (categoryArr.name === "Live" || categoryArr.name === "Archive")){
-      const saleStatus = categoryArr.name === "Live" ? '/for-sale' : '/sold';
+    if((catalogue_subcat && catalogue_subcat.brand) && (categoryArr.name === "Live" || categoryArr.name === "Archive" || categoryArr.name === "Staff")){
       const tmp = {
         title: catalogue_subcat.brand,
-        slug: `/${catalogue_subcat.slug}${saleStatus}`,
+        slug: `/${catalogue_subcat.slug}${categoryArr.slugAppendBrand}`,
         class: 'crumb-subcategory'
       }
       crumbsArr.push(tmp);

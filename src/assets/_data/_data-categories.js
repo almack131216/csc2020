@@ -15,6 +15,7 @@ const catArray = {
     titleHover: "Link to our classic car showroom page",
     titleDocument: "Classic Cars For Sale in Malton, North Yorkshire",
     slug: "/classic-cars-for-sale",
+    slugAppendBrand: "/for-sale",
     // apiJson: "./api-dummy/dummy-for-sale.json",
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Live`,
     apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Live`,
@@ -50,7 +51,8 @@ const catArray = {
     titleDocument:
       "Classic Cars Sold by Classic & Sportscar Centre, Malton, North Yorkshire",
       text: `Since 1991 we've sold towards £100,000,000 of classic vehicles. To view 2500 sold vehicles since we started our archive in 2007 please <a href="/sold">click here</a>`,
-    slug: "/classic-cars-sold",    
+    slug: "/classic-cars-sold",
+    slugAppendBrand: "/sold", 
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Archive`,
     apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Archive`,
     settings: {
@@ -84,6 +86,7 @@ const catArray = {
     titleDocument:
       "Customer Testimonials | Read what our customers have to say",
     slug: "/testimonials",
+    slugAppendBrand: "/testimonials",
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Testimonials`,
     settings: {
       showFilter: false,
@@ -115,6 +118,7 @@ const catArray = {
     titleHover: "Link to press & media articles",
     titleDocument: "Press / Media",
     slug: "/press",
+    slugAppendBrand: "/press",
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Press`,
     settings: {
       showFilter: false,
@@ -146,6 +150,7 @@ const catArray = {
     titleHover: "Link to news stories, past and present",
     titleDocument: "Classic & Sportscar Centre News",
     slug: "/news",
+    slugAppendBrand: "/news",
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=News`,
     settings: {
       showFilter: false,
@@ -177,6 +182,7 @@ const catArray = {
     titleDocument: "Restoration Services",
     text: "Here at Classic & Sportscar Centre we also offer a wide range of classic car maintenance and restoration services. We can carry out all aspects of classic car bodywork and paint, upholstery and re-trimming work, and mechanical repairs to include engine and gearbox rebuilds, general servicing and maintenance, and of course full restoration. Please click the links below to read more information on each department and view our gallery of work which will be regularly updated with recent projects.",
     slug: "/restoration",
+    slugAppendBrand: "/restoration",
     // apiJson: "./api-dummy/dummy-for-sale.json",
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Restoration`,
     apiFeatured: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Restoration`,
@@ -234,6 +240,7 @@ const catArray = {
     titleDocument: "History: 1991-Today",
     text: "April 4th 1991 was the date of incorporation of our company, previously known as Grundy Mack. We believe that as long as there are men and women with a love of nostalgia and old cars, there will always be a business in buying and selling them but for us it's been much more than a business – more a way of life.",
     slug: "/history",
+    slugAppendBrand: "/history",
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=History`,
     settings: {
       showFilter: false,
@@ -266,6 +273,7 @@ const catArray = {
     titleDocument: "",
     text: "",
     slug: "/videos",
+    slugAppendBrand: "/videos",
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Videos`,
     settings: {
       showFilter: false,
@@ -298,6 +306,7 @@ const catArray = {
     titleDocument: "Who are we?",
     text: "",
     slug: "/staff",
+    slugAppendBrand: "/staff",
     api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Staff`,
     settings: {
       showFilter: false,

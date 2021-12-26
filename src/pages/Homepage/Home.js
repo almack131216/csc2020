@@ -93,7 +93,7 @@ const Home = props => {
               seeAll: true
             }}
           />
-          <BigGrid items={featuredItemsTestimonials} />
+          <BigGrid categoryName={"Testimonials"} items={featuredItemsTestimonials} />
         </>
       ) : null}
 
@@ -106,7 +106,7 @@ const Home = props => {
               seeAll: true
             }}
           />
-          <BigGrid items={featuredItemsNews} />
+          <BigGrid categoryName={"News"} items={featuredItemsNews} />
         </>
       ) : null}
     </React.Fragment>

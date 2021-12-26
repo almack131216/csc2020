@@ -361,10 +361,13 @@ export default class ItemProvider extends Component {
 
 	/////////////////////////////////////////////////////////////////////////// FORMAT brand link
 	// get slug from CatData based on categoryName
-	formatBrandLink = (getStatusId, getBrandSlug) => {
-		ConsoleLog('[Context] formatBrandLink() getStatusId: ' + getStatusId + ' | getBrandSlug: ' + getBrandSlug);
-		let apprendUrl = getStatusId === 2 ? '/sold' : '/for-sale';
-		let slug = '/' + getBrandSlug + apprendUrl;
+	formatBrandLink = ( getArr ) => {
+		ConsoleLog('[Context] formatBrandLink() | categoryName: ' + getArr.categoryName + ' | status: ' + getArr.status + ' | slug: ' + getArr.slug);
+		let apprendUrl = '';
+		if(getArr.categoryName === "Live") apprendUrl = CatData.Live.slugAppendBrand;//'/for-sale';
+		if(getArr.categoryName === "Archive") apprendUrl = CatData.Archive.slugAppendBrand;//'/sold';
+		if(getArr.categoryName === "Staff") apprendUrl = CatData.Staff.slugAppendBrand;//'/staff';
+		let slug = '/' + getArr.slug + apprendUrl;
 		ConsoleLog('[Context] formatBrandLink() slug: ' + slug + ' | apprendUrl: ' + apprendUrl);
 		return slug;
 	};

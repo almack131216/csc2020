@@ -2,7 +2,7 @@ import React from "react";
 import Item from "../Item/Item";
 import Loading from "../../Loading/Loading";
 
-const ItemsList = ({ items, layout }) => {
+const ItemsList = ({ categoryName, items, layout }) => {
   if (items.length === 0) {
     return (
       <section className="items">
@@ -21,7 +21,7 @@ const ItemsList = ({ items, layout }) => {
     <section className={itemsWrapClass.join(" ")}>
       <div className="cards">
         {items.map((item, index) => {
-          return <Item key={index} item={item} />;
+          return <Item categoryName={categoryName} key={index} item={item} />;
         })}
       </div>
     </section>
