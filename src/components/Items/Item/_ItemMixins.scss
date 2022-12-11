@@ -25,6 +25,7 @@ $card-color-accent-link-category: $color_secondary;
           transition: all 0.3s ease;
           width: 100%;
           height: auto;
+          min-height:100%;
         }
       }
     }
@@ -138,13 +139,14 @@ $card-color-accent-link-category: $color_secondary;
 
     .card-img {
       width: 30%;
-      min-height: 100px;
+      min-height: 70px;
       max-height: 200px;
       background-color: transparent;
 
       a {
         img {
           transform-origin: 50% 100%;
+          min-height:auto;
         }
       }
     }
@@ -159,14 +161,6 @@ $card-color-accent-link-category: $color_secondary;
 
       .ftr {
         margin-top: 0;
-      }
-    }
-  }
-
-  &.staff {
-    article {  
-      .card-img {
-        min-height: 70px;
       }
     }
   }
