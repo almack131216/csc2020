@@ -74,5 +74,7 @@ export function GetMailPath() {
 }
 
 export function StripOpeningSlash(str){
-  return str.substring(1);
+  // console.log('StripOpeningSlash: str = ', str);
+  if(str) return str.substring(1);
+  return str;
 }
