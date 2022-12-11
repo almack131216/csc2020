@@ -12,15 +12,21 @@ import { setDocumentTitle, ConsoleLog } from "../../assets/js/Helpers";
 
 const Request = props => {
   let crumbsArr = [];
+  // CRUMB - item
+  const itemCrumb = {
+    title: NavData.request.title,
+    slug: NavData.request.slug,
+    class: 'crumb-item'
+  }
+  crumbsArr.push(itemCrumb);
+  
   // useEffect
 	useEffect(
 		() => {		
-      ConsoleLog('[Request]');	
-      let pageArr = NavData.request;
-      crumbsArr.push(pageArr);
+      ConsoleLog('[Request]');      
       window.scrollTo(0, 0);
       setDocumentTitle('Request a car');
-  }, [crumbsArr]);
+  }, []);
   // (END) useEffect
 
   return (
