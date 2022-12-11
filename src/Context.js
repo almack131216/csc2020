@@ -382,6 +382,7 @@ export default class ItemProvider extends Component {
 		if (itemCategoryName === 1) return CatData.General;
 		if (itemCategoryName === 2 && getItemStatus === 1) return CatData[this.state.categoryNameDefault];
 		if ((itemCategoryName === 2 || itemCategoryName === 'Archive') && getItemStatus === 2) return CatData.Archive;
+		if (itemCategoryName === 2 && getItemStatus === 0) return CatData.Archive;
 		if (itemCategoryName === 3) return CatData.Testimonials;
 		if (itemCategoryName === 4) return CatData.Press;		
 		if (itemCategoryName === 5) return CatData.News;
@@ -390,7 +391,7 @@ export default class ItemProvider extends Component {
 		if (itemCategoryName === 11) return CatData.Restoration;
 		if (itemCategoryName === 12) return CatData.Staff;
 		if (itemCategoryName === 13) return CatData.Videos;
-		if (itemCategoryName === 2 && getItemStatus === 0) return CatData[this.state.categoryNameDefault];
+		// if (itemCategoryName === 2 && getItemStatus === 0) return CatData[this.state.categoryNameDefault];
 
 		// ConsoleLog(
 		//   "[Context] getCategoryArr > getCategoryName...",
