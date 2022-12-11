@@ -34,18 +34,19 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   const dynamicCrumbs =
     crumbsArr &&
     crumbsArr.map((item, index) => {
-      // console.log("[Breadcrumbs] ", item.title, " | " + item.name);
+      // console.log("[Breadcrumbs] ", item.title, " | ", item);
       return item.title ? (
         <li key={index} className={item.class ? item.class : ""}>
           <FaChevronRight />
-          {index < crumbsArr.length - 1 ? (
-            <Link to={item.slug} className="crumb-resp">
-              <span>{item.title}</span>
-            </Link>
-          ) : (
+          {item.class === "crumb-item" ? (
             <span className="crumb-resp">
               <span>{item.title}</span>
             </span>
+            
+          ) : (
+            <Link to={item.slug} className="crumb-resp">
+              <span>{item.title}</span>
+            </Link>
           )}
         </li>
       ) : null;
