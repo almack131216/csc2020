@@ -50,7 +50,9 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-    <CookieConsent>
+    <CookieConsent
+      sameSite="lax"
+    >
       This website uses <Link to="/privacy">cookies</Link> to enhance the user experience.
     </CookieConsent>
     </>
