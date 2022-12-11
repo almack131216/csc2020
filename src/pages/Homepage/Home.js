@@ -3,8 +3,8 @@ import ItemsFeatured from "../../components/ItemsFeatured/ItemsFeatured";
 import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
-import Banner from "../../components/Banner/Banner";
-import { Link } from "react-router-dom";
+// import Banner from "../../components/Banner/Banner";
+// import { Link } from "react-router-dom";
 import BigGrid from "../../components/Items/BigGrid/BigGrid";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
@@ -15,7 +15,7 @@ import {
 } from "../../components/ContactBoxes/ContactBoxes";
 import InfoBoxes from "../../components/InfoBoxes/InfoBoxes";
 import {Images} from "../../assets/_data/_data-carousel";
-import { FaChevronRight } from "react-icons/fa";
+// import { FaChevronRight } from "react-icons/fa";
 
 const Home = props => {
   const context = useContext(ItemContext);
@@ -53,14 +53,14 @@ const Home = props => {
         </a>
         <span className="caps-black">Please note: the showroom will be closed this Sunday</span>
       </Banner> */}
-      <Banner title="We would like to wish all of our friends & customers a very Happy Christmas and Prosperous New Year" subtitle="" type="christmas">
-      {/* <a href="https://classicandsportscar.ltd.uk/covid-19-december-update-and-christmas-message/news/50425" className="btn-primary">
+      {/* <Banner title="We would like to wish all of our friends & customers a very Happy Christmas and Prosperous New Year" subtitle="" type="christmas">
+      <a href="https://classicandsportscar.ltd.uk/covid-19-december-update-and-christmas-message/news/50425" className="btn-primary">
         <FaChevronRight />More information
-        </a> */}
+        </a>
         <Link to="/contact" className="btn-primary">
         <FaChevronRight />Christmas Office Hours
         </Link>
-      </Banner>
+      </Banner> */}
       <TitleSplitter
         titleArr={{
           title: catData["Live"].title,
