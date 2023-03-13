@@ -10,6 +10,10 @@
     background: white;
     padding: 0;
     @include resp-prop-half("padding-bottom", $offset-g1);
+    
+    // @media (min-width: 1200px){
+    //   width: $bp-lg-container;//230313
+    // }
 
     @media (max-width: $bp-lg-1) {
       text-align: center;
@@ -130,5 +134,5 @@
 }
 
 .navbar-contact-wrap {
-  text-align: left;//230313
+  text-align: right;//230313
 }

@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <>
     <footer>
-      <div className="container">
+      <div className="container full-width">
         <div className="row">
           <div className="col-tablet-12 col-xs-6">
             <h4>{SiteData.brand.name}</h4>

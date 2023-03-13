@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SiteData from "../../assets/_data/_data";
 import CatData from "../../assets/_data/_data-categories";
 // import SearchWidget from "../Search/Search";
@@ -6,12 +6,15 @@ import NavData from "../../assets/_data/_data-navigation";
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import DrawerToggleButton from "../Navigation/SideDrawer/DrawerToggleButton";
+import { useLocation } from 'react-router-dom';
 // import DynamicTabs from '../DynamicTabs';
 // import {css} from '@emotion/css';
 
 const navTop = (props) => {
 
   const navLinks = SiteData.navigationNavTop.map((link, index) => {
+    const location = useLocation().pathname;
+
     // SET active class (basic: match url to slug)
     let isActive = window.location.pathname === `${link.slug}`; // add /[dirname] if working in subdir
     // SET class to <li> tag so we can control responsive
@@ -23,9 +26,13 @@ const navTop = (props) => {
       CatData[props.categoryName].slug === link.slug &&
       CatData[props.categoryName].slug !== "/"
     )
-      isActive = true;
+    isActive = true;
     // ASSIGN class if active
     let className = isActive ? "active" : "";
+
+    useEffect(() => {
+      // console.log('TopNav.js : ', window.location.pathname)
+    }, [location]);
 
     return link.navTop ? (
       <li key={index} className={liClass}>
@@ -41,7 +48,7 @@ const navTop = (props) => {
 
   return (
     <div className="navTop">
-      <div className="nav-container">
+      <div className="container">
         <nav>          
           <ul>
             <li className="home">

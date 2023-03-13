@@ -41,7 +41,22 @@ const Home = props => {
   return (
     <React.Fragment>
       <section className="content-wrap bg-accent">
-        <div className="content full-width full-width--video">{imgCarousel}</div>
+        <div className="content heropanel">          
+
+    <section className="heropanel--wrap">
+        <video autoPlay muted loop id="myVideo" className="heropanel--video">
+            <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4" />
+        </video>
+        <div data-aos="fade-up" data-aos-delay="500" className="heropanel--content">
+            <h1>Welcome to <span>Classic & Sportscar Centre</span></h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            <a href="#" className="herobtn white">Showroom</a>
+            <a href="#" className="herobtn black">Brokerage</a>
+        </div>
+    </section>
+    
+          
+        </div>
       </section>
       {/* <Banner title="September 17th-19th" subtitle="Come and see us this weekend at Goodwood Revival" type="high-alert">
         <a href="https://classicandsportscar.ltd.uk/goodwood-revival-17th-19th-september-2021/news/54437" title="Link to this story" className="btn-primary">
@@ -57,6 +72,7 @@ const Home = props => {
         <FaChevronRight />Christmas Office Hours
         </Link>
       </Banner> */}
+      <div class="container">
       <TitleSplitter
         titleArr={{
           title: catData["Live"].title,
@@ -78,7 +94,7 @@ const Home = props => {
         seeAllArr={{ title: "About Us", slug: "/about" }}
       />
       {/* <ContactBoxes cols={2} /> */}
-      <InfoBoxes columnsArr={columnsContact} rowClass="generic-row" />
+      <InfoBoxes columnsArr={columnsContact} rowclassName="generic-row" />
 
       {featuredItemsTestimonials ? (
         <>
@@ -105,6 +121,7 @@ const Home = props => {
           <BigGrid categoryName={"News"} items={featuredItemsNews} />
         </>
       ) : null}
+      </div>
     </React.Fragment>
   );
 };

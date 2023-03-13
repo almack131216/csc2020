@@ -3,8 +3,15 @@
 $navTopHeight: 44px;
 
 .navTop {
-  nav {
-    background-color: $color_accent;
+  background-color: $color_accent;
+
+  // .container {
+  //   @media (min-width: 1200px){
+  //     width: $bp-lg-container;//230313
+  //   }
+  // }
+
+  nav {    
     box-shadow: none;
     margin: 0;
     padding: 0;
