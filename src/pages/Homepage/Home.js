@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import ItemsFeatured from "../../components/ItemsFeatured/ItemsFeatured";
 import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
-import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
 // import Banner from "../../components/Banner/Banner";
 // import { Link } from "react-router-dom";
@@ -41,14 +40,11 @@ const Home = props => {
 
   return (
     <React.Fragment>
-      <section className="content-wrap match-heights bg-accent">
-        <div className="sidebar">
-          <NavLeft />
-        </div>
-        <div className="content">{imgCarousel}</div>
+      <section className="content-wrap match-heightsXXX bg-accent">
+        <div className="content full-width-video">{imgCarousel}</div>
       </section>
       {/* <Banner title="September 17th-19th" subtitle="Come and see us this weekend at Goodwood Revival" type="high-alert">
-        <a href="https://www.classicandsportscar.ltd.uk/goodwood-revival-17th-19th-september-2021/news/54437" title="Link to this story" className="btn-primary">
+        <a href="https://classicandsportscar.ltd.uk/goodwood-revival-17th-19th-september-2021/news/54437" title="Link to this story" className="btn-primary">
           <FaChevronRight />More information
         </a>
         <span className="caps-black">Please note: the showroom will be closed this Sunday</span>

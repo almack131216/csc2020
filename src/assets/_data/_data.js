@@ -47,6 +47,13 @@ const siteData = {
     NavArray.filmTvHire,
     NavArray.contact
   ],
+  navigationNavTop: [
+    NavArray.live,
+    NavArray.restoration,
+    NavArray.storage,
+    NavArray.testimonials,
+    NavArray.request
+  ],
   navigationFooter: {
     columnA: [
       NavArray.live,

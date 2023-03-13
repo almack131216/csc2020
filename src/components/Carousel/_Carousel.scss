@@ -7,9 +7,11 @@ $opacity-btn-active: 1;
 
 .slick-slider-base {
   z-index: 0;
+  height: 100%;
 
   .slick-list {
     z-index: 0;
+    height:100%;
 
     /* kill margin below image */
     > .slick-track > .slick-slide > div > div {

@@ -6,6 +6,7 @@ import DrawerToggleButton from "../Navigation/SideDrawer/DrawerToggleButton";
 import SiteData from "../../assets/_data/_data";
 import Backdrop from "../Navigation/Backdrop/Backdrop";
 import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
+import NavTop from "../NavTop/NavTop";
 
 class Navbar extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class Navbar extends Component {
     }
 
     return (
+      <>
       <nav className={classes.join(" ")} role="navigation">
         <div className="container">
           <div className="row">
@@ -74,6 +76,9 @@ class Navbar extends Component {
           <Backdrop click={this.backdropClickHandler} />
         ) : null}
       </nav>
+      <NavTop drawerToggleClickHandler={this.drawerToggleClickHandler} />
+
+      </>
     );
   }
 }

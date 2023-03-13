@@ -28,6 +28,10 @@
     color: $color_accent; //$color_navbar-header-link
   }
 
+  .more {
+    color:white;
+  }
+
   &:focus {
     outline: none;
   }
@@ -63,5 +67,11 @@
     .show-menu {
       display: none;
     }
+  }
+}
+
+li.more {
+  .r-i {
+    display:none;
   }
 }
