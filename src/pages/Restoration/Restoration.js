@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
-import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
 // import BigGrid from "../../components/Items/BigGrid/BigGrid";
 import ItemLite from "../../components/Items/Item/ItemLite";
@@ -59,11 +58,8 @@ const Restoration = props => {
 
   return (
     <React.Fragment>
-      <section className="content-wrap match-heights bg-accent">
-        <div className="sidebar">
-          <NavLeft />
-        </div>
-        <div className="content">{imgCarousel}</div>
+      <section className="content-wrap bg-accent">
+        <div className="content full-width">{imgCarousel}</div>
       </section>
 
       <section>

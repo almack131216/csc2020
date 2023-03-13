@@ -35,7 +35,7 @@ const ItemExtras = props => {
   } = props.itemArr;
 
   let priceRow = null;
-  let classesWrap = ["item-extras"];
+  let classesWrap = ["item-extras", "widget"];
   if (props.class) classesWrap.push(props.class);
   const handleForLargeImageList = props.handleForLargeImageList;
   const handleForVideobox = props.handleForVideobox;

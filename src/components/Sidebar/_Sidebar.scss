@@ -6,7 +6,16 @@
 
 .sidebar {
   .widget {
-    margin: $offset-g2;
+    margin: $offset-g1;
+    margin-bottom:$offset-g2;
+
+    &:first-child {
+      margin-top:$offset-g2;
+    }
+
+    &:last-child {
+      
+    }
 
     &.christmas-hours {
       ul {

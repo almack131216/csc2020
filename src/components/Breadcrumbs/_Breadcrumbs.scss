@@ -7,7 +7,7 @@
     @include resp-prop-half("padding-bottom", $offset-g1);
     @include resp-prop-half("padding-left", $offset-g2);
     @include resp-prop-half("padding-right", $offset-g2);
-    background: $color_secondary;
+    // background: $color_secondary;
 
     @media (max-width: $bp-xs-1) {
       padding: 5px $offset-g1;

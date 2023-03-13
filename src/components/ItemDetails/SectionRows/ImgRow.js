@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 // import parse from "html-react-parser";
 import NavLeft from "../../Sidebar/Navleft/NavLeft";
 import VideoEmbed from "../Video/VideoEmbed";
@@ -8,7 +8,7 @@ import ItemExtras from "../ItemExtras/ItemExtras";
 import ImgGrid from "../ImgGrid/ImgGrid";
 import CarouselDynamic from "../../CarouselDynamic/CarouselDynamic";
 
-const ImgRow = props => {
+const ImgRow = (props) => {
   const categoryName = props.categoryName;
   // const imgArea = props.imgArea;
   const breadcrumbsTag = props.breadcrumbsTag;
@@ -26,8 +26,9 @@ const ImgRow = props => {
   const handleForLightbox = props.handleForLightbox;
   const handleForVideobox = props.handleForVideobox;
 
-  let contentWrapClasses = ["content-wrap", "match-heights", "bg-accent"];
-  if (props.contentWrapClasses) contentWrapClasses.push(props.contentWrapClasses);
+  let contentWrapClasses = ["content-wrap", "bg-accent"];
+  if (props.contentWrapClasses)
+    contentWrapClasses.push(props.contentWrapClasses);
 
   // if (loading) {
   //   return <Loading />;
@@ -35,7 +36,7 @@ const ImgRow = props => {
 
   // SET images (IMG || Carousel)
   // change background style if
-  let imgRowClasses = ["content", "item-details-img"];
+  let imgRowClasses = ["container", "full-width", "item-details-img"];
   // Featured / Primary
   // Right panel (IMAGE Grid (attachments) || share)
   // Default or Carousel?...
@@ -43,10 +44,7 @@ const ImgRow = props => {
     imgRowClasses.push("bg-secondary");
     // txtRowClasses.push("item");
     imgColLeft = (
-      <ImgFeatured
-        imgArr={itemPrimary}
-        handleForLightbox={handleForLightbox}          
-      />
+      <ImgFeatured imgArr={itemPrimary} handleForLightbox={handleForLightbox} />
     );
     imgColRight = (
       <ImgGrid
@@ -59,8 +57,14 @@ const ImgRow = props => {
   } else if (pageStyle === "ImgCarousel") {
     imgRowClasses.push("carousel");
     imgColLeft = <CarouselDynamic imgsArr={imagesArr} />;
-    imgColRight = <ItemExtras itemArr={itemPrimary} showContact={true} itemAttachments={attachmentsArr}/>;
-  } else if (pageStyle ==="IsVideo") {
+    imgColRight = (
+      <ItemExtras
+        itemArr={itemPrimary}
+        showContact={true}
+        itemAttachments={attachmentsArr}
+      />
+    );
+  } else if (pageStyle === "IsVideo") {
     imgRowClasses.push("youtube-wrap");
     imgColLeft = null;
     imgColRight = null;
@@ -68,45 +72,42 @@ const ImgRow = props => {
 
   return (
     <section className={contentWrapClasses.join(" ")}>
-      <div className="sidebar">
-        <NavLeft categoryName={categoryName} />
-      </div>
       <div className={imgRowClasses.join(" ")}>
         {breadcrumbsTag}
         {/* {imgArea ? imgArea : null} */}
-        {pageStyle ==="IsVideo" ? (
-            <div className="row row-post-video full">
-              <div className="col-xs-12 col-sm-12 margin-x-0 padding-x-0 col-post-video">
-              {
-              itemPrimary.isVideo && itemPrimary.youtube ? (
+        {pageStyle === "IsVideo" ? (
+          <div className="row row-post-video full">
+            <div className="col-xs-12 col-sm-12 margin-x-0 padding-x-0XXX col-post-video">
+              {itemPrimary.isVideo && itemPrimary.youtube ? (
                 <VideoEmbed
                   videoId={itemPrimary.youtube}
                   imgArr={itemPrimary}
-                  autoplay={0}/>
-              ) : null
-              }
-              </div>
+                  autoplay={0}
+                />
+              ) : null}
             </div>
-          ) : 
-          (
-            <div className="row row-post-img">
-            <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
+          </div>
+        ) : (
+          <div className="row row-post-img">
+            <div className="col-xs-12 col-sm-9 margin-x-0 featured col-post-img">
               {hasVideo ? (
                 <VideoEmbed
                   videoId={videoIndex}
                   imgArr={itemPrimary}
                   autoplay={1}
                 />
-              ) : imgColLeft}
+              ) : (
+                imgColLeft
+              )}
             </div>
-            <div className="col-xs-12 col-sm-4 col-post-img-grid">
+            <div className="col-xs-12 col-sm-3 col-post-img-grid">
               {imgColRight}
             </div>
           </div>
-          )}
+        )}
       </div>
     </section>
   );
-}
+};
 
 export default ImgRow;

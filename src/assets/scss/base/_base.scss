@@ -27,11 +27,17 @@ body {
 
 .main .container {
 	// background: $color_secondary-light;
-	background: white;
+	// background: white;
 	&.item,
 	&.items.Live,
 	&.items.Archive {
 		background: $color_secondary-light;
+	}	
+}
+
+.container {
+	@media (min-width: 1200px){
+		// width: 100%;//230313
 	}
 }
 

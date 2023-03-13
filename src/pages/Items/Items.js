@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import ItemsContainer from '../../containers/ItemsContainer';
-import NavLeft from '../../components/Sidebar/Navleft/NavLeft';
 import BrandList from '../../components/Sidebar/BrandList/BrandList';
 import { CB_Contact, CB_OpeningHours, CB_YouTubeBtn } from '../../components/ContactBoxes/ContactBoxes';
 import InfoBox from '../../components/InfoBoxes/InfoBox/InfoBox';
@@ -48,15 +47,14 @@ const Items = (props) => {
 	return (
 		<div className={classContainer.join(' ')}>
 			<section className="row">
-				<div className="sidebar hidden-md-down col-md-3 padding-x-0">
-					<NavLeft categoryName={categoryName} />
+				<div className="content col-sm-12 col-md-9 col-posts-parent">
+					<ItemsContainer page={getPage} />
+				</div>
+				<div className="sidebar hidden-md-down col-md-3 padding-x-0XXX">
 					{widgetBrandList}
 					{widgetYouTubeBtn}
 					{widgetOpeningHours}
 					{widgetContact}
-				</div>
-				<div className="content col-sm-12 col-md-9 col-posts-parent">
-					<ItemsContainer page={getPage} />
 				</div>
 			</section>
 		</div>

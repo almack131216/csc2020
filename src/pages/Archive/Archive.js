@@ -93,7 +93,7 @@ const Archive = props => {
 	return (
 		<div className={classContainer.join(' ')}>
 			<section className="row">
-				<div className="sidebar hidden-md-down col-md-3 padding-x-0">
+				<div className="sidebar hidden-md-down col-md-3 padding-x-0XXX">
 					<NavLeft categoryName={categoryName} />
           {widgetOpeningHours}
 					{widgetContact}

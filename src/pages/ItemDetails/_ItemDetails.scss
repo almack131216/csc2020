@@ -1,22 +1,26 @@
 /* _ItemDetails.scss */
 
-.item-details-img > .row {
-  margin: 0;
+.item-details-img>.row {
+  // margin: 0;
 }
 
-.row.row-post-img {
-  @include resp-prop-half("padding-bottom", $offset-g2);
-  @include resp-prop-half("padding-left", $offset-g2);
-  @include resp-prop-half("padding-right", $offset-g2);
-  padding-top: 0;
+.row {
+  // @include resp-prop-half("padding-bottom", $offset-g2);
+  // @include resp-prop-half("padding-left", $offset-g2);
+  // @include resp-prop-half("padding-right", $offset-g2);
+  // padding-top: 0;
 
   // background: $color_primary;
 
   .col-post-img {
     padding: 0;
+    @include resp-prop-half("padding-left", $offset-g2);
+    // @include resp-prop-half("padding-right", $offset-g2);
+
     @media (min-width: $bp-sm) {
-      padding-right: $offset-g1;
+      // padding-right: $offset-g1;
     }
+
     @media (max-width: $bp-sm-1) {
       padding-bottom: 1px;
     }
@@ -41,11 +45,15 @@
     //   }
     // }
   }
+
   /* (END) .col-post-img */
 
   .col-post-img-grid {
     padding: 0;
+    @include resp-prop-half("padding-left", $offset-g2);
+    @include resp-prop-half("padding-right", $offset-g2);
   }
+
   /* (END) .col-post-img-grid */
 }
 
@@ -62,6 +70,7 @@
     //   padding-bottom: 1px;
     // }
   }
+
   /* (END) .col-post-img */
 }
 
@@ -86,6 +95,7 @@
     font-weight: bold;
     margin: 0 0 $offset-g1 0;
   }
+
   .excerpt {
     display: block;
     // font-weight: bold;
@@ -97,33 +107,38 @@
   }
 
   .slick-slider {
-    margin-bottom:$offset-g1;
+    margin-bottom: $offset-g1;
   }
 
   .link-category {
-    display:block;
-    margin-top:$offset-g2;
+    display: block;
+    margin-top: $offset-g2;
   }
 }
 
-.item-details-img.carousel {
-  background: white;
-  
-  .row.row-post-img {
-    @extend .bg-white;
-    padding-bottom: 0;
-    @include resp-prop-half("padding-top", $offset-g2);
+.item-details-img {
+  @include resp-prop-half("padding-bottom", $offset-g2);
 
-    .col-post-img {
-      padding-bottom: 0;
-    }
-    /* (END) .col-post-img */
+  &.carousel {
+    background: white;
 
-    .col-post-item-extras {
-      padding: 0;
+    .row.row-post-img {
+      @extend .bg-white;
+
+      .col-post-img {
+        padding-bottom: 0;
+      }
+
+      /* (END) .col-post-img */
+
+      .col-post-item-extras {
+        padding: 0;
+      }
+
+      /* (END) .col-post-item-extras */
     }
-    /* (END) .col-post-item-extras */
   }
+
 }
 
 /* Lightbox */

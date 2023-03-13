@@ -40,8 +40,8 @@ const Home = props => {
 
   return (
     <React.Fragment>
-      <section className="content-wrap match-heightsXXX bg-accent">
-        <div className="content full-width-video">{imgCarousel}</div>
+      <section className="content-wrap bg-accent">
+        <div className="content full-width full-width--video">{imgCarousel}</div>
       </section>
       {/* <Banner title="September 17th-19th" subtitle="Come and see us this weekend at Goodwood Revival" type="high-alert">
         <a href="https://classicandsportscar.ltd.uk/goodwood-revival-17th-19th-september-2021/news/54437" title="Link to this story" className="btn-primary">

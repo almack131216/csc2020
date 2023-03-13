@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import InfoBox from "../../components/InfoBoxes/InfoBox/InfoBox";
 import FormRequest from "../../components/Forms/Request/Request";
@@ -32,14 +31,13 @@ const Request = props => {
   return (
     <div className="container">
       <section className="row">
-        <div className="sidebar hidden-md-down col-md-3 padding-x-0">
-          <NavLeft />
-          <InfoBox arr={CB_OpeningHours} />
-          <InfoBox arr={CB_Contact} />
-        </div>
         <div className="content col-sm-12 col-md-9">
           <Breadcrumbs crumbsArr={crumbsArr} pageType="page" />
           <FormRequest />
+        </div>
+        <div className="sidebar hidden-md-down col-md-3 padding-x-0XXX">
+          <InfoBox arr={CB_OpeningHours} />
+          <InfoBox arr={CB_Contact} />
         </div>
       </section>
     </div>

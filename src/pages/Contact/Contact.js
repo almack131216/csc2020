@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
 import { setDocumentTitle, ConsoleLog } from "../../assets/js/Helpers";
 import { imgArray, textArray } from "../../assets/_data/_data-contact";
@@ -56,11 +55,8 @@ const Contact = props => {
 
   return (
     <React.Fragment>
-      <section className="content-wrap match-heights bg-accent">
-        <div className="sidebar">
-          <NavLeft />
-        </div>
-        <div className="content">
+      <section className="content-wrap bg-accent">
+        <div className="content full-width">
           {/* <DemoCarousel /> */}
           {/* {imgCarousel} */}
           <iframe
@@ -69,7 +65,7 @@ const Contact = props => {
             height="100%"
             title="Google Map"
             frameBorder="0"
-            style={{ border: "0", minHeight: "240px" }}
+            style={{ border: "0", minHeight: "400px" }}
             allowFullScreen={false}
             aria-hidden={false}
             tabIndex="0"

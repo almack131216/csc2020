@@ -55,6 +55,7 @@
 .navbar.side-drawer-open,
 .toolbar.side-drawer-open {
   .toggle-button {
+    display:block;
     position: fixed;
     top: $offset-1;
     left: $offset-1;

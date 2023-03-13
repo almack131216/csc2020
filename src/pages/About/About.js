@@ -42,7 +42,7 @@ const About = props => {
 
   return (
     <React.Fragment>
-      <section className="content-wrap match-heights bg-accent">
+      <section className="content-wrap bg-accent">
         <div className="sidebar">
           <NavLeft />
         </div>
