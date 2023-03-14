@@ -14,6 +14,7 @@ import {
 } from "../../components/ContactBoxes/ContactBoxes";
 import InfoBoxes from "../../components/InfoBoxes/InfoBoxes";
 import {Images} from "../../assets/_data/_data-carousel";
+import Hero from "../../components/Hero/Hero";
 // import { FaChevronRight } from "react-icons/fa";
 
 const Home = props => {
@@ -40,24 +41,7 @@ const Home = props => {
 
   return (
     <React.Fragment>
-      <section className="content-wrap bg-accent">
-        <div className="content heropanel">          
-
-    <section className="heropanel--wrap">
-        <video autoPlay muted loop id="myVideo" className="heropanel--video">
-            <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4" />
-        </video>
-        <div data-aos="fade-up" data-aos-delay="500" className="heropanel--content">
-            <h1>Welcome to <span>Classic & Sportscar Centre</span></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-            <a href="#" className="herobtn white">Showroom</a>
-            <a href="#" className="herobtn black">Brokerage</a>
-        </div>
-    </section>
-    
-          
-        </div>
-      </section>
+      <Hero />
       {/* <Banner title="September 17th-19th" subtitle="Come and see us this weekend at Goodwood Revival" type="high-alert">
         <a href="https://classicandsportscar.ltd.uk/goodwood-revival-17th-19th-september-2021/news/54437" title="Link to this story" className="btn-primary">
           <FaChevronRight />More information

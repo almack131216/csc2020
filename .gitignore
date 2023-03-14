@@ -3,7 +3,7 @@
 # dependencies
 /node_modules
 /src/images
-# /src/assets/images/
+/src/assets/mov/
 # /public/images/catalogue
 /.pnp
 .pnp.js

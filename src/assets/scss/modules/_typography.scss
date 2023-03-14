@@ -1,5 +1,7 @@
 /* _typography.scss */
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;600;700&display=swap');
+
 h1,
 h2,
 h3,
@@ -8,7 +10,7 @@ h5,
 h6 {
   color: black;
   // font-family: "Open Sans", Arial, Helvetica, sans-serif;
-  font-family: "Century Gothic", "Apple Gothic", sans-serif;
+  font-family: "Poppins", "Century Gothic", "Apple Gothic", sans-serif;
   font-weight: normal;
 }
 
@@ -118,4 +120,8 @@ ul {
 .hide-text {
   color: transparent;
   font-size: 0px !important;
+}
+
+.txt-nowrap {
+  white-space: nowrap;
 }
