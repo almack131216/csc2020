@@ -3,6 +3,7 @@
 $img-height-1: 180px;
 $img-height-2: 150px;
 $img-height-3: 210px;
+$img-height-4: 260px;
 
 .item.item-card {
   @include item-shared-props();
@@ -63,12 +64,21 @@ $img-height-3: 210px;
 // list / gallery grid items
 .item.item-card:not(.featured):not(.big) {
   article {
-    .card-img {      
+    .card-img {     
       @media (min-width:$bp-lg){
         height: $img-height-1;
       }
-      @media (min-width:$bp-sm) and (max-width:$bp-lg-1){
+      @media (min-width:$bp-xlg){
+        height: $img-height-3;
+      }
+      @media (min-width:$bp-xxlg){
+        height: $img-height-4;
+      }
+      @media (min-width:$bp-md) and (max-width:$bp-lg-1){
         height: $img-height-2;
+      }
+      @media (min-width:$bp-sm) and (max-width:$bp-md-1){
+        height: $img-height-1;
       }
       @media (min-width:700px) and (max-width:$bp-sm-1){
         height: $img-height-3;
@@ -109,6 +119,12 @@ $img-height-3: 210px;
       @media (min-width:$bp-lg){
         height: $img-height-1;
       }
+      @media (min-width:$bp-xlg){
+        height: $img-height-3;
+      }
+      @media (min-width:$bp-xxlg){
+        height: $img-height-4;
+      }
       @media (min-width:1024px) and (max-width:$bp-lg-1){
         height: 160px;
       }
@@ -116,7 +132,7 @@ $img-height-3: 210px;
         height: 200px;
       }
       @media (min-width:$bp-sm) and (max-width:$bp-md-1){
-        height: $img-height-2;
+        height: $img-height-1;
       }
       @media (min-width:700px) and (max-width:$bp-sm-1){
         height: 135px;

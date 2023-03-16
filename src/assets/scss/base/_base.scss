@@ -23,15 +23,15 @@ body {
 }
 /* [END] body */
 
-.main .container {
-	// background: $color_secondary-light;
-	// background: white;
-	&.item,
-	&.items.Live,
-	&.items.Archive {
-		background: $color_secondary-light;
-	}	
-}
+// .main .container {
+// 	// background: $color_secondary-light;
+// 	// background: white;
+// 	&.item,
+// 	&.items.Live,
+// 	&.items.Archive {
+// 		// background: $color_secondary-light;
+// 	}	
+// }
 
 .container {
 	width:100%;  

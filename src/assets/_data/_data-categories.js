@@ -30,7 +30,7 @@ const catArray = {
       showTitleSub: false,
       layout: "grid accent",
       item: {
-        layout: "item-card accent",
+        layout: "item-card",
         showPrice: true,
         showRibbons: true,
         showYear: true,
@@ -65,7 +65,7 @@ const catArray = {
       showTitleSub: true,
       layout: "grid accent",
       item: {
-        layout: "item-card accent",
+        layout: "item-card",
         showPrice: true,
         showRibbons: true,
         showYear: true,
