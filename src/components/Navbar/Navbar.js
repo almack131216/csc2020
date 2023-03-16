@@ -14,12 +14,12 @@ class Navbar extends Component {
 
     this.state = {
       data: SiteData,
-      sideDrawerOpen: false
+      sideDrawerOpen: false,
     };
   }
 
   drawerToggleClickHandler = () => {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return { sideDrawerOpen: !prevState.sideDrawerOpen };
     });
   };
@@ -42,42 +42,42 @@ class Navbar extends Component {
 
     return (
       <>
-      <nav className={classes.join(" ")} role="navigation">
-        <div className="container">
-          <div className="row">
-            <div className="col-xs-12 col-sm-12 col-md-6 navbar-brand-wrap">
-              <DrawerToggleButton
-                click={this.drawerToggleClickHandler}
-              ></DrawerToggleButton>
-              <Link className="navbar-brand" to={SiteData.root}>
-                <img src={logo} alt={SiteData.brand.name} />
-              </Link>
-            </div>
-            <div className="hidden-md-down navbar-contact-wrap col-md-6">
-              <h1>{SiteData.brand.strapline}</h1>
-              <ul className="ul-header">
-                <li className="li-telephone">
-                  Telephone: {SiteData.contact.telephone}
-                </li>
-                <li className="li-contact">
-                  <Link to={SiteData.contact.slug}>Contact</Link>
-                </li>
-              </ul>
-              <SocialBtns social={SiteData.social} />
-            </div>
-          </div>
-        </div>
-        <SideDrawer
-          show={this.state.sideDrawerOpen}
-          navigation={this.state.data.navigation}
-          clicked={this.closeSideDrawerHandler}
-        />
-        {this.state.sideDrawerOpen ? (
-          <Backdrop click={this.backdropClickHandler} />
-        ) : null}
-      </nav>
-      <NavTop drawerToggleClickHandler={this.drawerToggleClickHandler} />
+        <nav className={classes.join(" ")} role="navigation">
 
+<div className="container">
+                  <div className="navbar-logo-wrap">
+                    <DrawerToggleButton
+                      click={this.drawerToggleClickHandler}
+                    ></DrawerToggleButton>
+                    <Link className="navbar-logo" to={SiteData.root}>
+                      <img src={logo} alt={SiteData.brand.name} />
+                    </Link>
+                  </div>
+                  <div className="navbar-contact-wrap">
+                    <div className="navbar-contact">
+                    <h1 className="hidden-sm-downXXX">{SiteData.brand.strapline}</h1>
+                    <ul className="ul-header hidden-sm-downXXX">
+                      <li className="li-telephone">
+                        Tel: {SiteData.contact.telephone}
+                      </li>
+                      <li className="li-contact">
+                        <Link to={SiteData.contact.slug}>Contact</Link>
+                      </li>
+                    </ul>
+                    <SocialBtns social={SiteData.social} />
+                    </div>
+                  </div>
+                  </div>
+          <SideDrawer
+            show={this.state.sideDrawerOpen}
+            navigation={this.state.data.navigation}
+            clicked={this.closeSideDrawerHandler}
+          />
+          {this.state.sideDrawerOpen ? (
+            <Backdrop click={this.backdropClickHandler} />
+          ) : null}
+        </nav>
+        <NavTop drawerToggleClickHandler={this.drawerToggleClickHandler} />
       </>
     );
   }

@@ -69,6 +69,17 @@ ul.social_menu {
         background: $color_youtube; //#e64a41;
       }
     }
+
+    @media (max-width: $bp-sm-1) {
+      width: $offset-g3;
+      height: $offset-g3;
+      line-height: $offset-g3;
+      margin: 0;
+
+      a {
+        font-size: 30px;
+      }
+    }
   }
 }
 /* (END) ul */
