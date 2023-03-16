@@ -31,7 +31,7 @@ const Request = props => {
   return (
     <div className="container">
       <section className="row">
-        <div className="content col-sm-12 col-md-9">
+        <div className="contentXXX col-sm-12 col-md-9">
           <Breadcrumbs crumbsArr={crumbsArr} pageType="page" />
           <FormRequest />
         </div>

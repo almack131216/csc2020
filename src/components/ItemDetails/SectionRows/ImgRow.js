@@ -26,7 +26,7 @@ const ImgRow = (props) => {
   const handleForLightbox = props.handleForLightbox;
   const handleForVideobox = props.handleForVideobox;
 
-  let contentWrapClasses = ["content-wrap", "bg-accent"];
+  let contentWrapClasses = ["content-wrapXXX", "bg-secondary"];
   if (props.contentWrapClasses)
     contentWrapClasses.push(props.contentWrapClasses);
 
@@ -36,7 +36,7 @@ const ImgRow = (props) => {
 
   // SET images (IMG || Carousel)
   // change background style if
-  let imgRowClasses = ["container", "full-width", "item-details-img"];
+  let imgRowClasses = ["container", "item-details-img"];
   // Featured / Primary
   // Right panel (IMAGE Grid (attachments) || share)
   // Default or Carousel?...
@@ -77,7 +77,7 @@ const ImgRow = (props) => {
         {/* {imgArea ? imgArea : null} */}
         {pageStyle === "IsVideo" ? (
           <div className="row row-post-video full">
-            <div className="col-xs-12 col-sm-12 margin-x-0 padding-x-0XXX col-post-video">
+            <div className="col-xs-12 col-sm-12 margin-x-0 col-post-video">
               {itemPrimary.isVideo && itemPrimary.youtube ? (
                 <VideoEmbed
                   videoId={itemPrimary.youtube}
@@ -89,7 +89,7 @@ const ImgRow = (props) => {
           </div>
         ) : (
           <div className="row row-post-img">
-            <div className="col-xs-12 col-sm-9 margin-x-0 featured col-post-img">
+            <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
               {hasVideo ? (
                 <VideoEmbed
                   videoId={videoIndex}
@@ -100,7 +100,7 @@ const ImgRow = (props) => {
                 imgColLeft
               )}
             </div>
-            <div className="col-xs-12 col-sm-3 col-post-img-grid">
+            <div className="col-xs-12 col-sm-4 col-post-img-grid">
               {imgColRight}
             </div>
           </div>

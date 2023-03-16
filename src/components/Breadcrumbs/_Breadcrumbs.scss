@@ -1,12 +1,9 @@
 /* _Breadcrumbs.scss */
 
-.row.row-breadcrumb {
+.row-breadcrumb {
   .col-post-breadcrumb {
     margin-bottom: 0;
-    @include resp-prop-half("padding-top", $offset-g1);
-    @include resp-prop-half("padding-bottom", $offset-g1);
-    @include resp-prop-half("padding-left", $offset-g2);
-    @include resp-prop-half("padding-right", $offset-g2);
+    @include resp-prop-half("padding", $offset-g1);
     // background: $color_secondary;
 
     @media (max-width: $bp-xs-1) {
@@ -113,4 +110,13 @@
     /* (END) .crumbs-wrap */
   }
   /* (END) .col-post-breadcrumb */
+}
+
+.content-page,
+.content-items-list {
+  .row-breadcrumb {
+    .col-post-breadcrumb {
+      // @include resp-prop-half("padding-left", $offset-g2);
+    }
+  }
 }

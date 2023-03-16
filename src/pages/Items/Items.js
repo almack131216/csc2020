@@ -47,7 +47,7 @@ const Items = (props) => {
 	return (
 		<div className={classContainer.join(' ')}>
 			<section className="row">
-				<div className="content col-sm-12 col-md-9 col-posts-parent">
+				<div className="contentXXX col-sm-12 col-md-9 col-posts-parent">
 					<ItemsContainer page={getPage} />
 				</div>
 				<div className="sidebar hidden-md-down col-md-3 padding-x-0XXX">

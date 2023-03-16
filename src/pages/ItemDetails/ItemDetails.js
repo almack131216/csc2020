@@ -426,7 +426,7 @@ export default class ItemDetails extends Component {
 
           <div className={txtRowClasses.join(" ")}>
             <section className="row">
-              <div className="content col-sm-12 col-md-9 padding-x-0XXX">
+              <div className="contentXXX col-sm-12 col-md-9 padding-x-0XXX">
                 <div className="col-post-text">
                   <h1>{title}</h1>
                   <div className="post-text-body">
@@ -478,22 +478,30 @@ export default class ItemDetails extends Component {
         </>
       ) : (
         // TextOnly
-        <section className="content-wrap">
-          <div className="sidebar">
-            {widgetYouTubeBtn}
-            {widgetOpeningHours}
-            {widgetContact}
+        <div className="container">
+          <div className="row">
+        
+            <section className="content-wrapXXX">
+              
+              <div className="contentXXX col-sm-12 col-md-9 padding-x-0XXX">
+                {breadcrumbsTag}
+                <div className="col-post-text">
+                  <h1>{title}</h1>
+                  {subtitle ? <h2>{subtitle}</h2> : null}
+                  {excerpt ? <p>{excerpt}</p> : null}
+                  <div className="post-text-body">{descriptionParsed}</div>
+                </div>
+              </div>
+              <div className="sidebar col-sm-12 col-md-3">
+                {widgetYouTubeBtn}
+                {widgetOpeningHours}
+                {widgetContact}
+              </div>
+
+            </section>
+
           </div>
-          <div className="content col-sm-12 col-md-9 padding-x-0XXX">
-            {breadcrumbsTag}
-            <div className="col-post-text">
-              <h1>{title}</h1>
-              {subtitle ? <h2>{subtitle}</h2> : null}
-              {excerpt ? <p>{excerpt}</p> : null}
-              <div className="post-text-body">{descriptionParsed}</div>
-            </div>
-          </div>
-        </section>
+        </div>
       );
 
     return <>{pageContent}</>;

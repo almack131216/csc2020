@@ -5,7 +5,7 @@ import BrandFilter from "../../components/Filter/Brand";
 import NavData from "../../assets/_data/_data-navigation";
 import { FaHome, FaFilter, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { StripOpeningSlash } from '../../assets/js/Helpers';
+import { StripOpeningSlash } from "../../assets/js/Helpers";
 
 export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   // console.log("[Breadcrumbs] ItemContext...", items, crumbsArr);
@@ -17,7 +17,7 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
     categoryArr,
     subcategoryArr,
     brandArr,
-    styleAppendClass
+    styleAppendClass,
   } = context;
 
   let crumbCount = 1; // home
@@ -26,8 +26,8 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
       {
         title: categoryArr.title,
         slug: categoryArr.slug,
-        class: categoryArr.class
-      }
+        class: categoryArr.class,
+      },
     ];
   }
 
@@ -42,7 +42,6 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
             <span className="crumb-resp">
               <span>{item.title}</span>
             </span>
-            
           ) : (
             <Link to={item.slug} className="crumb-resp">
               <span>{item.title}</span>
@@ -61,8 +60,12 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
 
   let showFilter = false;
   let showBrandList = false;
-  const slugBase = categoryArr.slug ? StripOpeningSlash(categoryArr.slug) : null;
-  const slugAppendBrand = categoryArr.slugAppendBrand ? categoryArr.slugAppendBrand : null;
+  const slugBase = categoryArr.slug
+    ? StripOpeningSlash(categoryArr.slug)
+    : null;
+  const slugAppendBrand = categoryArr.slugAppendBrand
+    ? categoryArr.slugAppendBrand
+    : null;
 
   switch (pageType) {
     case "item-details":
@@ -81,7 +84,7 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   }
 
   // FUNC
-  const toggleFilter = e => {
+  const toggleFilter = (e) => {
     e.preventDefault();
     context.setFilterToggle();
   };
@@ -93,7 +96,7 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
     btnToggleFilter = (
       <button
         className={btnToggleFilterClasses.join(" ")}
-        onClick={e => {
+        onClick={(e) => {
           toggleFilter(e);
         }}
       >
@@ -123,12 +126,10 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
             classControl={classControl}
             brand={subcategoryArr.slug}
             brands={brandArr}
-            categorySlugsArr={
-              {
-                base: slugBase,
-                appendBrand: slugAppendBrand
-              }
-            }
+            categorySlugsArr={{
+              base: slugBase,
+              appendBrand: slugAppendBrand,
+            }}
           />
           {/* (END) select brand */}
         </form>
@@ -141,21 +142,23 @@ export default function Breadcrumbs({ items, crumbsArr, pageType }) {
   classCrumbsUl.push(`has-${crumbCount}-crumbs`);
 
   return (
-    <div className="row row-breadcrumb">
-      <div className="col-xs-12 col-post-breadcrumb">
-        <div className="crumbs-wrap">
-          <ul className={classCrumbsUl.join(" ")}>
-            <li className="home">
-              <Link to={NavData.home.slug}>
-                <FaHome className="i-home" />
-                <span>{NavData.home.title}</span>
-              </Link>
-            </li>
-            {dynamicCrumbs}
-            {brandJumpList}
-          </ul>
+    <div className={`content-${pageType}`}>
+      <div className="row-breadcrumb">
+        <div className="col-post-breadcrumb">
+          <div className="crumbs-wrap">
+            <ul className={classCrumbsUl.join(" ")}>
+              <li className="home">
+                <Link to={NavData.home.slug}>
+                  <FaHome className="i-home" />
+                  <span>{NavData.home.title}</span>
+                </Link>
+              </li>
+              {dynamicCrumbs}
+              {brandJumpList}
+            </ul>
+          </div>
+          {btnToggleFilter}
         </div>
-        {btnToggleFilter}
       </div>
     </div>
   );

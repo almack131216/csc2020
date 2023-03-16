@@ -55,29 +55,33 @@ const Contact = props => {
 
   return (
     <React.Fragment>
-      <section className="content-wrap bg-accent">
-        <div className="content full-width">
-          {/* <DemoCarousel /> */}
-          {/* {imgCarousel} */}
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9342.847452496195!2d-0.6581869!3d54.1674676!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x54cad499cf1d7ba1!2sClassic%20%26%20Sportscar%20Centre!5e0!3m2!1sen!2scz!4v1584009165896!5m2!1sen!2scz"
-            width="100%"
-            height="100%"
-            title="Google Map"
-            frameBorder="0"
-            style={{ border: "0", minHeight: "400px" }}
-            allowFullScreen={false}
-            aria-hidden={false}
-            tabIndex="0"
-          ></iframe>
-        </div>
-      </section>
-      <TitleSplitter titleArr={{ title: SiteData.brand.name }} />
-      <InfoBoxes columnsArr={columnsContact} rowClass="generic-row" />
-      <TitleSplitter
-        titleArr={{ title: "Local Attractions", text: textArray.text }}
-      />
-      {images ? <BigGrid categoryName={null} items={images} settings={imageSettings} /> : null}
+      <div className="container">
+        <div className="row">
+          <section className="content-wrapXXX bg-accent">
+            <div className="contentXXX full-width">
+              {/* <DemoCarousel /> */}
+              {/* {imgCarousel} */}
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9342.847452496195!2d-0.6581869!3d54.1674676!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x54cad499cf1d7ba1!2sClassic%20%26%20Sportscar%20Centre!5e0!3m2!1sen!2scz!4v1584009165896!5m2!1sen!2scz"
+                width="100%"
+                height="100%"
+                title="Google Map"
+                frameBorder="0"
+                style={{ border: "0", minHeight: "400px" }}
+                allowFullScreen={false}
+                aria-hidden={false}
+                tabIndex="0"
+              ></iframe>
+            </div>
+          </section>
+          <TitleSplitter titleArr={{ title: SiteData.brand.name }} />
+          <InfoBoxes columnsArr={columnsContact} rowClass="generic-row" />
+          <TitleSplitter
+            titleArr={{ title: "Local Attractions", text: textArray.text }}
+          />
+          {images ? <BigGrid categoryName={null} items={images} settings={imageSettings} /> : null}
+          </div>
+          </div>
     </React.Fragment>
   );
 };

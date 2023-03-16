@@ -19,7 +19,7 @@
   transition: all 0.3s ease;
 
   @if $style == "flex-direction-nav" {
-    background: $color-accent;
+    background: $color_accent;
     font-size: 0;
     color: transparent;
 
@@ -41,7 +41,7 @@
     // background:orange;
     @include a-on-secondary();
   } @else if $style == "pagination-active" {
-    background: $color-accent;
+    background: $color_accent;
     color: white;
     font-weight: bold;
   }

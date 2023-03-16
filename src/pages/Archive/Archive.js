@@ -98,7 +98,7 @@ const Archive = props => {
           {widgetOpeningHours}
 					{widgetContact}
 				</div>
-				<div className="content col-sm-12 col-md-9 col-posts-parent">
+				<div className="contentXXX col-sm-12 col-md-9 col-posts-parentXXX">
             {breadcrumbsTag}
             <div className="col-post-text">
               <h1>Archive: 2007-today</h1>      

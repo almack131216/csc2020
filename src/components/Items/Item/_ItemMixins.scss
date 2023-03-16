@@ -4,10 +4,10 @@ $card-color-txt: #666;
 $card-color-txt-price-detail: #f90;
 $card-color-txt-price-sold: #f00;
 
-$card-color-accent-bg: $color_accent;
-$card-color-accent-link-title: white;
-$card-color-accent-txt: #ccc;
-$card-color-accent-link-category: $color_secondary;
+$card-color_accent-bg: $color_accent;
+$card-color_accent-link-title: white;
+$card-color_accent-txt: #ccc;
+$card-color_accent-link-category: $color_secondary;
 
 @mixin item-shared-props() {
   article {

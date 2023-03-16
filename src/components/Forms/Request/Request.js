@@ -88,7 +88,7 @@ const Request = () => {
   return (
     <>
       {titlesComponent}
-      <div className="content-inner">
+      <section className="content-inner padding-y">
         <div className="form-wrap">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
@@ -297,7 +297,7 @@ const Request = () => {
             />
           </form>
         </div>
-      </div>
+      </section>
     </>
   );
 };

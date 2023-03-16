@@ -163,7 +163,7 @@ $img-height-4: 260px;
 .item-card.accent {
   @media (min-width: $bp-tablet) {
     //only show accent grid if on big screen
-    background: $card-color-accent-bg;
+    background: $card-color_accent-bg;
 
     article {
       .card-txt {
@@ -171,21 +171,21 @@ $img-height-4: 260px;
         padding-right: $offset-g1;
 
         .title a {
-          color: $card-color-accent-link-title;
+          color: $card-color_accent-link-title;
         }
 
         .price:not(.sold):not(.detail) {
-          color: $card-color-accent-txt;
+          color: $card-color_accent-txt;
         }
       }
 
       a.category {
-        color: $card-color-accent-link-category;
+        color: $card-color_accent-link-category;
       }
 
       .ftr {
         .year {
-          color: $card-color-accent-txt;
+          color: $card-color_accent-txt;
         }
       }
     }

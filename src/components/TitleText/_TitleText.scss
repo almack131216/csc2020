@@ -1,7 +1,7 @@
 /* _TitleText.scss */
 
 .title-text {
-  @include resp-prop-half("margin", $offset-g2);
+  @include resp-prop-half("margin", $offset-g1);
   margin-bottom: 0;
   padding-bottom: $offset-g1;
   border-bottom: 1px solid $color_accent;

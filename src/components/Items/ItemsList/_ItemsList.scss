@@ -28,7 +28,9 @@
   }
 
   &.rows {
-    @include resp-prop-half("padding", $offset-g2);
+    @include resp-prop-half("padding", $offset-g1);
+    @include resp-prop-half("padding-top", $offset-g2);
+    @include resp-prop-half("padding-bottom", $offset-g2);
 
     .cards {
       flex-direction: column;

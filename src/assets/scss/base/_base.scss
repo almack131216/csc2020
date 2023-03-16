@@ -91,7 +91,11 @@ hr {
 }
 
 .bg-accent {
-	background: $color-accent;
+	background: $color_accent;
+}
+
+.bg-accent4 {
+	background: $color_accent4;
 }
 
 .container.double-pad {
@@ -109,8 +113,8 @@ hr {
 
 section {
 	.content-inner {
-		@include resp-prop-half("padding-left", $offset-g2);
-		@include resp-prop-half("padding-right", $offset-g2);
+		@include resp-prop-half("padding-left", $offset-g1);
+		@include resp-prop-half("padding-right", $offset-g1);
 	}
 
 	&.padding-y {

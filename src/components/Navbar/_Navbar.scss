@@ -70,14 +70,16 @@
         flex-grow: 1;
         justify-content: flex-end;
 
-        h1 {
-          display: none;
+        .navbar-contact {
+          h1 {
+            display: none;
+          }
+  
+          ul.ul-header {
+            display: none;
+          }
+          // /ul
         }
-
-        ul.ul-header {
-          display: none;
-        }
-        // /ul
       }
     }
     // /resp

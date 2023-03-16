@@ -75,7 +75,7 @@
 }
 
 .col-post-text {
-  @include resp-prop-half("padding", $offset-g2);
+  @include resp-prop-half("padding", $offset-g1);
 
   @media (max-width: $bp-xs-1) {
     padding: $offset-g2 $offset-g1;
@@ -120,10 +120,10 @@
   @include resp-prop-half("padding-bottom", $offset-g2);
 
   &.carousel {
-    background: white;
+    // background: white;
 
     .row.row-post-img {
-      @extend .bg-white;
+      // @extend .bg-white;
 
       .col-post-img {
         padding-bottom: 0;
