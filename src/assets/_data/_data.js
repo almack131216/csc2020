@@ -34,6 +34,7 @@ const siteData = {
     NavArray.home,
     NavArray.live,
     NavArray.archive,
+    NavArray.videos,
     NavArray.restoration,
     NavArray.selling,
     NavArray.storage,

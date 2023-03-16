@@ -267,7 +267,7 @@ const catArray = {
   Videos: {
     id: 13,
     name: "Videos",
-    title: "YouTube Videos",
+    title: "YouTube Channel",
     titleSub: "Classic & Sportscar Centre on YouTube",
     titleHover: "Link to our YouTube page",
     titleDocument: "",

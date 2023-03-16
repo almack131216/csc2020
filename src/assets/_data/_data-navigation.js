@@ -26,6 +26,15 @@ const navArray = {
     navTop: true,
     navSide: true
   },
+  videos: {
+    title: CatData["Videos"].title,
+    titleHover: CatData["Videos"].titleHover,
+    titleDocument: CatData["Videos"].titleDocument,
+    slug: CatData["Videos"].slug,
+    navTop: true,
+    navSide: true,
+    class: "new"
+  },
   restoration: {
     title: CatData["Restoration"].title,
     titleHover: CatData["Restoration"].titleHover,
@@ -68,8 +77,7 @@ const navArray = {
     titleDocument: CatData["Staff"].titleDocument,
     slug: CatData["Staff"].slug,
     navTop: true,
-    navSide: true,
-    class: "new"
+    navSide: true
   },
   testimonials: {
     title: CatData["Testimonials"].title,
