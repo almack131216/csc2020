@@ -1,6 +1,54 @@
 /* _ImgGrid.scss */
 
 ul.ul-img-grid {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns:repeat(4,1fr);
+
+  @media (min-width: $bp-tablet) and (max-width: $bp-sm-1) {
+    grid-template-columns:repeat(10,1fr);
+  }
+  @media (min-width: $bp-xs) and (max-width: $bp-tablet-1) {
+    grid-template-columns:repeat(6,1fr);
+  }
+
+  li {
+    aspect-ratio:1/1;
+    position:relative;
+    overflow:hidden;
+
+    img {
+      position:absolute;
+      top:0%;
+      left:-20%;
+      width:140%;
+      height:auto;
+      // height:150%;
+      aspect-ratio:4/3;
+    }
+
+    &.btn-youtube {
+      background:$color_youtube;
+      position:relative;
+      cursor: pointer;
+  
+      img {
+        visibility:hidden;
+      }
+  
+      svg {
+        position:absolute;
+        top:10%;
+        left:10%;
+        width:80%;
+        height:80%;
+        color:white;
+      }
+    }
+  }
+}
+
+ul.ul-img-gridXXX {
   display: flex;
   flex-wrap: wrap;
 
