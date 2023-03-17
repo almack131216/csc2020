@@ -57,8 +57,8 @@ const Contact = props => {
     <React.Fragment>
       <div className="container">
         <div className="row">
-          <section className="content-wrapXXX bg-accent">
-            <div className="contentXXX full-width">
+          <section className="bg-accent">
+            <div className="full-width">
               {/* <DemoCarousel /> */}
               {/* {imgCarousel} */}
               <iframe

@@ -93,12 +93,12 @@ const Archive = props => {
 	return (
 		<div className={classContainer.join(' ')}>
 			<section className="row">
-				<div className="sidebar hidden-md-down col-md-3 padding-x-0XXX">
+				<div className="sidebar hidden-md-down col-md-3">
 					<NavLeft categoryName={categoryName} />
           {widgetOpeningHours}
 					{widgetContact}
 				</div>
-				<div className="contentXXX col-sm-12 col-md-9 col-posts-parentXXX">
+				<div className="col-sm-12 col-md-9">
             {breadcrumbsTag}
             <div className="col-post-text">
               <h1>Archive: 2007-today</h1>      

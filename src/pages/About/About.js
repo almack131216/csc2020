@@ -42,11 +42,11 @@ const About = props => {
 
   return (
     <React.Fragment>
-      <section className="content-wrapXXX bg-accent">
+      <section className="bg-accent">
         <div className="sidebar">
           <NavLeft />
         </div>
-        <div className="contentXXX">{imgCarousel}</div>
+        <div>{imgCarousel}</div>
       </section>
       <section>
         <div className="content-inner">

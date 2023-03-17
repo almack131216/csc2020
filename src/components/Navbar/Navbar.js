@@ -55,8 +55,8 @@ class Navbar extends Component {
                   </div>
                   <div className="navbar-contact-wrap">
                     <div className="navbar-contact">
-                    <h1 className="hidden-sm-downXXX">{SiteData.brand.strapline}</h1>
-                    <ul className="ul-header hidden-sm-downXXX">
+                    <h1>{SiteData.brand.strapline}</h1>
+                    <ul className="ul-header">
                       <li className="li-telephone">
                         Tel: {SiteData.contact.telephone}
                       </li>

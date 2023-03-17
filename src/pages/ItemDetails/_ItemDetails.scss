@@ -22,6 +22,7 @@
     }
 
     @media (max-width: $bp-sm-1) {
+      @include resp-prop-half("padding-right", $offset-g2);
       padding-bottom: 1px;
     }
 

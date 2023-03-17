@@ -26,7 +26,7 @@ const ImgRow = (props) => {
   const handleForLightbox = props.handleForLightbox;
   const handleForVideobox = props.handleForVideobox;
 
-  let contentWrapClasses = ["content-wrapXXX", "bg-secondary"];
+  let contentWrapClasses = ["bg-secondary"];
   if (props.contentWrapClasses)
     contentWrapClasses.push(props.contentWrapClasses);
 

@@ -426,7 +426,7 @@ export default class ItemDetails extends Component {
 
           <div className={txtRowClasses.join(" ")}>
             <section className="row">
-              <div className="contentXXX col-sm-12 col-md-9 padding-x-0XXX">
+              <div className="col-sm-12 col-md-9">
                 <div className="col-post-text">
                   <h1>{title}</h1>
                   <div className="post-text-body">
@@ -438,7 +438,7 @@ export default class ItemDetails extends Component {
                 </div>
               </div>
               {/* /content */}
-              <div className="sidebar hidden-md-down col-md-3 padding-x-0XXX">
+              <div className="sidebar hidden-md-down col-md-3">
                 {moreInfoBoxes || relatedItemsTag ? (
                   <>
                     {moreInfoBoxes ? moreInfoBoxes : null}
@@ -481,9 +481,9 @@ export default class ItemDetails extends Component {
         <div className="container">
           <div className="row">
         
-            <section className="content-wrapXXX">
+            <section>
               
-              <div className="contentXXX col-sm-12 col-md-9 padding-x-0XXX">
+              <div className="col-sm-12 col-md-9">
                 {breadcrumbsTag}
                 <div className="col-post-text">
                   <h1>{title}</h1>

@@ -58,8 +58,8 @@ const Restoration = (props) => {
     <React.Fragment>
       <div className="container">
         <div className="row">
-          <section className="content-wrapXXX bg-accent">
-            <div className="contentXXX full-widthXXX">{imgCarousel}</div>
+          <section className="bg-accent">
+            <div>{imgCarousel}</div>
           </section>
 
           <section>

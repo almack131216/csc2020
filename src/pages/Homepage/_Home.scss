@@ -1,28 +1,2 @@
 /* _Home.scss */
 
-.main {
-  .content-wrapXXXXXXXX {
-    // display: flex;
-    /* flex-direction: column; */
-    // width: 100%;
-
-    >.sidebar {
-      width: 25%;
-
-      @media (max-width: $bp-md-1) {
-        display: none;
-      }
-    }
-
-    >.content {
-      width: 75%;
-
-      @media (max-width: $bp-md-1) {
-        width: 100%;
-      }
-    }
-
-  }
-
-
-}

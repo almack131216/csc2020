@@ -31,11 +31,11 @@ const Request = props => {
   return (
     <div className="container">
       <section className="row">
-        <div className="contentXXX col-sm-12 col-md-9">
+        <div className="col-sm-12 col-md-9">
           <Breadcrumbs crumbsArr={crumbsArr} pageType="page" />
           <FormRequest />
         </div>
-        <div className="sidebar hidden-md-down col-md-3 padding-x-0XXX">
+        <div className="sidebar hidden-md-down col-md-3">
           <InfoBox arr={CB_OpeningHours} />
           <InfoBox arr={CB_Contact} />
         </div>

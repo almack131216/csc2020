@@ -13,32 +13,7 @@
   }
 }
 
-.item-extras-wrapXXX {
-  width: 100%;
-
-  &.position-right {
-    @media (min-width: $bp-sm) {
-      float: right;
-      width: 33.33333333%;
-      @include resp-prop-half("margin-left", $offset-g2);
-    }
-
-    @media (min-width: $bp-tablet) and (max-width: $bp-sm-1) {
-      float: right;
-      width: 40%;
-      @include resp-prop-half("margin-left", $offset-g2);
-    }
-  }
-}
-
 .item-extras {
-  // width: 100%;
-  // border: 1px solid $table-color-border;
-  // margin: 0;
-  // @include resp-prop-half("margin-bottom", $offset-g2);
-  // @include resp-prop-half("padding", $offset-g2);
-  // background: white;
-
   h5 {
     @extend .h5-underline;
   }
