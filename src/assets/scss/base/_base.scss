@@ -113,20 +113,39 @@ hr {
 
 section {
 	.content-inner {
-		@include resp-prop-half("padding-left", $offset-g1);
-		@include resp-prop-half("padding-right", $offset-g1);
+		@include resp-prop-half("padding-left", $offset-g2);
+		@include resp-prop-half("padding-right", $offset-g2);
 	}
 
-	&.padding-y {
-		@include resp-prop-half("padding-top", $offset-g2);
-		@include resp-prop-half("padding-bottom", $offset-g2);
-	}
-	&.padding-top {
-		@include resp-prop-half("padding-top", $offset-g2);
-	}
-	&.padding-bottom {
-		@include resp-prop-half("padding-bottom", $offset-g2);
-	}
+	
+}
+
+.padding-y {
+	@include resp-prop-half("padding-top", $offset-g2);
+	@include resp-prop-half("padding-bottom", $offset-g2);
+}
+.padding-top {
+	@include resp-prop-half("padding-top", $offset-g2);
+}
+.padding-bottom {
+	@include resp-prop-half("padding-bottom", $offset-g2);
+}
+
+.pad-x-2 {
+	@include resp-prop-half("padding-left", $offset-g2);
+	@include resp-prop-half("padding-right", $offset-g2);
+}
+
+.pad-y {
+	@include resp-prop-half("padding-top", $offset-g1);
+	@include resp-prop-half("padding-bottom", $offset-g1);
+}
+.pad-y-2 {
+	@include resp-prop-half("padding-top", $offset-g2);
+	@include resp-prop-half("padding-bottom", $offset-g2);
+}
+.pad-bottom-2 {
+	@include resp-prop-half("padding-bottom", $offset-g2);
 }
 
 .cull-2do {

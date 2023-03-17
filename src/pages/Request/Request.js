@@ -4,6 +4,7 @@ import InfoBox from "../../components/InfoBoxes/InfoBox/InfoBox";
 import FormRequest from "../../components/Forms/Request/Request";
 import NavData from "../../assets/_data/_data-navigation";
 import {
+  CB_YouTubeBtn,
   CB_Contact,
   CB_OpeningHours
 } from "../../components/ContactBoxes/ContactBoxes";
@@ -36,6 +37,7 @@ const Request = props => {
           <FormRequest />
         </div>
         <div className="sidebar hidden-md-down col-md-3">
+          <InfoBox arr={CB_YouTubeBtn} />
           <InfoBox arr={CB_OpeningHours} />
           <InfoBox arr={CB_Contact} />
         </div>

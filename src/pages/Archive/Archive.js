@@ -92,12 +92,7 @@ const Archive = props => {
 
 	return (
 		<div className={classContainer.join(' ')}>
-			<section className="row">
-				<div className="sidebar hidden-md-down col-md-3">
-					<NavLeft categoryName={categoryName} />
-          {widgetOpeningHours}
-					{widgetContact}
-				</div>
+			<section className="row">				
 				<div className="col-sm-12 col-md-9">
             {breadcrumbsTag}
             <div className="col-post-text">
@@ -120,6 +115,10 @@ const Archive = props => {
               </div>
               </div> */}
             </div>					
+				</div>
+        <div className="sidebar hidden-md-down col-md-3">
+          {widgetOpeningHours}
+					{widgetContact}
 				</div>
 			</section>
 		</div>

@@ -57,54 +57,60 @@ const Home = props => {
         </Link>
       </Banner> */}
       <div class="container">
-      <TitleSplitter
-        titleArr={{
-          title: catData["Live"].title,
-          slug: catData["Live"].slug,
-          seeAll: true
-        }}
-      />
-      <ItemsFeatured categoryName="Live" />
-      <TitleSplitter
-        titleArr={{
-          title: catData["Archive"].title,
-          slug: '/sold',
-          seeAll: true
-        }}
-      />
-      <ItemsFeatured categoryName="Archive" />
-      <TitleSplitter
-        titleArr={{ title: "CLASSIC & SPORTSCAR CENTRE", slug: "/about" }}
-        seeAllArr={{ title: "About Us", slug: "/about" }}
-      />
-      {/* <ContactBoxes cols={2} /> */}
-      <InfoBoxes columnsArr={columnsContact} rowclassName="generic-row" />
-
-      {featuredItemsTestimonials ? (
-        <>
+        <div className="row">
           <TitleSplitter
             titleArr={{
-              title: catData["Testimonials"].title,
-              slug: catData["Testimonials"].slug,
+              title: catData["Live"].title,
+              slug: catData["Live"].slug,
               seeAll: true
             }}
           />
-          <BigGrid categoryName={"Testimonials"} items={featuredItemsTestimonials} />
-        </>
-      ) : null}
-
-      {featuredItemsNews ? (
-        <>
+          <ItemsFeatured categoryName="Live" />
+        </div>
+        <div className="row">
           <TitleSplitter
             titleArr={{
-              title: catData["News"].title,
-              slug: catData["News"].slug,
+              title: catData["Archive"].title,
+              slug: '/sold',
               seeAll: true
             }}
           />
-          <BigGrid categoryName={"News"} items={featuredItemsNews} />
-        </>
-      ) : null}
+          <ItemsFeatured categoryName="Archive" />
+        </div>
+        <div className="row">
+          <TitleSplitter
+            titleArr={{ title: "CLASSIC & SPORTSCAR CENTRE", slug: "/about" }}
+            seeAllArr={{ title: "About Us", slug: "/about" }}
+          />
+          {/* <ContactBoxes cols={2} /> */}
+          <InfoBoxes columnsArr={columnsContact} rowclassName="generic-row" />
+        </div>
+
+        {featuredItemsTestimonials ? (
+          <div className="row">
+            <TitleSplitter
+              titleArr={{
+                title: catData["Testimonials"].title,
+                slug: catData["Testimonials"].slug,
+                seeAll: true
+              }}
+            />
+            <BigGrid categoryName={"Testimonials"} items={featuredItemsTestimonials} />
+          </div>
+        ) : null}
+
+        {featuredItemsNews ? (
+          <div className="row">
+            <TitleSplitter
+              titleArr={{
+                title: catData["News"].title,
+                slug: catData["News"].slug,
+                seeAll: true
+              }}
+            />
+            <BigGrid categoryName={"News"} items={featuredItemsNews} />
+          </div>
+        ) : null}
       </div>
     </React.Fragment>
   );

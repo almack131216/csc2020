@@ -88,214 +88,217 @@ const Request = () => {
   return (
     <>
       {titlesComponent}
-      <section className="content-inner padding-y">
-        <div className="form-wrap">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="row">
-              <div className="form-group col-xs-12">
-                <h2>Your Contact Details...</h2>
+      <section>
+        <div className="content-inner padding-y">
+          <div className="form-wrap">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="row">
+                <div className="form-group col-xs-12">
+                  <h2>Your Contact Details...</h2>
+                </div>
               </div>
-            </div>
-            <div className="row">
-              <div className="form-group col-xxs-12 col-xs-6">
-                <label htmlFor="fName" className="required">
-                  First Name
-                </label>
-                {errors.fName && (
-                  <span className="span-error">{errors.fName.message}</span>
-                )}
-                <input
-                  type="text"
-                  placeholder="First name"
-                  name="fName"
-                  ref={register({
-                    required: "required",
-                    maxLength: { value: 30, message: "First name is too long" }
-                  })}
-                  className={errors.fName ? "inp-error" : ""}
-                />
+              <div className="row">
+                <div className="form-group col-xxs-12 col-xs-6">
+                  <label htmlFor="fName" className="required">
+                    First Name
+                  </label>
+                  {errors.fName && (
+                    <span className="span-error">{errors.fName.message}</span>
+                  )}
+                  <input
+                    type="text"
+                    placeholder="First name"
+                    name="fName"
+                    ref={register({
+                      required: "required",
+                      maxLength: { value: 30, message: "First name is too long" }
+                    })}
+                    className={errors.fName ? "inp-error" : ""}
+                  />
+                </div>
+                <div className="form-group col-xxs-12 col-xs-6">
+                  <label htmlFor="lName" className="required">
+                    Last Name
+                  </label>
+                  {errors.lName && (
+                    <span className="span-error">{errors.lName.message}</span>
+                  )}
+                  <input
+                    type="text"
+                    placeholder="Last name"
+                    name="lName"
+                    ref={register({
+                      required: "required",
+                      maxLength: { value: 30, message: "Last name is too long" }
+                    })}
+                    className={errors.lName ? "inp-error" : ""}
+                  />
+                </div>
               </div>
-              <div className="form-group col-xxs-12 col-xs-6">
-                <label htmlFor="lName" className="required">
-                  Last Name
-                </label>
-                {errors.lName && (
-                  <span className="span-error">{errors.lName.message}</span>
-                )}
-                <input
-                  type="text"
-                  placeholder="Last name"
-                  name="lName"
-                  ref={register({
-                    required: "required",
-                    maxLength: { value: 30, message: "Last name is too long" }
-                  })}
-                  className={errors.lName ? "inp-error" : ""}
-                />
+              <div className="row">
+                <div className="form-group col-xs-12 col-sm-6">
+                  <label htmlFor="email" className="required">
+                    Email Address
+                  </label>
+                  {errors.email && (
+                    <span className="span-error">{errors.email.message}</span>
+                  )}
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    ref={register({
+                      required: "Invalid email address",
+                      pattern: {
+                        value: /^\S+@\S+$/i,
+                        message: "Invalid email address"
+                      }
+                    })}
+                    className={errors.email ? "inp-error" : ""}
+                  />
+                </div>
+                <div className="form-group col-xs-6 col-sm-3">
+                  <label htmlFor="mobile">Mobile</label>
+                  <input
+                    type="tel"
+                    placeholder="Mobile number"
+                    name="mobile"
+                    ref={register}
+                  />
+                </div>
+                <div className="form-group col-xs-6 col-sm-3">
+                  <label htmlFor="tel">Telephone</label>
+                  <input
+                    type="tel"
+                    placeholder="Telephone"
+                    name="tel"
+                    ref={register}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="row">
-              <div className="form-group col-xs-12 col-sm-6">
-                <label htmlFor="email" className="required">
-                  Email Address
-                </label>
-                {errors.email && (
-                  <span className="span-error">{errors.email.message}</span>
-                )}
-                <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  ref={register({
-                    required: "Invalid email address",
-                    pattern: {
-                      value: /^\S+@\S+$/i,
-                      message: "Invalid email address"
-                    }
-                  })}
-                  className={errors.email ? "inp-error" : ""}
-                />
+              <div className="row">
+                <div className="form-group col-xxs-12 col-xs-6">
+                  <label htmlFor="address">Address</label>
+                  <textarea name="address" ref={register} />
+                </div>
+                <div className="form-group col-xxs-12 col-xs-6">
+                  <label htmlFor="pCode" className="required">
+                    Postcode
+                  </label>
+                  {errors.pCode && (
+                    <span className="span-error">{errors.pCode.message}</span>
+                  )}
+                  <input
+                    type="text"
+                    placeholder="Post Code"
+                    name="pCode"
+                    ref={register({
+                      required: "required",
+                      maxLength: { value: 10, message: "Post code is too long" }
+                    })}
+                    className={errors.pCode ? "inp-error" : ""}
+                  />
+                </div>
               </div>
-              <div className="form-group col-xs-6 col-sm-3">
-                <label htmlFor="mobile">Mobile</label>
-                <input
-                  type="tel"
-                  placeholder="Mobile number"
-                  name="mobile"
-                  ref={register}
-                />
+              <hr />
+              <div className="row">
+                <div className="form-group col-xs-12">
+                  <h2>Model you're looking for...</h2>
+                </div>
               </div>
-              <div className="form-group col-xs-6 col-sm-3">
-                <label htmlFor="tel">Telephone</label>
-                <input
-                  type="tel"
-                  placeholder="Telephone"
-                  name="tel"
-                  ref={register}
-                />
+              <div className="row">
+                <div className="form-group col-xxs-12 col-xs-6">
+                  <label htmlFor="carMake" className="required">
+                    Make
+                  </label>
+                  {errors.carMake && (
+                    <span className="span-error">{errors.carMake.message}</span>
+                  )}
+                  <input
+                    type="text"
+                    placeholder="Make"
+                    name="carMake"
+                    ref={register({
+                      required: "required",
+                      maxLength: { value: 30, message: "Make is too long" }
+                    })}
+                    className={errors.carMake ? "inp-error" : ""}
+                  />
+                </div>
+                <div className="form-group col-xxs-12 col-xs-6">
+                  <label htmlFor="carModel" className="required">
+                    Model
+                  </label>
+                  {errors.carModel && (
+                    <span className="span-error">{errors.carModel.message}</span>
+                  )}
+                  <input
+                    type="text"
+                    placeholder="Model"
+                    name="carModel"
+                    ref={register({
+                      required: "required",
+                      maxLength: { value: 50, message: "Model name is too long" }
+                    })}
+                    className={errors.carModel ? "inp-error" : ""}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="row">
-              <div className="form-group col-xxs-12 col-xs-6">
-                <label htmlFor="address">Address</label>
-                <textarea name="address" ref={register} />
+              <div className="row">
+                <div className="form-group col-xs-6">
+                  <label htmlFor="carYear">Year</label>
+                  <input
+                    type="text"
+                    placeholder="Make"
+                    name="carYear"
+                    ref={register}
+                  />
+                </div>
+                <div className="form-group col-xs-6">
+                  <label htmlFor="carColor">Colour</label>
+                  <input
+                    type="text"
+                    placeholder="Model"
+                    name="carColor"
+                    ref={register}
+                  />
+                </div>
               </div>
-              <div className="form-group col-xxs-12 col-xs-6">
-                <label htmlFor="pCode" className="required">
-                  Postcode
-                </label>
-                {errors.pCode && (
-                  <span className="span-error">{errors.pCode.message}</span>
-                )}
-                <input
-                  type="text"
-                  placeholder="Post Code"
-                  name="pCode"
-                  ref={register({
-                    required: "required",
-                    maxLength: { value: 10, message: "Post code is too long" }
-                  })}
-                  className={errors.pCode ? "inp-error" : ""}
-                />
+              <div className="row">
+                <div className="form-group col-xs-12">
+                  <label htmlFor="carNotes">Further Notes</label>
+                  <textarea name="carNotes" ref={register} />
+                </div>
               </div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="form-group col-xs-12">
-                <h2>Model you're looking for...</h2>
-              </div>
-            </div>
-            <div className="row">
-              <div className="form-group col-xxs-12 col-xs-6">
-                <label htmlFor="carMake" className="required">
-                  Make
-                </label>
-                {errors.carMake && (
-                  <span className="span-error">{errors.carMake.message}</span>
-                )}
-                <input
-                  type="text"
-                  placeholder="Make"
-                  name="carMake"
-                  ref={register({
-                    required: "required",
-                    maxLength: { value: 30, message: "Make is too long" }
-                  })}
-                  className={errors.carMake ? "inp-error" : ""}
-                />
-              </div>
-              <div className="form-group col-xxs-12 col-xs-6">
-                <label htmlFor="carModel" className="required">
-                  Model
-                </label>
-                {errors.carModel && (
-                  <span className="span-error">{errors.carModel.message}</span>
-                )}
-                <input
-                  type="text"
-                  placeholder="Model"
-                  name="carModel"
-                  ref={register({
-                    required: "required",
-                    maxLength: { value: 50, message: "Model name is too long" }
-                  })}
-                  className={errors.carModel ? "inp-error" : ""}
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="form-group col-xs-6">
-                <label htmlFor="carYear">Year</label>
-                <input
-                  type="text"
-                  placeholder="Make"
-                  name="carYear"
-                  ref={register}
-                />
-              </div>
-              <div className="form-group col-xs-6">
-                <label htmlFor="carColor">Colour</label>
-                <input
-                  type="text"
-                  placeholder="Model"
-                  name="carColor"
-                  ref={register}
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="form-group col-xs-12">
-                <label htmlFor="carNotes">Further Notes</label>
-                <textarea name="carNotes" ref={register} />
-              </div>
-            </div>
-            {mailSent ? alertSent : null}
-            {mailSending ? alertSending : null}
-            {mailFailed ? alertFailed : null}
-            <input type="submit" className="btn" value="Send Request" />
-            {/* <input type="reset" className="btn pull-right" /> */}
-            <input
-              type="button"
-              value="Dummy Data"
-              className="btn pull-right cull-2do"
-              onClick={() => {
-                reset({
-                  fName: "al",
-                  lName: "mack",
-                  email: "al_2003_1@hotmail.com",
-                  mobile: "+420 123456789",
-                  tel: "+420 987654321",
-                  address: "this is my address",
-                  pCode: "140 00",
-                  carMake: "Porsche",
-                  carModel: "911 930",
-                  carYear: "1984",
-                  carColor: "White + black bumpers",
-                  carNotes: "The best 911"
-                });
-              }}
-            />
-          </form>
+              {mailSent ? alertSent : null}
+              {mailSending ? alertSending : null}
+              {mailFailed ? alertFailed : null}
+              <input type="submit" className="btn" value="Send Request" />
+              {/* <input type="reset" className="btn pull-right" /> */}
+              <input
+                type="button"
+                value="Dummy Data"
+                className="btn pull-right cull-2do"
+                onClick={() => {
+                  reset({
+                    fName: "al",
+                    lName: "mack",
+                    email: "al_2003_1@hotmail.com",
+                    mobile: "+420 123456789",
+                    tel: "+420 987654321",
+                    address: "this is my address",
+                    pCode: "140 00",
+                    carMake: "Porsche",
+                    carModel: "911 930",
+                    carYear: "1984",
+                    carColor: "White + black bumpers",
+                    carNotes: "The best 911"
+                  });
+                }}
+              />
+            </form>
+          </div>
+        
         </div>
       </section>
     </>

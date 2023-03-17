@@ -7,11 +7,11 @@ import BigGrid from "../../components/Items/BigGrid/BigGrid";
 import {
   CB_Contact,
   CB_OpeningHours,
-  CB_Address
+  CB_Address,
 } from "../../components/ContactBoxes/ContactBoxes";
 import InfoBoxes from "../../components/InfoBoxes/InfoBoxes";
 
-const Contact = props => {
+const Contact = (props) => {
   const [images, setImages] = useState([]);
   const [imageSettings, setImageSettings] = useState({});
   const columnsContact = [CB_OpeningHours, CB_Contact, CB_Address];
@@ -23,7 +23,7 @@ const Contact = props => {
 
   // useEffect
   useEffect(() => {
-    ConsoleLog('[Contact]');
+    ConsoleLog("[Contact]");
     window.scrollTo(0, 0);
     setDocumentTitle(`Contact ${SiteData.brand.name}`);
     const Images = [...imgArray];
@@ -38,7 +38,7 @@ const Contact = props => {
         src: `${Images[i].src}`,
         name: Images[i].name,
         url: Images[i].url,
-        excerpt: Images[i].excerpt
+        excerpt: Images[i].excerpt,
       });
     }
     ConsoleLog("[Contact] imgArr: " + imgArr);
@@ -79,9 +79,15 @@ const Contact = props => {
           <TitleSplitter
             titleArr={{ title: "Local Attractions", text: textArray.text }}
           />
-          {images ? <BigGrid categoryName={null} items={images} settings={imageSettings} /> : null}
-          </div>
-          </div>
+          {images ? (
+            <BigGrid
+              categoryName={null}
+              items={images}
+              settings={imageSettings}
+            />
+          ) : null}
+        </div>
+      </div>
     </React.Fragment>
   );
 };

@@ -63,7 +63,7 @@ const Restoration = (props) => {
           </section>
 
           <section>
-            <div className="title-text border-0">
+            <div className="content-inner border-0">
               <h1>{catData["Restoration"].title}</h1>
               <div className="post-text-body">
                 {catData["Restoration"].text}

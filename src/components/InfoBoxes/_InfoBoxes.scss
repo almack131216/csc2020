@@ -2,7 +2,7 @@
 
 //REF: https://tobiasahlin.com/blog/flexbox-break-to-new-row/
 
-section.generic-row {
+section.generic-rowXXX {
   // padding-top: 0;
   // padding-bottom: 0;
   @include resp-prop-half("padding-left", $offset-g1);
@@ -11,22 +11,22 @@ section.generic-row {
   background: white;
   box-sizing: border-box;
 
-  &.pad-x-2 {
-    @include resp-prop-half("padding-left", $offset-g2);
-    @include resp-prop-half("padding-right", $offset-g2);
-  }
+  // &.pad-x-2 {
+  //   @include resp-prop-half("padding-left", $offset-g2);
+  //   @include resp-prop-half("padding-right", $offset-g2);
+  // }
 
-  &.pad-y {
-    @include resp-prop-half("padding-top", $offset-g1);
-    @include resp-prop-half("padding-bottom", $offset-g1);
-  }
-  &.pad-y-2 {
-    @include resp-prop-half("padding-top", $offset-g2);
-    @include resp-prop-half("padding-bottom", $offset-g2);
-  }
-  &.pad-bottom-2 {
-    @include resp-prop-half("padding-bottom", $offset-g2);
-  }
+  // &.pad-y {
+  //   @include resp-prop-half("padding-top", $offset-g1);
+  //   @include resp-prop-half("padding-bottom", $offset-g1);
+  // }
+  // &.pad-y-2 {
+  //   @include resp-prop-half("padding-top", $offset-g2);
+  //   @include resp-prop-half("padding-bottom", $offset-g2);
+  // }
+  // &.pad-bottom-2 {
+  //   @include resp-prop-half("padding-bottom", $offset-g2);
+  // }
 }
 
 .flex-list {
@@ -34,6 +34,8 @@ section.generic-row {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
+  @include resp-prop-half("padding-left", $offset-g1);
+  @include resp-prop-half("padding-right", $offset-g1);
 
   .break {
     &.sm-down {
@@ -53,8 +55,8 @@ section.generic-row {
     display: flex;
     padding-top: 0;
     padding-bottom: 0;
-    @include resp-prop-half("padding-left", $offset-g2);
-    @include resp-prop-half("padding-right", $offset-g2);
+    @include resp-prop-half("padding-left", $offset-g1);
+    @include resp-prop-half("padding-right", $offset-g1);
     width: 100%;
 
     &.flex-tablet-6 {
