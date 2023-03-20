@@ -6,8 +6,7 @@
 
 .sidebar {
   .widget {
-    margin: $offset-g1;
-    margin-bottom:$offset-g2;
+    margin: $offset-g1 0 $offset-g2 0;
 
     &:first-child {
       margin-top:$offset-g2;

@@ -7,7 +7,7 @@ const siteData = {
   brand: {
     name: "Classic & Sportscar Centre",
     straplineXXX: "Celebrating 30 Years in Business",
-    strapline: "Selling classic cars worldwide for 30 years"
+    strapline: "Supplying classic cars worldwide for over 30 years"
   },
   priceRangeArr: [0, 5000, 10000, 20000, 30000, 40000, 100000],
   featuredItems: {
