@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SEO from '../../components/SEO/SEO';
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import InfoBox from "../../components/InfoBoxes/InfoBox/InfoBox";
 import {
@@ -9,7 +10,6 @@ import {
 import ImgList from "../../components/ItemDetails/ImgList/ImgList";
 import { ItemContext } from "../../Context";
 import {
-  setDocumentTitle,
   apiGetItemDetails,
   ConsoleLog,
 } from "../../assets/js/Helpers";
@@ -128,7 +128,7 @@ export default class ItemDetails extends Component {
       })
       .catch(() => {
         this.setState({ fetchError: this.strItemNotFound, loading: false });
-        setDocumentTitle(this.strItemNotFound);
+        // setDocumentTitle(this.strItemNotFound);//2do - set title in <SEO /> if item not found
       });
   }
 
@@ -237,9 +237,7 @@ export default class ItemDetails extends Component {
     // ITEM category
     const categoryArr = this.context.getCategoryArr(category, status);
     const categoryLinkTag = this.context.getCategoryLinkTag(categoryArr);
-    setDocumentTitle(
-      `${title} ${categoryArr.title ? " | " + categoryArr.title : ""}`
-    );
+    const documentTitle = `${title} ${categoryArr.title ? " | " + categoryArr.title : ""}`;
     // ITEM source
     let sourceLabel = "";
     if (categoryArr.name === "Press") sourceLabel = "Source: ";
@@ -504,6 +502,14 @@ export default class ItemDetails extends Component {
         </div>
       );
 
-    return <>{pageContent}</>;
+    return <>
+      <SEO
+        title={documentTitle}
+        description={description}
+        type="product.item"
+        imageCard={itemPrimary.imagePath}
+      />
+      {pageContent}
+    </>;
   }
 }

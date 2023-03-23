@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from "../../components/SEO/SEO";
 import ItemsContainer from '../../containers/ItemsContainer';
 import BrandList from '../../components/Sidebar/BrandList/BrandList';
 import { CB_Contact, CB_OpeningHours, CB_YouTubeBtn } from '../../components/ContactBoxes/ContactBoxes';
@@ -11,6 +12,7 @@ const Items = (props) => {
 	// INIT context
 	const context = useContext(ItemContext);
 	const { getDataItems, categoryArr } = context;
+	const { getDataItems, categoryArr, subcategoryArr, items } = context;
 	// INIT category before anything
 	const categoryName = props.category ? props.category : 'Live';
 	// INIT appearance
@@ -20,6 +22,8 @@ const Items = (props) => {
 	let widgetYouTubeBtn = null;
 	let widgetOpeningHours = null;
 	let widgetContact = null;
+	let documentTitle = subcategoryArr && subcategoryArr.brand ? subcategoryArr.brand + ' | ' + categoryArr.title : categoryArr.title;
+	
 	// FUNCTIONS
 	let getBrandFromSlug = props.brand ? props.brand : null;
 	let getPage = props.page ? props.page : null;
@@ -45,6 +49,11 @@ const Items = (props) => {
 	// (END) GET appearance
 
 	return (
+		<>
+		<SEO
+			title={documentTitle}
+			type="product.group"
+		/>
 		<div className={classContainer.join(' ')}>
 			<section className="row">
 				<div className="col-sm-12 col-md-9">
@@ -58,6 +67,7 @@ const Items = (props) => {
 				</div>
 			</section>
 		</div>
+		</>
 	);
 };
 

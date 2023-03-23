@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
+import SEO from '../../components/SEO/SEO';
 import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
 // import BigGrid from "../../components/Items/BigGrid/BigGrid";
 import ItemLite from "../../components/Items/Item/ItemLite";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
-import { setDocumentTitle, ConsoleLog } from "../../assets/js/Helpers";
+import { ConsoleLog } from "../../assets/js/Helpers";
 import {
   CB_Contact,
   CB_OpeningHours,
@@ -50,12 +51,15 @@ const Restoration = (props) => {
   useEffect(() => {
     ConsoleLog("[Restoration]");
     window.scrollTo(0, 0);
-    setDocumentTitle(`Restoration Services`);
+    // setDocumentTitle(`Restoration Services`);
   }, []);
   // (END) useEffect
 
   return (
     <React.Fragment>
+      <SEO 
+      title="Restoration Services"
+      />
       <div className="container">
         <div className="row">
           <section className="bg-accent">

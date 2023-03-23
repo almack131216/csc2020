@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import SEO from '../../components/SEO/SEO';
 import ItemsFeatured from "../../components/ItemsFeatured/ItemsFeatured";
 import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
@@ -7,7 +8,7 @@ import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
 import BigGrid from "../../components/Items/BigGrid/BigGrid";
 import { useContext } from "react";
 import { ItemContext } from "../../Context";
-import { setDocumentTitle, ConsoleLog } from "../../assets/js/Helpers";
+import { ConsoleLog } from "../../assets/js/Helpers";
 import {
   CB_Contact,
   CB_OpeningHours
@@ -32,15 +33,16 @@ const Home = props => {
 
   // useEffect
   useEffect(() => {
-    ConsoleLog('[Restoration]');
+    ConsoleLog('[Home]');
     window.scrollTo(0, 0);
     getData("Home");
-    setDocumentTitle(``);
+    // setDocumentTitle(``);
   }, [getData]);
   // (END) useEffect
 
   return (
     <React.Fragment>
+      <SEO />
       <Hero />
       {/* <Banner title="September 17th-19th" subtitle="Come and see us this weekend at Goodwood Revival" type="high-alert">
         <a href="https://classicandsportscar.ltd.uk/goodwood-revival-17th-19th-september-2021/news/54437" title="Link to this story" className="btn-primary">
@@ -56,7 +58,7 @@ const Home = props => {
         <FaChevronRight />Christmas Office Hours
         </Link>
       </Banner> */}
-      <div class="container">
+      <div className="container">
         <div className="row">
           <TitleSplitter
             titleArr={{

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import SiteData from './assets/_data/_data';
 import CatData from './assets/_data/_data-categories';
 import SortFilterRangeData from './assets/_data/_data-filter-sort';
-import { setDocumentTitle, getDateToday, getExcerpt, apiGetItems, ConsoleLog, StripOpeningSlash } from './assets/js/Helpers';
+import { getDateToday, getExcerpt, apiGetItems, ConsoleLog, StripOpeningSlash } from './assets/js/Helpers';
 const slugify = require('slugify');
 const ItemContext = React.createContext();
 //
@@ -112,12 +112,10 @@ export default class ItemProvider extends Component {
 			if (brandSlug) {
 				subcategoryArr = allItems.find((x) => x.subcategoryArr.slug === brandSlug).subcategoryArr;
 				brand = subcategoryArr.id;
-				ConsoleLog('[Context] brandSlug received...' + brand);
 				sortedItems = allItems.filter((item) => item.subcategoryArr.slug === brandSlug);
 			} else {
 				sortedItems = allItems;
 			}
-			// ConsoleLog("[Context] getDataItems > items..." + items);
 
 			////////////
 			// FILTER // properties based on items
@@ -135,7 +133,7 @@ export default class ItemProvider extends Component {
 			// Brand (dropdown)
 			const brandArr = this.setBrandArr(items);
 			const categoryArr = this.getCategoryArr(categoryName, statusId);
-			setDocumentTitle(categoryArr.title);
+			// setDocumentTitle(categoryArr.title);
 			//////////
 			// SORT // options based on items page type
 			//////////
@@ -178,7 +176,7 @@ export default class ItemProvider extends Component {
 				priceRangeArr,
 				sortBy,
 				sortByArr,
-				sortRangeArr
+				sortRangeArr			
 			});
 		} catch (error) {
 			console.log('[Context] getDataItems() > error...');
@@ -501,29 +499,31 @@ export default class ItemProvider extends Component {
 
 	render() {
 		return (
-			<ItemContext.Provider
-				value={{
-					...this.state,
-					getItem: this.getItem,
-					getData: this.getData,
-					getDataItems: this.getDataItems,
-					getCategoryArr: this.getCategoryArr,
-					formatPrice: this.formatPrice,
-					formatDescription: this.formatDescription,
-					formatItemLink: this.formatItemLink,
-					formatCategoryLink: this.formatCategoryLink,
-					getCategoryLinkTag: this.getCategoryLinkTag,
-					setBrandArr: this.setBrandArr,
-					setFilterToggle: this.setFilterToggle,
-					fieldSorter: this.fieldSorter,
-					handleFilterChange: this.handleFilterChange,
-					styleAppendClass: this.styleAppendClass,
-					formatBrandLink: this.formatBrandLink,
-					formatData: this.formatData
-				}}
-			>
-				{this.props.children}
-			</ItemContext.Provider>
+			<>
+				<ItemContext.Provider
+					value={{
+						...this.state,
+						getItem: this.getItem,
+						getData: this.getData,
+						getDataItems: this.getDataItems,
+						getCategoryArr: this.getCategoryArr,
+						formatPrice: this.formatPrice,
+						formatDescription: this.formatDescription,
+						formatItemLink: this.formatItemLink,
+						formatCategoryLink: this.formatCategoryLink,
+						getCategoryLinkTag: this.getCategoryLinkTag,
+						setBrandArr: this.setBrandArr,
+						setFilterToggle: this.setFilterToggle,
+						fieldSorter: this.fieldSorter,
+						handleFilterChange: this.handleFilterChange,
+						styleAppendClass: this.styleAppendClass,
+						formatBrandLink: this.formatBrandLink,
+						formatData: this.formatData
+					}}
+					>
+					{this.props.children}
+				</ItemContext.Provider>
+			</>
 		);
 	}
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import SEO from "../../components/SEO/SEO";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
-import { setDocumentTitle, ConsoleLog } from "../../assets/js/Helpers";
+import { ConsoleLog } from "../../assets/js/Helpers";
 import { imgArray, textArray } from "../../assets/_data/_data-contact";
 import SiteData from "../../assets/_data/_data";
 import BigGrid from "../../components/Items/BigGrid/BigGrid";
@@ -25,7 +26,7 @@ const Contact = (props) => {
   useEffect(() => {
     ConsoleLog("[Contact]");
     window.scrollTo(0, 0);
-    setDocumentTitle(`Contact ${SiteData.brand.name}`);
+    // setDocumentTitle(`Contact ${SiteData.brand.name}`);
     const Images = [...imgArray];
     // ConsoleLog(Images);
 
@@ -55,6 +56,9 @@ const Contact = (props) => {
 
   return (
     <React.Fragment>
+      <SEO
+      title={`Contact ${SiteData.brand.name}`}
+      />
       <div className="container">
         <div className="row">
           <section className="bg-accent">

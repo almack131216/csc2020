@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
-// import NavLeft from "../../components/Sidebar/Navleft/NavLeft";
+import SEO from "../../components/SEO/SEO";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
 import {
   CB_Contact,
   CB_OpeningHours,
 } from "../../components/ContactBoxes/ContactBoxes";
 import InfoBoxes from "../../components/InfoBoxes/InfoBoxes";
-import { setDocumentTitle, ConsoleLog } from "../../assets/js/Helpers";
+import { ConsoleLog } from "../../assets/js/Helpers";
 import { textArray } from "../../assets/_data/_data-about";
 import { Images } from "../../assets/_data/_data-carousel";
 import SiteData from "../../assets/_data/_data";
@@ -21,7 +21,7 @@ const About = (props) => {
   useEffect(() => {
     ConsoleLog("[About]");
     window.scrollTo(0, 0);
-    setDocumentTitle(`About ${SiteData.brand.name}`);
+    // setDocumentTitle(`About ${SiteData.brand.name}`);
   }, []);
   // (END) useEffect
 
@@ -42,6 +42,9 @@ const About = (props) => {
 
   return (
     <React.Fragment>
+      <SEO
+      title={`About ${SiteData.brand.name}`}
+      />
       <div className="container">
         <section className="row">
           <div className="col-xs-12 bg-accent">{imgCarousel}</div>

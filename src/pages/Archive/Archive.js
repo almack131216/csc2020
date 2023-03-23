@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import NavLeft from '../../components/Sidebar/Navleft/NavLeft';
+import SEO from "../../components/SEO/SEO";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import AlphabetList from "../../components/AlphabetList/AlphabetList"
 // import CustAlphabetSorter from "../../components/CustAlphabetSorter/CustAlphabetSorter";
 import { CB_Contact, CB_OpeningHours } from '../../components/ContactBoxes/ContactBoxes';
 import InfoBox from '../../components/InfoBoxes/InfoBox/InfoBox';
-import { setDocumentTitle, ConsoleLog } from "../../assets/js/Helpers";
+import { ConsoleLog } from "../../assets/js/Helpers";
 // import { useContext } from 'react';
 // import { ItemContext } from '../../Context';
 
@@ -52,7 +52,7 @@ const Archive = props => {
 	useEffect(
 		() => {
 			window.scrollTo(0, 0);
-      setDocumentTitle('Classic Cars Sold (all)');   
+      // setDocumentTitle('Classic Cars Sold (all)');   
       
       const fetchItems = async () => {
         setLoading(true);
@@ -91,37 +91,42 @@ const Archive = props => {
   
 
 	return (
-		<div className={classContainer.join(' ')}>
-			<section className="row">				
-				<div className="col-sm-12 col-md-9">
-            {breadcrumbsTag}
-            <div className="col-post-text">
-              <h1>Archive: 2007-today</h1>      
-              {/* <h2>Celebrating 30 Years in Business</h2> */}
-              <h2>Selling classic cars worldwide for 30 years</h2>
-              {/* <h3>Our online archive dates from 2007</h3> */}
-              {brandsArrLite && !loading ? <AlphabetList data={brandsArrLite}></AlphabetList> : 'Loading...'}
-              {/* {brandsArrLite ? <CustAlphabetSorter data={brandsArrLite}></CustAlphabetSorter> : 'Loading...'} */}
-              {/* {brandsArrLite ? <CustAlphabetList data={brandsArrLite} parentSlug={''} /> : null } */}
-              {/* <div className="alpha-list-wrap">
-              <div className="alpha-list">
-              <ul>
-              {
-                brandsArr ? brandsArr.map((item, index) => {
-                  return <li key={index}><Link>{item.brand}</Link> ({item.itemCount})</li>
-                }) : null
-              }
-              </ul>
-              </div>
-              </div> */}
-            </div>					
-				</div>
-        <div className="sidebar hidden-md-down col-md-3">
-          {widgetOpeningHours}
-					{widgetContact}
-				</div>
-			</section>
-		</div>
+    <>
+      <SEO
+      title='Classic Cars Sold (all)'
+      />
+      <div className={classContainer.join(' ')}>
+        <section className="row">				
+          <div className="col-sm-12 col-md-9">
+              {breadcrumbsTag}
+              <div className="col-post-text">
+                <h1>Archive: 2007-today</h1>      
+                {/* <h2>Celebrating 30 Years in Business</h2> */}
+                <h2>Selling classic cars worldwide for 30 years</h2>
+                {/* <h3>Our online archive dates from 2007</h3> */}
+                {brandsArrLite && !loading ? <AlphabetList data={brandsArrLite}></AlphabetList> : 'Loading...'}
+                {/* {brandsArrLite ? <CustAlphabetSorter data={brandsArrLite}></CustAlphabetSorter> : 'Loading...'} */}
+                {/* {brandsArrLite ? <CustAlphabetList data={brandsArrLite} parentSlug={''} /> : null } */}
+                {/* <div className="alpha-list-wrap">
+                <div className="alpha-list">
+                <ul>
+                {
+                  brandsArr ? brandsArr.map((item, index) => {
+                    return <li key={index}><Link>{item.brand}</Link> ({item.itemCount})</li>
+                  }) : null
+                }
+                </ul>
+                </div>
+                </div> */}
+              </div>					
+          </div>
+          <div className="sidebar hidden-md-down col-md-3">
+            {widgetOpeningHours}
+            {widgetContact}
+          </div>
+        </section>
+      </div>
+    </>
 	);
 };
 
