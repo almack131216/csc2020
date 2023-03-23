@@ -11,8 +11,7 @@ const Items = (props) => {
 	// console.log('[pages->Items]...')
 	// INIT context
 	const context = useContext(ItemContext);
-	const { getDataItems, categoryArr } = context;
-	const { getDataItems, categoryArr, subcategoryArr, items } = context;
+	const { getDataItems, categoryArr, subcategoryArr } = context;
 	// INIT category before anything
 	const categoryName = props.category ? props.category : 'Live';
 	// INIT appearance
