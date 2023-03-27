@@ -1,9 +1,16 @@
 /* Helpers.js */
 
 export function setDocumentTitle(getString) {
-  console.log('XXX setDocumentTitle');
+  // console.log('XXX setDocumentTitle');
   // if (!getString) getString = process.env.REACT_APP_DOC_TITLE;
   // document.title = getString;
+}
+
+export function setMetaTagImageCard(getSrc) {
+  // console.log('setMetaTagImageCard: ', getSrc);
+
+  // <meta property="og:image" content="https://classicandsportscar.ltd.uk/logo192.png" />
+  document.querySelectorAll('meta[property=og\\:image]')[0].setAttribute('content', getSrc);
 }
 
 export function apiGetItems(getApiArr) {
@@ -56,12 +63,24 @@ export function getExcerpt(sentence) {
   var result = sentence.replace(regex, "");
   // SPLIT into words so we can count them
   var resultArray = result.split(" ");
-  if (resultArray.length >= 30) {
+  if (resultArray.length >= 25) {
     // IF more than ## words...
     resultArray = resultArray.slice(0, 20); // SHOW first ## words
     result = resultArray.join(" ") + "...";
   }
   return result;
+}
+
+export function setMetaDesc(getString) {
+  // STRIP html tags
+  var regex = /(<([^>]+)>)/gi;
+  if (!getString) return "";
+  var result = getString.replace(regex, "");
+  var sentence = result.split('. ', 1)[0];
+  if(sentence[sentence.length-1] === "."){
+    return sentence;
+  }
+  return sentence + ".";
 }
 
 export function ConsoleLog(msg) {

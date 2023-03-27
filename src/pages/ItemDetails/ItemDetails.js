@@ -11,7 +11,7 @@ import ImgList from "../../components/ItemDetails/ImgList/ImgList";
 import { ItemContext } from "../../Context";
 import {
   apiGetItemDetails,
-  ConsoleLog,
+  ConsoleLog
 } from "../../assets/js/Helpers";
 import Parser from "html-react-parser";
 import Lightbox from "react-image-lightbox";
@@ -117,10 +117,10 @@ export default class ItemDetails extends Component {
         itemPrimary.imageHi =
           parseInt(itemPrimary.imageHi) === 1 ? true : false;
         itemPrimary.isVideo = itemPrimary.youtube ? true : false;
-        this.state.videoIndex =
-          itemPrimary.isVideo && itemPrimary.youtube
-            ? itemPrimary.youtube
-            : null;
+        this.setState({videoIndex:
+            itemPrimary.isVideo && itemPrimary.youtube
+              ? itemPrimary.youtube
+              : null});
         ConsoleLog("[ItemDetails] " + JSON.stringify(itemPrimary));
 
         const itemImages = [itemPrimary, ...itemImageAttachments];
@@ -237,7 +237,8 @@ export default class ItemDetails extends Component {
     // ITEM category
     const categoryArr = this.context.getCategoryArr(category, status);
     const categoryLinkTag = this.context.getCategoryLinkTag(categoryArr);
-    const documentTitle = `${title} ${categoryArr.title ? " | " + categoryArr.title : ""}`;
+    const metaTitle = `${title} ${categoryArr.title ? " | " + categoryArr.title : ""}`;
+    const metaDesc = excerpt ? excerpt : description;
     // ITEM source
     let sourceLabel = "";
     if (categoryArr.name === "Press") sourceLabel = "Source: ";
@@ -504,8 +505,8 @@ export default class ItemDetails extends Component {
 
     return <>
       <SEO
-        title={documentTitle}
-        description={description}
+        title={metaTitle}
+        description={metaDesc}
         type="product.item"
         imageCard={itemPrimary.imagePath}
       />

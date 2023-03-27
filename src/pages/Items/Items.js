@@ -21,7 +21,7 @@ const Items = (props) => {
 	let widgetYouTubeBtn = null;
 	let widgetOpeningHours = null;
 	let widgetContact = null;
-	let documentTitle = subcategoryArr && subcategoryArr.brand ? subcategoryArr.brand + ' | ' + categoryArr.title : categoryArr.title;
+	let metaTitle = subcategoryArr && subcategoryArr.brand ? subcategoryArr.brand + ' | ' + categoryArr.title : categoryArr.title;
 	
 	// FUNCTIONS
 	let getBrandFromSlug = props.brand ? props.brand : null;
@@ -50,7 +50,7 @@ const Items = (props) => {
 	return (
 		<>
 		<SEO
-			title={documentTitle}
+			title={metaTitle}
 			type="product.group"
 		/>
 		<div className={classContainer.join(' ')}>

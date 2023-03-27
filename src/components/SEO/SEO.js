@@ -1,19 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Helmet } from "react-helmet-async";
 import PropTypes from "prop-types";
+import { setMetaTagImageCard, setMetaDesc, ConsoleLog } from "../../assets/js/Helpers";
 
 const DEFAULT_NAME = "Classic & Sportscar Centre";
 const DEFAULT_TYPE = "article";
 
 const DOMAIN = "https://classicandsportscar.ltd.uk";
-const MAIN_KEYWORDS = "my website, tech, software, content";
+const MAIN_KEYWORDS = "Classic Cars For Sale, Sports Cars For Sale";
 
 const DEFAULT_IMAGE_CARD = "https://classicandsportscar.ltd.uk/logo512.png";
 const DEFAULT_TITLE = "Classic & Sportscar Centre";
 const DEFAULT_DESCRIPTION =
   "Selling classic cars worldwide for 30 years. All our cars come fully prepared from our in-house workshop and are fully inspected prior to collection or delivery.";
 
-const FAVICON_SOURCE = "https://classicandsportscar.ltd.uk/favicon.ico";
+// const FAVICON_SOURCE = "https://classicandsportscar.ltd.uk/favicon.ico";
 
 const POSTFIX_TITLE = " | Classic & Sportscar Centre";
 
@@ -45,6 +46,7 @@ const SEO = ({
   const metaName = DEFAULT_NAME;
   const metaType = type ? type : DEFAULT_TYPE;
   const metaDesc = description ? description.replace(/<[^>]+>/g, '') : DEFAULT_DESCRIPTION;
+  const metaDescLite = setMetaDesc(metaDesc);
   const metaLink = window.location.href; //.replace("http://localhost:3000/","https://classicandsportscar.ltd.uk/");
 
   const metaKeywords =
@@ -64,15 +66,23 @@ const SEO = ({
     metaImageCard = DEFAULT_IMAGE_CARD;
   }
 
+  
+  // useEffect
+  useEffect(() => {
+    ConsoleLog("[SEO useEffect]");
+    setMetaTagImageCard(metaImageCard);
+  }, [metaImageCard]);
+  // (END) useEffect
+
   const metaRobots = noIndex ? "noindex, nofollow" : "index, follow";
 
-  const twitterCardType = largeTwitterCard ? "summary_large_image" : "summary";
+  // const twitterCardType = largeTwitterCard ? "summary_large_image" : "summary";
 
   return (
     <Helmet>
       {/* Standard metadata tags */}
       <title>{metaTitle}</title>
-      <meta name="description" content={metaDesc} />
+      <meta name="description" content={metaDescLite} />
       <meta name="keywords" content={metaKeywords} />
       <link rel="canonical" href={metaLink} />
       <meta name="robots" content={metaRobots} />
@@ -81,25 +91,14 @@ const SEO = ({
       {/* https://ogp.me/ */}
       <meta property="og:url" content={metaLink} />
       <meta property="og:title" content={metaTitle} />
-      <meta property="og:description" content={metaDesc} />
+      <meta property="og:description" content={metaDescLite} />
       <meta property="og:type" content={metaType} />
       <meta property="og:site_name" content={metaName} />
-      <meta property="og:image" content={metaImageCard} />
+      {/* <meta property="og:image" content={metaImageCard} /> */}
       {/* End Facebook tags */}
-      {/* Twitter tags */}
-      {/* https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started */}
-      <meta property="twitter:site" title="twitter username of website" />
-      <meta property="twitter:title" title={metaTitle} />
-      <meta property="twitter:description" title={metaDesc} />
-      <meta
-        property="twitter:creator"
-        content="twitter username of webpage content"
-      />
-      <meta property="twitter:card" content={twitterCardType} />
-      <meta property="twitter:image" content={metaImageCard} />
 
       {/* https://moz.com/blog/meta-referrer-tag */}
-      <meta name="referrer" content="origin-when-crossorigin" />
+      <meta name="referrer" content="strict-origin-when-cross-origin" />
       {children}
     </Helmet>
   );

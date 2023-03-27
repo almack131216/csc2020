@@ -277,7 +277,7 @@ export default class ItemProvider extends Component {
 			let brand = dataItem.brand;
 			let year = dataItem.year;
 			let date = dataItem.createdAt;
-			let excerpt = dataItem.excerpt ? parse(getExcerpt(dataItem.excerpt)).toString() : '...';
+			let excerpt = dataItem.excerpt ? getExcerpt(dataItem.excerpt) : '...';
 			let imageFilename = dataItem.image;
 			let image = dataItem.id > 801 ? `${process.env.REACT_APP_IMG_DIR}${imageFilename}` : `${process.env.REACT_APP_IMG_DIR_LARGE}${imageFilename}`;//show larger images for old items
 			let imageDir = dataItem.imageDir;

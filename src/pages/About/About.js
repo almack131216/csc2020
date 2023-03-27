@@ -43,7 +43,8 @@ const About = (props) => {
   return (
     <React.Fragment>
       <SEO
-      title={`About ${SiteData.brand.name}`}
+        title={`About ${SiteData.brand.name}`}
+        description="Classic & Sportscar Centre is now in its 30th year of business and what a year it has been."
       />
       <div className="container">
         <section className="row">
