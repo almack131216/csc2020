@@ -1,9 +1,9 @@
 /* Hero.scss */
 
-.heropanel {
+.heropanel.isDesktop {
     width: 100%;
 
-    &--wrap {
+    .heropanel--wrap {
         position: relative;
         z-index: 0;
         width: 100%;
@@ -12,7 +12,7 @@
 
         // max-height: 500px;
         overflow: hidden;
-        background-color: black;
+        // background-color: black;
         position: relative;
 
         @media all and (max-width: $bp-sm-1) {
@@ -22,7 +22,7 @@
 
     // /.heropanel--wrap
 
-    &--video {
+    .heropanel--video {
         position: absolute;
         z-index: 1;
         object-fit: cover;
@@ -32,7 +32,7 @@
         min-height: 100%;
     }
 
-    &--content {
+    .heropanel--content {
         position: absolute;
         z-index: 2;
 
@@ -67,40 +67,45 @@
             transform: translate(0%, 0%);
             padding:$offset-g2;
 
-            p {
-                display:none;
-            }
+            // p {
+            //     display:none;
+            // }
         }
+    }
+}
 
-        h1 {
-            font-size: 1.6em;
-            text-transform: uppercase;
+.heropanel.isMobile {
+    @include resp-prop-half("padding", $offset-g2);
+}
+
+.heropanel {
+    h1 {
+        font-size: 1.6em;
+        text-transform: uppercase;
+        font-weight: 600;
+        line-height: 1.4em;
+        letter-spacing: 0em;
+        color: white;
+        text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+        span {
+            font-size: 2em;
+            display: block;
             font-weight: 600;
-            line-height: 1.4em;
-            letter-spacing: 0em;
-            color: white;
-            text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            line-height: 1em;
 
-            span {
-                font-size: 2em;
-                display: block;
-                font-weight: 600;
-                line-height: 1em;
-
-                @media all and (max-width: $bp-sm-1) {
-                    font-size:1.4em;
-                }
+            @media all and (max-width: $bp-sm-1) {
+                font-size:1.4em;
             }
         }
+    }
 
-        p {
-            max-width: 600px;
-            // border:1px solid yellow;
-            font-size: 1.2em;
-            color: white;
-            text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-        }
-
+    p {
+        max-width: 600px;
+        // border:1px solid yellow;
+        font-size: 1.2em;
+        color: white;
+        text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     }
 }
 
