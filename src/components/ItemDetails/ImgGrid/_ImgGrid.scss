@@ -1,4 +1,5 @@
 /* _ImgGrid.scss */
+//2do - uniform if no complaints (start: 230331)
 
 ul.ul-img-grid {
   display: grid;
@@ -13,7 +14,7 @@ ul.ul-img-grid {
   }
 
   li {
-    aspect-ratio:1/1;
+    aspect-ratio:1/1;//2do
     position:relative;
     overflow:hidden;
 
@@ -24,7 +25,7 @@ ul.ul-img-grid {
       width:140%;
       height:auto;
       // height:150%;
-      aspect-ratio:4/3;
+      aspect-ratio:4/3;//2do
     }
 
     &.btn-youtube {

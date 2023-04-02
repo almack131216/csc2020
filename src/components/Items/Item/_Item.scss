@@ -1,4 +1,5 @@
 /* _Item.scss */
+//2do - uniform if no complaints (start: 230331)
 
 $img-height-1: 180px;
 $img-height-2: 150px;
@@ -65,8 +66,10 @@ $img-height-4: 260px;
 .item.item-card:not(.featured):not(.big) {
   article {
     .card-img {     
+      aspect-ratio:4/3;//2do
+      
       @media (min-width:$bp-lg){
-        height: $img-height-1;
+        min-height: $img-height-1;
       }
       @media (min-width:$bp-xlg){
         height: $img-height-3;
@@ -75,7 +78,9 @@ $img-height-4: 260px;
         height: $img-height-4;
       }
       @media (min-width:$bp-md) and (max-width:$bp-lg-1){
-        height: $img-height-2;
+        // height: $img-height-2;
+        height:auto;
+        aspect-ratio:4/3;//2do
       }
       @media (min-width:$bp-sm) and (max-width:$bp-md-1){
         height: $img-height-1;
@@ -84,7 +89,9 @@ $img-height-4: 260px;
         height: $img-height-3;
       }
       @media (min-width:$bp-tablet) and (max-width:699px){
-        height: 190px;
+        // height: 190px;
+        height:auto;
+        aspect-ratio:4/3;//2do
       }
     }
   }
@@ -103,7 +110,9 @@ $img-height-4: 260px;
         height: 320px;
       }
       @media (min-width:700px) and (max-width:$bp-md-1){
-        height: 220px;
+        // height: 220px;
+        height:auto;
+        aspect-ratio:4/3;//2do
       }
       @media (min-width:$bp-tablet) and (max-width:699px){
         height: 190px;
@@ -141,7 +150,9 @@ $img-height-4: 260px;
         height: 125px;
       }
       @media (min-width:$bp-xs) and (max-width:$bp-tablet-1) {
-        height: 165px;
+        // height: 165px;
+        height:auto;
+        aspect-ratio:4/3;//2do
       }
       @media (min-width:400px) and (max-width:$bp-xs-1) {
         height: 260px;
@@ -199,4 +210,17 @@ $img-height-4: 260px;
 .item.item-row {
   @include item-shared-props();
   @include item-row();
+}
+
+// list / gallery grid items
+.container.items.Videos {
+  .item.item-card {
+    article {
+      .card-img {     
+        aspect-ratio:16/9;//2do
+        min-height:auto;
+        height:auto;
+      }
+    }
+  }
 }

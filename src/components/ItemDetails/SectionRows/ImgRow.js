@@ -77,7 +77,7 @@ const ImgRow = (props) => {
         {/* {imgArea ? imgArea : null} */}
         {pageStyle === "IsVideo" ? (
           <div className="row row-post-video full">
-            <div className="col-xs-12 col-sm-12 margin-x-0 col-post-video">
+            <div className="col-xs-12 col-sm-12 margin-x-0XXX col-post-videoXXX">
               {itemPrimary.isVideo && itemPrimary.youtube ? (
                 <VideoEmbed
                   videoId={itemPrimary.youtube}

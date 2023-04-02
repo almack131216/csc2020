@@ -2,7 +2,10 @@
 // REF: https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
 
 .items-wrap {
-  padding: 0 0 $offset-g1 0;
+  padding: $offset-g1 0;
+  @media (min-width: $bp-tablet) {
+    padding-top: 0;
+  }
 
   .cards {
     display: flex;
