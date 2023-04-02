@@ -15,6 +15,11 @@
         // background-color: black;
         position: relative;
 
+        @media all and (max-width: $bp-md-1) {
+            // height: auto;
+            height:40vh;
+        }
+
         @media all and (max-width: $bp-sm-1) {
             height: auto;
         }
@@ -27,7 +32,7 @@
         z-index: 1;
         object-fit: cover;
         object-position: right bottom;
-        width:100%;
+        width: 100%;
         min-width: 100%;
         min-height: 100%;
     }
@@ -35,22 +40,10 @@
     .heropanel--content {
         position: absolute;
         z-index: 2;
-
-        max-width:80%;
-        
-        // border: 1px solid white;
-        // width: 50%;
         top: 50%;
         left: 10%;
-        transform: translate(0%, -65%); 
-        font-size:1em;        
-
-        @media all and (max-width: $bp-lg-1) {
-            // width: 60%;
-            top: 50%;
-            left: 10%;
-            transform: translate(0%, -65%);
-        }
+        transform: translate(0%, -65%);
+        
 
         @media all and (min-width: $bp-lg) {
             // width: 60%;
@@ -59,18 +52,22 @@
             transform: translate(0%, -65%);
         }
 
-        @media all and (max-width: $bp-sm-1) {
+        @media all and (max-width: $bp-lg-1) {
+            // width: 60%;
+            top: 50%;
+            left: 10%;
+            transform: translate(0%, -50%);
+        }
+
+        @media all and (min-width: $bp-tablet) and (max-width: $bp-sm-1) {
             width: 100%;
-            max-width:100%;
             top: 0%;
             left: 0%;
             transform: translate(0%, 0%);
-            padding:$offset-g2;
-
-            // p {
-            //     display:none;
-            // }
+            padding: $offset-g2;
         }
+
+        
     }
 }
 
@@ -79,33 +76,52 @@
 }
 
 .heropanel {
-    h1 {
-        font-size: 1.6em;
-        text-transform: uppercase;
-        font-weight: 600;
-        line-height: 1.4em;
-        letter-spacing: 0em;
-        color: white;
-        text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    .heropanel--content {
 
-        span {
-            font-size: 2em;
-            display: block;
+        max-width: 80%;
+        font-size: 1em;
+
+        @media all and (max-width: $bp-tablet-1) {
+            margin-top:25vh;
+            max-width: 100%;
+        }
+
+        h1 {
+            font-size: 1.6em;
+            text-transform: uppercase;
             font-weight: 600;
-            line-height: 1em;
+            line-height: 1.4em;
+            letter-spacing: 0em;
+            color: white;
+            text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 
             @media all and (max-width: $bp-sm-1) {
-                font-size:1.4em;
+                font-size: 1.4em;
+            }
+
+            span {
+                font-size: 2em;
+                display: block;
+                font-weight: 600;
+                line-height: 1em;
+
+                @media all and (max-width: $bp-sm-1) {
+                    font-size:1.4em;
+                }
             }
         }
-    }
 
-    p {
-        max-width: 600px;
-        // border:1px solid yellow;
-        font-size: 1.2em;
-        color: white;
-        text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        p {
+            max-width: 600px;
+            // border:1px solid yellow;
+            font-size: 1.2em;
+            color: white;
+            text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .heropanel--btns {
+            padding: 0 0 $offset-g2 0;
+        }
     }
 }
 
@@ -131,4 +147,3 @@
         color: white;
     }
 }
-

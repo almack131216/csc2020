@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import HeroVideo from "../../assets/mov/230314_web-bg_jaguar_e-type-720-lite.mov";
-import Poster from "../../assets/mov/230314_poster.png";
+import Poster from "../../assets/mov/230314_poster.jpg";
+import isMobilePoster from "../../assets/mov/230314_poster-mob-5.jpg";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -10,16 +12,18 @@ const Hero = () => {
         Welcome to <span>Classic & Sportscar&nbsp;Centre</span>
       </h1>
       <p>
-        Selling classic cars worldwide for over 30 years. All our cars come
+        Supplying classic cars worldwide for over 30 years. All our cars come
         fully prepared from our in-house workshop and are fully inspected prior
         to collection or delivery.
       </p>
-      <a href="#" className="btn btn--block white">
-        Showroom
-      </a>
-      <a href="#" className="btn btn--block black">
-        Brokerage
-      </a>
+      <div className="heropanel--btns">
+        <Link to="/classic-cars-for-sale" className="btn btn--block white">
+          Showroom
+        </Link>
+        <Link to="/classic-car-storage"className="btn btn--block black">
+          Storage
+        </Link>
+      </div>
     </>
   );
 
@@ -47,15 +51,17 @@ const Hero = () => {
 
   return (
     <section className={`heropanel ${isMobile ? "isMobile" : "isDesktop"}`} style={{
-      backgroundImage: `url("${Poster}")`,
-      backgroundColor:"white",
-      backgroundPosition: 'center',
+      backgroundImage: `url("${isMobile ? isMobilePoster : Poster}")`,
+      backgroundColor:"#263762",
+      backgroundPosition: `${isMobile ? "50% 0%" : "center"}`,
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat'
     }}>
       {isMobile ? (
         <div className="heropanel--wrap">
-          {heroContent}
+          <div className="heropanel--content">
+            {heroContent}
+          </div>
         </div>
       ) : (
         <div className="heropanel--wrap">
