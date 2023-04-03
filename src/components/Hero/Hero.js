@@ -28,12 +28,9 @@ const Hero = () => {
   );
 
   const checkIfMobile = () => {
-    console.log('??? ', window.innerWidth)
     if (window.innerWidth < 640) {
-      console.log('!!! YES !!! ', window.innerWidth);
       setIsMobile(true);
     }else{
-      console.log('!!! NO !!! ', window.innerWidth);
       setIsMobile(false);
     }
   }
