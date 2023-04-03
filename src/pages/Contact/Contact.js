@@ -16,6 +16,7 @@ const Contact = (props) => {
   const [images, setImages] = useState([]);
   const [imageSettings, setImageSettings] = useState({});
   const columnsContact = [CB_OpeningHours, CB_Contact, CB_Address];
+  const metaDesc = "Classic & Sportscar Centre is based in one of the most beautiful areas of England - Malton, North Yorkshire.";
   // let images = [];
   // const context = useContext(ItemContext);
   // const { getData, catData } = context;
@@ -58,6 +59,7 @@ const Contact = (props) => {
     <React.Fragment>
       <SEO
       title={`Contact ${SiteData.brand.name}`}
+      description={metaDesc}
       />
       <div className="container">
         <div className="row">

@@ -6,6 +6,7 @@ import { CB_Contact, CB_OpeningHours, CB_YouTubeBtn } from '../../components/Con
 import InfoBox from '../../components/InfoBoxes/InfoBox/InfoBox';
 import { useContext } from 'react';
 import { ItemContext } from '../../Context';
+import { setMetaDesc } from '../../assets/js/Helpers';
 
 const Items = (props) => {
 	// console.log('[pages->Items]...')
@@ -21,7 +22,8 @@ const Items = (props) => {
 	let widgetYouTubeBtn = null;
 	let widgetOpeningHours = null;
 	let widgetContact = null;
-	let metaTitle = subcategoryArr && subcategoryArr.brand ? subcategoryArr.brand + ' | ' + categoryArr.title : categoryArr.title;
+	const metaTitle = subcategoryArr && subcategoryArr.brand ? subcategoryArr.brand + ' | ' + categoryArr.title : categoryArr.title;
+	const metaDesc = categoryArr.description ? setMetaDesc(categoryArr.description) : "Supplying classic cars worldwide for over 30 years.";
 	
 	// FUNCTIONS
 	let getBrandFromSlug = props.brand ? props.brand : null;
@@ -51,6 +53,7 @@ const Items = (props) => {
 		<>
 		<SEO
 			title={metaTitle}
+			description={metaDesc}
 			type="product.group"
 		/>
 		<div className={classContainer.join(' ')}>

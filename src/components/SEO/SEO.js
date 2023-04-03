@@ -30,10 +30,6 @@ const SEO = ({
   noIndex = false,
   children = null,
 }) => {
-  // const title = title ? title : "DEFAULT TITLE";
-  // const name = name ? name : "Classic & Sportscar Centre";
-  // const description = description ? description.replace(/<[^>]+>/g, '') : "Selling classic cars worldwide for 30 years. All our cars come fully prepared from our in-house workshop and are fully inspected prior to collection or delivery.";
-  // const xUrl = window.location.href.replace("http://localhost:3002/", "https://classicandsportscar.ltd.uk/");
 
   let metaTitle;
 
@@ -46,7 +42,7 @@ const SEO = ({
   const metaName = DEFAULT_NAME;
   const metaType = type ? type : DEFAULT_TYPE;
   const metaDesc = description ? description.replace(/<[^>]+>/g, '') : DEFAULT_DESCRIPTION;
-  const metaDescLite = setMetaDesc(metaDesc);
+  const metaDescLite = metaDesc ? setMetaDesc(metaDesc) : "Supplying classic cars worldwide for over 30 years";
   const metaLink = window.location.href; //.replace("http://localhost:3000/","https://classicandsportscar.ltd.uk/");
 
   const metaKeywords =

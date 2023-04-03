@@ -10,6 +10,7 @@ import {
 import ImgList from "../../components/ItemDetails/ImgList/ImgList";
 import { ItemContext } from "../../Context";
 import {
+  setMetaDesc,
   apiGetItemDetails,
   ConsoleLog
 } from "../../assets/js/Helpers";
@@ -238,7 +239,7 @@ export default class ItemDetails extends Component {
     const categoryArr = this.context.getCategoryArr(category, status);
     const categoryLinkTag = this.context.getCategoryLinkTag(categoryArr);
     const metaTitle = `${title} ${categoryArr.title ? " | " + categoryArr.title : ""}`;
-    const metaDesc = excerpt ? excerpt : description;
+    const metaDesc = excerpt ? setMetaDesc(excerpt) : setMetaDesc(description);
     // ITEM source
     let sourceLabel = "";
     if (categoryArr.name === "Press") sourceLabel = "Source: ";

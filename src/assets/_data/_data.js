@@ -6,7 +6,6 @@ const siteData = {
   titleDocument: process.env.REACT_APP_DOC_TITLE,
   brand: {
     name: "Classic & Sportscar Centre",
-    straplineXXX: "Celebrating 30 Years in Business",
     strapline: "Supplying classic cars worldwide for over 30 years"
   },
   priceRangeArr: [0, 5000, 10000, 20000, 30000, 40000, 100000],

@@ -17,6 +17,7 @@ import { Images } from "../../assets/_data/_data-carousel-restoration";
 const Restoration = (props) => {
   const context = useContext(ItemContext);
   const { catData } = context;
+  const metaDesc = catData && catData.Restoration.description ? catData.Restoration.description : "";
   const columnsContact = [CB_OpeningHours, CB_Contact];
 
   const featuredItemsRestoration = [
@@ -58,7 +59,8 @@ const Restoration = (props) => {
   return (
     <React.Fragment>
       <SEO 
-      title="Restoration Services"
+        title="Restoration Services"
+        description={metaDesc}
       />
       <div className="container">
         <div className="row">
