@@ -48,7 +48,7 @@ const navTop = (props) => {
 
   return (
     <div className="navTop">
-      <div className="container">
+      <div className="container padding-x-0">
         <nav>          
           <ul>
             <li className="home">

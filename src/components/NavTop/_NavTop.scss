@@ -72,19 +72,39 @@ $navTopHeight: 44px;
           /* Move upwards, the same distance as the menu height */
           background-image: linear-gradient(to right, rgba(38, 55, 98, 0) 0, rgba(38, 55, 98, 1) 2em);
           padding-left: $offset-g2;
-          width:calc($navTopHeight * 2);
-          height:$navTopHeight;
+          // width:100px;//calc($navTopHeight * 2);
+          height:$navTopHeight;          
       
-          button {
-            right: 0;
-            left:auto;
-            top: 0;
-            display: block;
-            width:$navTopHeight;
+          button.toggle-button {
+            position:static;
+            // right: 0;
+            // left:auto;
+            // top: 0;
+            // display: block;
+            width:auto;//$navTopHeight;
             height:100%;
             background:transparent;
             color:white;
-            line-height:0;
+            display:flex;
+            align-items: center;
+            line-height: 44px;
+            font-size:1em;
+            padding:0 $offset-1;
+
+            span.lbl {
+              // display: inline-block;
+              // float:left;
+              display:block;
+              // line-height: 44px;
+              // height: 44px;
+              font-size:1em;
+              // padding-right:50px;
+            }
+          
+            svg.more.show-menu {
+              display:block;
+              margin-left:$offset-1;
+            }
           }
         }
         // /.more

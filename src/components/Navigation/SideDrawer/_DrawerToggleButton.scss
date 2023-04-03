@@ -11,12 +11,16 @@
   border: none;
   padding: 0;
   display: block;
-  width: $offset-g2;
+  width: auto;//$offset-g2;
   height: $offset-g2;
   font-size: $offset-g2;
   line-height: $offset-g2;
   box-sizing: border-box;
   cursor: pointer;
+
+  span.lbl {
+    display: none;
+  }
 
   @media (max-width: $bp-xxs-1) {
     font-size: $offset-2;
