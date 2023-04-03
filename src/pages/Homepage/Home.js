@@ -21,7 +21,7 @@ import Hero from "../../components/Hero/Hero";
 const Home = props => {
   const context = useContext(ItemContext);
   const {
-    featuredItemsNews,
+    featuredItemsVideos,
     featuredItemsTestimonials,
     getData,
     catData
@@ -88,6 +88,19 @@ const Home = props => {
           <InfoBoxes columnsArr={columnsContact} rowclassName="generic-row" />
         </div>
 
+        {featuredItemsVideos ? (
+          <div className="row">
+            <TitleSplitter
+              titleArr={{
+                title: catData["Videos"].title,
+                slug: catData["Videos"].slug,
+                seeAll: true
+              }}
+            />
+            <BigGrid categoryName={"Videos"} items={featuredItemsVideos} />
+          </div>
+        ) : null}
+
         {featuredItemsTestimonials ? (
           <div className="row">
             <TitleSplitter
@@ -101,18 +114,6 @@ const Home = props => {
           </div>
         ) : null}
 
-        {featuredItemsNews ? (
-          <div className="row">
-            <TitleSplitter
-              titleArr={{
-                title: catData["News"].title,
-                slug: catData["News"].slug,
-                seeAll: true
-              }}
-            />
-            <BigGrid categoryName={"News"} items={featuredItemsNews} />
-          </div>
-        ) : null}
       </div>
     </React.Fragment>
   );

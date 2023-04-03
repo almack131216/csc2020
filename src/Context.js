@@ -61,9 +61,9 @@ export default class ItemProvider extends Component {
 			let featuredItems = items.slice(0, SiteData.featuredItems.itemCount); // get first # items from main array
 			// Featured items [Archive]
 			let featuredItemsArchive = itemsArchive.slice(0, SiteData.featuredItems.itemCount);
-			let featuredItemsNews = itemsOther.slice(2, 4);
+			let featuredItemsVideos = itemsOther.slice(2, 4);
 			let featuredItemsTestimonials = itemsOther.slice(0, 2);
-			ConsoleLog('[Context] featuredItemsNews: ' + featuredItemsNews);
+			ConsoleLog('[Context] featuredItemsVideos: ' + featuredItemsVideos);
 
 			///////////////
 			// SET STATE //
@@ -71,7 +71,7 @@ export default class ItemProvider extends Component {
 			this.setState({
 				featuredItems,
 				featuredItemsArchive,
-				featuredItemsNews,
+				featuredItemsVideos,
 				featuredItemsTestimonials,
 				loading: false
 			});
