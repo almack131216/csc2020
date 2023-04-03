@@ -4,9 +4,13 @@
 .wrap-iframe {
   position:relative;
   width: 100%;
-  min-height: 380px;
+  min-height: 380px;  
   z-index:0;
   text-align: center;
+  @media(min-width:$bp-md-1) {
+    height:calc(100vh - 240px);
+  }  
+
   @media(min-width:$bp-tablet-1) and (max-width:$bp-md-1){
     height: 440px;
   }  
@@ -14,11 +18,10 @@
   img {
     visibility:hidden;
     z-index:0;
-    height: 100%;
-    width: auto;
-    margin: 0 auto;
-
-    
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    margin: 0 auto;    
   }
   iframe {
     position:absolute;
