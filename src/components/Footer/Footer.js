@@ -26,7 +26,7 @@ const Footer = () => {
             </div>
             <ul className="ul-footer">
               <li>
-                <span>Telephone: {SiteData.contact.telephone}</span>
+                <span>Telephone: <a href={`tel:${SiteData.contact.telephoneCode}`}>{SiteData.contact.telephone}</a></span>
               </li>
               <li className="li-inline">
                 <Link to={SiteData.navigationFooter.columnC[0].slug}>

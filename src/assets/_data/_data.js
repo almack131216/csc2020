@@ -19,6 +19,7 @@ const siteData = {
     slug: NavArray.contact.slug,
     email: "sales(at)classicandsportscar.ltd.uk",
     telephone: "01944 758000",
+    telephoneCode: "+441944758000",
     copyright: "Copyright &copy; Classic & Sportscar Centre 2020",
     address: "Corner Farm, West Knapton, Malton, North Yorkshire, UK, YO17 8JB",
     addressPrint:

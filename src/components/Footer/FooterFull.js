@@ -40,7 +40,7 @@ const Footer = () => {
                 <span>{SiteData.contact.address}</span>
               </li>
               <li>
-                <span>Telephone: {SiteData.contact.telephone}</span>
+                <span>Telephone: <a href={`tel:${SiteData.contact.telephoneCode}`}>{SiteData.contact.telephone}</a></span>
               </li>
               <ul className="ul-footer">
                 {SiteData.navigationFooter.columnC.map((item, index) => (

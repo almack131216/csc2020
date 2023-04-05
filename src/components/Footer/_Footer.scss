@@ -62,9 +62,13 @@ footer {
       li {
         margin: 0;
 
+        a {
+          color:white;
+        }
+
         &.li-inline {
           a {
-            display: inline;
+            display: inline;            
           }
           a:nth-child(2):before {
             content: "|";
