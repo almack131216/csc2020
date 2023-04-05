@@ -25,6 +25,27 @@
         margin: 0;
         background-color: transparent;
       }
+
+      &.icon {
+        a {
+          display:flex;
+
+          svg {
+            font-size: 20px;
+            @extend .a-black;
+            margin-right:5px;
+          }
+          h2 {
+            display:inline-block;
+          }
+        }
+        
+        &--videos a {
+          svg {
+            color:$color_youtube;
+          }
+        }
+      }
     }
     /* (END) .title */
 

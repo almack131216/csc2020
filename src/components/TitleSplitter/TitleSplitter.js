@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import parse from "html-react-parser";
+import { FaYoutube } from "react-icons/fa";
+
 /*
 * USAGE:
 <TitleSplitter titleArr={catData["Archive"]} />
@@ -10,6 +12,7 @@ import parse from "html-react-parser";
 
 const TitleSplitter = props => {
   // console.log("[TitleSplitter]...", props.seeAllArr);
+  const icon = props.titleArr.icon ? props.titleArr.icon : null;
   const title = props.titleArr.title ? props.titleArr.title : null;
   const slug = props.titleArr.slug ? props.titleArr.slug : null;
   const body = props.titleArr.text ? props.titleArr.text : null;
@@ -25,6 +28,9 @@ const TitleSplitter = props => {
 
   const titleTag = slug ? (
     <Link to={slug}>
+      {
+        icon === "videos" && <FaYoutube /> 
+      }           
       <h2>{title}</h2>
     </Link>
   ) : (
@@ -34,7 +40,7 @@ const TitleSplitter = props => {
   return (
     <div className="title_splitter_wrap margin-top-0">
       <div className="title-wrap">
-        <div className="title">{titleTag}</div>
+        <div className={`title${icon ? ` icon icon--${icon}` : ''}`}>{titleTag}</div>
         <span className="spacer-line" />
         {seeAllSlug ? (
           <div className="see-all">

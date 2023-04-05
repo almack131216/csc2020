@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import SEO from '../../components/SEO/SEO';
+import SEO from "../../components/SEO/SEO";
 import ItemsFeatured from "../../components/ItemsFeatured/ItemsFeatured";
-import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
+// import CarouselDynamic from "../../components/CarouselDynamic/CarouselDynamic";
 import TitleSplitter from "../../components/TitleSplitter/TitleSplitter";
 // import Banner from "../../components/Banner/Banner";
 // import { Link } from "react-router-dom";
@@ -11,29 +11,25 @@ import { ItemContext } from "../../Context";
 import { ConsoleLog } from "../../assets/js/Helpers";
 import {
   CB_Contact,
-  CB_OpeningHours
+  CB_OpeningHours,
 } from "../../components/ContactBoxes/ContactBoxes";
 import InfoBoxes from "../../components/InfoBoxes/InfoBoxes";
-import {Images} from "../../assets/_data/_data-carousel";
+// import { Images } from "../../assets/_data/_data-carousel";
 import Hero from "../../components/Hero/Hero";
 // import { FaChevronRight } from "react-icons/fa";
 
-const Home = props => {
+const Home = (props) => {
   const context = useContext(ItemContext);
-  const {
-    featuredItemsVideos,
-    featuredItemsTestimonials,
-    getData,
-    catData
-  } = context;
+  const { featuredItemsVideos, featuredItemsTestimonials, getData, catData } =
+    context;
   const columnsContact = [CB_OpeningHours, CB_Contact];
 
   // Carousel images
-  const imgCarousel = <CarouselDynamic imgsArr={Images} />;
+  // const imgCarousel = <CarouselDynamic imgsArr={Images} />;
 
   // useEffect
   useEffect(() => {
-    ConsoleLog('[Home]');
+    ConsoleLog("[Home]");
     window.scrollTo(0, 0);
     getData("Home");
     // setDocumentTitle(``);
@@ -64,7 +60,7 @@ const Home = props => {
             titleArr={{
               title: catData["Live"].title,
               slug: catData["Live"].slug,
-              seeAll: true
+              seeAll: true,
             }}
           />
           <ItemsFeatured categoryName="Live" />
@@ -73,8 +69,8 @@ const Home = props => {
           <TitleSplitter
             titleArr={{
               title: catData["Archive"].title,
-              slug: '/sold',
-              seeAll: true
+              slug: "/sold",
+              seeAll: true,
             }}
           />
           <ItemsFeatured categoryName="Archive" />
@@ -88,32 +84,35 @@ const Home = props => {
           <InfoBoxes columnsArr={columnsContact} rowclassName="generic-row" />
         </div>
 
-        {featuredItemsVideos ? (
-          <div className="row">
-            <TitleSplitter
-              titleArr={{
-                title: catData["Videos"].title,
-                slug: catData["Videos"].slug,
-                seeAll: true
-              }}
-            />
-            <BigGrid categoryName={"Videos"} items={featuredItemsVideos} />
-          </div>
-        ) : null}
-
         {featuredItemsTestimonials ? (
           <div className="row">
             <TitleSplitter
               titleArr={{
                 title: catData["Testimonials"].title,
                 slug: catData["Testimonials"].slug,
-                seeAll: true
+                seeAll: true,
               }}
             />
-            <BigGrid categoryName={"Testimonials"} items={featuredItemsTestimonials} />
+            <BigGrid
+              categoryName={"Testimonials"}
+              items={featuredItemsTestimonials}
+            />
           </div>
         ) : null}
 
+        {featuredItemsVideos ? (
+          <div className="row">
+            <TitleSplitter
+              titleArr={{
+                icon: 'videos',
+                title: catData["Videos"].title,
+                slug: catData["Videos"].slug,
+                seeAll: true,
+              }}
+            />
+            <BigGrid categoryName={"Videos"} items={featuredItemsVideos} />
+          </div>
+        ) : null}
       </div>
     </React.Fragment>
   );
