@@ -400,6 +400,7 @@ export default class ItemDetails extends Component {
     } else if (custPageStyle === "IsVideo") {
       moreInfoBoxes = (
         <>
+          <ItemExtras showShare={true} showContact={false} showPrice={false} itemArr={false} />
           {relatedItemsTag}
         </>
       );

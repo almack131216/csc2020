@@ -85,22 +85,36 @@ const ImgRow = (props) => {
       <div className={imgRowClasses.join(" ")}>
         {breadcrumbsTag}
         {/* {imgArea ? imgArea : null} */}
-        <div className="row row-post-img">
-          <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
-            {hasVideo ? (
-              <VideoEmbed
-                videoId={videoIndex}
-                imgArr={itemPrimary}
-                autoplay={1}
-              />
-            ) : (
-              imgColLeft
-            )}
+        {pageStyle === "IsVideo" ? (
+          <div className="row row-post-video full">
+            <div className="col-xs-12 col-sm-12 margin-x-0XXX col-post-videoXXX">
+              {itemPrimary.isVideo && itemPrimary.youtube ? (
+                <VideoEmbed
+                  videoId={itemPrimary.youtube}
+                  imgArr={itemPrimary}
+                  autoplay={0}
+                />
+              ) : null}
+            </div>
           </div>
-          <div className="col-xs-12 col-sm-4 col-post-img-grid">
-            {imgColRight}
+        ) : (
+          <div className="row row-post-img">
+            <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
+              {hasVideo ? (
+                <VideoEmbed
+                  videoId={videoIndex}
+                  imgArr={itemPrimary}
+                  autoplay={1}
+                />
+              ) : (
+                imgColLeft
+              )}
+            </div>
+            <div className="col-xs-12 col-sm-4 col-post-img-grid">
+              {imgColRight}
+            </div>
           </div>
-        </div>
+        )}
         {/* /.row */}
       </div>
     </section>
