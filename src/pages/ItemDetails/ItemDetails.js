@@ -388,6 +388,7 @@ export default class ItemDetails extends Component {
           <ItemExtras
             showPrice={true}
             showContact={true}
+            showShare={true}
             itemArr={itemPrimary}
             handleForLargeImageList={handleForLargeImageList.bind(this)}
             handleForVideobox={handleForVideobox}
@@ -400,7 +401,6 @@ export default class ItemDetails extends Component {
       moreInfoBoxes = (
         <>
           {relatedItemsTag}
-          <ItemExtras showContact={false} showPrice={false} itemArr={false} />
         </>
       );
     } else {

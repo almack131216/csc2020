@@ -4,16 +4,22 @@
 .wrap-iframe {
   position:relative;
   width: 100%;
-  min-height: 380px;  
+  min-height: 300px;  
   z-index:0;
   text-align: center;
-  @media(min-width:$bp-md-1) {
-    height:calc(100vh - 240px);
+  aspect-ratio:16/9;//2do
+
+  @media(min-width:$bp-tablet-1) {
+    // height:calc(50vh - 0);
   }  
 
-  @media(min-width:$bp-tablet-1) and (max-width:$bp-md-1){
-    height: 440px;
-  }  
+  // @media(min-width:$bp-tablet-1) {
+  //   height: 440px;
+  // }
+  
+  @media (max-width:$bp-tablet-1){
+    height: 300px;
+  } 
 
   img {
     visibility:hidden;

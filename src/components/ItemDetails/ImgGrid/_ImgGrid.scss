@@ -49,47 +49,47 @@ ul.ul-img-grid {
   }
 }
 
-ul.ul-img-gridXXX {
-  display: flex;
-  flex-wrap: wrap;
+// ul.ul-img-gridXXX {
+//   display: flex;
+//   flex-wrap: wrap;
 
-  li {
-    flex: 0 0 25%;
-    @media (min-width: $bp-tablet) and (max-width: $bp-sm-1) {
-      flex: 0 0 10%;
-    }
-    @media (min-width: $bp-xs) and (max-width: $bp-tablet-1) {
-      flex: 0 0 20%;
-    }
-  }
+//   li {
+//     flex: 0 0 25%;
+//     @media (min-width: $bp-tablet) and (max-width: $bp-sm-1) {
+//       flex: 0 0 10%;
+//     }
+//     @media (min-width: $bp-xs) and (max-width: $bp-tablet-1) {
+//       flex: 0 0 20%;
+//     }
+//   }
 
-  img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    min-width: 100%;
-    object-fit: cover;
-    vertical-align: bottom;
-    cursor: pointer;
-  }
+//   img {
+//     display: block;
+//     max-width: 100%;
+//     height: auto;
+//     min-width: 100%;
+//     object-fit: cover;
+//     vertical-align: bottom;
+//     cursor: pointer;
+//   }
 
-  li.btn-youtube {
-    background:$color_youtube;
-    position:relative;
-    cursor: pointer;
+//   li.btn-youtube {
+//     background:$color_youtube;
+//     position:relative;
+//     cursor: pointer;
 
-    img {
-      visibility:hidden;
-    }
+//     img {
+//       visibility:hidden;
+//     }
 
-    svg {
-      position:absolute;
-      top:10%;
-      left:10%;
-      width:80%;
-      height:80%;
-      color:white;
-    }
-  }
+//     svg {
+//       position:absolute;
+//       top:10%;
+//       left:10%;
+//       width:80%;
+//       height:80%;
+//       color:white;
+//     }
+//   }
   
-}
+// }

@@ -3,6 +3,7 @@
 
 .item-extras {
   &.item-related {
+    margin-top:$offset-g2;//ensure related items have space below
     display: block;
     width: 100%;
 

@@ -9,7 +9,7 @@ import {
   FacebookShareButton,
   PinterestShareButton,
   TwitterShareButton,
-  WhatsappShareButton
+  WhatsappShareButton,
 } from "react-share";
 // react-share | icons
 import {
@@ -17,11 +17,11 @@ import {
   FacebookIcon,
   PinterestIcon,
   TwitterIcon,
-  WhatsappIcon
+  WhatsappIcon,
 } from "react-share";
 // (END) react-share
 
-const ItemExtras = props => {
+const ItemExtras = (props) => {
   const {
     id,
     name,
@@ -31,7 +31,7 @@ const ItemExtras = props => {
     status,
     itemPath,
     imagePath,
-    category
+    category,
   } = props.itemArr;
 
   let priceRow = null;
@@ -64,16 +64,29 @@ const ItemExtras = props => {
 
   // ATTACHMENT
   let attachmentsRow = null;
-  if(props.itemAttachments && props.itemAttachments.length){
+  if (props.itemAttachments && props.itemAttachments.length) {
     // console.log('[ItemExtras] ATTACHMENTS: ', props.itemAttachments);
     const attachments = props.itemAttachments.map((item, index) => {
-      return (<li key={index}>
-        <a href={item.thumb} target="_blank" rel="noopener noreferrer" className="icon-text">
-        <FaFilePdf />Read / Download</a>
-        </li>)
-    })
-    
-    attachmentsRow = <div className="post-attachments"><ul>{attachments}</ul></div>;
+      return (
+        <li key={index}>
+          <a
+            href={item.thumb}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="icon-text"
+          >
+            <FaFilePdf />
+            Read / Download
+          </a>
+        </li>
+      );
+    });
+
+    attachmentsRow = (
+      <div className="post-attachments">
+        <ul>{attachments}</ul>
+      </div>
+    );
   }
   // (END) ATTACHMENT
 
@@ -91,30 +104,29 @@ const ItemExtras = props => {
     </li>
   ) : null;
 
-  const btnVideos = itemVideos && itemVideos.length && handleForVideobox ? (
-    <div className="post-btns">
-    <ul className="ul-inline big-btns">
-      {
-        // MAP - return images
-        itemVideos.map((vid, index) => {
-          return (
-            <li key={index}>
-              <a
-                onClick={() => handleForVideobox(vid)}
-                href="#youtube"
-                title={`Link to ${name} on YouTube`}
-                className="icon-text youtube"
-              >
-              <FaYoutube
-                vid={vid}          
-              />
-              <span>Play Video</span>
-              </a>
-            </li>
-          );
-        })
-      }
-      {/* <li>
+  const btnVideos =
+    itemVideos && itemVideos.length && handleForVideobox ? (
+      <div className="post-btns">
+        <ul className="ul-inline big-btns">
+          {
+            // MAP - return images
+            itemVideos.map((vid, index) => {
+              return (
+                <li key={index}>
+                  <a
+                    onClick={() => handleForVideobox(vid)}
+                    href="#youtube"
+                    title={`Link to ${name} on YouTube`}
+                    className="icon-text youtube"
+                  >
+                    <FaYoutube vid={vid} />
+                    <span>Play Video</span>
+                  </a>
+                </li>
+              );
+            })
+          }
+          {/* <li>
         <a
           onClick={() => handleForVideobox()}
           href="#youtube"
@@ -125,9 +137,9 @@ const ItemExtras = props => {
           <span>Play Video</span>
         </a>
       </li> */}
-    </ul>
-    </div>
-  ) : null;
+        </ul>
+      </div>
+    ) : null;
 
   const btnEnquire = props.showContact ? (
     <li>
@@ -144,56 +156,56 @@ const ItemExtras = props => {
     </li>
   ) : null;
 
-  
+  const btnsShare = props.showShare ? (
+    <div className="post-share">
+      <h4>Share:</h4>
+      <ul className="ul-post-share">
+        <li>
+          <FacebookShareButton url={itemPath}>
+            <FacebookIcon size={30} />
+          </FacebookShareButton>
+        </li>
+        <li>
+          <TwitterShareButton url={itemPath}>
+            <TwitterIcon size={30} />
+          </TwitterShareButton>
+        </li>
+        {imagePath ? (
+          <li>
+            <PinterestShareButton url={itemPath} media={imagePath}>
+              <PinterestIcon size={30} />
+            </PinterestShareButton>
+          </li>
+        ) : null}
+        <li>
+          <WhatsappShareButton url={itemPath}>
+            <WhatsappIcon size={30} />
+          </WhatsappShareButton>
+        </li>
+        <li>
+          <EmailShareButton url={itemPath}>
+            <EmailIcon size={30} />
+          </EmailShareButton>
+        </li>
+      </ul>
+    </div>
+  ) : null;
 
   return (
     <div className={classesWrap.join(" ")}>
       <div className="feature-list">
         {priceRow}
         {attachmentsRow}
-        {btnVideos}        
-        {
-          btnPhotos || btnEnquire ? (
-            <div className="post-btns">
-              <ul className="ul-inline">
-                {btnPhotos}
-                {btnEnquire}
-              </ul>
-            </div>
-          ) : null
-        }
-        <div className="post-share">
-          <h4>Share:</h4>
-          <ul className="ul-post-share">
-            <li>
-              <FacebookShareButton url={itemPath}>
-                <FacebookIcon size={30} />
-              </FacebookShareButton>
-            </li>
-            <li>
-              <TwitterShareButton url={itemPath}>
-                <TwitterIcon size={30} />
-              </TwitterShareButton>
-            </li>
-            {imagePath ? (
-              <li>
-                <PinterestShareButton url={itemPath} media={imagePath}>
-                  <PinterestIcon size={30} />
-                </PinterestShareButton>
-              </li>
-            ) : null}
-            <li>
-              <WhatsappShareButton url={itemPath}>
-                <WhatsappIcon size={30} />
-              </WhatsappShareButton>
-            </li>
-            <li>
-              <EmailShareButton url={itemPath}>
-                <EmailIcon size={30} />
-              </EmailShareButton>
-            </li>
-          </ul>
-        </div>
+        {btnVideos}
+        {btnPhotos || btnEnquire ? (
+          <div className="post-btns">
+            <ul className="ul-inline">
+              {btnPhotos}
+              {btnEnquire}
+            </ul>
+          </div>
+        ) : null}
+        {btnsShare}
       </div>
     </div>
   );

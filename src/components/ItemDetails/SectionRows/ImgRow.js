@@ -61,13 +61,23 @@ const ImgRow = (props) => {
       <ItemExtras
         itemArr={itemPrimary}
         showContact={true}
+        showShare={true}
         itemAttachments={attachmentsArr}
       />
     );
   } else if (pageStyle === "IsVideo") {
     imgRowClasses.push("youtube-wrap");
-    imgColLeft = null;
-    imgColRight = null;
+    imgColLeft =
+      itemPrimary.isVideo && itemPrimary.youtube ? (
+        <VideoEmbed
+          videoId={itemPrimary.youtube}
+          imgArr={itemPrimary}
+          autoplay={0}
+        />
+      ) : null;
+    imgColRight = (
+      <ItemExtras itemArr={itemPrimary} showContact={true} showShare={true} />
+    );
   }
 
   return (
@@ -75,36 +85,23 @@ const ImgRow = (props) => {
       <div className={imgRowClasses.join(" ")}>
         {breadcrumbsTag}
         {/* {imgArea ? imgArea : null} */}
-        {pageStyle === "IsVideo" ? (
-          <div className="row row-post-video full">
-            <div className="col-xs-12 col-sm-12 margin-x-0XXX col-post-videoXXX">
-              {itemPrimary.isVideo && itemPrimary.youtube ? (
-                <VideoEmbed
-                  videoId={itemPrimary.youtube}
-                  imgArr={itemPrimary}
-                  autoplay={0}
-                />
-              ) : null}
-            </div>
+        <div className="row row-post-img">
+          <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
+            {hasVideo ? (
+              <VideoEmbed
+                videoId={videoIndex}
+                imgArr={itemPrimary}
+                autoplay={1}
+              />
+            ) : (
+              imgColLeft
+            )}
           </div>
-        ) : (
-          <div className="row row-post-img">
-            <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
-              {hasVideo ? (
-                <VideoEmbed
-                  videoId={videoIndex}
-                  imgArr={itemPrimary}
-                  autoplay={1}
-                />
-              ) : (
-                imgColLeft
-              )}
-            </div>
-            <div className="col-xs-12 col-sm-4 col-post-img-grid">
-              {imgColRight}
-            </div>
+          <div className="col-xs-12 col-sm-4 col-post-img-grid">
+            {imgColRight}
           </div>
-        )}
+        </div>
+        {/* /.row */}
       </div>
     </section>
   );
