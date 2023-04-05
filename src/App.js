@@ -261,6 +261,17 @@ const App = props => {
           />
           <Route
             exact
+            path={`${process.env.PUBLIC_URL}/go/:slug`}
+            component={routerProps => (
+              <ItemDetails
+                categoryName="Live"
+                itemId={routerProps.match.params.slug}
+                pageStyle="ImgDetails"
+              />
+            )}
+          />
+          <Route
+            exact
             path={`${process.env.PUBLIC_URL}/*/classic-cars-sold/:slug`}
             component={routerProps => (
               <ItemDetails
