@@ -50,10 +50,10 @@ const siteData = {
   ],
   navigationNavTop: [
     NavArray.live,
+    NavArray.archive,
     NavArray.restoration,
     NavArray.storage,
-    NavArray.testimonials,
-    NavArray.request
+    NavArray.testimonials
   ],
   navigationFooter: {
     columnA: [
