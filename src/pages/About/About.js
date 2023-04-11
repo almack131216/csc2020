@@ -48,7 +48,7 @@ const About = (props) => {
       />
       <div className="container">
         <section className="row">
-          <div className="col-xs-12 bg-accent">{imgCarousel}</div>
+          <div className="col-xs-12 padding-x-0 bg-accent">{imgCarousel}</div>
         </section>
         <section className="row">
           <div className="content-inner">

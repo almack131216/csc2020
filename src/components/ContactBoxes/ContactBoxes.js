@@ -45,7 +45,20 @@ const CB_OpeningHoursChristmas = {
   )
 };
 
-const CB_OpeningHours = getDateToday() > '2021-12-16' && getDateToday() < '2022-01-04' ? CB_OpeningHoursChristmas : CB_OpeningHoursDefault;
+const CB_OpeningHoursEaster = {
+  title: "Easter Office Hours",
+  class: "easter-hours",
+  text: (
+    <ul>      
+      <li>7-10th Apr. Closed </li>      
+      <li>11th Apr. Reopen as normal</li>
+      <li>Mon-Fri: 9am-5.30pm</li>
+      <li>Sunday: 10am-4pm</li>
+    </ul>
+  )
+};
+
+const CB_OpeningHours = getDateToday() > '2023-04-05' && getDateToday() < '2023-04-11' ? CB_OpeningHoursEaster : CB_OpeningHoursDefault;
 
 const CB_Address = {
   title: "Address",

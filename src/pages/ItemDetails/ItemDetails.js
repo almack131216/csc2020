@@ -439,7 +439,7 @@ export default class ItemDetails extends Component {
                 </div>
               </div>
               {/* /content */}
-              <div className="sidebar hidden-md-down col-md-3">
+              <div className="sidebar col-md-3">
                 {moreInfoBoxes || relatedItemsTag ? (
                   <>
                     {moreInfoBoxes ? moreInfoBoxes : null}

@@ -79,7 +79,7 @@
   @include resp-prop-half("padding", $offset-g1);
 
   @media (max-width: $bp-xs-1) {
-    padding: $offset-g2 $offset-g1;
+    padding: $offset-g2 0;
   }
 
   h1 {
