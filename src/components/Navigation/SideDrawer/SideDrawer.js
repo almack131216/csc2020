@@ -20,8 +20,8 @@ const sideDrawer = props => {
           title={link.titleHover}
           className={className}
         >
-          {liClass && liClass === "new" ? <span className="detail">NEW</span> : null}
           {link.title}
+          {liClass && liClass === "new" ? <span className="detail">NEW</span> : null}
         </Link>
       </li>
     ) : null;

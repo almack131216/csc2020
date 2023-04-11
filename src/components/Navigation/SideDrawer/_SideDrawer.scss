@@ -11,12 +11,13 @@ $SideDrawerWidth: 250px;
   left: 0;
   width: $SideDrawerWidth;
   z-index: 101;
-  transform: translateX(-260px);
+  transform: translateX(100vw);
   // transform: translateX(calc(0px - (#{$SideDrawerWidth} + 10px)));//cannot use calc because of IE
   transition: transform 0.3s ease-out;
   display:block;
 
   &.open {
-    transform: translateX(0);
+    // transform: translateX(calc(100vw - (#{$SideDrawerWidth} + 10px)));
+    transform: translateX(calc(100vw - (#{$SideDrawerWidth} + 10px)));
   }
 }

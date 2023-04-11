@@ -7,7 +7,7 @@
   background: transparent;
   top: $offset-2;
   top: calc(50% - 10px);
-  @include resp-prop-half("left", $offset-g2);
+  @include resp-prop-half("right", $offset-g2);
   border: none;
   padding: 0;
   display: block;
@@ -62,7 +62,7 @@
     display:block;
     position: fixed;
     top: $offset-1;
-    left: $offset-1;
+    right: $offset-1;
     background: transparent;
 
     .r-i {

@@ -21,13 +21,13 @@
 
       &.new {
         a {
-          padding-left:0;
+          // padding-left:0;
 
           span.detail {
             background: $color_accent3;
             color: white;
             padding: 3px 5px;
-            margin-right: 5px;
+            margin-left: 5px;
             border-radius: 5px;
             font-size:9px;
             line-height:9px;
@@ -45,7 +45,7 @@
         line-height: 28px;//$offset-g2//2do - review nav
         display: block;
         width: 100%;
-        text-align: right;
+        text-align: left;
 
         &.active {
           color: $navbar_color-link-hover;
