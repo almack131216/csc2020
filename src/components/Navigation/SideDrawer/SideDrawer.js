@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const sideDrawer = props => {
-  let drawerClasses = "side-drawer";
+  let drawerClasses = "side-drawer off-left";
   if (props.show) {
-    drawerClasses = "side-drawer open";
+    drawerClasses = "side-drawer off-left open";
   }
 
   const navLinks = props.navigation.map((link, index) => {

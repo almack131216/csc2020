@@ -1,11 +1,12 @@
 import React from "react";
-import { AiOutlineMenuUnfold, AiOutlineMenuFold } from "react-icons/ai";
+import { GrFormClose } from "react-icons/gr";
+import { HiOutlineMenu } from "react-icons/hi";
 
 const drawerToggleButton = props => (
-  <button className="toggle-button" onClick={props.click}>
+  <button className="toggle-button off-left" onClick={props.click}>
     <span className="lbl">More</span>
-    <AiOutlineMenuFold className="more r-i show-menu" />
-    <AiOutlineMenuUnfold className="r-i hide-menu" />
+    <HiOutlineMenu className="more r-i show-menu" />
+    <GrFormClose className="r-i hide-menu" />
   </button>
 );
 

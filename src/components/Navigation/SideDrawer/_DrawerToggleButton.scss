@@ -7,7 +7,8 @@
   background: transparent;
   top: $offset-2;
   top: calc(50% - 10px);
-  @include resp-prop-half("right", $offset-g2);
+  @include resp-prop-half("left", $offset-g2);
+  right:auto;
   border: none;
   padding: 0;
   display: block;
@@ -17,6 +18,11 @@
   line-height: $offset-g2;
   box-sizing: border-box;
   cursor: pointer;
+
+  &.off-right {
+    left:auto;
+    @include resp-prop-half("right", $offset-g2);
+  }
 
   span.lbl {
     display: none;
@@ -30,6 +36,11 @@
 
   .r-i {
     color: $color_accent; //$color_navbar-header-link
+    color:white;
+    path {
+      color:white;
+      stroke:white;
+    }
   }
 
   .more {
@@ -62,8 +73,14 @@
     display:block;
     position: fixed;
     top: $offset-1;
-    right: $offset-1;
+    left: $offset-1;
+    right:auto;
     background: transparent;
+
+    &.off-right {
+      left:auto;
+      right: $offset-1;
+    }
 
     .r-i {
       color: white;
