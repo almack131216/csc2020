@@ -58,7 +58,19 @@ const CB_OpeningHoursEaster = {
   )
 };
 
-const CB_OpeningHours = getDateToday() > '2023-04-05' && getDateToday() < '2023-04-11' ? CB_OpeningHoursEaster : CB_OpeningHoursDefault;
+const CB_OpeningHoursTemp = {
+  title: "Easter Office Hours",
+  class: "easter-hours",
+  text: (
+    <ul>
+      <li>Mon-Fri: 9am-5.30pm</li>
+      <li>Sun 25th Jun: Closed - at Malton Show</li>
+      <li>Closed Saturday</li>
+    </ul>
+  )
+};
+
+const CB_OpeningHours = getDateToday() > '2023-06-23' && getDateToday() < '2023-06-26' ? CB_OpeningHoursTemp : CB_OpeningHoursDefault;
 
 const CB_Address = {
   title: "Address",
