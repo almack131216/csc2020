@@ -99,7 +99,7 @@ const ImgRow = (props) => {
           </div>
         ) : (
           <div className="row row-post-img">
-            <div className="col-xs-12 col-sm-8 margin-x-0 featured col-post-img">
+            <div className="col-xs-12 col-sm-6 margin-x-0 featured col-post-img">
               {hasVideo ? (
                 <VideoEmbed
                   videoId={videoIndex}
@@ -110,7 +110,7 @@ const ImgRow = (props) => {
                 imgColLeft
               )}
             </div>
-            <div className="col-xs-12 col-sm-4 col-post-img-grid">
+            <div className="col-xs-12 col-sm-6 col-post-img-grid">
               {imgColRight}
             </div>
           </div>
