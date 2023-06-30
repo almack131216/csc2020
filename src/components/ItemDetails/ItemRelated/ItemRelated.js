@@ -30,7 +30,7 @@ const PrintItem = props => {
     ? `${item.year} ${Parser(item.name)}`
     : Parser(item.name);
   // const imagePath = process.env.REACT_APP_IMG_DIR + item.image;
-  const imagePath = item.imageDir ? process.env.REACT_APP_IMG_DDIR + item.imageDir + '/pr/' + item.image : process.env.REACT_APP_IMG_DIR + item.image;
+  const imagePath = item.imageDir ? process.env.REACT_APP_IMG_DDIR + item.imageDir + '/lg/' + item.image : process.env.REACT_APP_IMG_DIR + item.image;
   const showIcon = props.showIcon;
   const wrapClass = showIcon ? `icon-overlay ${showIcon}` : null;
 
