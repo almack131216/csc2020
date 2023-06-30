@@ -71,6 +71,7 @@ export default class ItemDetails extends Component {
     ConsoleLog("[ItemDetails] handleForVideobox() > getIndex: " + getIndex);
     const videoIndex = getIndex ? getIndex : 0;
     this.setState({ isVideo: true, videoIndex });
+    window.scrollTo(0, 0);
   };
 
   // LIGHTBOX - open lightbox on selected photoIndex
