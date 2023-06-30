@@ -10,7 +10,7 @@ const CarouselDynamic = props => {
   const [Images, setImages] = useState([]);
 
   var settings = {
-    className: "slider carousel",
+    className: 'slider carousel ' + props.className,
     autoplay: true,
     autoplaySpeed: 3000,
     dots: true,

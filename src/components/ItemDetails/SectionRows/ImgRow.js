@@ -56,7 +56,7 @@ const ImgRow = (props) => {
     );
   } else if (pageStyle === "ImgCarousel") {
     imgRowClasses.push("carousel");
-    imgColLeft = <CarouselDynamic imgsArr={imagesArr} />;
+    imgColLeft = <CarouselDynamic imgsArr={imagesArr} className="aspect-ratio-4-3"/>;
     imgColRight = (
       <ItemExtras
         itemArr={itemPrimary}
