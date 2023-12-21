@@ -103,6 +103,14 @@ const navArray = {
     navTop: true,
     navSide: true
   },
+  gallery: {
+    title: CatData["Gallery"].title,
+    titleHover: CatData["Gallery"].titleHover,
+    titleDocument: CatData["Gallery"].titleDocument,
+    slug: CatData["Gallery"].slug,
+    navTop: true,
+    navSide: true
+  },
   plates: {
     title: "Registration Numbers",
     titleSub: "All reasonable offers considered",

@@ -341,6 +341,42 @@ const catArray = {
         }
       }
     }
+  },
+  Gallery: {
+    id: 14,
+    name: "Gallery",
+    title: "Gallery",
+    titleSub: "",
+    titleHover: "Link to our photo gallery page",
+    titleDocument: "Photo Gallery",
+    description: "",
+    text: "",
+    slug: "/gallery",
+    slugAppendBrand: "/gallery",
+    api: `${process.env.REACT_APP_API_ENDPOINT}?api=items&spec=Gallery`,
+    settings: {
+      showFilter: false,
+      showBrandList: true,
+      showWidgetYouTubeBtn: true,
+      showWidgetOpeningHours: true,
+      showWidgetContactDetails: true,
+      showTitle: true,
+      showTitleSub: true,
+      layout: "grid",
+      classContainer: "",
+      postsPerPage: 30,
+      item: {
+        layout: "item-card gallery",
+        showSource: true,
+        showExcerpt: false,
+        showCategoryLink: true,
+        details: {
+          showWidgetYouTubeBtn: true,
+          showWidgetOpeningHours: true,
+          showWidgetContactDetails: true
+        }
+      }
+    }
   }
 };
 

@@ -186,6 +186,11 @@ const App = props => {
             path={`${process.env.PUBLIC_URL}/videos`}
             component={() => <Items category="Videos" />}
           />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/gallery`}
+            component={() => <Items category="Gallery" />}
+          />
           {/* PAGINATION */}
           <Route
             exact
@@ -236,6 +241,11 @@ const App = props => {
             exact
             path={`${process.env.PUBLIC_URL}/videos/page-:page`}
             component={(routerProps) => <Items category="Videos" page={routerProps.match.params.page} />}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/gallery/page-:page`}
+            component={(routerProps) => <Items category="Gallery" page={routerProps.match.params.page} />}
           />
           {/* (END) PAGINATION */}
           <Route
@@ -404,6 +414,17 @@ const App = props => {
                 categoryName="Live"
                 itemId={routerProps.match.params.slug}
                 preview={true}
+                pageStyle="ImgDetails"
+              />
+            )}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/*/gallery/:slug`}
+            component={routerProps => (
+              <ItemDetails
+                categoryName="Gallery"
+                itemId={routerProps.match.params.slug}
                 pageStyle="ImgDetails"
               />
             )}

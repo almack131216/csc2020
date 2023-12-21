@@ -389,6 +389,7 @@ export default class ItemProvider extends Component {
 		if (itemCategoryName === 11) return CatData.Restoration;
 		if (itemCategoryName === 12) return CatData.Staff;
 		if (itemCategoryName === 13) return CatData.Videos;
+		if (itemCategoryName === 14) return CatData.Gallery;
 		// if (itemCategoryName === 2 && getItemStatus === 0) return CatData[this.state.categoryNameDefault];
 
 		// ConsoleLog(
