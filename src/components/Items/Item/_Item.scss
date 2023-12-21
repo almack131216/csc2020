@@ -105,6 +105,12 @@ $img-height-4: 260px;
       height:auto;
       aspect-ratio:4/3;//2do
 
+      a {
+        img {
+          min-height:100%;
+        }
+      }
+
       // @media (min-width:$bp-lg) {
       //   height: 400px;
       // }
