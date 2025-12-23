@@ -10,6 +10,42 @@ import Ribbon from "../Ribbon/Ribbon";
 import { useContext } from "react";
 import { ItemContext } from "../../../Context";
 
+/**
+ * Checks if a given date string (YYYY-MM-DD) is within the past 48 hours.
+ * @param {string} dateString The date string in "YYYY-MM-DD" format.
+ * @returns {boolean} True if the date is within the past 48 hours, false otherwise.
+ */
+const isDateWithinPast48Hours = (dateString) => {
+    // Parse the input date string into a Date object.
+    // The YYYY-MM-DD format is a simplified ISO 8601 format and is generally well-supported 
+    // by the Date constructor, though it might be interpreted as UTC or local time 
+    // depending on the browser/context.
+    // For reliable results, especially when time is not specified in the input string, 
+    // it's best to handle timezones explicitly or assume a consistent time (e.g., midnight UTC).
+    // The comparison below works based on the number of milliseconds since the Unix epoch (UTC).
+    const inputDate = new Date(dateString);
+
+    // Check for an invalid date (e.g., "2025-02-31" would be invalid).
+    if (isNaN(inputDate.getTime())) {
+        console.error("Invalid date string provided");
+        return false;
+    }
+
+    // Get the current time in milliseconds since the Unix epoch.
+    const now = Date.now();
+
+    // Calculate the timestamp for 48 hours ago (48 hours * 60 minutes/hour * 60 seconds/minute * 1000 milliseconds/second).
+    const fortyEightHoursInMillis = 72 * 60 * 60 * 1000;
+    const fortyEightHoursAgo = now - fortyEightHoursInMillis;
+
+    // Get the timestamp of the input date.
+    const inputTime = inputDate.getTime();
+
+    // Check if the input date is after or equal to the time 48 hours ago, 
+    // and also check that it is not in the future.
+    return inputTime >= fortyEightHoursAgo && inputTime <= now;
+};
+
 const Item = memo(({ categoryName, item, itemSettingsCust }) => {
   // console.log("[Item] ...", itemSettingsCust);
   // INIT context
@@ -111,8 +147,8 @@ const Item = memo(({ categoryName, item, itemSettingsCust }) => {
       itemSettings.showExcerpt && excerpt ? parse(`<p>${excerpt}</p>`) : null;
 
     ribbonNewToday =
-      itemSettings.showRibbons && status === 1 && date === dateToday ? (
-        <Ribbon text="Today" class="green" />
+      itemSettings.showRibbons && status === 1 && isDateWithinPast48Hours(date) ? (
+        <Ribbon text="NEW" class="green" />
       ) : null;
     ribbonSold =
       itemSettings.showRibbons && status === 2 ? (
