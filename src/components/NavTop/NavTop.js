@@ -36,12 +36,26 @@ const navTop = (props) => {
 
     return link.navTop ? (
       <li key={index} className={liClass}>
-        <Link to={link.slug} title={link.titleHover} className={className}>
-          {liClass && liClass === "new" ? (
-            <span className="detail">NEW</span>
-          ) : null}
-          {link.title}
-        </Link>
+        {link.slug ? (
+          <Link to={link.slug} title={link.titleHover} className={className}>
+            {liClass && liClass === "new" ? (
+              <span className="detail">NEW</span>
+            ) : null}
+            {link.title}
+          </Link>
+        ) : (
+          <a
+            href={link.url}
+            target="_blank"
+            title={link.titleHover}
+            className={className}
+          >
+            {liClass && liClass === "new" ? (
+              <span className="detail">NEW</span>
+            ) : null}
+            {link.title}
+          </a>
+        )}
       </li>
     ) : null;
   });

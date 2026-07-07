@@ -14,15 +14,28 @@ const sideDrawer = props => {
 
     return link.navSide ? (
       <li key={index} className={liClass}>
-        <Link
-          onClick={props.clicked}
-          to={link.slug}
-          title={link.titleHover}
-          className={className}
-        >
-          {link.title}
-          {liClass && liClass === "new" ? <span className="detail">NEW</span> : null}
-        </Link>
+        {link.slug ? (
+          <Link
+            onClick={props.clicked}
+            to={link.slug}
+            title={link.titleHover}
+            className={className}
+          >
+            {link.title}
+            {liClass && liClass === "new" ? (
+              <span className="detail">NEW</span>
+            ) : null}
+          </Link>
+        ) : (
+          <a
+            href={link.url}
+            target="_blank"
+            title={link.titleHover}
+            className={className}
+          >
+            {link.title}
+          </a>
+        )}
       </li>
     ) : null;
   });

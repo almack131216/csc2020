@@ -40,6 +40,7 @@ const navArray = {
     titleHover: CatData["Restoration"].titleHover,
     titleDocument: CatData["Restoration"].titleDocument,
     slug: CatData["Restoration"].slug,
+    url: CatData["Restoration"].url,
     navTop: true,
     navSide: true
   },
