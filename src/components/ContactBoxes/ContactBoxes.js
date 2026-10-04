@@ -32,44 +32,44 @@ const CB_OpeningHoursChristmas = {
   class: "christmas-hours",
   text: (
     <ul>
-      <li>21st Thu: 9am-5:30pm</li>
-      <li>22nd Fri: 8:30am-12pm</li><li>23rd: Closed</li>
-      <li>24th: Appointment Only</li>
-      <li>25th-26th: Closed</li><li>27th-29th: 9am-5:30pm</li>
-      <li>30th Sat: Closed</li>
-      <li>31st Sun: Appointment Only</li>
-      <li>1st Mon: Closed</li>
+      <li>24th Wed: 9am-12pm</li>
+      <li>25th-27th: Closed</li>
+      <li>28th Sun: 10am-4pm</li>
+      <li>29th Mon: 9am-5:30pm</li>
+      <li>30th Tue: 9am-5:30pm</li>
+      <li>31st Wed: 9am-12pm</li>
+      <li>1st January: Closed</li>
       <li>Open as usual from 2nd Jan</li>
     </ul>
   )
 };
 
-const CB_OpeningHoursEaster = {
-  title: "Easter Office Hours",
-  class: "easter-hours",
-  text: (
-    <ul>      
-      <li>7-10th Apr. Closed </li>      
-      <li>11th Apr. Reopen as normal</li>
-      <li>Mon-Fri: 9am-5.30pm</li>
-      <li>Sunday: 10am-4pm</li>
-    </ul>
-  )
-};
+// const CB_OpeningHoursEaster = {
+//   title: "Easter Office Hours",
+//   class: "easter-hours",
+//   text: (
+//     <ul>      
+//       <li>7-10th Apr. Closed </li>      
+//       <li>11th Apr. Reopen as normal</li>
+//       <li>Mon-Fri: 9am-5.30pm</li>
+//       <li>Sunday: 10am-4pm</li>
+//     </ul>
+//   )
+// };
 
-const CB_OpeningHoursTemp = {
-  title: "Easter Office Hours",
-  class: "easter-hours",
-  text: (
-    <ul>
-      <li>Mon-Fri: 9am-5.30pm</li>
-      <li>Sun 25th Jun: Closed - at Malton Show</li>
-      <li>Closed Saturday</li>
-    </ul>
-  )
-};
+// const CB_OpeningHoursTemp = {
+//   title: "Easter Office Hours",
+//   class: "easter-hours",
+//   text: (
+//     <ul>
+//       <li>Mon-Fri: 9am-5.30pm</li>
+//       <li>Sun 25th Jun: Closed - at Malton Show</li>
+//       <li>Closed Saturday</li>
+//     </ul>
+//   )
+// };
 
-const CB_OpeningHours = getDateToday() > '2023-12-20' && getDateToday() < '2024-01-02' ? CB_OpeningHoursChristmas : CB_OpeningHoursDefault;
+const CB_OpeningHours = getDateToday() > '2025-12-20' && getDateToday() < '2026-01-02' ? CB_OpeningHoursChristmas : CB_OpeningHoursDefault;
 
 const CB_Address = {
   title: "Address",

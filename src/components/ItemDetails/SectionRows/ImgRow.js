@@ -1,6 +1,6 @@
 import React from "react";
 // import parse from "html-react-parser";
-import NavLeft from "../../Sidebar/Navleft/NavLeft";
+// import NavLeft from "../../Sidebar/Navleft/NavLeft";
 import VideoEmbed from "../Video/VideoEmbed";
 // import Loading from "../../Loading/Loading";
 import ImgFeatured from "../ImgFeatured/ImgFeatured";
@@ -9,7 +9,7 @@ import ImgGrid from "../ImgGrid/ImgGrid";
 import CarouselDynamic from "../../CarouselDynamic/CarouselDynamic";
 
 const ImgRow = (props) => {
-  const categoryName = props.categoryName;
+  // const categoryName = props.categoryName;
   // const imgArea = props.imgArea;
   const breadcrumbsTag = props.breadcrumbsTag;
   const pageStyle = props.pageStyle ? props.pageStyle : "TextOnly";

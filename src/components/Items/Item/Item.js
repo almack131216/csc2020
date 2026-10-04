@@ -52,7 +52,7 @@ const Item = memo(({ categoryName, item, itemSettingsCust }) => {
   const context = useContext(ItemContext);
   const {
     categoryArr,
-    dateToday,
+    // dateToday,
     // categoryName,
     formatPrice,
     formatItemLink,

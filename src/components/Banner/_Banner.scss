@@ -49,6 +49,22 @@
     }
   }
 
+  &.news-alert {
+    background: $color_accent2;
+
+    h1, a {
+      color:white;
+    }
+
+    .caps-black {
+      display:block;
+      margin-top:$offset-g1;
+      color:black;
+      text-transform:uppercase;
+      font-weight:bold;
+    }
+  }
+
   &.christmas {
     background: white url(../../assets/images/bg_christmas.jpg);
 

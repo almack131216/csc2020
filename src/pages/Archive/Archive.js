@@ -16,7 +16,7 @@ const Archive = props => {
 	// const context = useContext(ItemContext);
 	// const { categoryArr } = context;
 	// INIT category before anything
-	const categoryName = 'Archive';
+	// const categoryName = 'Archive';
 	// INIT appearance
 	let classContainer = [ 'container items', 'a-z' ];
   // FUNCTIONS
