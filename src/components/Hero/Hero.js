@@ -12,7 +12,7 @@ const Hero = () => {
         Welcome to <span>Classic & Sportscar&nbsp;Centre</span>
       </h1>
       <p>
-        Supplying classic cars worldwide for over 30 years. All our cars come
+        Supplying classic cars worldwide for over 35 years. All our cars come
         fully prepared from our in-house workshop and are fully inspected prior
         to collection or delivery.
       </p>

@@ -30,6 +30,7 @@ const sideDrawer = props => {
           <a
             href={link.url}
             target="_blank"
+            rel="noreferrer"
             title={link.titleHover}
             className={className}
           >

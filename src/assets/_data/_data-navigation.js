@@ -33,7 +33,7 @@ const navArray = {
     slug: CatData["Videos"].slug,
     navTop: true,
     navSide: true,
-    class: "new"
+    // class: "new"
   },
   restoration: {
     title: CatData["Restoration"].title,

@@ -12,7 +12,7 @@ const MAIN_KEYWORDS = "Classic Cars For Sale, Sports Cars For Sale";
 const DEFAULT_IMAGE_CARD = "https://classicandsportscar.ltd.uk/logo512.png";
 const DEFAULT_TITLE = "Classic & Sportscar Centre";
 const DEFAULT_DESCRIPTION =
-  "Selling classic cars worldwide for 30 years. All our cars come fully prepared from our in-house workshop and are fully inspected prior to collection or delivery.";
+  "Selling classic cars worldwide for 35 years. All our cars come fully prepared from our in-house workshop and are fully inspected prior to collection or delivery.";
 
 // const FAVICON_SOURCE = "https://classicandsportscar.ltd.uk/favicon.ico";
 
@@ -42,7 +42,7 @@ const SEO = ({
   const metaName = DEFAULT_NAME;
   const metaType = type ? type : DEFAULT_TYPE;
   const metaDesc = description ? description.replace(/<[^>]+>/g, '') : DEFAULT_DESCRIPTION;
-  const metaDescLite = metaDesc ? setMetaDesc(metaDesc) : "Supplying classic cars worldwide for over 30 years";
+  const metaDescLite = metaDesc ? setMetaDesc(metaDesc) : "Supplying classic cars worldwide for over 35 years";
   const metaLink = window.location.href; //.replace("http://localhost:3000/","https://classicandsportscar.ltd.uk/");
 
   const metaKeywords =

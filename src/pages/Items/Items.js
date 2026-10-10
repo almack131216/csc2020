@@ -23,7 +23,7 @@ const Items = (props) => {
 	let widgetOpeningHours = null;
 	let widgetContact = null;
 	const metaTitle = subcategoryArr && subcategoryArr.brand ? subcategoryArr.brand + ' | ' + categoryArr.title : categoryArr.title;
-	const metaDesc = categoryArr.description ? setMetaDesc(categoryArr.description) : "Supplying classic cars worldwide for over 30 years.";
+	const metaDesc = categoryArr.description ? setMetaDesc(categoryArr.description) : "Supplying classic cars worldwide for over 35 years.";
 	
 	// FUNCTIONS
 	let getBrandFromSlug = props.brand ? props.brand : null;

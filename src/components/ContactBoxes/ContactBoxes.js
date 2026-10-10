@@ -20,7 +20,7 @@ const CB_OpeningHoursDefault = {
   title: "Office Hours",
   text: (
     <ul>
-      <li>Mon-Fri: 9am-5.30pm</li>
+      <li>Mon-Fri: 8:30am-5pm</li>
       <li>Sunday: 10am-4pm</li>
       <li>Closed Saturday</li>
     </ul>
